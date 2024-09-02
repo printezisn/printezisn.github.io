@@ -13,9 +13,9 @@
     "astro": "astro",
     "prepare": "husky",
     "prettier:format": "prettier --write .",
-    "lint": "eslint ./src",
-    "lint:fix": "eslint ./src --fix",
-    "test:unit": "vitest run ./src --config ./vitest.test.ts"
+    "lint": "tsc --noEmit && eslint ./src",
+    "lint:fix": "tsc --noEmit && eslint ./src --fix",
+    "test:unit": "vitest run ./src --config ./vitest.test.ts --passWithNoTests"
   },
   "dependencies": {
     "@astrojs/check": "0.9.3",

@@ -1,22 +1,84 @@
 ---
 interface Props {
   title: string;
+  description: string;
+  path: string;
+  image?: string;
+  lang?: string;
 }
 
-const { title } = Astro.props;
+const avatar = 'https://avatars.githubusercontent.com/u/28266572';
+const defaultImage = new URL('/manifest/icon-512x512.png', Astro.site);
+
+const {
+  title,
+  description,
+  path,
+  image = defaultImage,
+  lang = 'en',
+} = Astro.props;
+
+const canonicalUrl = new URL(path, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
+    <!-- Global Metadata -->
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Primary Meta Tags -->
     <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+
+    <!-- PWA -->
+    <meta name="theme-color" content="#1d295d" />
+    <link rel="manifest" href="/manifest/manifest.webmanifest" />
+
+    <!-- Scripts -->
+    <script src="../scripts/blog.ts"></script>
   </head>
   <body>
-    <slot />
+    <a href="#main-content" class="sr-only">Skip to main content</a>
+    <header>
+      <div class="header-top">
+        <img src={avatar} width="128" height="128" alt="Nikos Printezis" />
+        <h1>Nikos Printezis</h1>
+        <p>
+          Hi! I'm Nikos and I'm a full stack engineer. I like coding all sorts
+          of stuff, although I focus more on front end development with native
+          JS/CSS features, React and 2D games with PixiJS. I'm really looking
+          forward to provide more and more content in this website and I hope
+          you enjoy my blog and games.
+        </p>
+      </div>
+    </header>
+    <main id="main-content">
+      <slot />
+    </main>
+    <footer>
+      &copy; {new Date().getFullYear()} Nikos Printezis. All Rights Reserved.
+    </footer>
   </body>
 </html>
