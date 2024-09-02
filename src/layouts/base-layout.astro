@@ -1,4 +1,8 @@
 ---
+import { Image } from 'astro:assets';
+import banner from '../assets/banner.webp';
+import { IMAGE_SIZES, IMAGE_WIDTHS } from '../helpers/image-helper';
+
 interface Props {
   title: string;
   description: string;
@@ -61,24 +65,45 @@ const canonicalUrl = new URL(path, Astro.site);
   </head>
   <body>
     <a href="#main-content" class="sr-only">Skip to main content</a>
-    <header>
-      <div class="header-top">
-        <img src={avatar} width="128" height="128" alt="Nikos Printezis" />
-        <h1>Nikos Printezis</h1>
-        <p>
-          Hi! I'm Nikos and I'm a full stack engineer. I like coding all sorts
-          of stuff, although I focus more on front end development with native
-          JS/CSS features, React and 2D games with PixiJS. I'm really looking
-          forward to provide more and more content in this website and I hope
-          you enjoy my blog and games.
-        </p>
-      </div>
-    </header>
-    <main id="main-content">
-      <slot />
-    </main>
-    <footer>
-      &copy; {new Date().getFullYear()} Nikos Printezis. All Rights Reserved.
-    </footer>
+    <div class="page">
+      <header>
+        <div class="page-header-banner">
+          <Image
+            src={banner}
+            alt=""
+            widths={IMAGE_WIDTHS}
+            sizes={IMAGE_SIZES}
+            loading="eager"
+          />
+        </div>
+        <div class="page-header-content">
+          <img src={avatar} width="128" height="128" alt="Nikos Printezis" />
+          <h1>Nikos Printezis</h1>
+          <p>
+            Hi! I'm Nikos and I'm a full stack engineer. I like coding all sorts
+            of stuff, although I focus more on front end development with native
+            JS/CSS features, React and 2D games with PixiJS. I'm really looking
+            forward to provide more and more content in this website and I hope
+            you enjoy my blog and games.
+          </p>
+          <nav>
+            <ul>
+              <li>
+                <a href="/">Portfolio</a>
+              </li>
+              <li>
+                <a href="/blog">Blog</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <main id="main-content">
+        <slot />
+      </main>
+      <footer>
+        &copy; {new Date().getFullYear()} Nikos Printezis. All Rights Reserved.
+      </footer>
+    </div>
   </body>
 </html>

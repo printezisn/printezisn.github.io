@@ -12,7 +12,13 @@ importers:
         version: 0.9.3(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.5.4)
       astro:
         specifier: 4.15.1
-        version: 4.15.1(rollup@4.21.2)(typescript@5.5.4)
+        version: 4.15.1(rollup@4.21.2)(sass@1.77.8)(typescript@5.5.4)
+      sass:
+        specifier: 1.77.8
+        version: 1.77.8
+      sharp:
+        specifier: 0.33.5
+        version: 0.33.5
       typescript:
         specifier: 5.5.4
         version: 5.5.4
@@ -49,7 +55,7 @@ importers:
         version: 8.3.0(eslint@9.9.1)(typescript@5.5.4)
       vitest:
         specifier: 2.0.5
-        version: 2.0.5
+        version: 2.0.5(sass@1.77.8)
 
 packages:
   '@ampproject/remapping@2.3.0':
@@ -2579,6 +2585,12 @@ packages:
       }
     engines: { node: '>= 4' }
 
+  immutable@4.3.7:
+    resolution:
+      {
+        integrity: sha512-1hqclzwYwjRDFLjcFxOM5AYkkG0rpFPpr1RLPMEuGczoS7YA8gLhy8SWXYRAA/XwfEHpfo3cw5JGioS32fnMRw==,
+      }
+
   import-fresh@3.3.0:
     resolution:
       {
@@ -3951,6 +3963,14 @@ packages:
       {
         integrity: sha512-CWZ8XiSim+fJVG0cFLStwDvft1VI7uvXdCNJYXhDvowiv+DsbD1nXLiQ4zrE5UBvj5DWZJ93cwN0NX5PMsr1Pw==,
       }
+
+  sass@1.77.8:
+    resolution:
+      {
+        integrity: sha512-4UHg6prsrycW20fqLGPShtEvo/WyHRVRHwOP4DzkUrObWoWI05QBSfzU71TVB7PFaL104TwNaHpjlWXAZbQiNQ==,
+      }
+    engines: { node: '>=14.0.0' }
+    hasBin: true
 
   section-matter@1.0.0:
     resolution:
@@ -5827,7 +5847,7 @@ snapshots:
       - supports-color
       - typescript
 
-  astro@4.15.1(rollup@4.21.2)(typescript@5.5.4):
+  astro@4.15.1(rollup@4.21.2)(sass@1.77.8)(typescript@5.5.4):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.1
@@ -5887,8 +5907,8 @@ snapshots:
       tsconfck: 3.1.1(typescript@5.5.4)
       unist-util-visit: 5.0.0
       vfile: 6.0.3
-      vite: 5.4.2
-      vitefu: 0.2.5(vite@5.4.2)
+      vite: 5.4.2(sass@1.77.8)
+      vitefu: 0.2.5(vite@5.4.2(sass@1.77.8))
       which-pm: 3.0.0
       xxhash-wasm: 1.0.2
       yargs-parser: 21.1.1
@@ -6059,13 +6079,11 @@ snapshots:
     dependencies:
       color-name: 1.1.4
       simple-swizzle: 0.2.2
-    optional: true
 
   color@4.2.3:
     dependencies:
       color-convert: 2.0.1
       color-string: 1.9.1
-    optional: true
 
   comma-separated-tokens@2.0.3: {}
 
@@ -6152,8 +6170,7 @@ snapshots:
 
   dequal@2.0.3: {}
 
-  detect-libc@2.0.3:
-    optional: true
+  detect-libc@2.0.3: {}
 
   deterministic-object-hash@2.0.2:
     dependencies:
@@ -6728,6 +6745,8 @@ snapshots:
 
   ignore@5.3.2: {}
 
+  immutable@4.3.7: {}
+
   import-fresh@3.3.0:
     dependencies:
       parent-module: 1.0.1
@@ -6753,8 +6772,7 @@ snapshots:
       call-bind: 1.0.7
       get-intrinsic: 1.2.4
 
-  is-arrayish@0.3.2:
-    optional: true
+  is-arrayish@0.3.2: {}
 
   is-async-function@2.0.0:
     dependencies:
@@ -7684,6 +7702,12 @@ snapshots:
     dependencies:
       suf-log: 2.5.3
 
+  sass@1.77.8:
+    dependencies:
+      chokidar: 3.6.0
+      immutable: 4.3.7
+      source-map-js: 1.2.0
+
   section-matter@1.0.0:
     dependencies:
       extend-shallow: 2.0.1
@@ -7734,7 +7758,6 @@ snapshots:
       '@img/sharp-wasm32': 0.33.5
       '@img/sharp-win32-ia32': 0.33.5
       '@img/sharp-win32-x64': 0.33.5
-    optional: true
 
   shebang-command@2.0.0:
     dependencies:
@@ -7761,7 +7784,6 @@ snapshots:
   simple-swizzle@0.2.2:
     dependencies:
       is-arrayish: 0.3.2
-    optional: true
 
   sisteransi@1.0.5: {}
 
@@ -8038,13 +8060,13 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vite-node@2.0.5:
+  vite-node@2.0.5(sass@1.77.8):
     dependencies:
       cac: 6.7.14
       debug: 4.3.6
       pathe: 1.1.2
       tinyrainbow: 1.2.0
-      vite: 5.4.2
+      vite: 5.4.2(sass@1.77.8)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -8056,19 +8078,20 @@ snapshots:
       - supports-color
       - terser
 
-  vite@5.4.2:
+  vite@5.4.2(sass@1.77.8):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.41
       rollup: 4.21.2
     optionalDependencies:
       fsevents: 2.3.3
+      sass: 1.77.8
 
-  vitefu@0.2.5(vite@5.4.2):
+  vitefu@0.2.5(vite@5.4.2(sass@1.77.8)):
     optionalDependencies:
-      vite: 5.4.2
+      vite: 5.4.2(sass@1.77.8)
 
-  vitest@2.0.5:
+  vitest@2.0.5(sass@1.77.8):
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@vitest/expect': 2.0.5
@@ -8086,8 +8109,8 @@ snapshots:
       tinybench: 2.9.0
       tinypool: 1.0.1
       tinyrainbow: 1.2.0
-      vite: 5.4.2
-      vite-node: 2.0.5
+      vite: 5.4.2(sass@1.77.8)
+      vite-node: 2.0.5(sass@1.77.8)
       why-is-node-running: 2.3.0
     transitivePeerDependencies:
       - less

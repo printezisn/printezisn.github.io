@@ -1,0 +1,26 @@
+@use 'variables';
+
+:root {
+  --color-primary: hsl(212, 32%, 8%);
+  --color-primary-black: hsl(212, 32%, 5%);
+  --color-primary-white: hsl(212, 32%, 98%);
+  --color-primary-light: hsl(212, 32%, 12%);
+  --color-primary-overlay: hsla(212, 32%, 5%, 0.7);
+  --color-secondary: hsl(285, 72%, 50%);
+
+  --font-family-base: Helvetica, sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  --font-size-base: 16px;
+  --line-height-base: 1.5rem;
+
+  @for $i from 1 through variables.$total-font-sizes {
+    --font-size-#{$i}: #{0.5 + 0.25 * $i}rem;
+    --line-height-#{$i}: #{0.75 + 0.375 * $i}rem;
+  }
+
+  @for $i from 1 through variables.$total-spacings {
+    --spacing-#{$i}: #{$i * 0.25}rem;
+  }
+}
