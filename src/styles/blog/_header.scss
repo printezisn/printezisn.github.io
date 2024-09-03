@@ -30,7 +30,7 @@
   justify-content: center;
   align-items: center;
   padding: var(--spacing-4);
-  text-align: justify;
+  text-align: center;
   max-inline-size: 1000px;
   margin: auto;
 
@@ -40,6 +40,7 @@
   }
 
   h1 {
+    font-family: var(--font-family-serif);
     font-size: var(--font-size-7);
     line-height: var(--line-height-7);
     font-weight: var(--font-weight-bold);
@@ -47,6 +48,7 @@
 
   p {
     font-style: italic;
+    text-align: justify;
 
     &::before {
       content: '“';
@@ -88,6 +90,7 @@
     }
 
     a {
+      font-family: var(--font-family-serif);
       text-decoration: none;
     }
   }
