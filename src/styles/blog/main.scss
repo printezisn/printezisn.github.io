@@ -4,6 +4,7 @@
 @use 'page';
 @use 'header';
 @use 'footer';
+@use 'portfolio';
 
 *,
 *::before,
@@ -12,6 +13,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion) {
+  * {
+    transition: none !important;
+  }
 }
 
 html,

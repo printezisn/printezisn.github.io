@@ -3,10 +3,21 @@
 :root {
   --color-primary: hsl(212, 32%, 8%);
   --color-primary-black: hsl(212, 32%, 5%);
+  --color-primary-grey-light: hsl(212, 0%, 70%);
   --color-primary-white: hsl(212, 32%, 98%);
   --color-primary-light: hsl(212, 32%, 12%);
   --color-primary-overlay: hsla(212, 32%, 5%, 0.7);
   --color-secondary: hsl(285, 72%, 50%);
+  --color-secondary-light: hsl(285, 72%, 65%);
+  --color-secondary-white: hsl(285, 72%, 98%);
+
+  --border-radius-normal: 4px;
+  --border-radius-large: 8px;
+  --border-radius-larger: 16px;
+
+  --transition-time-quick: 0.3s;
+  --transition-time-normal: 0.5s;
+  --transition-time-slow: 1s;
 
   --font-family-base: 'Roboto', sans-serif;
   --font-family-serif: 'Lora', serif;

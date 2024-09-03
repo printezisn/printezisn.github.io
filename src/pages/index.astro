@@ -1,9 +1,83 @@
 ---
+import { getCollection } from 'astro:content';
 import BlogLayout from '../layouts/blog-layout.astro';
+import ArrowRightIcon from 'feather-icons/dist/icons/arrow-right.svg?raw';
+
+const pageSize = 10;
+const posts = (await getCollection('posts'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, pageSize);
+const games = await getCollection('games');
+const otherWork = await getCollection('other-work');
 ---
 
 <BlogLayout
   title="My Portfolio | Nikos Printezis"
   description="Hi! I'm Nikos and I'm a full stack engineer focusing on front end development and 2D game development. Here you may find my portfolio, blog and games."
   path="/"
-/>
+>
+  <section class="portfolio-section">
+    <h2>Blog</h2>
+    <div class="portfolio-content">
+      {
+        posts.map((post) => (
+          <article>
+            <a href={`/blog/posts/${post.slug}`}>
+              <h3>{post.data.title}</h3>
+              <time datetime={post.data.date.toISOString().slice(0, 10)}>
+                {post.data.date.toISOString().slice(0, 10)}
+              </time>
+              <p>{post.data.description}</p>
+              <div class="more">Read more</div>
+            </a>
+          </article>
+        ))
+      }
+      <a href="/blog" class="view-all">
+        <span>View all</span>
+        <Fragment set:html={ArrowRightIcon} />
+      </a>
+    </div>
+  </section>
+  <section class="portfolio-section">
+    <h2>Games</h2>
+    <div class="portfolio-content">
+      {
+        games.map((game) => (
+          <article>
+            <a href={game.data.path}>
+              <div class="portfolio-image">
+                <img
+                  src={game.data.image}
+                  alt={game.data.title}
+                  width="512"
+                  height="512"
+                  loading="lazy"
+                />
+              </div>
+              <h3>{game.data.title}</h3>
+              <p>{game.data.description}</p>
+              <div class="more">Play</div>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+  <section class="portfolio-section">
+    <h2>Other work</h2>
+    <div class="portfolio-content">
+      {
+        otherWork.map((w) => (
+          <article>
+            <a href={w.data.url} target="_blank" rel="noreferrer">
+              <h3>{w.data.title}</h3>
+              <p>{w.data.description}</p>
+              <div class="more">Learn more</div>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BlogLayout>
