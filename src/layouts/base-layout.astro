@@ -1,28 +1,32 @@
 ---
-import { Image } from 'astro:assets';
-import banner from '../assets/banner.webp';
-import { IMAGE_SIZES, IMAGE_WIDTHS } from '../helpers/image-helper';
-
 interface Props {
   title: string;
   description: string;
   path: string;
   image?: string;
+  favicon?: string;
+  themeColor?: string;
   lang?: string;
+  bodyClass?: string;
 }
 
-const avatar = 'https://avatars.githubusercontent.com/u/28266572';
-const defaultImage = new URL('/manifest/icon-512x512.png', Astro.site);
+const defaultImage = '/manifest/icon-512x512.png';
+const defaultFavicon = '/favicon.svg';
+const defaultThemeColor = '#1d295d';
 
 const {
   title,
   description,
   path,
   image = defaultImage,
+  favicon = defaultFavicon,
+  themeColor = defaultThemeColor,
   lang = 'en',
+  bodyClass = '',
 } = Astro.props;
 
 const canonicalUrl = new URL(path, Astro.site);
+const imageUrl = new URL(image, Astro.site);
 ---
 
 <!doctype html>
@@ -31,7 +35,13 @@ const canonicalUrl = new URL(path, Astro.site);
     <!-- Global Metadata -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {
+      favicon.endsWith('.svg') ? (
+        <link rel="icon" type="image/svg+xml" href={favicon} />
+      ) : (
+        <link rel="icon" href={favicon} />
+      )
+    }
     <meta name="generator" content={Astro.generator} />
 
     <!-- Canonical URL -->
@@ -44,73 +54,36 @@ const canonicalUrl = new URL(path, Astro.site);
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={imageUrl} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:url" content={canonicalUrl} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={image} />
+    <meta property="twitter:image" content={imageUrl} />
 
     <!-- PWA -->
-    <meta name="theme-color" content="#1d295d" />
+    <meta name="theme-color" content={themeColor} />
     <link rel="manifest" href="/manifest/manifest.webmanifest" />
 
     <!-- Scripts -->
-    <script src="../scripts/blog.ts"></script>
+    <script>
+      let theme = localStorage.getItem('theme');
+      if (!theme) {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light';
+      }
+
+      document.documentElement.setAttribute('data-theme', theme);
+    </script>
+    <slot name="scripts" />
   </head>
-  <body>
-    <a href="#main-content" class="sr-only">Skip to main content</a>
-    <div class="page">
-      <header>
-        <div class="page-header-banner">
-          <Image
-            src={banner}
-            alt=""
-            widths={IMAGE_WIDTHS}
-            sizes={IMAGE_SIZES}
-            loading="eager"
-          />
-        </div>
-        <div class="page-header-content">
-          <img src={avatar} width="128" height="128" alt="Nikos Printezis" />
-          <h1>Nikos Printezis</h1>
-          <p>
-            Hi! I'm Nikos and I'm a full stack engineer. I like coding all sorts
-            of stuff, although I focus more on front end development with native
-            JS/CSS features, React and 2D games with PixiJS. I'm really looking
-            forward to provide more and more content in this website and I hope
-            you enjoy my blog and games.
-          </p>
-          <nav>
-            <ul>
-              <li>
-                <a href="/">Portfolio</a>
-              </li>
-              <li>
-                <a href="/blog">Blog</a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/printezisn"
-                  target="_blank"
-                  rel="noreferrer">GitHub</a
-                >
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-      <main id="main-content">
-        <slot />
-      </main>
-      <footer>
-        &copy; {new Date().getFullYear()} Nikos Printezis. All Rights Reserved.
-      </footer>
-    </div>
+  <body class={bodyClass}>
+    <slot />
   </body>
 </html>

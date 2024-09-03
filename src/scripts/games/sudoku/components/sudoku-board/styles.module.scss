@@ -1,0 +1,32 @@
+.board {
+  display: block;
+  aspect-ratio: 1;
+  background-color: var(--color-content);
+  border: solid 1px var(--color-content-border);
+  border-radius: var(--border-radius-large);
+  padding: var(--spacing-4);
+}
+
+.inner {
+  border: solid 2px var(--color-content-text);
+  color: var(--color-content-text);
+  inline-size: 100%;
+  block-size: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+
+  & > * {
+    border: solid 1px var(--color-content-text);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    position: relative;
+  }
+}
+
+.finished,
+.finished .inner,
+.finished .inner > * {
+  border-color: var(--color-success);
+}

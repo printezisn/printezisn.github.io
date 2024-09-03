@@ -1,0 +1,130 @@
+@use 'variables';
+@use 'reset';
+@use 'container';
+@use 'icons';
+@use 'switch';
+@use 'button';
+@use 'menu';
+
+:root {
+  @each $name, $value in variables.$tokens {
+    --#{$name}: #{$value};
+  }
+
+  scroll-behavior: smooth;
+
+  &[data-theme='dark'] {
+    @each $name, $value in variables.$dark-theme-colors {
+      --color-#{$name}: #{$value};
+    }
+  }
+}
+
+* {
+  box-sizing: border-box;
+  font-family: var(--font-family-text);
+  transition: background-color var(--transition-time-quick);
+}
+
+@media (prefers-reduced-motion) {
+  * {
+    transition: none !important;
+  }
+}
+
+html,
+body {
+  background-color: var(--color-body);
+  color: var(--color-body-text);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  font-weight: var(--font-weight-normal);
+  font-family: var(--font-family-text);
+}
+
+body {
+  padding-block-end: var(--spacing-10);
+}
+
+.sr-only {
+  white-space: nowrap;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  border-width: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute;
+  overflow: hidden;
+
+  &:focus {
+    white-space: normal;
+    inline-size: auto;
+    block-size: auto;
+    margin: 0;
+    clip: auto;
+    position: static;
+    overflow: auto;
+  }
+}
+
+.curtain {
+  opacity: 0 !important;
+
+  * {
+    transition: none !important;
+  }
+}
+
+.align-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.align-center {
+  display: flex;
+  justify-content: center;
+}
+
+.align-justify {
+  text-align: justify;
+}
+
+.block {
+  padding-block-start: var(--spacing-4);
+}
+
+svg {
+  inline-size: 1em;
+  block-size: 1em;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration-skip-ink: none;
+}
+
+strong {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-content-hover-text);
+}
+
+p {
+  margin-block-end: var(--spacing-2);
+}
+
+ul:not(.no-style):not([role='menu']) {
+  list-style-type: disc;
+  padding-inline-start: var(--spacing-8);
+  margin-block-end: var(--spacing-2);
+}
+
+h1,
+h2,
+h3 {
+  font-size: var(--font-size-4);
+  line-height: var(--line-height-4);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-content-hover-text);
+  margin-block-end: var(--spacing-2);
+}

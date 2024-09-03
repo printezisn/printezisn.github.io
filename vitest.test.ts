@@ -2,5 +2,17 @@
 import { getViteConfig } from 'astro/config';
 
 export default getViteConfig({
-  test: {},
+  test: {
+    setupFiles: ['vitest.setup.ts', '@vitest/web-worker'],
+    clearMocks: true,
+    environment: 'jsdom',
+    css: {
+      modules: {
+        classNameStrategy: 'non-scoped',
+      },
+    },
+    coverage: {
+      include: ['src'],
+    },
+  },
 });

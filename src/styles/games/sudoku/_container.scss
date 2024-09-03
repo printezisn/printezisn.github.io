@@ -1,0 +1,36 @@
+@use 'variables';
+
+.container {
+  container-type: inline-size;
+}
+
+.container-inner {
+  padding-inline: var(--spacing-4);
+  margin-inline: auto;
+}
+
+$prev: 0;
+
+@each $name, $value in variables.$screen-sizes {
+  @if $prev == 0 {
+    @container (max-inline-size: #{$value}px) {
+      .container-inner {
+        inline-size: 100%;
+      }
+    }
+  } @else {
+    @container (min-inline-size: #{$prev + 1}px) and (max-inline-size: #{$value}px) {
+      .container-inner {
+        inline-size: #{$prev}px;
+      }
+    }
+  }
+
+  $prev: $value;
+}
+
+@container (min-inline-size: #{$prev + 1}px) {
+  .container-inner {
+    inline-size: #{$prev}px;
+  }
+}
