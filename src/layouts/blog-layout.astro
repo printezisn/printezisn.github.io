@@ -1,7 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 import banner from '../assets/banner.webp';
-import avatar from '../assets/avatar.jpg';
+import avatar from '../assets/avatar.webp';
 import { IMAGE_SIZES, IMAGE_WIDTHS } from '../helpers/image-helper';
 import BaseLayout from './base-layout.astro';
 
@@ -34,7 +34,8 @@ const { title, description, path, image, lang } = Astro.props;
         <Picture
           src={banner}
           alt=""
-          formats={['avif', 'webp']}
+          formats={['avif']}
+          fallbackFormat="webp"
           widths={IMAGE_WIDTHS}
           sizes={IMAGE_SIZES}
           loading="eager"
@@ -43,7 +44,8 @@ const { title, description, path, image, lang } = Astro.props;
       <div class="page-header-content">
         <Picture
           src={avatar}
-          formats={['avif', 'webp']}
+          formats={['avif']}
+          fallbackFormat="webp"
           width="128"
           height="128"
           alt="Nikos Printezis"
