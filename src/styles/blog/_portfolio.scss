@@ -70,7 +70,9 @@
         justify-content: center;
         align-items: center;
         gap: var(--spacing-1);
-        transition: color var(--transition-time-quick);
+        transition:
+          color var(--transition-time-quick),
+          transform var(--transition-time-quick);
         padding: var(--spacing-4);
 
         &:hover {
