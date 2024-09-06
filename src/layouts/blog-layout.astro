@@ -1,6 +1,7 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import banner from '../assets/banner.webp';
+import avatar from '../assets/avatar.jpg';
 import { IMAGE_SIZES, IMAGE_WIDTHS } from '../helpers/image-helper';
 import BaseLayout from './base-layout.astro';
 
@@ -11,8 +12,6 @@ interface Props {
   image?: string;
   lang?: string;
 }
-
-const avatar = 'https://avatars.githubusercontent.com/u/28266572';
 
 const { title, description, path, image, lang } = Astro.props;
 ---
@@ -32,16 +31,23 @@ const { title, description, path, image, lang } = Astro.props;
   <div class="page">
     <header>
       <div class="page-header-banner">
-        <Image
+        <Picture
           src={banner}
           alt=""
+          formats={['avif', 'webp']}
           widths={IMAGE_WIDTHS}
           sizes={IMAGE_SIZES}
           loading="eager"
         />
       </div>
       <div class="page-header-content">
-        <img src={avatar} width="128" height="128" alt="Nikos Printezis" />
+        <Picture
+          src={avatar}
+          formats={['avif', 'webp']}
+          width="128"
+          height="128"
+          alt="Nikos Printezis"
+        />
         <h1>Nikos Printezis</h1>
         <p>
           Hi! I'm Nikos and I'm a full stack engineer. I like coding all sorts

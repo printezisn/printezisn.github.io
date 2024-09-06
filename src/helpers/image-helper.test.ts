@@ -8,7 +8,7 @@ describe('image helper', () => {
 
   it('returns correct image sizes', () => {
     expect(IMAGE_SIZES).toEqual(
-      '(max-width: 768px) 768px, ((min-width: 769px) and (max-width: 1024px)) 1024px, ((min-width: 1025px) and (max-width: 1280px)) 1280px, ((min-width: 1281px) and (max-width: 1920px)) 1920px, (min-width: 1921px) 2500px',
+      '(max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1280px) 1280px, (max-width: 1920px) 1920px, 2500px',
     );
   });
 });
