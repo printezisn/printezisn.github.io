@@ -21,13 +21,13 @@
       border-radius: var(--border-radius-larger);
       display: block;
       overflow: hidden;
+      transition: transform var(--transition-time-quick);
 
       .portfolio-image {
         overflow: hidden;
       }
 
       img {
-        transition: transform var(--transition-time-quick);
         inline-size: 100%;
       }
 
@@ -58,9 +58,7 @@
       }
 
       &:hover {
-        img {
-          transform: scale(1.1);
-        }
+        transform: translateY(calc(-1 * var(--spacing-2)));
 
         h3 {
           color: var(--color-secondary-light);
