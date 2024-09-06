@@ -5,6 +5,26 @@ import avatar from '../assets/avatar.webp';
 import { IMAGE_SIZES, IMAGE_WIDTHS } from '../helpers/image-helper';
 import BaseLayout from './base-layout.astro';
 
+import RobotoNormal from '@fontsource/roboto/files/roboto-latin-400-normal.woff2';
+import RobotoNormalItalic from '@fontsource/roboto/files/roboto-latin-400-italic.woff2';
+import RobotoBold from '@fontsource/roboto/files/roboto-latin-700-normal.woff2';
+import RobotoBolItalic from '@fontsource/roboto/files/roboto-latin-700-italic.woff2';
+import LoraNormal from '@fontsource/lora/files/lora-latin-400-normal.woff2';
+import LoraBold from '@fontsource/lora/files/lora-latin-700-normal.woff2';
+
+const fonts = [
+  RobotoNormal,
+  RobotoNormal,
+  RobotoNormalItalic,
+  RobotoNormalItalic,
+  RobotoBold,
+  RobotoBold,
+  RobotoBolItalic,
+  RobotoBolItalic,
+  LoraNormal,
+  LoraBold,
+];
+
 interface Props {
   title: string;
   description: string;
@@ -24,6 +44,19 @@ const { title, description, path, image, lang } = Astro.props;
   lang={lang}
   themeColor="1d295d"
 >
+  <Fragment slot="preloads">
+    {
+      fonts.map((font) => (
+        <link
+          rel="preload"
+          as="font"
+          type="font/woff2"
+          href={font}
+          crossorigin="anonymous"
+        />
+      ))
+    }
+  </Fragment>
   <Fragment slot="scripts">
     <script src="../scripts/blog.ts"></script>
   </Fragment>

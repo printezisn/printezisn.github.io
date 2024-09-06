@@ -10,6 +10,12 @@ importers:
       '@astrojs/check':
         specifier: 0.9.3
         version: 0.9.3(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.5.4)
+      '@fontsource/lora':
+        specifier: 5.0.18
+        version: 5.0.18
+      '@fontsource/roboto':
+        specifier: 5.0.14
+        version: 5.0.14
       astro:
         specifier: 4.15.1
         version: 4.15.1(rollup@4.21.2)(sass@1.77.8)(typescript@5.5.4)
@@ -588,6 +594,18 @@ packages:
         integrity: sha512-BsWiH1yFGjXXS2yvrf5LyuoSIIbPrGUWob917o+BTKuZ7qJdxX8aJLRxs1fS9n6r7vESrq1OUqb68dANcFXuQQ==,
       }
     engines: { node: ^18.18.0 || ^20.9.0 || >=21.1.0 }
+
+  '@fontsource/lora@5.0.18':
+    resolution:
+      {
+        integrity: sha512-O+b7mxQcQXFV8j9RJNb86IV5OOKmDBe9X3URqVqWyadFa5TXsXW1HTSZZCsuJd8Nd7r66b1rzr/GfPiu1WXFYA==,
+      }
+
+  '@fontsource/roboto@5.0.14':
+    resolution:
+      {
+        integrity: sha512-zHAxlTTm9RuRn9/StwclFJChf3z9+fBrOxC3fw71htjHP1BgXNISwRjdJtAKAmMe5S2BzgpnjkQR93P9EZYI/Q==,
+      }
 
   '@humanwhocodes/module-importer@1.0.1':
     resolution:
@@ -5607,6 +5625,10 @@ snapshots:
   '@eslint/js@9.9.1': {}
 
   '@eslint/object-schema@2.1.4': {}
+
+  '@fontsource/lora@5.0.18': {}
+
+  '@fontsource/roboto@5.0.14': {}
 
   '@humanwhocodes/module-importer@1.0.1': {}
 
