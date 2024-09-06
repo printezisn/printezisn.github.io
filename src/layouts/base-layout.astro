@@ -75,7 +75,7 @@ const imageUrl = new URL(image, Astro.site);
     <link rel="manifest" href="/manifest/manifest.webmanifest" />
 
     <!-- Scripts -->
-    <script>
+    <script is:inline>
       let theme = localStorage.getItem('theme');
       if (!theme) {
         theme = window.matchMedia('(prefers-color-scheme: dark)').matches
