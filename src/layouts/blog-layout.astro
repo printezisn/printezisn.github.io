@@ -72,6 +72,7 @@ const { title, description, path, image, lang } = Astro.props;
           widths={IMAGE_WIDTHS}
           sizes={IMAGE_SIZES}
           loading="eager"
+          decoding="auto"
         />
       </div>
       <div class="page-header-content">
@@ -82,6 +83,8 @@ const { title, description, path, image, lang } = Astro.props;
           width="128"
           height="128"
           alt="Nikos Printezis"
+          loading="eager"
+          decoding="auto"
         />
         <h1>Nikos Printezis</h1>
         <p>
