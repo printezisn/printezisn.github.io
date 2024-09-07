@@ -1,0 +1,21 @@
+---
+import BlogLayout from '../layouts/blog-layout.astro';
+import MehIcon from 'feather-icons/dist/icons/meh.svg?raw';
+---
+
+<BlogLayout
+  title="Page Not Found | Nikos Printezis"
+  description="The page you requested was not found"
+  path="/404"
+>
+  <article class="page-content text-center">
+    <p class="page-icon">
+      <Fragment set:html={MehIcon} />
+    </p>
+    <h2 class="big-title">Page Not Found</h2>
+    <p>
+      The page you're looking for wasn't found. But don't frown! There is plenty
+      of <a href="/">content</a> to take a look at.
+    </p>
+  </article>
+</BlogLayout>

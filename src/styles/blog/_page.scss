@@ -8,3 +8,24 @@
     position: relative;
   }
 }
+
+.page-content {
+  padding: var(--spacing-4);
+
+  .big-title {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-5);
+    line-height: var(--line-height-5);
+    font-weight: var(--font-weight-bold);
+  }
+}
+
+.page-icon {
+  background-color: var(--color-secondary);
+  color: var(--color-secondary-white);
+  display: inline-block;
+  border-radius: 50%;
+  padding: var(--spacing-4);
+  font-size: var(--font-size-8);
+  line-height: 0;
+}
