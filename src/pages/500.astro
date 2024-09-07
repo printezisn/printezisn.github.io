@@ -1,0 +1,21 @@
+---
+import BlogLayout from '../layouts/blog-layout.astro';
+import MehIcon from 'feather-icons/dist/icons/meh.svg?raw';
+---
+
+<BlogLayout
+  title="Error Occurred | Nikos Printezis"
+  description="The page you requested was not found"
+  path="/404"
+>
+  <article class="page-content text-center">
+    <p class="page-icon">
+      <Fragment set:html={MehIcon} />
+    </p>
+    <h2 class="big-title">Error Occurred</h2>
+    <p>
+      An unexpected error occurred. But don't frown! Try again later or take a
+      look at the rest of the <a href="/">content</a>.
+    </p>
+  </article>
+</BlogLayout>
