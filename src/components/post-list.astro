@@ -22,7 +22,7 @@ const { posts } = Astro.props;
           {post.data.date.toISOString().slice(0, 10)}
         </time>
       </header>
-      <p class="content">{post.data.description}</p>
+      <p class="content">{post.data.excerpt}</p>
       <footer>
         <nav>
           <a href={`/blog/post/${post.slug}`}>Read more</a>
@@ -37,14 +37,14 @@ const { posts } = Astro.props;
       {posts.currentPage > 1 ? (
         <a class="button" href={`/blog/${posts.currentPage - 1}`}>
           <Fragment set:html={ArrowLeftIcon} />
-          <span>Previous</span>
+          <span>Next</span>
         </a>
       ) : (
         <div />
       )}
       {posts.currentPage < posts.lastPage ? (
         <a class="button" href={`/blog/${posts.currentPage + 1}`}>
-          <span>Next</span>
+          <span>Previous</span>
           <Fragment set:html={ArrowRightIcon} />
         </a>
       ) : (
@@ -53,4 +53,3 @@ const { posts } = Astro.props;
     </nav>
   )
 }
-

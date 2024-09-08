@@ -27,7 +27,7 @@ const otherWork = await getCollection('other-work');
               <time datetime={post.data.date.toISOString().slice(0, 10)}>
                 {post.data.date.toISOString().slice(0, 10)}
               </time>
-              <p>{post.data.description}</p>
+              <p>{post.data.excerpt}</p>
               <div class="more">Read more</div>
             </a>
           </article>

@@ -3,6 +3,7 @@ import { z, defineCollection } from 'astro:content';
 const postSchema = z.object({
   title: z.string(),
   description: z.string(),
+  excerpt: z.string(),
   date: z.date(),
 });
 
