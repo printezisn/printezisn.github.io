@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import BlogPostLayout from '../../../layouts/blog-post-layout.astro';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: {
+      slug: post.slug,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { slug } = Astro.params;
+const post = (await getCollection('posts')).find((post) => post.slug === slug);
+const { Content } = post ? await post.render() : { Content: '' };
+---
+
+<BlogPostLayout
+  title={`${post?.data.title} | Nikos Printezis`}
+  description={post?.data.description ?? ''}
+  path={`/blog/post/${post?.slug}`}
+>
+  <div class="page-content">
+    <article class="post">
+      <header>
+        <h2 class="title">{post?.data.title}</h2>
+        <time datetime={post?.data.date.toISOString().slice(0, 10)}>
+          {post?.data.date.toISOString().slice(0, 10)}
+        </time>
+      </header>
+      <div class="content">
+        <Content />
+      </div>
+    </article>
+  </div>
+</BlogPostLayout>
