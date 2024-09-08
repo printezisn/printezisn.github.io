@@ -9,12 +9,11 @@
   "scripts": {
     "start:dev": "astro dev --port 3000",
     "start:prod": "astro preview --port 4000",
-    "build": "astro check && astro build",
-    "astro": "astro",
+    "build": "astro build",
     "prepare": "husky",
     "prettier:format": "prettier --write .",
-    "lint": "tsc --noEmit && eslint ./src",
-    "lint:fix": "tsc --noEmit && eslint ./src --fix",
+    "lint": "astro check --minimumSeverity warning && eslint ./src",
+    "lint:fix": "astro check --minimumSeverity warning && eslint ./src --fix",
     "test:unit": "vitest run ./src --config ./vitest.test.ts --passWithNoTests"
   },
   "dependencies": {
