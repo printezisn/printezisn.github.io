@@ -4,6 +4,8 @@
 @use 'header';
 @use 'footer';
 @use 'portfolio';
+@use 'posts';
+@use 'buttons';
 
 *,
 *::before,
@@ -59,9 +61,9 @@ img {
   object-fit: cover;
 }
 
-a,
-a:visited,
-a:active {
+:where(a),
+a:where(:visited),
+a:where(:active) {
   color: var(--color-secondary);
   text-decoration-skip-ink: none;
 

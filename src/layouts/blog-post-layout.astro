@@ -1,0 +1,15 @@
+---
+import BlogLayout from './blog-layout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  image?: string;
+  lang?: string;
+}
+---
+
+<BlogLayout {...Astro.props}>
+  <slot />
+</BlogLayout>

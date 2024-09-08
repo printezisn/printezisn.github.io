@@ -1,0 +1,32 @@
+.post {
+  margin-block-start: var(--spacing-10);
+
+  .content {
+    margin-block: var(--spacing-4);
+  }
+
+  h2 {
+    font-size: var(--font-size-3);
+    line-height: var(--line-height-3);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-serif);
+
+    a {
+      color: var(--color-primary-white);
+      text-decoration: none;
+      transition: color var(--transition-time-quick);
+
+      &:hover {
+        color: var(--color-secondary);
+      }
+    }
+  }
+
+  time {
+    color: var(--color-primary-grey-light);
+  }
+
+  &:first-child {
+    margin-block-start: 0;
+  }
+}

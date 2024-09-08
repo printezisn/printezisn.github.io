@@ -1,12 +1,14 @@
 import { z, defineCollection } from 'astro:content';
 
+const postSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  date: z.date(),
+});
+
 const postsCollection = defineCollection({
   type: 'content',
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    date: z.date(),
-  }),
+  schema: postSchema,
 });
 
 const gamesCollection = defineCollection({
@@ -32,4 +34,9 @@ export const collections = {
   posts: postsCollection,
   games: gamesCollection,
   'other-work': otherWorkCollection,
+};
+
+export type Post = {
+  slug: string;
+  data: z.infer<typeof postSchema>;
 };

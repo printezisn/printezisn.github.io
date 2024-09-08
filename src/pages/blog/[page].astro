@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import BlogPostLayout from '../../layouts/blog-layout.astro';
+import type { GetStaticPaths } from 'astro';
+import PostList from '../../components/post-list.astro';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = await getCollection('posts');
+
+  return paginate(posts, { pageSize: 10 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<BlogPostLayout
+  title="Blog | Engineering Stories | Nikos Printezis"
+  description="A collection of blog posts around engineering. They are focused in full stack engineering, with a preference towards front end though."
+  path={`/blog/${page.currentPage}`}
+>
+  <div class="page-content">
+    <PostList posts={page} />
+  </div>
+</BlogPostLayout>
