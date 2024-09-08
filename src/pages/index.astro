@@ -17,7 +17,7 @@ const otherWork = await getCollection('other-work');
   path="/"
 >
   <section class="portfolio-section">
-    <h2>Blog</h2>
+    <h2 class="section-title">Blog</h2>
     <div class="portfolio-content">
       {
         posts.map((post) => (
@@ -40,7 +40,7 @@ const otherWork = await getCollection('other-work');
     </div>
   </section>
   <section class="portfolio-section">
-    <h2>Games</h2>
+    <h2 class="section-title">Games</h2>
     <div class="portfolio-content">
       {
         games.map((game) => (
@@ -66,7 +66,7 @@ const otherWork = await getCollection('other-work');
     </div>
   </section>
   <section class="portfolio-section">
-    <h2>Other work</h2>
+    <h2 class="section-title">Other work</h2>
     <div class="portfolio-content">
       {
         otherWork.map((w) => (

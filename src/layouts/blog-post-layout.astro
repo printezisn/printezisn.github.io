@@ -8,10 +8,13 @@ interface Props {
   path: string;
   image?: string;
   lang?: string;
+  pageTitle?: string;
 }
 ---
 
 <BlogLayout {...Astro.props}>
-  <slot />
-  <CategoriesList />
+  <div class="content-with-sidebar">
+    <slot />
+    <CategoriesList />
+  </div>
 </BlogLayout>

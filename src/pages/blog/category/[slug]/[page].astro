@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import BlogPostLayout from '../../../../layouts/blog-post-layout.astro';
+import type { GetStaticPaths } from 'astro';
+import PostList from '../../../../components/post-list.astro';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const categories = await getCollection('categories');
+  const posts = (await getCollection('posts')).sort(
+    (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+  );
+
+  return categories.flatMap((category) => {
+    const categoryPosts = posts.filter((post) =>
+      post.data.categories.includes(category.slug),
+    );
+
+    return paginate(categoryPosts, {
+      pageSize: 10,
+      params: {
+        slug: category.slug,
+      },
+    });
+  });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const { slug } = Astro.params;
+const category = (await getCollection('categories')).find(
+  (category) => category.slug === slug,
+);
+---
+
+<BlogPostLayout
+  title={`${category?.data.title} | Category | Nikos Printezis`}
+  description={category?.data.description ?? ''}
+  path={`/blog/category/${slug}/${page.currentPage}`}
+  pageTitle={category?.data.title}
+>
+  <div class="page-content">
+    <PostList posts={page} titleTag="h3" />
+  </div>
+</BlogPostLayout>

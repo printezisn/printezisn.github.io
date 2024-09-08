@@ -1,13 +1,6 @@
 .portfolio-section {
   margin-block-start: var(--spacing-4);
 
-  h2 {
-    padding-block: var(--spacing-2);
-    padding-inline: var(--spacing-4);
-    background-color: var(--color-secondary);
-    color: var(--color-secondary-white);
-  }
-
   .portfolio-content {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(auto, 400px));

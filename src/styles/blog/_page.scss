@@ -11,13 +11,6 @@
 
 .page-content {
   padding: var(--spacing-4);
-
-  .big-title {
-    font-family: var(--font-family-serif);
-    font-size: var(--font-size-5);
-    line-height: var(--line-height-5);
-    font-weight: var(--font-weight-bold);
-  }
 }
 
 .page-icon {
@@ -30,7 +23,7 @@
   line-height: 0;
 }
 
-main:has(aside) {
+.content-with-sidebar {
   display: flex;
   flex-wrap: wrap;
 

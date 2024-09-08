@@ -31,9 +31,10 @@ interface Props {
   path: string;
   image?: string;
   lang?: string;
+  pageTitle?: string;
 }
 
-const { title, description, path, image, lang } = Astro.props;
+const { title, description, path, image, lang, pageTitle } = Astro.props;
 ---
 
 <BaseLayout
@@ -114,6 +115,7 @@ const { title, description, path, image, lang } = Astro.props;
       </div>
     </header>
     <main id="main-content">
+      {pageTitle && <h2 class="section-title">{pageTitle}</h2>}
       <slot />
     </main>
     <footer>
