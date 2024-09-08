@@ -4,6 +4,7 @@ const postSchema = z.object({
   title: z.string(),
   description: z.string(),
   excerpt: z.string(),
+  categories: z.array(z.string()),
   date: z.date(),
 });
 
@@ -31,10 +32,19 @@ const otherWorkCollection = defineCollection({
   }),
 });
 
+const categoriesCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+  }),
+});
+
 export const collections = {
   posts: postsCollection,
   games: gamesCollection,
   'other-work': otherWorkCollection,
+  categories: categoriesCollection,
 };
 
 export type Post = {

@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+
+const categories = (await getCollection('categories')).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title),
+);
+---
+
+<aside class="categories-widget">
+  <h2 class="title">Categories</h2>
+  <nav>
+    <ul>
+      {
+        categories.map((cat) => (
+          <li>
+            <a href={`/blog/category/${cat.slug}`}>{cat.data.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</aside>

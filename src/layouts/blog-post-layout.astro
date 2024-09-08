@@ -1,4 +1,5 @@
 ---
+import CategoriesList from '../components/categories-list.astro';
 import BlogLayout from './blog-layout.astro';
 
 interface Props {
@@ -12,4 +13,5 @@ interface Props {
 
 <BlogLayout {...Astro.props}>
   <slot />
+  <CategoriesList />
 </BlogLayout>

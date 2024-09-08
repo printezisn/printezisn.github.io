@@ -29,3 +29,18 @@
   font-size: var(--font-size-8);
   line-height: 0;
 }
+
+main:has(aside) {
+  display: flex;
+  flex-wrap: wrap;
+
+  & > :first-child {
+    flex-basis: 500px;
+    flex-grow: 1;
+  }
+
+  & > :nth-child(2) {
+    max-inline-size: 400px;
+    inline-size: 100%;
+  }
+}

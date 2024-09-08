@@ -1,0 +1,29 @@
+.categories-widget {
+  padding: var(--spacing-4);
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+    white-space: nowrap;
+    margin-block-start: var(--spacing-2);
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+      padding-block: var(--spacing-2);
+      padding-inline: var(--spacing-3);
+      font-size: var(--font-size-1);
+      line-height: var(--line-height-1);
+      background-color: var(--color-primary-light);
+      color: var(--color-primary-white);
+      border-radius: var(--border-radius-large);
+      transition: color var(--transition-time-quick);
+
+      &:hover {
+        color: var(--color-secondary-light);
+      }
+    }
+  }
+}
