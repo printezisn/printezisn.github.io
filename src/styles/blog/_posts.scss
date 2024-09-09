@@ -12,4 +12,10 @@
   &:first-child {
     margin-block-start: 0;
   }
+
+  aside {
+    margin-block-start: var(--spacing-4);
+    padding-block-start: var(--spacing-4);
+    border-block-start: solid 1px var(--color-secondary-light);
+  }
 }

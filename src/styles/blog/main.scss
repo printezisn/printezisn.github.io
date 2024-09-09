@@ -1,84 +1,11 @@
 @use 'root';
 @use 'fonts';
+@use 'common';
+@use 'buttons';
+@use 'titles';
 @use 'page';
 @use 'header';
 @use 'footer';
 @use 'portfolio';
 @use 'posts';
-@use 'buttons';
-@use 'titles';
 @use 'sidebar';
-
-*,
-*::before,
-*::after {
-  font: inherit;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-@media (prefers-reduced-motion) {
-  * {
-    transition: none !important;
-  }
-}
-
-html,
-body {
-  font-family: var(--font-family-base);
-  font-weight: var(--font-weight-normal);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-base);
-  background-color: var(--color-primary);
-  color: var(--color-primary-white);
-  -webkit-font-smoothing: antialiased;
-}
-
-.sr-only {
-  white-space: nowrap;
-  inline-size: 1px;
-  block-size: 1px;
-  margin: -1px;
-  padding: 0;
-  border-width: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-  position: absolute;
-  overflow: hidden;
-
-  &:focus {
-    white-space: normal;
-    inline-size: auto;
-    block-size: auto;
-    margin: 0;
-    clip: auto;
-    position: static;
-    overflow: auto;
-  }
-}
-
-img {
-  max-inline-size: 100%;
-  block-size: auto;
-  object-fit: cover;
-}
-
-:where(a),
-a:where(:visited),
-a:where(:active) {
-  color: var(--color-secondary);
-  text-decoration-skip-ink: none;
-
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-svg {
-  width: 1em;
-  height: 1em;
-}
-
-.text-center {
-  text-align: center;
-}

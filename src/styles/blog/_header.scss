@@ -36,7 +36,7 @@
 
   img {
     border-radius: 50%;
-    border: solid 3px var(--color-secondary);
+    border: solid 3px var(--color-secondary-light);
     aspect-ratio: 1;
   }
 
@@ -66,7 +66,7 @@
     align-items: center;
     justify-content: center;
     gap: var(--spacing-4);
-    color: var(--color-secondary);
+    color: var(--color-secondary-light);
     font-size: var(--font-size-3);
     line-height: var(--line-height-3);
     margin-block-start: var(--spacing-4);
