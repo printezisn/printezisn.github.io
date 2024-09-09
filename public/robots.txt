@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://printezisn.github.io/sitemap-index.xml
