@@ -14,7 +14,7 @@ const otherWork = await getCollection('other-work');
 <BlogLayout
   title="My Portfolio | Nikos Printezis"
   description="Hi! I'm Nikos and I'm a full stack engineer focusing on front end development and 2D game development. Here you may find my portfolio, blog and games."
-  path="/"
+  path=""
 >
   <section class="portfolio-section">
     <h2 class="section-title">Blog</h2>
@@ -22,7 +22,7 @@ const otherWork = await getCollection('other-work');
       {
         posts.map((post) => (
           <article>
-            <a href={`/blog/post/${post.slug}`}>
+            <a href={`/blog/post/${post.slug}/`}>
               <h3>{post.data.title}</h3>
               <time datetime={post.data.date.toISOString().slice(0, 10)}>
                 {post.data.date.toISOString().slice(0, 10)}
@@ -33,7 +33,7 @@ const otherWork = await getCollection('other-work');
           </article>
         ))
       }
-      <a href="/blog" class="view-all">
+      <a href="/blog/" class="view-all">
         <span>View all</span>
         <Fragment set:html={ArrowRightIcon} />
       </a>

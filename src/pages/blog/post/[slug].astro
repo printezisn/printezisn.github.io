@@ -20,7 +20,7 @@ const { Content } = post ? await post.render() : { Content: '' };
 <BlogPostLayout
   title={`${post?.data.title} | Nikos Printezis`}
   description={post?.data.description ?? ''}
-  path={`/blog/post/${post?.slug}`}
+  path={`/blog/post/${post?.slug}/`}
 >
   <div class="page-content">
     <article class="post">
@@ -37,7 +37,7 @@ const { Content } = post ? await post.render() : { Content: '' };
         <p>
           <i>
             I hope you found this post useful! If you're looking for more
-            content, check out my <a href="/blog">blog</a>.
+            content, check out my <a href="/blog/">blog</a>.
           </i>
         </p>
       </aside>

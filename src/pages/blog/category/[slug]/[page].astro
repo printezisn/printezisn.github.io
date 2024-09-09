@@ -34,7 +34,7 @@ const category = (await getCollection('categories')).find(
 <BlogPostLayout
   title={`${category?.data.title} | Category | Nikos Printezis`}
   description={category?.data.description ?? ''}
-  path={`/blog/category/${slug}/${page.currentPage}`}
+  path={`/blog/category/${slug}/${page.currentPage}/`}
   pageTitle={category?.data.title}
 >
   <div class="page-content">

@@ -18,7 +18,7 @@ const { page } = Astro.props;
 <BlogPostLayout
   title="Blog | Engineering Stories | Nikos Printezis"
   description="A collection of blog posts around engineering. They are focused in full stack engineering, with a preference towards front end though."
-  path={`/blog/posts/${page.currentPage}`}
+  path={`/blog/posts/${page.currentPage}/`}
 >
   <div class="page-content">
     <PostList posts={page} />

@@ -13,7 +13,7 @@ const categories = (await getCollection('categories')).sort((a, b) =>
       {
         categories.map((cat) => (
           <li>
-            <a href={`/blog/category/${cat.slug}`}>{cat.data.title}</a>
+            <a href={`/blog/category/${cat.slug}/`}>{cat.data.title}</a>
           </li>
         ))
       }

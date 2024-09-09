@@ -18,12 +18,12 @@ const { posts, titleTag = 'h2' } = Astro.props;
       <header>
         {titleTag === 'h2' && (
           <h2 class="title">
-            <a href={`/blog/post/${post.slug}`}>{post.data.title}</a>
+            <a href={`/blog/post/${post.slug}/`}>{post.data.title}</a>
           </h2>
         )}
         {titleTag === 'h3' && (
           <h3 class="title">
-            <a href={`/blog/post/${post.slug}`}>{post.data.title}</a>
+            <a href={`/blog/post/${post.slug}/`}>{post.data.title}</a>
           </h3>
         )}
         <time datetime={post.data.date.toISOString().slice(0, 10)}>
@@ -33,7 +33,7 @@ const { posts, titleTag = 'h2' } = Astro.props;
       <p class="content">{post.data.excerpt}</p>
       <footer>
         <nav>
-          <a href={`/blog/post/${post.slug}`}>Read more</a>
+          <a href={`/blog/post/${post.slug}/`}>Read more</a>
         </nav>
       </footer>
     </article>
@@ -43,7 +43,7 @@ const { posts, titleTag = 'h2' } = Astro.props;
   (posts.currentPage > 1 || posts.currentPage < posts.lastPage) && (
     <nav class="opposite-buttons">
       {posts.currentPage > 1 ? (
-        <a class="button" href={`/blog/posts/${posts.currentPage - 1}`}>
+        <a class="button" href={`/blog/posts/${posts.currentPage - 1}/`}>
           <Fragment set:html={ArrowLeftIcon} />
           <span>Next</span>
         </a>
@@ -51,7 +51,7 @@ const { posts, titleTag = 'h2' } = Astro.props;
         <div />
       )}
       {posts.currentPage < posts.lastPage ? (
-        <a class="button" href={`/blog/posts/${posts.currentPage + 1}`}>
+        <a class="button" href={`/blog/posts/${posts.currentPage + 1}/`}>
           <span>Previous</span>
           <Fragment set:html={ArrowRightIcon} />
         </a>
