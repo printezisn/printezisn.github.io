@@ -13,6 +13,7 @@ This is my personal website containing my blog, portfolio and games.
 ## Stack
 
 1. [Astro](https://astro.build/) for static site generation (used for the portfolio and blog).
+1. Typescript
 
 ## Commands
 
