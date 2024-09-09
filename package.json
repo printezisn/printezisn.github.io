@@ -18,14 +18,15 @@
   },
   "dependencies": {
     "@astrojs/check": "0.9.3",
+    "@astrojs/sitemap": "3.1.6",
     "@fontsource/lora": "5.0.18",
     "@fontsource/roboto": "5.0.14",
     "astro": "4.15.1",
     "feather-icons": "4.29.2",
+    "husky": "9.1.5",
     "sass": "1.77.8",
     "sharp": "0.33.5",
-    "typescript": "5.5.4",
-    "husky": "9.1.5"
+    "typescript": "5.5.4"
   },
   "devDependencies": {
     "@eslint/js": "9.9.1",
