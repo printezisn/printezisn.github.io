@@ -4,7 +4,7 @@ export const debounce = (
   startWaitTime = 500,
   cancelWaitTime = 1000,
 ) => {
-  let timerId: number | null = null;
+  let timerId: NodeJS.Timeout | null = null;
   let started = false;
 
   const start = () => {
