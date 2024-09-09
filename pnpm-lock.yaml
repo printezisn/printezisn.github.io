@@ -22,6 +22,9 @@ importers:
       feather-icons:
         specifier: 4.29.2
         version: 4.29.2
+      husky:
+        specifier: 9.1.5
+        version: 9.1.5
       sass:
         specifier: 1.77.8
         version: 1.77.8
@@ -53,9 +56,6 @@ importers:
       globals:
         specifier: 15.9.0
         version: 15.9.0
-      husky:
-        specifier: 9.1.5
-        version: 9.1.5
       jsdom:
         specifier: ^25.0.0
         version: 25.0.0
