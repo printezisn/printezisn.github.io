@@ -81,6 +81,10 @@ p:not(.astro-code) code {
   max-block-size: 500px;
   overflow: auto;
   border-radius: var(--border-radius-normal);
+
+  &[data-language='plaintext'] {
+    white-space: normal;
+  }
 }
 
 b,
