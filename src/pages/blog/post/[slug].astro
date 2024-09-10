@@ -25,7 +25,7 @@ const { Content } = post ? await post.render() : { Content: '' };
   <div class="page-content">
     <article class="post">
       <header>
-        <h2 class="title">{post?.data.title}</h2>
+        <h2 class="big-title">{post?.data.title}</h2>
         <time datetime={post?.data.date.toISOString().slice(0, 10)}>
           {post?.data.date.toISOString().slice(0, 10)}
         </time>
