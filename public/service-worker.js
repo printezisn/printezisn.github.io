@@ -47,6 +47,8 @@ const networkFirst = async (event) => {
 };
 
 self.addEventListener('fetch', async (event) => {
+  if (!event.request.url.startsWith('http')) return;
+
   const cacheFirstDestinations = [
     'script',
     'image',
