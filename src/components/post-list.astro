@@ -30,7 +30,9 @@ const { posts, titleTag = 'h2' } = Astro.props;
           {post.data.date.toISOString().slice(0, 10)}
         </time>
       </header>
-      <p class="content">{post.data.excerpt}</p>
+      <div class="content">
+        <p>{post.data.excerpt}</p>
+      </div>
       <footer>
         <nav>
           <a href={`/blog/post/${post.slug}/`}>Read more</a>

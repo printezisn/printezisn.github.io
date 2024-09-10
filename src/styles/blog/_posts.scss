@@ -2,7 +2,10 @@
   margin-block-start: var(--spacing-10);
 
   .content {
-    margin-block: var(--spacing-4);
+    p,
+    ul {
+      margin-block: var(--spacing-4);
+    }
   }
 
   time {
