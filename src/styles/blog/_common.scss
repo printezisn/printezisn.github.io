@@ -70,7 +70,7 @@ svg {
 
 p:not(.astro-code) code {
   display: inline-block;
-  padding: var(--spacing-1);
+  padding-inline: var(--spacing-1);
   background-color: var(--color-primary-light);
   color: var(--color-primary-white);
 }
@@ -81,9 +81,15 @@ p:not(.astro-code) code {
   max-block-size: 500px;
   overflow: auto;
   border-radius: var(--border-radius-normal);
+  font-family: var(--font-family-code);
+  font-size: var(--font-size-1);
+  line-height: var(--line-height-1);
 
   &[data-language='plaintext'] {
     white-space: normal;
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-2);
+    line-height: var(--line-height-2);
   }
 }
 
