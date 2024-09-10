@@ -1,7 +1,7 @@
 ---
 title: My favorite service worker setup
-description: My favorite service worker setup that I use in order to cache static content and provide offline experience
-excerpt: My favorite service worker setup that I use in order to cache static content and provide offline experience
+description: My favorite service worker setup that I use in order to cache static content and provide basic offline experience
+excerpt: My favorite service worker setup that I use in order to cache static content and provide basic offline experience. The first time I set my eyes on service workers, I thought how cool it would be to cache static content as much as I like and not rely on the server. Nowadays, static resources (js, css, images, etc.) are cache busted, meaning that they have a unique name based on their content. So it's not expected for a static resource to change. So why not cache it forever ?
 categories:
   - js
 date: 2024-09-10

@@ -12,9 +12,11 @@
       color: var(--color-primary-white);
       text-decoration: none;
       border-radius: var(--border-radius-larger);
-      display: block;
-      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
       transition: transform var(--transition-time-quick);
+      block-size: 100%;
+      overflow: hidden;
 
       .portfolio-image {
         overflow: hidden;
@@ -71,6 +73,10 @@
         &:hover {
           color: var(--color-secondary-light);
         }
+      }
+
+      &:has(img, time) {
+        grid-template-rows: auto auto 1fr auto;
       }
     }
   }
