@@ -28,6 +28,9 @@ importers:
       husky:
         specifier: 9.1.5
         version: 9.1.5
+      mini-signals:
+        specifier: 2.0.0
+        version: 2.0.0
       pixi.js:
         specifier: 8.4.0
         version: 8.4.0
@@ -3621,6 +3624,12 @@ packages:
         integrity: sha512-VP79XUPxV2CigYP3jWwAUFSku2aKqBH7uTAapFWCBqutsbmDo96KY5o8uh6U+/YSIn5OxJnXp73beVkpqMIGhA==,
       }
     engines: { node: '>=18' }
+
+  mini-signals@2.0.0:
+    resolution:
+      {
+        integrity: sha512-z6A0ngjFIweQFa7wcupVzNtrrMMTZx1xa4NhCB68zVDPufIeHRSawLFifWgW/U/EYILLPMjumRiVvclrYGt23A==,
+      }
 
   minimatch@3.1.2:
     resolution:
@@ -7874,6 +7883,8 @@ snapshots:
   mimic-fn@4.0.0: {}
 
   mimic-function@5.0.1: {}
+
+  mini-signals@2.0.0: {}
 
   minimatch@3.1.2:
     dependencies:

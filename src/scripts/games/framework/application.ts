@@ -3,6 +3,9 @@ import config from './config';
 import { debounce } from './helpers/closures';
 import resize from './helpers/aspect-ratio-resizer';
 import gameState from './game-state';
+import type BaseScene from './scenes/base';
+import LoadingScene from './scenes/loading';
+import { fireSignal } from './signals';
 
 let app!: Application;
 let appContainer!: HTMLElement;
@@ -17,7 +20,14 @@ const resizeCanvas = () => {
 
   gameState.screen.width = width;
   gameState.screen.height = height;
+  app.renderer.resize(width, height);
+  fireSignal(config.signals.onResize);
+
+  const orientationChanged = gameState.screen.orientation !== orientation;
   gameState.screen.orientation = orientation;
+  if (orientationChanged) {
+    fireSignal(config.signals.onOrientationChange);
+  }
 };
 
 const handleContainerResize = () => {
@@ -30,6 +40,16 @@ const handleContainerResize = () => {
 
   containerResizeObservers.observe(appContainer);
   resizeCanvas();
+};
+
+export const changeScene = (newScene: BaseScene) => {
+  if (gameState.scene) {
+    gameState.scene.destroy();
+    app.stage.removeChild(gameState.scene.container);
+  }
+
+  gameState.scene = newScene;
+  app.stage.addChild(gameState.scene.container);
 };
 
 export const initGame = async (container: HTMLElement) => {
@@ -47,5 +67,6 @@ export const initGame = async (container: HTMLElement) => {
   appContainer.appendChild(app.canvas);
   app.canvas.style.position = 'absolute';
 
+  changeScene(new LoadingScene());
   handleContainerResize();
 };
