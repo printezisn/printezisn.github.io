@@ -1,7 +1,7 @@
+import baseConfig from '../framework/base-config';
+
 const config = {
-  colors: {
-    backgroundColor: '#000000',
-  },
+  ...baseConfig,
 };
 
 export default config;
