@@ -1,7 +1,6 @@
 *,
 *::before,
 *::after {
-  font: inherit;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -11,10 +10,4 @@ html,
 body {
   inline-size: 100vi;
   block-size: 100vb;
-}
-
-canvas {
-  position: fixed;
-  inset-block-start: 0;
-  inset-inline-start: 0;
 }

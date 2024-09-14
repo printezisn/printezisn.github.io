@@ -1,4 +1,4 @@
-const baseConfig = {
+const config = {
   colors: {
     backgroundColor: '#000000',
   },
@@ -8,4 +8,4 @@ const baseConfig = {
   },
 };
 
-export default baseConfig;
+export default config;

@@ -1,19 +1,18 @@
 import { Application } from 'pixi.js';
-import type baseConfig from './base-config';
+import config from './config';
 import { debounce } from './helpers/closures';
 import resize from './helpers/aspect-ratio-resizer';
 import gameState from './game-state';
 
 let app!: Application;
 let appContainer!: HTMLElement;
-let appConfig!: typeof baseConfig;
 
 const resizeCanvas = () => {
   const { width, height, orientation } = resize(
     appContainer,
     app.canvas,
-    appConfig.screen.width,
-    appConfig.screen.height,
+    config.screen.width,
+    config.screen.height,
   );
 
   gameState.screen.width = width;
@@ -33,12 +32,8 @@ const handleContainerResize = () => {
   resizeCanvas();
 };
 
-export const initGame = async (
-  container: HTMLElement,
-  config: typeof baseConfig,
-) => {
+export const initGame = async (container: HTMLElement) => {
   appContainer = container;
-  appConfig = config;
   appContainer.style.backgroundColor = config.colors.backgroundColor;
 
   app = new Application();
@@ -50,6 +45,7 @@ export const initGame = async (
   });
 
   appContainer.appendChild(app.canvas);
+  app.canvas.style.position = 'absolute';
 
   handleContainerResize();
 };
