@@ -1,8 +1,8 @@
-import { Container } from 'pixi.js';
 import BaseGameObject from '../base-game-object';
+import ContainerComponent from '../components/container';
 
 abstract class BaseScene extends BaseGameObject {
-  private _container: Container = new Container({ x: 0, y: 0 });
+  private _container = new ContainerComponent({});
 
   get container() {
     return this._container;

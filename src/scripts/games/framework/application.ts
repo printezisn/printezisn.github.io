@@ -33,7 +33,7 @@ const resizeCanvas = () => {
 const handleContainerResize = () => {
   const resizeCallback = debounce(() => {
     resizeCanvas();
-  });
+  }, 100);
   const containerResizeObservers = new ResizeObserver(() => {
     resizeCallback();
   });
@@ -45,11 +45,11 @@ const handleContainerResize = () => {
 export const changeScene = (newScene: BaseScene) => {
   if (gameState.scene) {
     gameState.scene.destroy();
-    app.stage.removeChild(gameState.scene.container);
+    app.stage.removeChild(gameState.scene.container.object);
   }
 
   gameState.scene = newScene;
-  app.stage.addChild(gameState.scene.container);
+  app.stage.addChild(gameState.scene.container.object);
 };
 
 export const initGame = async (container: HTMLElement) => {
