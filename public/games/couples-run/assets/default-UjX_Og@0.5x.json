@@ -1,0 +1,20 @@
+{
+  "frames": {
+    "city-bg.png": {
+      "frame": { "x": 2, "y": 2, "w": 1152, "h": 648 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 1152, "h": 648 },
+      "sourceSize": { "w": 1152, "h": 648 }
+    }
+  },
+  "meta": {
+    "app": "http://github.com/pixijs/assetpack",
+    "version": "1.0",
+    "image": "default-SVkH0g@0.5x.png",
+    "format": "RGBA8888",
+    "size": { "w": 1156, "h": 652 },
+    "scale": 0.5,
+    "related_multi_packs": []
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "bundles": [
+    {
+      "name": "default",
+      "assets": [
+        {
+          "alias": ["default"],
+          "src": ["default-XwdIrQ.json", "default-pw2ltg@0.5x.json"],
+          "data": {
+            "tags": {
+              "tps": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
