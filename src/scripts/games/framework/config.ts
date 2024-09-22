@@ -7,11 +7,9 @@ const config = {
     height: 720,
   },
   loadingScene: {
-    fontFamily: 'Georgia',
+    fontFamily: 'Arial, sans-serif',
     fontSize: 67,
-    textColor: 0xe6ed92,
-    strokeColor: 0xf5f4f4,
-    strokeThickness: 5,
+    textColor: 0xffffff,
   },
   signals: {
     onResize: 'onResize',

@@ -22,7 +22,7 @@ class TextComponent extends BaseComponent<Text> {
           fontFamily: props.fontFamily,
           fontSize: props.fontSize,
           fill: props.textColor,
-          stroke: {
+          stroke: props.strokeColor && {
             color: props.strokeColor,
             width: props.strokeWidth,
           },
