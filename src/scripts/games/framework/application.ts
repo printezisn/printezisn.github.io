@@ -1,4 +1,4 @@
-import { Application } from 'pixi.js';
+import { Application, Assets } from 'pixi.js';
 import config from './config';
 import { debounce } from './helpers/closures';
 import resize from './helpers/aspect-ratio-resizer';
@@ -42,6 +42,12 @@ const handleContainerResize = () => {
   resizeCanvas();
 };
 
+const handleTick = () => {
+  app.ticker.add((ticker) => {
+    fireSignal(config.signals.onTick, ticker.deltaTime);
+  });
+};
+
 export const changeScene = (newScene: BaseScene) => {
   if (gameState.scene) {
     gameState.scene.destroy();
@@ -52,7 +58,7 @@ export const changeScene = (newScene: BaseScene) => {
   app.stage.addChild(gameState.scene.container.object);
 };
 
-export const initGame = async (container: HTMLElement) => {
+export const initGame = async (game: string, container: HTMLElement) => {
   appContainer = container;
   appContainer.style.backgroundColor = config.colors.backgroundColor;
 
@@ -69,4 +75,20 @@ export const initGame = async (container: HTMLElement) => {
 
   changeScene(new LoadingScene());
   handleContainerResize();
+  handleTick();
+
+  await Promise.all([
+    new Promise((resolve) =>
+      setTimeout(resolve, config.loadingScene.keepAliveTimeMS),
+    ),
+    (async () => {
+      await Assets.init({
+        basePath: `/games/${game}/assets`,
+        manifest: 'manifest.json',
+      });
+      await Assets.loadBundle('default');
+    })(),
+  ]);
+
+  fireSignal(config.signals.destroyLoadingScene);
 };

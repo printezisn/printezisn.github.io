@@ -1,18 +1,17 @@
 import { Container } from 'pixi.js';
 import BaseComponent from './base';
-import type { DisplayObject, Point } from './types';
-
-interface ContainerProps {
-  position?: Point;
-}
+import type { BaseProps, DisplayObject } from './types';
 
 class ContainerComponent extends BaseComponent<Container> {
   private _components: DisplayObject[] = [];
 
-  constructor(props: ContainerProps) {
+  constructor(props: BaseProps) {
     super(
       new Container({
         position: props.position,
+        scale: props.scale,
+        width: props.width,
+        height: props.height,
       }),
     );
   }

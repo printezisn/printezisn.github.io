@@ -12,4 +12,11 @@ export interface Point {
 export interface BaseProps {
   position?: Point;
   anchor?: Point;
+  scale?: Point;
+  width?: number;
+  height?: number;
+}
+
+export interface BaseSpriteProps extends BaseProps {
+  resource: string;
 }

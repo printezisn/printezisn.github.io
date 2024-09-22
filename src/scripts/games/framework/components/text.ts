@@ -18,6 +18,9 @@ class TextComponent extends BaseComponent<Text> {
         text: props.text,
         position: props.position,
         anchor: props.anchor,
+        scale: props.scale,
+        width: props.width,
+        height: props.height,
         style: {
           fontFamily: props.fontFamily,
           fontSize: props.fontSize,

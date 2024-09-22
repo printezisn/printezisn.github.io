@@ -14,6 +14,9 @@ abstract class BaseGameObject {
         (this as any).onOrientationChange,
       );
     }
+    if ((this as any).onTick) {
+      this.registerToSignal(config.signals.onTick, (this as any).onTick);
+    }
   }
 
   protected registerToSignal(name: string, callback: (...args: any[]) => void) {

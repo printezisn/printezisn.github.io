@@ -10,10 +10,13 @@ const config = {
     fontFamily: 'Arial, sans-serif',
     fontSize: 67,
     textColor: 0xffffff,
+    keepAliveTimeMS: 2000,
   },
   signals: {
     onResize: 'onResize',
     onOrientationChange: 'onOrientationChange',
+    onTick: 'onTick',
+    destroyLoadingScene: 'destroyLoadingScene',
   },
 };
 

@@ -7,6 +7,7 @@ interface GameState {
     height: number;
   };
   scene: BaseScene | null;
+  speed: number;
 }
 
 const gameState: GameState = {
@@ -16,6 +17,7 @@ const gameState: GameState = {
     height: 0,
   },
   scene: null,
+  speed: 1,
 };
 
 export default gameState;

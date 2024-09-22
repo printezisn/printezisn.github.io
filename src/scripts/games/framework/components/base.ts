@@ -35,6 +35,30 @@ abstract class BaseComponent<T extends Container> implements DisplayObject {
   set position(position: Point) {
     this.object.position = position;
   }
+
+  set scale(scale: Point) {
+    this.object.scale = scale;
+  }
+
+  get scale(): Point {
+    return this.object.scale;
+  }
+
+  get width(): number {
+    return this.object.width;
+  }
+
+  set width(width: number) {
+    this.object.width = width;
+  }
+
+  get height(): number {
+    return this.object.height;
+  }
+
+  set height(height: number) {
+    this.object.height = height;
+  }
 }
 
 export default BaseComponent;

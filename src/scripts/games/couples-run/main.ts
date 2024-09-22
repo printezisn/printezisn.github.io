@@ -1,5 +1,20 @@
 import '../../base';
 import '../../../styles/games/couples-run/main.scss';
-import { initGame } from '../framework/application';
+import { changeScene, initGame } from '../framework/application';
+import { addSignalListener, removeSignalListener } from '../framework/signals';
+import config from '../framework/config';
+import InitialScene from './scenes/initial-scene';
 
-initGame(document.body);
+const destroyLoadingSceneBinding = addSignalListener(
+  config.signals.destroyLoadingScene,
+  () => {
+    removeSignalListener(
+      destroyLoadingSceneBinding.name,
+      destroyLoadingSceneBinding.binding,
+    );
+
+    changeScene(new InitialScene());
+  },
+);
+
+initGame('couples-run', document.body);
