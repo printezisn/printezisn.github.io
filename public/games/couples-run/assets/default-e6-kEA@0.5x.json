@@ -1,7 +1,14 @@
 {
   "frames": {
+    "platform.png": {
+      "frame": { "x": 2, "y": 2, "w": 9, "h": 18 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 9, "h": 18 },
+      "sourceSize": { "w": 9, "h": 18 }
+    },
     "city-bg.png": {
-      "frame": { "x": 2, "y": 2, "w": 1152, "h": 648 },
+      "frame": { "x": 13, "y": 2, "w": 1152, "h": 648 },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": { "x": 0, "y": 0, "w": 1152, "h": 648 },
@@ -11,9 +18,9 @@
   "meta": {
     "app": "http://github.com/pixijs/assetpack",
     "version": "1.0",
-    "image": "default-SVkH0g@0.5x.png",
+    "image": "default-jWpo@0.5x.png",
     "format": "RGBA8888",
-    "size": { "w": 1156, "h": 652 },
+    "size": { "w": 1167, "h": 652 },
     "scale": 0.5,
     "related_multi_packs": []
   }
