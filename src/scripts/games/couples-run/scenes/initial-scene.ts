@@ -30,9 +30,9 @@ class InitialScene extends BaseScene {
       gameState.screen.height - this._platform.originalHeight;
   }
 
-  protected onTick(deltaTime: number) {
-    this._bg.tilePosition.x -= deltaTime * gameState.speed;
-    this._platform.tilePosition.x -= deltaTime * gameState.speed;
+  protected onTick() {
+    this._bg.tilePosition.x--;
+    this._platform.tilePosition.x--;
   }
 }
 

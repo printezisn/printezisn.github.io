@@ -43,8 +43,14 @@ const handleContainerResize = () => {
 };
 
 const handleTick = () => {
+  let totalDeltaTime = 0;
+
   app.ticker.add((ticker) => {
-    fireSignal(config.signals.onTick, ticker.deltaTime);
+    totalDeltaTime += ticker.deltaMS;
+    while (totalDeltaTime >= config.speed.movementIntervalMillis) {
+      fireSignal(config.signals.onTick);
+      totalDeltaTime -= config.speed.movementIntervalMillis;
+    }
   });
 };
 

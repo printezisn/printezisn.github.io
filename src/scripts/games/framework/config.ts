@@ -6,6 +6,9 @@ const config = {
     width: 1280,
     height: 720,
   },
+  speed: {
+    movementIntervalMillis: 17,
+  },
   loadingScene: {
     fontFamily: 'Arial, sans-serif',
     fontSize: 28,
