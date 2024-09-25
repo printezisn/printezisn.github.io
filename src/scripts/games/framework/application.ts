@@ -3,9 +3,9 @@ import config from './config';
 import { debounce } from './helpers/closures';
 import resize from './helpers/aspect-ratio-resizer';
 import gameState from './game-state';
-import type BaseScene from './scenes/base';
 import LoadingScene from './scenes/loading';
 import { fireSignal } from './signals';
+import type ContainerComponent from './components/container';
 
 let app!: Application;
 let appContainer!: HTMLElement;
@@ -54,14 +54,14 @@ const handleTick = () => {
   });
 };
 
-export const changeScene = (newScene: BaseScene) => {
+export const changeScene = (newScene: ContainerComponent) => {
   if (gameState.scene) {
     gameState.scene.destroy();
-    app.stage.removeChild(gameState.scene.container.object);
+    app.stage.removeChild(gameState.scene.object);
   }
 
   gameState.scene = newScene;
-  app.stage.addChild(gameState.scene.container.object);
+  app.stage.addChild(gameState.scene.object);
 };
 
 export const initGame = async (game: string, container: HTMLElement) => {

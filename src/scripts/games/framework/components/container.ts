@@ -27,19 +27,27 @@ class ContainerComponent extends BaseComponent<Container> {
   addComponent(component: DisplayObject) {
     this.components.push(component);
     this.object.addChild(component.object);
+    component.parent = this;
   }
 
   removeComponent(component: DisplayObject) {
     const index = this.components.indexOf(component);
     if (index >= 0) {
+      this.components[index].destroy();
       this.components.splice(index, 1);
       this.object.removeChildAt(index);
     }
   }
 
   removeComponents() {
+    this.components.forEach((component) => component.destroy());
     this.components = [];
     this.object.removeChildren();
+  }
+
+  destroy() {
+    this.removeComponents();
+    super.destroy();
   }
 }
 

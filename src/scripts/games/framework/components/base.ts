@@ -1,11 +1,43 @@
 import type { Container } from 'pixi.js';
 import type { DisplayObject, Point } from './types';
+import type ContainerComponent from './container';
+import { addSignalListener, removeSignalListener } from '../signals';
+import config from '../config';
 
 abstract class BaseComponent<T extends Container> implements DisplayObject {
   private _object: T;
+  private _parent: ContainerComponent | null = null;
+  private _bindings: { name: string; binding: any }[] = [];
 
   constructor(object: T) {
     this._object = object;
+
+    if ((this as any).onResize) {
+      this.registerToSignal(config.signals.onResize, (this as any).onResize);
+    }
+    if ((this as any).onOrientationChange) {
+      this.registerToSignal(
+        config.signals.onOrientationChange,
+        (this as any).onOrientationChange,
+      );
+    }
+    if ((this as any).onTick) {
+      this.registerToSignal(config.signals.onTick, (this as any).onTick);
+    }
+  }
+
+  protected registerToSignal(name: string, callback: (...args: any[]) => void) {
+    this._bindings.push(addSignalListener(name, callback.bind(this)));
+  }
+
+  protected unregisterFromSignal(name: string) {
+    for (let i = 0; i < this._bindings.length; i++) {
+      if (this._bindings[i].name === name) {
+        removeSignalListener(name, this._bindings[i].binding);
+        this._bindings.splice(i, 1);
+        i--;
+      }
+    }
   }
 
   get object(): T {
@@ -58,6 +90,24 @@ abstract class BaseComponent<T extends Container> implements DisplayObject {
 
   set height(height: number) {
     this.object.height = height;
+  }
+
+  get parent() {
+    return this._parent;
+  }
+
+  set parent(container: ContainerComponent | null) {
+    this._parent = container;
+  }
+
+  destroy() {
+    this._bindings.forEach(({ name, binding }) =>
+      removeSignalListener(name, binding),
+    );
+    this._bindings = [];
+
+    this.parent = null;
+    this.object.destroy();
   }
 }
 

@@ -2,6 +2,8 @@ import type { Container } from 'pixi.js';
 
 export interface DisplayObject {
   get object(): Container;
+  set parent(parent: DisplayObject | null);
+  destroy(): void;
 }
 
 export interface Point {
