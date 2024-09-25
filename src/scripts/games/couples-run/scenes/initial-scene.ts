@@ -7,7 +7,7 @@ class InitialScene extends BaseScene {
     resource: 'city-bg.png',
   });
   private _platform = new TilingSpriteComponent({
-    resource: 'platform.png',
+    resource: 'platform-top.png',
   });
 
   constructor() {
