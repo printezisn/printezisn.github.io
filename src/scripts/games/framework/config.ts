@@ -8,7 +8,7 @@ const config = {
   },
   loadingScene: {
     fontFamily: 'Arial, sans-serif',
-    fontSize: 67,
+    fontSize: 28,
     textColor: 0xffffff,
     keepAliveTimeMS: 2000,
   },
