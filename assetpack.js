@@ -7,6 +7,7 @@ import { webfont } from '@assetpack/core/webfont';
 import { audio } from '@assetpack/core/ffmpeg';
 import { cacheBuster } from '@assetpack/core/cache-buster';
 import { texturePackerCacheBuster } from '@assetpack/core/texture-packer';
+import { texturePackerCompress } from '@assetpack/core/texture-packer';
 
 // eslint-disable-next-line
 const game = process.argv[2];
@@ -14,15 +15,19 @@ const game = process.argv[2];
 const assetpack = new AssetPack({
   entry: `./src/assets/games/${game}`,
   output: `./public/games/${game}/assets`,
-  cache: false,
+  cache: true,
   pipes: [
+    texturePacker(),
+    webfont(),
+    audio(),
     compress({
       webp: { quality: 100, alphaQuality: 100 },
       avif: { quality: 100, alphaQuality: 100 },
     }),
-    texturePacker(),
-    webfont(),
-    audio(),
+    texturePackerCompress({
+      webp: { quality: 100, alphaQuality: 100 },
+      avif: { quality: 100, alphaQuality: 100 },
+    }),
     json(),
     cacheBuster(),
     texturePackerCacheBuster(),

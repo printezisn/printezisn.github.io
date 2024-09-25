@@ -5,7 +5,14 @@
       "assets": [
         {
           "alias": ["default"],
-          "src": ["default-ZRmzBw.json", "default-e6-kEA@0.5x.json"],
+          "src": [
+            "default-XI-F.avif.json",
+            "default-x-DUxQ@0.5x.avif.json",
+            "default-WPsR-Q@0.5x.webp.json",
+            "default-uTyYhA.webp.json",
+            "default-h7pmmg@0.5x.png.json",
+            "default-FGTQTg.png.json"
+          ],
           "data": {
             "tags": {
               "tps": true
