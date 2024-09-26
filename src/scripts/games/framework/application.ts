@@ -8,11 +8,10 @@ import { fireSignal } from './signals';
 import type BaseScene from './scenes/base';
 
 let app!: Application;
-let appContainer!: HTMLElement;
 
 const resizeCanvas = () => {
   const { width, height, orientation } = resize(
-    appContainer,
+    config.gameContainer,
     app.canvas,
     config.screen.width,
     config.screen.height,
@@ -38,13 +37,14 @@ const handleContainerResize = () => {
     resizeCallback();
   });
 
-  containerResizeObservers.observe(appContainer);
+  containerResizeObservers.observe(config.gameContainer);
   resizeCanvas();
 };
 
 const handleTick = () => {
   let totalDeltaTime = 0;
 
+  app.ticker.maxFPS = config.maxFPS;
   app.ticker.add((ticker) => {
     totalDeltaTime += ticker.deltaMS;
     while (totalDeltaTime >= config.speed.movementIntervalMillis) {
@@ -64,9 +64,8 @@ export const changeScene = (newScene: BaseScene) => {
   app.stage.addChild(gameState.scene.object);
 };
 
-export const initGame = async (game: string, container: HTMLElement) => {
-  appContainer = container;
-  appContainer.style.backgroundColor = config.colors.backgroundColor;
+export const initGame = async () => {
+  config.gameContainer.style.backgroundColor = config.colors.backgroundColor;
 
   app = new Application();
 
@@ -76,7 +75,7 @@ export const initGame = async (game: string, container: HTMLElement) => {
     height: config.screen.height,
   });
 
-  appContainer.appendChild(app.canvas);
+  config.gameContainer.appendChild(app.canvas);
   app.canvas.style.position = 'absolute';
 
   changeScene(new LoadingScene());
@@ -89,7 +88,7 @@ export const initGame = async (game: string, container: HTMLElement) => {
     ),
     (async () => {
       await Assets.init({
-        basePath: `/games/${game}/assets`,
+        basePath: `/games/${config.gameName}/assets`,
         manifest: 'manifest.json',
       });
       await Assets.loadBundle('default');

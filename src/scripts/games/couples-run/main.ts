@@ -17,4 +17,10 @@ const destroyLoadingSceneBinding = addSignalListener(
   },
 );
 
-initGame('couples-run', document.body);
+const urlParams = new URLSearchParams(window.location.search ?? '');
+
+config.gameName = 'couples-run';
+config.maxFPS = Number(urlParams.get('maxFPS')) || 60;
+config.debug = Boolean(urlParams.get('debug'));
+
+initGame();

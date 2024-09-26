@@ -1,4 +1,8 @@
 const config = {
+  gameName: '',
+  gameContainer: document.body,
+  maxFPS: 60,
+  debug: false,
   colors: {
     backgroundColor: '#000000',
   },
