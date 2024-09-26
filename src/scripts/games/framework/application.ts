@@ -75,6 +75,10 @@ export const initGame = async () => {
     height: config.screen.height,
   });
 
+  if (import.meta.env.DEV) {
+    (globalThis as any).__PIXI_APP__ = app;
+  }
+
   config.gameContainer.appendChild(app.canvas);
   app.canvas.style.position = 'absolute';
 
