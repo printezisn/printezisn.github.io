@@ -5,7 +5,7 @@ import resize from './helpers/aspect-ratio-resizer';
 import gameState from './game-state';
 import LoadingScene from './scenes/loading';
 import { fireSignal } from './signals';
-import type ContainerComponent from './components/container';
+import type BaseScene from './scenes/base';
 
 let app!: Application;
 let appContainer!: HTMLElement;
@@ -54,7 +54,7 @@ const handleTick = () => {
   });
 };
 
-export const changeScene = (newScene: ContainerComponent) => {
+export const changeScene = (newScene: BaseScene) => {
   if (gameState.scene) {
     gameState.scene.destroy();
     app.stage.removeChild(gameState.scene.object);

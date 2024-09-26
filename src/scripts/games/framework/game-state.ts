@@ -1,4 +1,4 @@
-import type ContainerComponent from './components/container';
+import type BaseScene from './scenes/base';
 
 interface GameState {
   screen: {
@@ -6,7 +6,7 @@ interface GameState {
     width: number;
     height: number;
   };
-  scene: ContainerComponent | null;
+  scene: BaseScene | null;
 }
 
 const gameState: GameState = {

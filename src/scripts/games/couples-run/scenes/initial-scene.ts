@@ -1,47 +1,17 @@
-import TilingSpriteComponent from '../../framework/components/tiling-sprite';
-import gameState from '../../framework/game-state';
-import ContainerComponent from '../../framework/components/container';
+import MovingBackgroundComponent from '../../framework/components/moving-background';
+import BaseScene from '../../framework/scenes/base';
+import MovingPlatform from '../game-objects/moving-platform';
 
-class InitialScene extends ContainerComponent {
-  private get bg() {
-    return this.components[0] as TilingSpriteComponent;
-  }
-
-  private get platform() {
-    return this.components[1] as TilingSpriteComponent;
-  }
-
+class InitialScene extends BaseScene {
   constructor() {
     super({});
 
     this.addComponent(
-      new TilingSpriteComponent({
+      new MovingBackgroundComponent({
         resource: 'city-bg.png',
       }),
     );
-    this.addComponent(
-      new TilingSpriteComponent({
-        resource: 'platform-top.png',
-      }),
-    );
-    this.onResize();
-  }
-
-  protected onResize() {
-    this.bg.width = gameState.screen.width;
-    this.bg.height = gameState.screen.height;
-
-    const heightScale = gameState.screen.height / this.bg.originalHeight;
-    this.bg.tileScale = { x: heightScale, y: heightScale };
-
-    this.platform.width = gameState.screen.width;
-    this.platform.position.y =
-      gameState.screen.height - this.platform.originalHeight;
-  }
-
-  protected onTick() {
-    this.bg.tilePosition.x--;
-    this.platform.tilePosition.x--;
+    this.addComponent(new MovingPlatform());
   }
 }
 
