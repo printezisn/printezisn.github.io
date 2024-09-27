@@ -22,6 +22,7 @@ class Logo extends TextComponent {
       duration: 1,
       from: { alpha: 0, y: 0 },
       to: { alpha: 1, y: this.desiredPositionY },
+      ease: 'back.out(2)',
     });
   }
 

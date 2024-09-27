@@ -1,5 +1,6 @@
 import MovingBackgroundComponent from '../../framework/components/moving-background';
 import BaseScene from '../../framework/scenes/base';
+import CTA from '../game-objects/initial-scene/cta';
 import Logo from '../game-objects/initial-scene/logo';
 import MovingBoy from '../game-objects/initial-scene/moving-boy';
 import MovingGirl from '../game-objects/initial-scene/moving-girl';
@@ -18,6 +19,7 @@ class InitialScene extends BaseScene {
     this.addComponent(new MovingGirl());
     this.addComponent(new MovingBoy());
     this.addComponent(new Logo());
+    this.addComponent(new CTA());
   }
 }
 

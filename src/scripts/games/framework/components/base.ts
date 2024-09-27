@@ -125,6 +125,15 @@ abstract class BaseComponent<T extends Container> implements DisplayObject {
     this._animations = [];
   }
 
+  delay(duration: number) {
+    return this.animate({
+      target: { x: 0 },
+      from: { x: 0 },
+      to: { x: 1 },
+      duration,
+    });
+  }
+
   destroy() {
     this._bindings.forEach(({ name, binding }) =>
       removeSignalListener(name, binding),

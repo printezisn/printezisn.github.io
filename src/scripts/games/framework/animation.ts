@@ -5,6 +5,9 @@ export interface AnimationOptions {
   from: any;
   to: any;
   duration: number;
+  repeat?: number;
+  revert?: boolean;
+  ease?: string;
 }
 
 export class Animation {
@@ -25,6 +28,9 @@ export class Animation {
         ...this.options.to,
         onComplete: () => resolve(),
         duration: this.options.duration,
+        repeat: this.options.repeat,
+        yoyo: this.options.revert,
+        ease: this.options.ease,
       });
       this._tween.play();
     });
