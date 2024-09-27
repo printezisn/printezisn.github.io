@@ -13,14 +13,14 @@ class MovingGirl extends SpriteComponent {
       resource: 'girl/run/girl-run-1.png',
       anchor: { x: 0, y: 1 },
       position: { x: 200, y: 0 },
-      scale: { x: 1.2, y: 1.2 },
+      scale: { x: 2, y: 2 },
     });
 
     this.onResize();
   }
 
   protected onResize() {
-    this.position.y = gameState.screen.height - 8;
+    this.position.y = gameState.screen.height - 55;
   }
 
   protected onTick() {
