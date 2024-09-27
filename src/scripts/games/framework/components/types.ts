@@ -17,6 +17,7 @@ export interface BaseProps {
   scale?: Point;
   width?: number;
   height?: number;
+  alpha?: number;
 }
 
 export interface BaseSpriteProps extends BaseProps {

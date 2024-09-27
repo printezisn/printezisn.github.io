@@ -31,6 +31,9 @@ importers:
       feather-icons:
         specifier: 4.29.2
         version: 4.29.2
+      gsap:
+        specifier: 3.12.5
+        version: 3.12.5
       husky:
         specifier: 9.1.5
         version: 9.1.5
@@ -3672,6 +3675,12 @@ packages:
         integrity: sha512-5v6yZd4JK3eMI3FqqCouswVqwugaA9r4dNZB1wwcmrD02QkV5H0y7XBQW8QwQqEaZY1pM9aqORSORhJRdNK44Q==,
       }
     engines: { node: '>=6.0' }
+
+  gsap@3.12.5:
+    resolution:
+      {
+        integrity: sha512-srBfnk4n+Oe/ZnMIOXt3gT605BX9x5+rh/prT2F1SsNJsU1XuMiP0E2aptW481OnonOGACZWBqseH5Z7csHxhQ==,
+      }
 
   handlebars@4.7.8:
     resolution:
@@ -9661,6 +9670,8 @@ snapshots:
       kind-of: 6.0.3
       section-matter: 1.0.0
       strip-bom-string: 1.0.0
+
+  gsap@3.12.5: {}
 
   handlebars@4.7.8:
     dependencies:

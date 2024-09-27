@@ -12,6 +12,7 @@ class SpriteComponent extends BaseComponent<Sprite> {
         scale: props.scale,
         width: props.width,
         height: props.height,
+        alpha: props.alpha,
       }),
     );
   }

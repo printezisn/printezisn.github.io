@@ -3,11 +3,13 @@ import type { DisplayObject, Point } from './types';
 import type ContainerComponent from './container';
 import { addSignalListener, removeSignalListener } from '../signals';
 import config from '../config';
+import { Animation, type AnimationOptions } from '../animation';
 
 abstract class BaseComponent<T extends Container> implements DisplayObject {
   private _object: T;
   private _parent: ContainerComponent | null = null;
   private _bindings: { name: string; binding: any }[] = [];
+  private _animations: Animation[] = [];
 
   constructor(object: T) {
     this._object = object;
@@ -92,6 +94,14 @@ abstract class BaseComponent<T extends Container> implements DisplayObject {
     this.object.height = height;
   }
 
+  get alpha() {
+    return this.object.alpha;
+  }
+
+  set alpha(alpha: number) {
+    this.object.alpha = alpha;
+  }
+
   get parent() {
     return this._parent;
   }
@@ -100,11 +110,28 @@ abstract class BaseComponent<T extends Container> implements DisplayObject {
     this._parent = container;
   }
 
+  async animate(options: AnimationOptions) {
+    const animation = new Animation(options);
+    this._animations.push(animation);
+
+    await animation.start();
+
+    const index = this._animations.indexOf(animation);
+    this._animations.splice(index, 1);
+  }
+
+  stopAnimations() {
+    this._animations.forEach((animation) => animation.stop());
+    this._animations = [];
+  }
+
   destroy() {
     this._bindings.forEach(({ name, binding }) =>
       removeSignalListener(name, binding),
     );
     this._bindings = [];
+
+    this.stopAnimations();
 
     this.parent = null;
     this.object.destroy();

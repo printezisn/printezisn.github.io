@@ -26,6 +26,7 @@
     "@fontsource/roboto": "5.0.14",
     "astro": "4.15.1",
     "feather-icons": "4.29.2",
+    "gsap": "3.12.5",
     "husky": "9.1.5",
     "mini-signals": "2.0.0",
     "pixi.js": "8.4.0",

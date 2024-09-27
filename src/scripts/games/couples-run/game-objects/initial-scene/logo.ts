@@ -9,13 +9,28 @@ class Logo extends TextComponent {
       fontSize: 128,
       fontFamily: 'Lobster',
       anchor: { x: 0.5, y: 0 },
-      position: { x: 0, y: 50 },
+      position: { x: 0, y: 0 },
       strokeColor: 0xff0000,
       strokeWidth: 7,
+      alpha: 0,
     });
 
+    this.fontSize = this.desiredFontSize;
     this.onResize();
-    this.onOrientationChange();
+    this.animate({
+      target: this,
+      duration: 1,
+      from: { alpha: 0, y: 0 },
+      to: { alpha: 1, y: this.desiredPositionY },
+    });
+  }
+
+  private get desiredPositionY() {
+    return gameState.screen.orientation === 'landscape' ? 50 : 200;
+  }
+
+  private get desiredFontSize() {
+    return gameState.screen.orientation === 'landscape' ? 128 : 86;
   }
 
   protected onResize() {
@@ -23,13 +38,9 @@ class Logo extends TextComponent {
   }
 
   protected onOrientationChange() {
-    if (gameState.screen.orientation === 'landscape') {
-      this.fontSize = 128;
-      this.y = 50;
-    } else {
-      this.fontSize = 86;
-      this.y = 200;
-    }
+    this.stopAnimations();
+    this.fontSize = this.desiredFontSize;
+    this.y = this.desiredPositionY;
   }
 }
 

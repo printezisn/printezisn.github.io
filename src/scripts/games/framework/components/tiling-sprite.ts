@@ -12,6 +12,7 @@ class TilingSpriteComponent extends BaseComponent<TilingSprite> {
         scale: props.scale,
         width: props.width,
         height: props.height,
+        alpha: props.alpha,
       }),
     );
   }

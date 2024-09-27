@@ -12,6 +12,7 @@ class ContainerComponent extends BaseComponent<Container> {
         scale: props.scale,
         width: props.width,
         height: props.height,
+        alpha: props.alpha,
       }),
     );
   }

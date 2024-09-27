@@ -21,6 +21,7 @@ class TextComponent extends BaseComponent<Text> {
         scale: props.scale,
         width: props.width,
         height: props.height,
+        alpha: props.alpha,
         style: {
           fontFamily: props.fontFamily,
           fontSize: props.fontSize,

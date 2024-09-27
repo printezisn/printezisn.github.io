@@ -101,7 +101,6 @@ export const initGame = async () => {
         Assets.loadBundle('default'),
         Assets.loadBundle('extra'),
       ]);
-      console.log(Assets.get('Lobster'));
     })(),
   ]);
 
