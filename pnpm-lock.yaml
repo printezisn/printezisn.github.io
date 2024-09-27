@@ -13,9 +13,15 @@ importers:
       '@astrojs/sitemap':
         specifier: 3.1.6
         version: 3.1.6
+      '@fontsource/lobster':
+        specifier: 5.1.0
+        version: 5.1.0
       '@fontsource/lora':
         specifier: 5.0.18
         version: 5.0.18
+      '@fontsource/press-start-2p':
+        specifier: 5.1.0
+        version: 5.1.0
       '@fontsource/roboto':
         specifier: 5.0.14
         version: 5.0.14
@@ -709,10 +715,22 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@fontsource/lobster@5.1.0':
+    resolution:
+      {
+        integrity: sha512-kEIt+NiswgZoA7loqiIXZKpO336yZjvvy3gvBj/hLYGPrZajDDGTr4bKEfsa7NmeD3cXYIO4FDiC5GfB0ONyQw==,
+      }
+
   '@fontsource/lora@5.0.18':
     resolution:
       {
         integrity: sha512-O+b7mxQcQXFV8j9RJNb86IV5OOKmDBe9X3URqVqWyadFa5TXsXW1HTSZZCsuJd8Nd7r66b1rzr/GfPiu1WXFYA==,
+      }
+
+  '@fontsource/press-start-2p@5.1.0':
+    resolution:
+      {
+        integrity: sha512-l2HeeeNdaO9NJZnW+fKz/aq3rbCTac71LY0mXVhy55h2x5RueN+AWRf5AtC9puD1m5fInvwipKQLvpXj0p47Tg==,
       }
 
   '@fontsource/roboto@5.0.14':
@@ -7631,7 +7649,11 @@ snapshots:
   '@ffmpeg-installer/win32-x64@4.1.0':
     optional: true
 
+  '@fontsource/lobster@5.1.0': {}
+
   '@fontsource/lora@5.0.18': {}
+
+  '@fontsource/press-start-2p@5.1.0': {}
 
   '@fontsource/roboto@5.0.14': {}
 

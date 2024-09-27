@@ -41,6 +41,14 @@ class TextComponent extends BaseComponent<Text> {
   set anchor(anchor: Point) {
     this.object.anchor = anchor;
   }
+
+  get fontSize() {
+    return this.object.style.fontSize;
+  }
+
+  set fontSize(fontSize: number) {
+    this.object.style.fontSize = fontSize;
+  }
 }
 
 export default TextComponent;

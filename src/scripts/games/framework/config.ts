@@ -1,6 +1,13 @@
+interface Asset {
+  alias: string;
+  src: string;
+  data?: any;
+}
+
 const config = {
   gameName: '',
   gameContainer: document.body,
+  extraAssets: [] as Asset[],
   maxFPS: 60,
   debug: false,
   colors: {
