@@ -1,0 +1,174 @@
+{
+  "frames": {
+    "platform-top.png": {
+      "frame": { "x": 2, "y": 2, "w": 9, "h": 18 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 9, "h": 18 },
+      "sourceSize": { "w": 9, "h": 18 }
+    },
+    "platform-middle.png": {
+      "frame": { "x": 13, "y": 2, "w": 9, "h": 16 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 9, "h": 16 },
+      "sourceSize": { "w": 9, "h": 16 }
+    },
+    "city-bg.png": {
+      "frame": { "x": 2, "y": 22, "w": 1152, "h": 648 },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 1152, "h": 648 },
+      "sourceSize": { "w": 1152, "h": 648 }
+    },
+    "girl/girl-jump.png": {
+      "frame": { "x": 24, "y": 2, "w": 13, "h": 17 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 12, "y": 10, "w": 13, "h": 17 },
+      "sourceSize": { "w": 36, "h": 36 }
+    },
+    "girl/girl-idle.png": {
+      "frame": { "x": 39, "y": 2, "w": 13, "h": 17 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 12, "y": 11, "w": 13, "h": 17 },
+      "sourceSize": { "w": 36, "h": 36 }
+    },
+    "boy/boy-jump.png": {
+      "frame": { "x": 54, "y": 2, "w": 13, "h": 19 },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 12, "y": 8, "w": 13, "h": 19 },
+      "sourceSize": { "w": 36, "h": 36 }
+    },
+    "boy/boy-idle.png": {
+      "frame": { "x": 75, "y": 2, "w": 14, "h": 19 },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 11, "y": 9, "w": 14, "h": 19 },
+      "sourceSize": { "w": 36, "h": 36 }
+    },
+    "girl/run/girl-run-8.png": {
+      "frame": { "x": 96, "y": 2, "w": 13, "h": 17 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 12, "y": 11, "w": 13, "h": 17 },
+      "sourceSize": { "w": 36, "h": 36 }
+    },
+    "girl/run/girl-run-7.png": {
+      "frame": { "x": 111, "y": 2, "w": 14, "h": 15 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 12, "y": 10, "w": 14, "h": 15 },
+      "sourceSize": { "w": 36, "h": 36 }
+    },
+    "girl/run/girl-run-6.png": {
+      "frame": { "x": 127, "y": 2, "w": 13, "h": 17 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 12, "y": 11, "w": 13, "h": 17 },
+      "sourceSize": { "w": 36, "h": 36 }
+    },
+    "girl/run/girl-run-5.png": {
+      "frame": { "x": 142, "y": 2, "w": 13, "h": 17 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 12, "y": 11, "w": 13, "h": 17 },
+      "sourceSize": { "w": 36, "h": 36 }
+    },
+    "girl/run/girl-run-4.png": {
+      "frame": { "x": 157, "y": 2, "w": 13, "h": 17 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 12, "y": 11, "w": 13, "h": 17 },
+      "sourceSize": { "w": 36, "h": 36 }
+    },
+    "girl/run/girl-run-3.png": {
+      "frame": { "x": 172, "y": 2, "w": 14, "h": 16 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 12, "y": 10, "w": 14, "h": 16 },
+      "sourceSize": { "w": 36, "h": 36 }
+    },
+    "girl/run/girl-run-2.png": {
+      "frame": { "x": 188, "y": 2, "w": 13, "h": 17 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 12, "y": 11, "w": 13, "h": 17 },
+      "sourceSize": { "w": 36, "h": 36 }
+    },
+    "girl/run/girl-run-1.png": {
+      "frame": { "x": 203, "y": 2, "w": 13, "h": 17 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 12, "y": 11, "w": 13, "h": 17 },
+      "sourceSize": { "w": 36, "h": 36 }
+    },
+    "boy/run/boy-run-8.png": {
+      "frame": { "x": 218, "y": 2, "w": 13, "h": 19 },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 12, "y": 9, "w": 13, "h": 19 },
+      "sourceSize": { "w": 36, "h": 36 }
+    },
+    "boy/run/boy-run-7.png": {
+      "frame": { "x": 239, "y": 2, "w": 14, "h": 17 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 12, "y": 8, "w": 14, "h": 17 },
+      "sourceSize": { "w": 36, "h": 36 }
+    },
+    "boy/run/boy-run-6.png": {
+      "frame": { "x": 255, "y": 2, "w": 13, "h": 19 },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 12, "y": 9, "w": 13, "h": 19 },
+      "sourceSize": { "w": 36, "h": 36 }
+    },
+    "boy/run/boy-run-5.png": {
+      "frame": { "x": 276, "y": 2, "w": 14, "h": 19 },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 11, "y": 9, "w": 14, "h": 19 },
+      "sourceSize": { "w": 36, "h": 36 }
+    },
+    "boy/run/boy-run-4.png": {
+      "frame": { "x": 297, "y": 2, "w": 13, "h": 19 },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 12, "y": 9, "w": 13, "h": 19 },
+      "sourceSize": { "w": 36, "h": 36 }
+    },
+    "boy/run/boy-run-3.png": {
+      "frame": { "x": 318, "y": 2, "w": 14, "h": 18 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 12, "y": 8, "w": 14, "h": 18 },
+      "sourceSize": { "w": 36, "h": 36 }
+    },
+    "boy/run/boy-run-2.png": {
+      "frame": { "x": 334, "y": 2, "w": 13, "h": 19 },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 12, "y": 9, "w": 13, "h": 19 },
+      "sourceSize": { "w": 36, "h": 36 }
+    },
+    "boy/run/boy-run-1.png": {
+      "frame": { "x": 355, "y": 2, "w": 14, "h": 19 },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 11, "y": 9, "w": 14, "h": 19 },
+      "sourceSize": { "w": 36, "h": 36 }
+    }
+  },
+  "meta": {
+    "app": "http://github.com/pixijs/assetpack",
+    "version": "1.0",
+    "image": "default-hIRf@0.5x.png",
+    "format": "RGBA8888",
+    "size": { "w": 652, "h": 1176 },
+    "scale": 0.5,
+    "related_multi_packs": []
+  }
+}

@@ -11,7 +11,8 @@ const config = {
     height: 720,
   },
   speed: {
-    movementIntervalMillis: 17,
+    tickIntervalMillis: 17,
+    moveFrameInterval: 5,
   },
   loadingScene: {
     fontFamily: 'Arial, sans-serif',

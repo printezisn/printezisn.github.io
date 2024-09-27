@@ -23,6 +23,10 @@ class SpriteComponent extends BaseComponent<Sprite> {
   get originalHeight() {
     return this.object.texture.height;
   }
+
+  set texture(resource: string) {
+    this.object.texture = Texture.from(resource);
+  }
 }
 
 export default SpriteComponent;

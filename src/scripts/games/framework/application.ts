@@ -47,9 +47,9 @@ const handleTick = () => {
   app.ticker.maxFPS = config.maxFPS;
   app.ticker.add((ticker) => {
     totalDeltaTime += ticker.deltaMS;
-    while (totalDeltaTime >= config.speed.movementIntervalMillis) {
+    while (totalDeltaTime >= config.speed.tickIntervalMillis) {
       fireSignal(config.signals.onTick);
-      totalDeltaTime -= config.speed.movementIntervalMillis;
+      totalDeltaTime -= config.speed.tickIntervalMillis;
     }
   });
 };

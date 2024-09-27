@@ -1,5 +1,5 @@
-import TilingSpriteComponent from '../../framework/components/tiling-sprite';
-import gameState from '../../framework/game-state';
+import TilingSpriteComponent from '../../../framework/components/tiling-sprite';
+import gameState from '../../../framework/game-state';
 
 class MovingPlatform extends TilingSpriteComponent {
   constructor() {

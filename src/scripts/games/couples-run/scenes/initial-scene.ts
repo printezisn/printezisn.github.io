@@ -1,6 +1,8 @@
 import MovingBackgroundComponent from '../../framework/components/moving-background';
 import BaseScene from '../../framework/scenes/base';
-import MovingPlatform from '../game-objects/moving-platform';
+import MovingBoy from '../game-objects/initial-scene/moving-boy';
+import MovingGirl from '../game-objects/initial-scene/moving-girl';
+import MovingPlatform from '../game-objects/initial-scene/moving-platform';
 
 class InitialScene extends BaseScene {
   constructor() {
@@ -12,6 +14,8 @@ class InitialScene extends BaseScene {
       }),
     );
     this.addComponent(new MovingPlatform());
+    this.addComponent(new MovingGirl());
+    this.addComponent(new MovingBoy());
   }
 }
 
