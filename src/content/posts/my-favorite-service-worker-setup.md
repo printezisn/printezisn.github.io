@@ -18,7 +18,7 @@ access to push notifications and background sync APIs.
 
 The first time I set my eyes on service workers, I thought how cool it would be to cache static content as much as I like and not rely on the server. Nowadays, static resources (js, css, images, etc.) are cache busted, meaning that they have a unique name based on their content. So it's not expected for a static resource to change. So why not cache it forever ?
 
-Also, many of my apps are games, so it would be cool if I could access the offline. The subway means <a href="/sudoku" target="_blank">sudoku</a> to me.
+Also, many of my apps are games, so it would be cool if I could access them offline. The subway means <a href="/sudoku" target="_blank">sudoku</a> to me.
 
 ---
 
