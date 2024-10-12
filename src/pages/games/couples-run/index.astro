@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../../layouts/base-layout.astro';
+
+const title = 'Couples Run | Make a high score with your partner';
+const description =
+  'Play as either Nikos or Anastasia and collect as many diamonds as you can to increase your high score, while avoiding the enemies coming after you';
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image="/games/couples-run/logo.png"
+  path="/games/couples-run/"
+  favicon="/games/couples-run/favicon.png"
+  themeColor="#000000"
+>
+  <Fragment slot="scripts">
+    <script src="../../../scripts/games/couples-run/main.ts"></script>
+  </Fragment>
+  <a href="/games/couples-run/credits" style="display: none" id="credits-link"
+    >Credits</a
+  >
+</BaseLayout>

@@ -20,6 +20,7 @@ const gamesCollection = defineCollection({
     description: z.string(),
     image: z.string(),
     path: z.string(),
+    hidden: z.boolean().optional(),
   }),
 });
 

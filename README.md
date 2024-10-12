@@ -14,13 +14,15 @@ This is my personal website containing my blog, portfolio and games.
 
 1. [Astro](https://astro.build/) for static site generation (used for the portfolio and blog).
 1. Typescript
+1. [PixiJS](https://pixijs.com/) for 2D graphics.
 
 ## Commands
 
-1. `pnpm run start:dev`: starts the application in development mode.
-1. `pnpm run start:prod`: starts the application in production mode. It's required to run `pnpm run build` first to get the latest changes.
-1. `pnpm run build`: builds the application and creates the assets required to run the application in production mode.
-1. `pnpm run lint`: uses eslint to find linting issues.
-1. `pnpm run lint:fix`: uses eslint to find linting issues and fix them if possible.
-1. `pnpm run prettier:format`: uses prettier to find formatting issues and fix them if possible.
-1. `pnpm run test:unit`: runs the unit tests.
+1. `pnpm start:dev`: starts the application in development mode.
+1. `pnpm start:prod`: starts the application in production mode. It's required to run `pnpm run build` first to get the latest changes.
+1. `pnpm build`: builds the application and creates the assets required to run the application in production mode.
+1. `pnpm lint`: uses eslint to find linting issues.
+1. `pnpm lint:fix`: uses eslint to find linting issues and fix them if possible.
+1. `pnpm prettier:format`: uses prettier to find formatting issues and fix them if possible.
+1. `pnpm test:unit`: runs the unit tests.
+1. `pnpm build:assets <game_name>`: builds the assets for the game <game_name>

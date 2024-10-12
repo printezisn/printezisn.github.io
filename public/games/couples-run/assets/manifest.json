@@ -1,0 +1,25 @@
+{
+  "bundles": [
+    {
+      "name": "default",
+      "assets": [
+        {
+          "alias": ["default"],
+          "src": [
+            "default-xav4DA.png.json",
+            "default-OFmflQ.webp.json",
+            "default-f2V0NA@0.5x.webp.json",
+            "default-a9Oc9A.avif.json",
+            "default-7FC5Bg@0.5x.avif.json",
+            "default-6UXw1Q@0.5x.png.json"
+          ],
+          "data": {
+            "tags": {
+              "tps": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

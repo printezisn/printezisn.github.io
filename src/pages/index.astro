@@ -7,7 +7,7 @@ const pageSize = 10;
 const posts = (await getCollection('posts'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, pageSize);
-const games = await getCollection('games');
+const games = (await getCollection('games')).filter((g) => !g.data.hidden);
 const otherWork = await getCollection('other-work');
 ---
 
