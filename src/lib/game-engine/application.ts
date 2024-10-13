@@ -48,9 +48,27 @@ const handleContainerResize = () => {
 
 const handleTick = () => {
   let totalDeltaTime = 0;
+  let totalFPSEntries = 0;
+  let totalFPS = 0;
+
+  if (config.debug) {
+    setInterval(() => {
+      console.log(
+        totalFPSEntries === 0 ? 0 : Math.floor(totalFPS / totalFPSEntries),
+      );
+
+      totalFPSEntries = 0;
+      totalFPS = 0;
+    }, 1000);
+  }
 
   app.ticker.maxFPS = config.maxFPS;
   app.ticker.add((ticker) => {
+    if (config.debug) {
+      totalFPS += Math.floor(ticker.FPS);
+      totalFPSEntries++;
+    }
+
     totalDeltaTime += ticker.deltaMS;
     while (totalDeltaTime >= config.speed.tickIntervalMillis) {
       fireSignal(config.signals.onTick);
