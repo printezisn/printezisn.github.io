@@ -1,5 +1,7 @@
 import MovingBackgroundComponent from '../../../../lib/game-engine/components/moving-background';
 import BaseScene from '../../../../lib/game-engine/scenes/base';
+import { playSound } from '../../../../lib/game-engine/sound';
+import config from '../config';
 import CTA from '../game-objects/initial-scene/cta';
 import Logo from '../game-objects/initial-scene/logo';
 import MovingBoy from '../game-objects/initial-scene/moving-boy';
@@ -22,6 +24,8 @@ class InitialScene extends BaseScene {
     this.addComponent(new Logo());
     this.addComponent(new CTA());
     this.addComponent(new Settings());
+
+    playSound(config.sounds.mainLoop);
   }
 }
 

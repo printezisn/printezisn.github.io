@@ -6,6 +6,7 @@ import gameState from './game-state';
 import LoadingScene from './scenes/loading';
 import { fireSignal } from './signals';
 import type BaseScene from './scenes/base';
+import { initSound } from './sound';
 
 let app!: Application;
 
@@ -105,6 +106,8 @@ export const initGame = async () => {
         Assets.loadBundle('default'),
         Assets.loadBundle('extra'),
       ]);
+
+      initSound();
     })(),
   ]);
 

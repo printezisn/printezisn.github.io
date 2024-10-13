@@ -9,12 +9,17 @@ This is my personal website containing my blog, portfolio and games.
    1. `nvm use`
 1. Install **pnpm** (e.g. with `npm i -g pnpm`).
 1. Download the node packages with `pnpm i`.
+1. Install **ffmpeg** to convert audio files.
 
 ## Stack
 
 1. [Astro](https://astro.build/) for static site generation (used for the portfolio and blog).
 1. Typescript
 1. [PixiJS](https://pixijs.com/) for 2D graphics.
+1. [GSAP](https://gsap.com/) for animations.
+1. [PixiJS Assetpack](https://pixijs.io/assetpack/) for packing and optimizing assets.
+1. [PixiJS Sound](https://pixijs.io/sound/examples/index.html) for playing sounds.
+1. [Audiosprite](https://github.com/tonistiigi/audiosprite) to combine audio files.
 
 ## Commands
 

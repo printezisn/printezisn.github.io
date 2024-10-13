@@ -1,4 +1,5 @@
 import gameState from '../game-state';
+import { setMute } from '../sound';
 import ButtonComponent from './button';
 import type { BaseSpriteProps } from './types';
 
@@ -38,6 +39,8 @@ class VolumeButtonComponent extends ButtonComponent {
 
     localStorage.setItem('muted', gameState.muted ? 'false' : 'true');
     gameState.muted = !gameState.muted;
+
+    setMute(gameState.muted);
   }
 }
 

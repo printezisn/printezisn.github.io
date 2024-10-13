@@ -15,6 +15,7 @@ const game = process.argv[2];
 const assetpack = new AssetPack({
   entry: `./src/assets/games/${game}`,
   output: `./public/games/${game}/assets`,
+  ignore: ['raw-audio-files'],
   cache: true,
   pipes: [
     texturePacker(),

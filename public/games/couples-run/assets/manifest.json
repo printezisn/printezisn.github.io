@@ -4,6 +4,20 @@
       "name": "default",
       "assets": [
         {
+          "alias": ["audio/sounds.json"],
+          "src": ["audio/sounds-zDtATg.json"],
+          "data": {
+            "tags": {}
+          }
+        },
+        {
+          "alias": ["audio/sounds.mp3"],
+          "src": ["audio/sounds-lZXhGA.mp3", "audio/sounds-81F3Ug.ogg"],
+          "data": {
+            "tags": {}
+          }
+        },
+        {
           "alias": ["default"],
           "src": [
             "default-yubASQ.png.json",
