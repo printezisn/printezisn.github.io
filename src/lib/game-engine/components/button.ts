@@ -1,3 +1,5 @@
+import config from '../config';
+import { playSound } from '../sound';
 import SpriteComponent from './sprite';
 import type { BaseSpriteProps } from './types';
 
@@ -39,6 +41,7 @@ class ButtonComponent extends SpriteComponent {
   }
 
   protected async onClick() {
+    playSound(config.sounds.click, false, 5);
     this.texture = this.defaultResource;
     await this.delay(0.1);
     if (this._pointerOver) {

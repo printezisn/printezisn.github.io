@@ -34,6 +34,9 @@ const config = {
     destroyLoadingScene: 'destroyLoadingScene',
     showCredits: 'showCredits',
   },
+  sounds: {
+    click: 'click',
+  },
 };
 
 export default config;

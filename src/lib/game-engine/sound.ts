@@ -12,10 +12,11 @@ export const initSound = () => {
   sound.addSprites(sprites);
 };
 
-export const playSound = (name: string, loop = false) => {
+export const playSound = (name: string, loop = false, volume = 1) => {
   sound.play({
     sprite: name,
     loop,
+    volume,
   });
 };
 
