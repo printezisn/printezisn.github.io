@@ -48,6 +48,10 @@ abstract class BaseComponent<T extends Container> implements DisplayObject {
     }
   }
 
+  get props(): BaseProps {
+    return this._props;
+  }
+
   get object(): T {
     return this._object;
   }
@@ -173,16 +177,16 @@ abstract class BaseComponent<T extends Container> implements DisplayObject {
   }
 
   positionToScreen() {
-    if (this._props.horizontalAlignment === 'center') {
-      this.x = gameState.screen.width / 2 + (this._props.margin?.x ?? 0);
-    } else if (this._props.horizontalAlignment === 'right') {
-      this.x = gameState.screen.width + (this._props.margin?.y ?? 0);
+    if (this.props.horizontalAlignment === 'center') {
+      this.x = gameState.screen.width / 2 + (this.props.margin?.x ?? 0);
+    } else if (this.props.horizontalAlignment === 'right') {
+      this.x = gameState.screen.width + (this.props.margin?.x ?? 0);
     }
 
-    if (this._props.verticalAlignment === 'center') {
-      this.y = gameState.screen.height / 2 + (this._props.margin?.y ?? 0);
-    } else if (this._props.verticalAlignment === 'bottom') {
-      this.y = gameState.screen.height + (this._props.margin?.y ?? 0);
+    if (this.props.verticalAlignment === 'center') {
+      this.y = gameState.screen.height / 2 + (this.props.margin?.y ?? 0);
+    } else if (this.props.verticalAlignment === 'bottom') {
+      this.y = gameState.screen.height + (this.props.margin?.y ?? 0);
     }
   }
 

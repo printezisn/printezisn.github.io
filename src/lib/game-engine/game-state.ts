@@ -7,6 +7,7 @@ interface GameState {
     height: number;
   };
   scene: BaseScene | null;
+  muted: boolean;
 }
 
 const gameState: GameState = {
@@ -16,6 +17,7 @@ const gameState: GameState = {
     height: 0,
   },
   scene: null,
+  muted: localStorage.getItem('muted') === 'true',
 };
 
 export default gameState;

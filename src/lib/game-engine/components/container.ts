@@ -1,6 +1,7 @@
 import { Container } from 'pixi.js';
 import BaseComponent from './base';
 import { basePropsToConfig, type BaseProps, type DisplayObject } from './types';
+import gameState from '../game-state';
 
 class ContainerComponent extends BaseComponent<Container> {
   private _components: DisplayObject[] = [];
@@ -41,6 +42,30 @@ class ContainerComponent extends BaseComponent<Container> {
   destroy() {
     this.removeComponents();
     super.destroy();
+  }
+
+  positionToScreen() {
+    if (this.props.horizontalAlignment === 'center') {
+      this.x =
+        (gameState.screen.width - (this.props.width ?? 0)) / 2 +
+        (this.props.margin?.x ?? 0);
+    } else if (this.props.horizontalAlignment === 'right') {
+      this.x =
+        gameState.screen.width -
+        (this.props.width ?? 0) +
+        (this.props.margin?.x ?? 0);
+    }
+
+    if (this.props.verticalAlignment === 'center') {
+      this.y =
+        (gameState.screen.height - (this.props.height ?? 0)) / 2 +
+        (this.props.margin?.y ?? 0);
+    } else if (this.props.verticalAlignment === 'bottom') {
+      this.y =
+        gameState.screen.height -
+        (this.props.height ?? 0) +
+        (this.props.margin?.y ?? 0);
+    }
   }
 }
 

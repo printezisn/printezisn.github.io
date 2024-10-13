@@ -7,17 +7,15 @@ class CreditsButton extends CreditsButtonComponent {
       hoverResource: 'credits-button-hover.png',
       interactive: true,
       cursor: 'pointer',
-      anchor: { x: 0.5, y: 0.5 },
-      horizontalAlignment: 'center',
-      verticalAlignment: 'bottom',
-      margin: { x: 0, y: -50 },
+      position: { x: 155, y: 24 },
       alpha: 0,
       scale: { x: 0.5, y: 0.5 },
+      anchor: { x: 0.5, y: 0.5 },
     });
 
     this.animate({
-      from: { scaleX: 0.5, scaleY: 0.5, alpha: 0 },
-      to: { scaleX: 1, scaleY: 1, alpha: 1 },
+      from: { alpha: 0, scaleX: 0.5, scaleY: 0.5 },
+      to: { alpha: 1, scaleX: 1, scaleY: 1 },
       duration: 0.5,
       delay: 1.5,
     });
