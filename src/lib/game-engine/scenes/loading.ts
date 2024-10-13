@@ -1,11 +1,9 @@
 import config from '../config';
 import TextComponent from '../components/text';
-import ContainerComponent from '../components/container';
+import BaseScene from './base';
 
-class LoadingScene extends ContainerComponent {
-  constructor() {
-    super({});
-
+class LoadingScene extends BaseScene {
+  async init() {
     this.addComponent(
       new TextComponent({
         text: 'Loading...',

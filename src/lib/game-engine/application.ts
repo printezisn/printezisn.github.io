@@ -59,7 +59,7 @@ const handleTick = () => {
   });
 };
 
-export const changeScene = (newScene: BaseScene) => {
+export const changeScene = async (newScene: BaseScene) => {
   if (gameState.scene) {
     gameState.scene.destroy();
     app.stage.removeChild(gameState.scene.object);
@@ -67,6 +67,8 @@ export const changeScene = (newScene: BaseScene) => {
 
   gameState.scene = newScene;
   app.stage.addChild(gameState.scene.object);
+
+  await newScene.init();
 };
 
 export const initGame = async () => {

@@ -12,10 +12,6 @@ class ButtonComponent extends SpriteComponent {
 
   constructor(props: ButtonProps) {
     super(props);
-
-    this.object.on('pointerenter', this.onPointerEnter.bind(this));
-    this.object.on('pointerout', this.onPointerOut.bind(this));
-    this.object.on('pointerdown', this.onClick.bind(this));
   }
 
   get props() {

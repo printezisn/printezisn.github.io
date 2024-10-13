@@ -17,7 +17,9 @@ abstract class BaseComponent<T extends Container> implements DisplayObject {
     this._props = props;
     this._object = object;
 
-    this.registerToSignal(config.signals.onResize, this.positionToScreen);
+    if (this.props.horizontalAlignment || this.props.verticalAlignment) {
+      this.registerToSignal(config.signals.onResize, this.positionToScreen);
+    }
     if ((this as any).onResize) {
       this.registerToSignal(config.signals.onResize, (this as any).onResize);
     }
@@ -29,6 +31,22 @@ abstract class BaseComponent<T extends Container> implements DisplayObject {
     }
     if ((this as any).onTick) {
       this.registerToSignal(config.signals.onTick, (this as any).onTick);
+    }
+    if ((this as any).onClick) {
+      this.object.on('pointerdown', (e) => {
+        e.stopImmediatePropagation();
+        (this as any).onClick();
+      });
+    }
+    if ((this as any).onPointerEnter) {
+      this.object.on('pointerenter', () => {
+        (this as any).onPointerEnter();
+      });
+    }
+    if ((this as any).onPointerOut) {
+      this.object.on('pointerout', () => {
+        (this as any).onPointerOut();
+      });
     }
 
     this.positionToScreen();

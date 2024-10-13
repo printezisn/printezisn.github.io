@@ -5,14 +5,16 @@ import {
   addSignalListener,
   removeSignalListener,
 } from '../../../lib/game-engine/signals';
-import config from '../../../lib/game-engine/config';
+import engineConfig from '../../../lib/game-engine/config';
 import InitialScene from './scenes/initial-scene';
 
 import Lobster from '@fontsource/lobster/files/lobster-latin-400-normal.woff2';
 import PressStart2P from '@fontsource/press-start-2p/files/press-start-2p-latin-400-normal.woff2';
+import config from './config';
+import IntroScene from './scenes/intro-scene';
 
 const destroyLoadingSceneBinding = addSignalListener(
-  config.signals.destroyLoadingScene,
+  engineConfig.signals.destroyLoadingScene,
   () => {
     removeSignalListener(
       destroyLoadingSceneBinding.name,
@@ -23,17 +25,25 @@ const destroyLoadingSceneBinding = addSignalListener(
   },
 );
 
-const showCreditsBinding = addSignalListener(config.signals.showCredits, () => {
-  removeSignalListener(showCreditsBinding.name, showCreditsBinding.binding);
-  document.getElementById('credits-link')?.click();
+const showCreditsBinding = addSignalListener(
+  engineConfig.signals.showCredits,
+  () => {
+    removeSignalListener(showCreditsBinding.name, showCreditsBinding.binding);
+    document.getElementById('credits-link')?.click();
+  },
+);
+
+const goToIntroBinding = addSignalListener(config.signals.goToIntro, () => {
+  removeSignalListener(goToIntroBinding.name, goToIntroBinding.binding);
+  changeScene(new IntroScene());
 });
 
 const urlParams = new URLSearchParams(window.location.search ?? '');
 
-config.gameName = 'couples-run';
-config.maxFPS = Number(urlParams.get('maxFPS')) || 60;
-config.debug = Boolean(urlParams.get('debug'));
-config.extraAssets = [
+engineConfig.gameName = 'couples-run';
+engineConfig.maxFPS = Number(urlParams.get('maxFPS')) || 60;
+engineConfig.debug = Boolean(urlParams.get('debug'));
+engineConfig.extraAssets = [
   { alias: 'Lobster', src: Lobster, data: { family: 'Lobster' } },
   {
     alias: 'PressStart2P',

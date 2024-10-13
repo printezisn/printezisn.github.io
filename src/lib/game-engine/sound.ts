@@ -12,12 +12,16 @@ export const initSound = () => {
   sound.addSprites(sprites);
 };
 
-export const playSound = (name: string, loop = false, volume = 1) => {
-  sound.play({
+export const playSound = async (name: string, loop = false, volume = 1) => {
+  await sound.play({
     sprite: name,
     loop,
     volume,
   });
+};
+
+export const stopSound = () => {
+  sound.stop();
 };
 
 export const setMute = (muted: boolean) => {
