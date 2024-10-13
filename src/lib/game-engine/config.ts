@@ -15,7 +15,7 @@ const config = {
   },
   screen: {
     width: 1280,
-    aspectRatio: 4 / 3,
+    aspectRatio: 16 / 9,
   },
   speed: {
     tickIntervalMillis: 17,
