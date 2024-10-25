@@ -1,22 +1,30 @@
 ---
 import { getCollection } from 'astro:content';
 
-const categories = (await getCollection('categories')).sort((a, b) =>
+interface Props {
+  categorySlugs?: string[];
+}
+
+const { categorySlugs } = Astro.props;
+
+let categories = (await getCollection('categories')).sort((a, b) =>
   a.data.title.localeCompare(b.data.title),
 );
+if (categorySlugs) {
+  categories = categories.filter((category) =>
+    categorySlugs.includes(category.slug),
+  );
+}
 ---
 
-<aside class="categories-widget">
-  <h2 class="title">Categories</h2>
-  <nav>
-    <ul>
-      {
-        categories.map((cat) => (
-          <li>
-            <a href={`/blog/category/${cat.slug}/`}>{cat.data.title}</a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
-</aside>
+<nav class="categories-list">
+  <ul>
+    {
+      categories.map((cat) => (
+        <li>
+          <a href={`/blog/category/${cat.slug}/`}>{cat.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

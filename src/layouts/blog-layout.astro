@@ -11,7 +11,7 @@ import RobotoBold from '@fontsource/roboto/files/roboto-latin-700-normal.woff2';
 import RobotoBolItalic from '@fontsource/roboto/files/roboto-latin-700-italic.woff2';
 import LoraNormal from '@fontsource/lora/files/lora-latin-400-normal.woff2';
 import LoraBold from '@fontsource/lora/files/lora-latin-700-normal.woff2';
-import CategoriesList from '../components/categories-list.astro';
+import CategoriesWidget from '../components/categories-widget.astro';
 
 const fonts = [
   RobotoNormal,
@@ -129,7 +129,7 @@ const {
         sidebar ? (
           <div class="content-with-sidebar">
             <slot />
-            <CategoriesList />
+            <CategoriesWidget />
           </div>
         ) : (
           <slot />
