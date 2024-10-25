@@ -11,6 +11,7 @@ import RobotoBold from '@fontsource/roboto/files/roboto-latin-700-normal.woff2';
 import RobotoBolItalic from '@fontsource/roboto/files/roboto-latin-700-italic.woff2';
 import LoraNormal from '@fontsource/lora/files/lora-latin-400-normal.woff2';
 import LoraBold from '@fontsource/lora/files/lora-latin-700-normal.woff2';
+import CategoriesList from '../components/categories-list.astro';
 
 const fonts = [
   RobotoNormal,
@@ -32,9 +33,18 @@ interface Props {
   image?: string;
   lang?: string;
   pageTitle?: string;
+  sidebar?: boolean;
 }
 
-const { title, description, path, image, lang, pageTitle } = Astro.props;
+const {
+  title,
+  description,
+  path,
+  image,
+  lang,
+  pageTitle,
+  sidebar = false,
+} = Astro.props;
 ---
 
 <BaseLayout
@@ -115,7 +125,16 @@ const { title, description, path, image, lang, pageTitle } = Astro.props;
     </header>
     <main id="main-content">
       {pageTitle && <h2 class="section-title">{pageTitle}</h2>}
-      <slot />
+      {
+        sidebar ? (
+          <div class="content-with-sidebar">
+            <slot />
+            <CategoriesList />
+          </div>
+        ) : (
+          <slot />
+        )
+      }
     </main>
     <footer>
       &copy; {new Date().getFullYear()} Nikos Printezis. All Rights Reserved.

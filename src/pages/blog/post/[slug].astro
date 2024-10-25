@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import BlogPostLayout from '../../../layouts/blog-post-layout.astro';
+import BlogLayout from '../../../layouts/blog-layout.astro';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths = (async () => {
@@ -17,7 +17,7 @@ const post = (await getCollection('posts')).find((post) => post.slug === slug);
 const { Content } = post ? await post.render() : { Content: '' };
 ---
 
-<BlogPostLayout
+<BlogLayout
   title={`${post?.data.title} | Nikos Printezis`}
   description={post?.data.description ?? ''}
   path={`/blog/post/${post?.slug}/`}
@@ -43,4 +43,4 @@ const { Content } = post ? await post.render() : { Content: '' };
       </aside>
     </article>
   </div>
-</BlogPostLayout>
+</BlogLayout>

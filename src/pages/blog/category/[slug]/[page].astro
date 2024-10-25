@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import BlogPostLayout from '../../../../layouts/blog-post-layout.astro';
+import BlogLayout from '../../../../layouts/blog-layout.astro';
 import type { GetStaticPaths } from 'astro';
 import PostList from '../../../../components/post-list.astro';
 
@@ -31,13 +31,14 @@ const category = (await getCollection('categories')).find(
 );
 ---
 
-<BlogPostLayout
+<BlogLayout
   title={`${category?.data.title} | Category | Nikos Printezis`}
   description={category?.data.description ?? ''}
   path={`/blog/category/${slug}/${page.currentPage}/`}
   pageTitle={category?.data.title}
+  sidebar
 >
   <div class="page-content">
     <PostList posts={page} titleTag="h3" />
   </div>
-</BlogPostLayout>
+</BlogLayout>
