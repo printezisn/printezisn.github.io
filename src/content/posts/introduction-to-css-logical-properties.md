@@ -307,7 +307,7 @@ Here are some common logical properties:
 - `inset-inline-end` instead of `right`
 - `inset-block-start` instead of `top`
 - `inset-block-end` instead of `bottom`
-- and many more...
+- ...and many more
 
 You can find the full list of logical properties on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values" target="_blank" rel="noreferrer">MDN</a>.
 

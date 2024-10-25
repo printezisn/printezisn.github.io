@@ -68,7 +68,8 @@ svg {
   height: 1em;
 }
 
-:not(.astro-code) code {
+p:not(.astro-code) code,
+ul:not(.astro-code) code {
   display: inline-block;
   padding-inline: var(--spacing-1);
   background-color: var(--color-code);
