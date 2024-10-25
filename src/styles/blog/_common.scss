@@ -68,17 +68,16 @@ svg {
   height: 1em;
 }
 
-p:not(.astro-code) code {
+:not(.astro-code) code {
   display: inline-block;
   padding-inline: var(--spacing-1);
-  background-color: var(--color-primary-light);
+  background-color: var(--color-code);
   color: var(--color-primary-white);
 }
 
 .astro-code {
   margin-block-end: var(--spacing-4);
   padding: var(--spacing-4);
-  max-block-size: 500px;
   overflow: auto;
   border-radius: var(--border-radius-normal);
   font-family: var(--font-family-code);
@@ -91,6 +90,15 @@ p:not(.astro-code) code {
     font-size: var(--font-size-2);
     line-height: var(--line-height-2);
   }
+}
+
+.code-result {
+  margin-block-end: var(--spacing-4);
+  padding: var(--spacing-4);
+  overflow: auto;
+  border-radius: var(--border-radius-normal);
+  background-color: var(--color-primary-white);
+  color: var(--color-primary-black);
 }
 
 b,
