@@ -1,7 +1,7 @@
 ---
 title: Introduction to CSS logical properties
-description: CSS logical properties define layout in logical rather than physical dimensions and help us structure content easily in languages with different text direction.
-excerpt: CSS logical properties define layout in logical rather than physical dimensions and help us structure content easily in languages with different text direction (e.g. Chinese and Japanese).
+description: Explore how CSS logical properties enhance web layouts for various languages, simplifying globalization and improving user experience.
+excerpt: In this post, we explore the importance of CSS logical properties for creating web layouts that adapt to a variety of languages. Through a practical example, we demonstrate how traditional CSS can complicate globalization efforts, particularly for languages that read right-to-left or top-to-bottom. By transitioning to CSS logical properties, we simplify our stylesheets and ensure a seamless user experience across diverse languages and writing modes.
 categories:
   - css
 date: 2024-10-25
