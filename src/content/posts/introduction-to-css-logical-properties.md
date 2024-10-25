@@ -7,7 +7,7 @@ categories:
 date: 2024-10-25
 ---
 
-Before discussing what CSS logical properties are, let's see an example first. Imagine that we are building something simple, like a horizontal list of text messages.
+Before we delve into what CSS logical properties are, let’s start with a practical example. Imagine we are creating a simple horizontal list of text messages:
 
 ```html
 <ul class="horizontal-list">
@@ -17,7 +17,7 @@ Before discussing what CSS logical properties are, let's see an example first. I
 </ul>
 ```
 
-Of course we use CSS to define the layout of the list and each message.
+We use CSS to style the list and each message:
 
 ```css
 .horizontal-list {
@@ -40,7 +40,7 @@ Of course we use CSS to define the layout of the list and each message.
 }
 ```
 
-and the result is the following:
+The result is a neatly displayed horizontal list:
 
 <div class="code-result">
   <template shadowrootmode="open">
@@ -72,9 +72,9 @@ and the result is the following:
 
 ---
 
-### Time for globalization
+### Preparing for Globalization
 
-Let's assume now that the widget has become so popular that we want to create variations in other languages too. It's not a problem to make a Spanish or French version, but what about Arabic ? It's written in RTL (Right to Left). Adding a `dir="rtl"` attribute to the element should fix the issue, right ? Let's see how it looks like.
+Now, let’s assume the widget becomes so popular that we want to create versions in other languages. While translating to Spanish or French is straightforward, what about Arabic, which is written right-to-left (RTL)? Simply adding a `dir="rtl"` attribute should address this, but let’s see the outcome:
 
 <div class="code-result" dir="rtl">
   <template shadowrootmode="open">
@@ -104,7 +104,9 @@ Let's assume now that the widget has become so popular that we want to create va
   </template>
 </div>
 
-Notice something strange ? There is no margin between the first and second message, while there is one between the second and third message. That's because we have a `margin-left` rule in the CSS. It must be converted into `margin-right` in RTL languages.
+Notice something odd? There’s no margin between the first and second messages, but there is between the second and third. This occurs because of our `margin-left` rule, which needs to change to `margin-right` for RTL languages.
+
+To fix this, we can add an RTL-specific CSS rule:
 
 ```css
 .horizontal-list {
@@ -175,13 +177,15 @@ Notice something strange ? There is no margin between the first and second messa
   </template>
 </div>
 
-Now it looks much better!
+Now, it looks much better!
 
 ---
 
-### Time to release in another continent
+### Expanding to Other Languages
 
-The widget has unparalleled success and we were asked to release it in various countries throughout Asia. Some of the new languages we have to take into account are written top to bottom and right to left. This means that `margin-left` has to become `margin-top` and `width` has to become `height`.
+With the widget’s success, we’re now releasing it in several Asian countries, some of which have scripts that flow top-to-bottom and right-to-left. This means we need to convert `margin-left` to `margin-top` and `width` to `height`.
+
+Our CSS now includes:
 
 ```css
 .horizontal-list {
@@ -279,35 +283,35 @@ The widget has unparalleled success and we were asked to release it in various c
   </template>
 </div>
 
-We managed to achieve the expected result in every case, but we have to add more and more CSS rules to cover each language type. And imagine doing that for every element in an entire enterprise project. Here's where CSS logical properties shine.
+We’ve achieved the desired layout in all cases, but our CSS has become increasingly complex, requiring many additional rules. Imagine doing this for every element in a large project! This is where CSS logical properties come into play.
 
 ---
 
-### Enter CSS logical properties
+### Introducing CSS Logical Properties
 
-Traditional CSS properties define layout in physical dimensions. For example, `width` is the horizontal size of an element, `height` is the vertical size, `margin-left` is the margin on the left side, etc. The logical properties, as the name implies, define the layout in logical dimensions. For example, `inline-size` is the size of an element in the dimension which is parallel to the flow of text, `block-size` is the size in the dimension perpendicular to the flow of text, etc.
+Traditional CSS properties define layout using physical dimensions. For instance, `width` denotes horizontal size, `height` denotes vertical size and `margin-left` specifies the left margin. In contrast, CSS logical properties define layout based on the logical flow of the content. For instance, `inline-size` denotes the size of the element in the dimension which is parallel to the flow of text, `block-size` denotes the size in the dimension perpendicular to the flow of text, etc.
 
 Here are some common logical properties:
 
-- `inline-size` instead of `width`.
-- `block-size` instead of `height`.
-- `margin-inline-start` instead of `margin-left`.
-- `margin-inline-end` instead of `margin-right`.
-- `margin-block-start` instead of `margin-top`.
-- `margin-block-end` instead of `margin-bottom`.
-- `padding-inline-start` instead of `padding-left`.
-- `padding-inline-end` instead of `padding-right`.
-- `padding-block-start` instead of `padding-top`.
-- `padding-block-end` instead of `padding-bottom`.
-- `inset-inline-start` instead of `left`.
-- `inset-inline-end` instead of `right`.
-- `inset-block-start` instead of `top`.
-- `inset-block-end` instead of `bottom`.
+- `inline-size` instead of `width`
+- `block-size` instead of `height`
+- `margin-inline-start` instead of `margin-left`
+- `margin-inline-end` instead of `margin-right`
+- `margin-block-start` instead of `margin-top`
+- `margin-block-end` instead of `margin-bottom`
+- `padding-inline-start` instead of `padding-left`
+- `padding-inline-end` instead of `padding-right`
+- `padding-block-start` instead of `padding-top`
+- `padding-block-end` instead of `padding-bottom`
+- `inset-inline-start` instead of `left`
+- `inset-inline-end` instead of `right`
+- `inset-block-start` instead of `top`
+- `inset-block-end` instead of `bottom`
 - and many more...
 
-You can find the complete list of logical properties in <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values" target="_blank" rel="noreferrer">MDN</a>.
+You can find the full list of logical properties on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values" target="_blank" rel="noreferrer">MDN</a>.
 
-Here's how we can rewrite the widget to use logical properties.
+Here’s how we can refactor our widget to use logical properties:
 
 ```css
 .horizontal-list {
@@ -330,7 +334,9 @@ Here's how we can rewrite the widget to use logical properties.
 }
 ```
 
-and here's how it look in LTR (Left to Right):
+This setup works seamlessly in different text directions:
+
+**LTR (Left-to-Right)**:
 
 <div class="code-result">
   <template shadowrootmode="open">
@@ -360,7 +366,7 @@ and here's how it look in LTR (Left to Right):
   </template>
 </div>
 
-in RTL:
+**RTL (Right-to-Left)**:
 
 <div class="code-result" dir="rtl">
   <template shadowrootmode="open">
@@ -390,7 +396,7 @@ in RTL:
   </template>
 </div>
 
-and in vertical RTL:
+**Vertical RTL**:
 
 <div class="code-result">
   <template shadowrootmode="open">
@@ -420,13 +426,13 @@ and in vertical RTL:
   </template>
 </div>
 
-### What about browser support ?
+### Browser Support
 
-CSS logical properties have a pretty good cross browser support at the time of writing, so you can start using them in your projects. You can take a look at <a href="https://caniuse.com/css-logical-props" target="_blank" rel="noreferrer">caniuse</a> for a complete overview.
+CSS logical properties boast good cross-browser support, so you can confidently implement them in your projects. For detailed compatibility, check <a href="https://caniuse.com/css-logical-props" target="_blank" rel="noreferrer">caniuse</a>.
 
-### What about flex and grid ?
+### Flexbox and Grid with Logical Properties
 
-Flex and grid support layouts in logical dimesions by default. For example, let's rewrite the widget using flex.
+Both Flexbox and Grid layouts inherently support logical dimensions. Here’s how we can rewrite our widget using Flexbox:
 
 ```css
 .horizontal-list {
@@ -445,83 +451,6 @@ Flex and grid support layouts in logical dimesions by default. For example, let'
 }
 ```
 
-Here's the result in LTR:
+The output remains consistent across text directions, making it easier to maintain a responsive design.
 
-<div class="code-result">
-  <template shadowrootmode="open">
-    <style>
-      .horizontal-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 50px;
-        li {
-          inline-size: 200px;
-          flex-shrink: 0;
-        }
-      }
-    </style>
-    <ul class="horizontal-list">
-      <li>I am text message no. 1 and I come first in the list</li>
-      <li>I am text message no. 2 and I come second in the list</li>
-      <li>I am text message no. 3 and I come third in the list</li>
-    </ul>
-  </template>
-</div>
-
-in RTL:
-
-<div class="code-result" dir="rtl">
-  <template shadowrootmode="open">
-    <style>
-      .horizontal-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 50px;
-        li {
-          inline-size: 200px;
-          flex-shrink: 0;
-        }
-      }
-    </style>
-    <ul class="horizontal-list" dir="rtl">
-      <li>I am text message no. 1 and I come first in the list</li>
-      <li>I am text message no. 2 and I come second in the list</li>
-      <li>I am text message no. 3 and I come third in the list</li>
-    </ul>
-  </template>
-</div>
-
-and in vertical RTL:
-
-<div class="code-result">
-  <template shadowrootmode="open">
-    <style>
-      .horizontal-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 50px;
-        li {
-          inline-size: 200px;
-          flex-shrink: 0;
-        }
-      }
-    </style>
-    <ul class="horizontal-list" style="writing-mode: vertical-rl">
-      <li>I am text message no. 1 and I come first in the list</li>
-      <li>I am text message no. 2 and I come second in the list</li>
-      <li>I am text message no. 3 and I come third in the list</li>
-    </ul>
-  </template>
-</div>
+In conclusion, leveraging CSS logical properties simplifies the process of creating layouts that adapt to different languages and writing modes, enhancing both your code’s maintainability and your website’s global accessibility.
