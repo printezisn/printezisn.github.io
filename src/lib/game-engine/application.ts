@@ -22,10 +22,12 @@ const resizeCanvas = () => {
     getScreenHeight(),
   );
 
-  gameState.screen.width = width;
-  gameState.screen.height = height;
-  app.renderer.resize(width, height);
-  fireSignal(config.signals.onResize);
+  if (width !== gameState.screen.width || height !== gameState.screen.height) {
+    gameState.screen.width = width;
+    gameState.screen.height = height;
+    app.renderer.resize(width, height);
+    fireSignal(config.signals.onResize);
+  }
 
   const orientationChanged = gameState.screen.orientation !== orientation;
   gameState.screen.orientation = orientation;

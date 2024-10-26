@@ -12,6 +12,7 @@ import Lobster from '@fontsource/lobster/files/lobster-latin-400-normal.woff2';
 import PressStart2P from '@fontsource/press-start-2p/files/press-start-2p-latin-400-normal.woff2';
 import config from './config';
 import IntroScene from './scenes/intro-scene';
+import GameScene from './scenes/game-scene';
 
 const destroyLoadingSceneBinding = addSignalListener(
   engineConfig.signals.destroyLoadingScene,
@@ -36,6 +37,11 @@ const showCreditsBinding = addSignalListener(
 const goToIntroBinding = addSignalListener(config.signals.goToIntro, () => {
   removeSignalListener(goToIntroBinding.name, goToIntroBinding.binding);
   changeScene(new IntroScene());
+});
+
+const goToGameBinding = addSignalListener(config.signals.goToGame, () => {
+  removeSignalListener(goToGameBinding.name, goToGameBinding.binding);
+  changeScene(new GameScene());
 });
 
 const urlParams = new URLSearchParams(window.location.search ?? '');

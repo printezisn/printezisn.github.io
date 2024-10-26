@@ -5,6 +5,8 @@ const config = {
   },
   signals: {
     goToIntro: 'goToIntro',
+    goToGame: 'goToGame',
+    chooseCharacter: 'chooseCharacter',
   },
 };
 

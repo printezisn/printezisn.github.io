@@ -2,8 +2,14 @@ import MovingBackgroundComponent from '../../../../lib/game-engine/components/mo
 import TextComponent from '../../../../lib/game-engine/components/text';
 import gameState from '../../../../lib/game-engine/game-state';
 import BaseScene from '../../../../lib/game-engine/scenes/base';
-import { fadeInSound } from '../../../../lib/game-engine/sound';
+import {
+  fadeInSound,
+  fadeOutSound,
+  playSound,
+} from '../../../../lib/game-engine/sound';
 import config from '../config';
+import engineConfig from '../../../../lib/game-engine/config';
+import Selection from '../game-objects/intro-scene/selection';
 
 const TEXTS = [
   'The night has fallen deep and the young(?)\ncouple is ready to get married',
@@ -11,8 +17,15 @@ const TEXTS = [
   "They're out of drinks in the party",
   'They go out to get drinks for their guests',
   'but they engage into a zombie apocalypse',
-  'Choose your character and collect\nas many drinks as you can',
-  'while avoiding the pits\nand the enemies coming after you',
+  '',
+  'Collect as many drinks as you can to\nincrease your score',
+  'You lose a life point each time\nan enemy touches you',
+  "It's game over if you lose 3 life points\nor you fall into a pit",
+  'Click to jump and avoid enemies and pits',
+  'Anastasia reduces her speed while you click\nand jumps higher when you release',
+  'Nikos can perform a double jump if you\nclick again while jumping',
+  '',
+  'Choose your character',
 ];
 
 class IntroScene extends BaseScene {
@@ -29,8 +42,8 @@ class IntroScene extends BaseScene {
     );
 
     await Promise.all([
-      this._createTexts(TEXTS, true),
-      this._createTexts(TEXTS, false),
+      ...this._createTexts(TEXTS, true),
+      ...this._createTexts(TEXTS, false),
       fadeInSound(config.sounds.menuLoop, {
         toVolume: 0.3,
         fadeDuration: 0.5,
@@ -38,6 +51,16 @@ class IntroScene extends BaseScene {
       }),
       this.animate({ from: { alpha: 0 }, to: { alpha: 1 }, duration: 2 }),
     ]);
+
+    const selection = new Selection();
+    this.addComponent(selection);
+
+    selection.animate({ from: { alpha: 0 }, to: { alpha: 1 }, duration: 1 });
+
+    this.registerToSignal(
+      config.signals.chooseCharacter,
+      this._onCharacterSelection,
+    );
   }
 
   protected onOrientationChange() {
@@ -50,9 +73,19 @@ class IntroScene extends BaseScene {
 
   private _createTexts(texts: string[], landscape: boolean) {
     let labelIndex = 0;
+    let textIndex = 0;
+    let colorIndex = 0;
+    let distance = 20;
+    const colors = [0xcccccc, 0xffcc00];
     const promises: Promise<void>[] = [];
 
-    texts.forEach((text, textIndex) => {
+    texts.forEach((text) => {
+      if (!text) {
+        colorIndex = (colorIndex + 1) % colors.length;
+        distance += 10;
+        return;
+      }
+
       const visible =
         gameState.screen.orientation === (landscape ? 'landscape' : 'portrait');
       const paragraphs = landscape
@@ -65,11 +98,11 @@ class IntroScene extends BaseScene {
           text: paragraph,
           fontFamily: 'PressStart2P',
           fontSize: 16,
-          textColor: 0xcccccc,
+          textColor: colors[colorIndex],
           anchor: { x: 0.5, y: 0 },
           alpha: 0,
           horizontalAlignment: 'center',
-          position: { x: 0, y: 20 + labelIndex * 40 },
+          position: { x: 0, y: distance },
           visible,
         });
 
@@ -78,17 +111,32 @@ class IntroScene extends BaseScene {
           component.animate({
             from: { alpha: 0 },
             to: { alpha: 1 },
-            duration: 3,
-            delay: 2 + textIndex * 3,
+            duration: 2,
+            delay: 2 + textIndex * 2,
           }),
         );
 
         labelIndex++;
+        distance += 40;
         this._totalTexts++;
       });
+
+      textIndex++;
     });
 
     return promises;
+  }
+
+  private async _onCharacterSelection() {
+    await Promise.all([
+      playSound(engineConfig.sounds.click),
+      fadeOutSound(config.sounds.menuLoop, { fadeDuration: 2 }),
+      this.animate({
+        from: { alpha: 1 },
+        to: { alpha: 0 },
+        duration: 2,
+      }),
+    ]);
   }
 }
 
