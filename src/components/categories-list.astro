@@ -22,7 +22,9 @@ if (categorySlugs) {
     {
       categories.map((cat) => (
         <li>
-          <a href={`/blog/category/${cat.slug}/`}>{cat.data.title}</a>
+          <a href={`/blog/category/${cat.slug}/`} class="button">
+            {cat.data.title}
+          </a>
         </li>
       ))
     }

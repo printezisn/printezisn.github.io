@@ -1,16 +1,25 @@
 .button {
-  border-radius: var(--border-radius-larger);
-  background-color: var(--color-primary-light);
+  display: inline-block;
+  border: 0;
+  border-radius: var(--border-radius-large);
+  background: var(--color-primary-light);
   color: var(--color-primary-white);
   white-space: nowrap;
-  padding-block: var(--spacing-4);
-  padding-inline: var(--spacing-8);
+  padding-block: var(--spacing-6);
+  padding-inline: var(--spacing-5);
   line-height: 0;
   text-decoration: none;
-  transition: color var(--transition-time-quick);
+  transition: background-color var(--transition-time-quick);
+  cursor: pointer;
 
   &:hover {
-    color: var(--color-secondary-light);
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-white);
+  }
+
+  &:active {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-white);
   }
 
   &:has(svg) {
@@ -21,10 +30,13 @@
   }
 }
 
-.opposite-buttons {
+.button-group {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   gap: var(--spacing-4);
+}
+
+.page-navigation-buttons {
+  justify-content: space-between;
   margin-block-start: var(--spacing-10);
 }

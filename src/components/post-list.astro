@@ -43,7 +43,7 @@ const { posts, titleTag = 'h2' } = Astro.props;
 }
 {
   (posts.currentPage > 1 || posts.currentPage < posts.lastPage) && (
-    <nav class="opposite-buttons">
+    <nav class="button-group page-navigation-buttons">
       {posts.currentPage > 1 ? (
         <a class="button" href={`/blog/posts/${posts.currentPage - 1}/`}>
           <Fragment set:html={ArrowLeftIcon} />
