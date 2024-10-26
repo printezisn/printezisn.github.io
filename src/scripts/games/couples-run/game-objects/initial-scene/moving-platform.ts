@@ -6,15 +6,19 @@ const TOTAL_MIDDLE_PLATFORMS = 2;
 
 class MovingPlatform extends ContainerComponent {
   constructor() {
-    super({});
+    super({
+      label: 'moving-platform',
+    });
 
     this.addComponent(
       new TilingSpriteComponent({
+        label: 'moving-platform-top',
         resource: 'platform-top.png',
       }),
     );
     this.addComponent(
       new TilingSpriteComponent({
+        label: 'moving-platform-middle',
         resource: 'platform-middle.png',
       }),
     );

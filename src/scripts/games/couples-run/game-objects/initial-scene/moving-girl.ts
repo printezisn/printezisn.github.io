@@ -10,6 +10,7 @@ class MovingGirl extends SpriteComponent {
 
   constructor() {
     super({
+      label: 'moving-girl',
       resource: 'girl/run/girl-run-1.png',
       anchor: { x: 0, y: 1 },
       position: { x: 200, y: 0 },

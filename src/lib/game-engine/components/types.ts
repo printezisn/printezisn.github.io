@@ -12,6 +12,7 @@ export interface Point {
 }
 
 export interface BaseProps {
+  label: string;
   position?: Point;
   anchor?: Point;
   scale?: Point;
@@ -30,6 +31,7 @@ export interface BaseSpriteProps extends BaseProps {
 }
 
 export const basePropsToConfig = (props: BaseProps) => ({
+  label: props.label,
   position: props.position,
   anchor: props.anchor,
   scale: props.scale,

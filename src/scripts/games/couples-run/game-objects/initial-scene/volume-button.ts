@@ -3,6 +3,7 @@ import VolumeButtonComponent from '../../../../../lib/game-engine/components/vol
 class VolumeButton extends VolumeButtonComponent {
   constructor() {
     super({
+      label: 'volume-button',
       resource: 'volume-on.png',
       hoverResource: 'volume-on-hover.png',
       mutedResource: 'volume-off.png',

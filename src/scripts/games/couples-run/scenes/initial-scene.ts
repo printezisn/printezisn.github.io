@@ -23,6 +23,7 @@ class InitialScene extends BaseScene {
 
     this.addComponent(
       new MovingBackgroundComponent({
+        label: 'city-bg',
         resource: 'city-bg.png',
       }),
     );

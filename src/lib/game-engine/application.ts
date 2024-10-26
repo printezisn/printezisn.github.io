@@ -100,7 +100,7 @@ export const initGame = async () => {
     height: getScreenHeight(),
   });
 
-  if (import.meta.env.DEV) {
+  if (import.meta.env.DEV || config.debug) {
     (globalThis as any).__PIXI_APP__ = app;
   }
 

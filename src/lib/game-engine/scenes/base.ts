@@ -2,7 +2,7 @@ import ContainerComponent from '../components/container';
 
 class BaseScene extends ContainerComponent {
   constructor() {
-    super({});
+    super({ label: 'Scene' });
   }
 
   async init() {}

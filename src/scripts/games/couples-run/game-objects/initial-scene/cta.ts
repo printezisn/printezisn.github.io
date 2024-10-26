@@ -3,6 +3,7 @@ import TextComponent from '../../../../../lib/game-engine/components/text';
 class CTA extends TextComponent {
   constructor() {
     super({
+      label: 'cta',
       text: 'Click to play',
       fontFamily: 'PressStart2P',
       fontSize: 24,

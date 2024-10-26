@@ -5,6 +5,7 @@ import VolumeButton from './volume-button';
 class Settings extends ContainerComponent {
   constructor() {
     super({
+      label: 'settings',
       horizontalAlignment: 'center',
       verticalAlignment: 'bottom',
       width: 230,

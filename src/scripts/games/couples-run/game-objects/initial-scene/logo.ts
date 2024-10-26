@@ -4,6 +4,7 @@ import gameState from '../../../../../lib/game-engine/game-state';
 class Logo extends TextComponent {
   constructor() {
     super({
+      label: 'logo',
       text: 'COUPLES RUN',
       textColor: 0xffcc00,
       fontSize: 128,

@@ -6,6 +6,7 @@ class LoadingScene extends BaseScene {
   async init() {
     this.addComponent(
       new TextComponent({
+        label: 'loading-text',
         text: 'Loading...',
         anchor: { x: 0.5, y: 0.5 },
         fontFamily: config.loadingScene.fontFamily,

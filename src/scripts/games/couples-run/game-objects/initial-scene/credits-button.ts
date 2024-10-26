@@ -3,6 +3,7 @@ import CreditsButtonComponent from '../../../../../lib/game-engine/components/cr
 class CreditsButton extends CreditsButtonComponent {
   constructor() {
     super({
+      label: 'credits-button',
       resource: 'credits-button.png',
       hoverResource: 'credits-button-hover.png',
       interactive: true,
