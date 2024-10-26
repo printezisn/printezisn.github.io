@@ -146,6 +146,18 @@ abstract class BaseComponent<T extends Container> implements DisplayObject {
     this.object.alpha = alpha;
   }
 
+  get visible() {
+    return this.object.visible;
+  }
+
+  set visible(visible: boolean) {
+    this.object.visible = visible;
+  }
+
+  get label() {
+    return this.object.label;
+  }
+
   get parent() {
     return this._parent;
   }
@@ -159,7 +171,7 @@ abstract class BaseComponent<T extends Container> implements DisplayObject {
   }
 
   set interactive(interactive: boolean) {
-    this.object.interactive = true;
+    this.object.interactive = interactive;
   }
 
   animate(options: AnimationOptions) {

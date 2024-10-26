@@ -3,6 +3,9 @@ import type { Container } from 'pixi.js';
 export interface DisplayObject {
   get object(): Container;
   set parent(parent: DisplayObject | null);
+  get label(): string;
+  set visible(visible: boolean);
+  get visible(): boolean;
   destroy(): void;
 }
 
@@ -24,6 +27,7 @@ export interface BaseProps {
   margin?: Point;
   interactive?: boolean;
   cursor?: string;
+  visible?: boolean;
 }
 
 export interface BaseSpriteProps extends BaseProps {
@@ -40,4 +44,5 @@ export const basePropsToConfig = (props: BaseProps) => ({
   alpha: props.alpha,
   interactive: props.interactive,
   cursor: props.cursor,
+  visible: props.visible,
 });
