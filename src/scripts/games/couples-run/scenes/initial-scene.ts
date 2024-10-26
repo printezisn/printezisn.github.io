@@ -1,6 +1,10 @@
 import MovingBackgroundComponent from '../../../../lib/game-engine/components/moving-background';
 import BaseScene from '../../../../lib/game-engine/scenes/base';
-import { playSound, stopSound } from '../../../../lib/game-engine/sound';
+import {
+  fadeInSound,
+  fadeOutSound,
+  playSound,
+} from '../../../../lib/game-engine/sound';
 import config from '../config';
 import engineConfig from '../../../../lib/game-engine/config';
 import CTA from '../game-objects/initial-scene/cta';
@@ -29,7 +33,11 @@ class InitialScene extends BaseScene {
     this.addComponent(new CTA());
     this.addComponent(new Settings());
 
-    playSound(config.sounds.mainLoop);
+    fadeInSound(config.sounds.mainLoop, {
+      loop: true,
+      toVolume: 0.3,
+      fadeDuration: 0.5,
+    });
 
     this.delay(2).then(() => {
       this._canContinue = true;
@@ -41,10 +49,9 @@ class InitialScene extends BaseScene {
 
     this.interactive = false;
 
-    stopSound();
-
     await Promise.all([
-      playSound(engineConfig.sounds.click, false, 5),
+      playSound(engineConfig.sounds.click),
+      fadeOutSound(config.sounds.mainLoop, { fadeDuration: 2 }),
       this.animate({
         from: { alpha: 1 },
         to: { alpha: 0 },

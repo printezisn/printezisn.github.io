@@ -37,7 +37,7 @@ class ButtonComponent extends SpriteComponent {
   }
 
   protected async onClick() {
-    playSound(config.sounds.click, false, 5);
+    playSound(config.sounds.click);
     this.texture = this.defaultResource;
     await this.delay(0.1);
     if (this._pointerOver) {
