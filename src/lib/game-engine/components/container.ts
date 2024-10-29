@@ -18,25 +18,29 @@ class ContainerComponent extends BaseComponent<Container> {
     return this._components;
   }
 
-  addComponent(component: DisplayObject) {
+  addComponent<T extends DisplayObject>(component: T) {
     this.components.push(component);
     this.object.addChild(component.object);
     component.parent = this;
+
+    return component;
   }
 
   removeComponent(component: DisplayObject) {
     const index = this.components.indexOf(component);
     if (index >= 0) {
+      this.components[index].parent = null;
       this.components[index].destroy();
       this.components.splice(index, 1);
-      this.object.removeChildAt(index);
     }
   }
 
   removeComponents() {
-    this.components.forEach((component) => component.destroy());
+    this.components.forEach((component) => {
+      component.parent = null;
+      component.destroy();
+    });
     this.components = [];
-    this.object.removeChildren();
   }
 
   destroy() {

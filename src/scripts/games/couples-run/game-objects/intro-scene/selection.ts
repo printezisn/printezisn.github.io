@@ -1,5 +1,4 @@
 import ContainerComponent from '../../../../../lib/game-engine/components/container';
-import gameState from '../../../../../lib/game-engine/game-state';
 import Boy from './boy';
 import Girl from './girl';
 
@@ -16,12 +15,6 @@ class Selection extends ContainerComponent {
 
     this.addComponent(new Girl());
     this.addComponent(new Boy());
-
-    this.onOrientationChange();
-  }
-
-  protected onOrientationChange() {
-    this.y = gameState.screen.orientation === 'portrait' ? 761 : 521;
   }
 }
 

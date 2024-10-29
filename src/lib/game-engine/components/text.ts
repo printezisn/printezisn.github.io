@@ -9,6 +9,10 @@ interface TextProps extends BaseProps {
   textColor: number;
   strokeColor?: number;
   strokeWidth?: number;
+  lineHeight?: number;
+  wordWrap?: boolean;
+  wordWrapWidth?: number;
+  align?: 'left' | 'center' | 'right' | 'justify';
 }
 
 class TextComponent extends BaseComponent<Text> {
@@ -21,6 +25,10 @@ class TextComponent extends BaseComponent<Text> {
           fontFamily: props.fontFamily,
           fontSize: props.fontSize,
           fill: props.textColor,
+          lineHeight: props.lineHeight,
+          wordWrap: props.wordWrap,
+          wordWrapWidth: props.wordWrapWidth,
+          align: props.align,
           stroke: props.strokeColor && {
             color: props.strokeColor,
             width: props.strokeWidth,
@@ -45,6 +53,14 @@ class TextComponent extends BaseComponent<Text> {
 
   set fontSize(fontSize: number) {
     this.object.style.fontSize = fontSize;
+  }
+
+  get wordWrapWidth(): number {
+    return this.object.style.wordWrapWidth;
+  }
+
+  set wordWrapWidth(width: number) {
+    this.object.style.wordWrapWidth = width;
   }
 }
 

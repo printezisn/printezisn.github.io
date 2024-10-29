@@ -1,4 +1,3 @@
-import MovingBackgroundComponent from '../../../../lib/game-engine/components/moving-background';
 import TextComponent from '../../../../lib/game-engine/components/text';
 import gameState from '../../../../lib/game-engine/game-state';
 import BaseScene from '../../../../lib/game-engine/scenes/base';
@@ -10,26 +9,45 @@ import {
 import config from '../config';
 import engineConfig from '../../../../lib/game-engine/config';
 import Selection from '../game-objects/intro-scene/selection';
+import { fireSignal } from '../../../../lib/game-engine/signals';
+import MovingBackgroundComponent from '../../../../lib/game-engine/components/moving-background';
 
-const TEXTS = [
-  'The night has fallen deep and the young(?)\ncouple is ready to get married',
-  'But a tragedy happens',
-  "They're out of drinks in the party",
-  'They go out to get drinks for their guests',
-  'but they engage into a zombie apocalypse',
-  '',
-  'Collect as many drinks as you can to\nincrease your score',
-  'You lose a life point each time\nan enemy touches you',
-  "It's game over if you lose 3 life points\nor you fall into a pit",
-  'Click to jump and avoid enemies and pits',
-  'Anastasia reduces her speed while you click\nand jumps higher when you release',
-  'Nikos can perform a double jump if you\nclick again while jumping',
-  '',
-  'Choose your character',
-];
+const INTRO =
+  'The night has fallen deep and the young(?) couple is ' +
+  "ready to get married, but a tragedy happens. They're " +
+  'out of drinks in the party. They go out to get more ' +
+  'drinks for the guests and they engage into a zombie ' +
+  'apocalypse.';
+
+const RULES =
+  'Collect as many drinks as you can to increase your ' +
+  'score. You lose a life point each time an enemy ' +
+  "touches you. It's game over if you lose 3 life " +
+  'points or you fall into a pit. Click to jump and ' +
+  'avoid enemies and pits.';
+
+const CHARACTER_EXPLANATION =
+  'Anastasia reduces her speed ' +
+  'while you click and jumps higher when you release. ' +
+  'Nikos can perform a double jump if you click again ' +
+  'while jumping.';
 
 class IntroScene extends BaseScene {
-  private _totalTexts = 0;
+  private get introComponent() {
+    return this.components[1] as TextComponent;
+  }
+
+  private get characterExplanationComponent() {
+    return this.components[2] as TextComponent;
+  }
+
+  private get chooseCharacterComponent() {
+    return this.components[3] as TextComponent;
+  }
+
+  private get selectionComponent() {
+    return this.components[4] as Selection;
+  }
 
   async init() {
     this.alpha = 0;
@@ -42,20 +60,64 @@ class IntroScene extends BaseScene {
     );
 
     await Promise.all([
-      ...this._createTexts(TEXTS, true),
-      ...this._createTexts(TEXTS, false),
+      this.animate({ from: { alpha: 0 }, to: { alpha: 1 }, duration: 2 }),
       fadeInSound(config.sounds.menuLoop, {
         toVolume: 0.3,
         fadeDuration: 0.5,
         loop: true,
       }),
-      this.animate({ from: { alpha: 0 }, to: { alpha: 1 }, duration: 2 }),
     ]);
 
-    const selection = new Selection();
-    this.addComponent(selection);
+    await this._createText(INTRO);
 
-    selection.animate({ from: { alpha: 0 }, to: { alpha: 1 }, duration: 1 });
+    await this.delay(5);
+    await this._hideIntro();
+
+    await this._createText(RULES);
+    await this._createText(
+      CHARACTER_EXPLANATION,
+      this.introComponent.y + this.introComponent.height + 10,
+      0xffcc00,
+    );
+
+    this.addComponent(
+      new TextComponent({
+        label: 'choose-character',
+        text: 'Choose Character',
+        fontFamily: 'PressStart2P',
+        fontSize: 24,
+        textColor: 0xffcc00,
+        anchor: { x: 0.5, y: 0 },
+        alpha: 0,
+        position: {
+          x: 0,
+          y:
+            this.characterExplanationComponent.y +
+            this.characterExplanationComponent.height +
+            40,
+        },
+        horizontalAlignment: 'center',
+      }),
+    );
+    this.addComponent(new Selection());
+
+    this.selectionComponent.y =
+      this.chooseCharacterComponent.y +
+      this.chooseCharacterComponent.height +
+      40;
+
+    await Promise.all([
+      this.chooseCharacterComponent.animate({
+        from: { alpha: 0 },
+        to: { alpha: 1 },
+        duration: 1,
+      }),
+      this.selectionComponent.animate({
+        from: { alpha: 0 },
+        to: { alpha: 1 },
+        duration: 1,
+      }),
+    ]);
 
     this.registerToSignal(
       config.signals.chooseCharacter,
@@ -63,68 +125,55 @@ class IntroScene extends BaseScene {
     );
   }
 
-  protected onOrientationChange() {
-    for (let i = 1; i <= this._totalTexts; i++) {
-      this.components[i].visible = this.components[i].label.endsWith(
-        gameState.screen.orientation,
-      );
+  protected onResize() {
+    this.introComponent.wordWrapWidth = gameState.screen.width - 40;
+    if (this.characterExplanationComponent) {
+      this.characterExplanationComponent.y =
+        this.introComponent.y + this.introComponent.height + 10;
+      this.characterExplanationComponent.wordWrapWidth =
+        gameState.screen.width - 40;
+    }
+    if (this.chooseCharacterComponent) {
+      this.chooseCharacterComponent.y =
+        this.characterExplanationComponent.y +
+        this.characterExplanationComponent.height +
+        40;
+      this.selectionComponent.y = this.chooseCharacterComponent.y + 40;
     }
   }
 
-  private _createTexts(texts: string[], landscape: boolean) {
-    let labelIndex = 0;
-    let textIndex = 0;
-    let colorIndex = 0;
-    let distance = 20;
-    const colors = [0xcccccc, 0xffcc00];
-    const promises: Promise<void>[] = [];
+  private async _createText(text: string, y = 20, textColor = 0xcccccc) {
+    const component = this.addComponent(
+      new TextComponent({
+        label: 'introduction',
+        text,
+        fontFamily: 'PressStart2P',
+        fontSize: 24,
+        textColor,
+        alpha: 0,
+        position: { x: 20, y },
+        wordWrap: true,
+        wordWrapWidth: gameState.screen.width - 40,
+        align: 'justify',
+        lineHeight: 40,
+      }),
+    );
 
-    texts.forEach((text) => {
-      if (!text) {
-        colorIndex = (colorIndex + 1) % colors.length;
-        distance += 10;
-        return;
-      }
+    await component.animate({
+      from: { alpha: 0 },
+      to: { alpha: 1 },
+      duration: 3,
+    });
+  }
 
-      const visible =
-        gameState.screen.orientation === (landscape ? 'landscape' : 'portrait');
-      const paragraphs = landscape
-        ? [text.replace(/\n/g, ' ')]
-        : text.split('\n');
-
-      paragraphs.forEach((paragraph) => {
-        const component = new TextComponent({
-          label: `text-${labelIndex}-${landscape ? 'landscape' : 'portrait'}`,
-          text: paragraph,
-          fontFamily: 'PressStart2P',
-          fontSize: 16,
-          textColor: colors[colorIndex],
-          anchor: { x: 0.5, y: 0 },
-          alpha: 0,
-          horizontalAlignment: 'center',
-          position: { x: 0, y: distance },
-          visible,
-        });
-
-        this.addComponent(component);
-        promises.push(
-          component.animate({
-            from: { alpha: 0 },
-            to: { alpha: 1 },
-            duration: 2,
-            delay: 2 + textIndex * 2,
-          }),
-        );
-
-        labelIndex++;
-        distance += 40;
-        this._totalTexts++;
-      });
-
-      textIndex++;
+  private async _hideIntro() {
+    await this.introComponent.animate({
+      from: { alpha: 1 },
+      to: { alpha: 0 },
+      duration: 3,
     });
 
-    return promises;
+    this.introComponent.destroy();
   }
 
   private async _onCharacterSelection() {
@@ -137,6 +186,8 @@ class IntroScene extends BaseScene {
         duration: 2,
       }),
     ]);
+
+    fireSignal(config.signals.goToGame);
   }
 }
 

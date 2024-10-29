@@ -195,6 +195,11 @@ abstract class BaseComponent<T extends Container> implements DisplayObject {
   }
 
   destroy() {
+    if (this.parent) {
+      this.parent.removeComponent(this);
+      return;
+    }
+
     this._bindings.forEach(({ name, binding }) =>
       removeSignalListener(name, binding),
     );
