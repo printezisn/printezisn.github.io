@@ -13,6 +13,7 @@ import PressStart2P from '@fontsource/press-start-2p/files/press-start-2p-latin-
 import config from './config';
 import IntroScene from './scenes/intro-scene';
 import GameScene from './scenes/game-scene';
+import assetsManifest from './manifest.json';
 
 const destroyLoadingSceneBinding = addSignalListener(
   engineConfig.signals.destroyLoadingScene,
@@ -49,7 +50,8 @@ const urlParams = new URLSearchParams(window.location.search ?? '');
 engineConfig.gameName = 'couples-run';
 engineConfig.maxFPS = Number(urlParams.get('maxFPS')) || 60;
 engineConfig.debug = Boolean(urlParams.get('debug'));
-engineConfig.extraAssets = [
+engineConfig.assets.manifest = assetsManifest;
+engineConfig.assets.extra = [
   { alias: 'Lobster', src: Lobster, data: { family: 'Lobster' } },
   {
     alias: 'PressStart2P',

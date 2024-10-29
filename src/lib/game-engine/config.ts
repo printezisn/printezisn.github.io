@@ -1,3 +1,5 @@
+import type { AssetsManifest } from 'pixi.js';
+
 interface Asset {
   alias: string;
   src: string;
@@ -7,9 +9,12 @@ interface Asset {
 const config = {
   gameName: '',
   gameContainer: document.body,
-  extraAssets: [] as Asset[],
   maxFPS: 60,
   debug: false,
+  assets: {
+    manifest: {} as AssetsManifest,
+    extra: [] as Asset[],
+  },
   colors: {
     backgroundColor: '#000000',
   },

@@ -120,9 +120,9 @@ export const initGame = async () => {
     (async () => {
       await Assets.init({
         basePath: `/games/${config.gameName}/assets`,
-        manifest: 'manifest.json',
+        manifest: config.assets.manifest,
       });
-      Assets.addBundle('extra', config.extraAssets);
+      Assets.addBundle('extra', config.assets.extra);
 
       await Promise.all([
         Assets.loadBundle('default'),
