@@ -3,6 +3,23 @@ import fs from 'fs';
 
 // eslint-disable-next-line
 const game = process.argv[2];
+if (!game) {
+  console.error('Missing game name');
+  // eslint-disable-next-line
+  process.exit(1);
+}
+
+if (!fs.existsSync(`./src/assets/games/${game}/raw-audio-files`)) {
+  console.error('Invalid game name');
+  // eslint-disable-next-line
+  process.exit(1);
+}
+
+if (!fs.existsSync(`./src/assets/games/${game}/audio`)) {
+  console.error('Output directory does not exist');
+  // eslint-disable-next-line
+  process.exit(1);
+}
 
 audiosprite(
   [`./src/assets/games/${game}/raw-audio-files/*`],
