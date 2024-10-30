@@ -34,6 +34,20 @@ export interface BaseSpriteProps extends BaseProps {
   resource: string;
 }
 
+export interface BaseTextProps extends BaseProps {
+  text: string;
+  fontFamily: string;
+  fontSize: number;
+  textColor: number;
+  strokeColor?: number;
+  strokeWidth?: number;
+  lineHeight?: number;
+  wordWrap?: boolean;
+  wordWrapWidth?: number;
+  align?: 'left' | 'center' | 'right' | 'justify';
+  bitmap?: boolean;
+}
+
 export const basePropsToConfig = (props: BaseProps) => ({
   label: props.label,
   position: props.position,

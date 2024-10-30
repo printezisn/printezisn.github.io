@@ -2,6 +2,7 @@ import BaseScene from '../../../../lib/game-engine/scenes/base';
 import { fadeInSound } from '../../../../lib/game-engine/sound';
 import config from '../config';
 import Background from '../game-objects/game-scene/background';
+import Info from '../game-objects/game-scene/info';
 import gameState from '../game-state';
 
 class GameScene extends BaseScene {
@@ -9,6 +10,7 @@ class GameScene extends BaseScene {
     this.alpha = 0;
 
     this.addComponent(new Background());
+    this.addComponent(new Info());
 
     await Promise.all([
       this.animate({

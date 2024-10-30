@@ -8,6 +8,7 @@ const config = {
     goToGame: 'goToGame',
     chooseCharacter: 'chooseCharacter',
   },
+  lifePoints: 3,
 };
 
 export default config;
