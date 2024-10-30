@@ -30,7 +30,7 @@ class Platforms extends ContainerComponent {
     while (this._limit + this.x <= engineConfig.screen.width + 1000) {
       const totalLayers = getRandomInt(1, 8);
       const totalWidth = getRandomInt(200, 1500);
-      const gap = getRandomInt(100, 300);
+      const gap = getRandomInt(100, 200);
 
       this.addComponent(
         new Platform(totalLayers, totalWidth, this._limit + gap),

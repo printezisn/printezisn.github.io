@@ -38,6 +38,12 @@ abstract class BaseComponent<T extends Container> implements DisplayObject {
         (this as any).onClick();
       });
     }
+    if ((this as any).onPointerUp) {
+      this.object.on('pointerup', (e) => {
+        e.stopImmediatePropagation();
+        (this as any).onPointerUp();
+      });
+    }
     if ((this as any).onPointerEnter) {
       this.object.on('pointerenter', () => {
         (this as any).onPointerEnter();
