@@ -1,10 +1,14 @@
 import ContainerComponent from '../../../../../lib/game-engine/components/container';
 import Rectangle from '../../../../../lib/game-engine/components/rectangle';
 import TextComponent from '../../../../../lib/game-engine/components/text';
+import { fireSignal } from '../../../../../lib/game-engine/signals';
+import { fadeOutSound, playSound } from '../../../../../lib/game-engine/sound';
 import config from '../../config';
 import gameState from '../../game-state';
 
 class Info extends ContainerComponent {
+  private _totalLifePoints: number;
+
   constructor() {
     super({
       label: 'info',
@@ -70,6 +74,31 @@ class Info extends ContainerComponent {
         bitmap: true,
       }),
     );
+
+    this._totalLifePoints = config.lifePoints;
+    this.registerToSignal(
+      config.signals.loseLifePoints,
+      this._removeLifePoints,
+    );
+  }
+
+  private async _removeLifePoints(total: number) {
+    for (let i = this.components.length - 1; i >= 0 && total > 0; i--) {
+      if (!this.components[i].label.startsWith('life-point-')) continue;
+
+      this.removeComponent(this.components[i]);
+      i++;
+
+      this._totalLifePoints--;
+      if (this._totalLifePoints === 0) {
+        gameState.started = false;
+        fadeOutSound(config.sounds.mainLoop, { fadeDuration: 0.5 });
+        playSound(config.sounds.gameOver);
+        await this.delay(4);
+        fireSignal(config.signals.gameOver);
+        break;
+      }
+    }
   }
 }
 

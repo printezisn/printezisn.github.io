@@ -15,6 +15,7 @@ import IntroScene from './scenes/intro-scene';
 import GameScene from './scenes/game-scene';
 import assetsManifest from './manifest.json';
 import gameState from './game-state';
+import GameOverScene from './scenes/game-over';
 
 const urlParams = new URLSearchParams(window.location.search ?? '');
 
@@ -45,9 +46,12 @@ const goToIntroBinding = addSignalListener(config.signals.goToIntro, () => {
   changeScene(new IntroScene());
 });
 
-const goToGameBinding = addSignalListener(config.signals.goToGame, () => {
-  removeSignalListener(goToGameBinding.name, goToGameBinding.binding);
+addSignalListener(config.signals.goToGame, () => {
   changeScene(new GameScene());
+});
+
+addSignalListener(config.signals.gameOver, () => {
+  changeScene(new GameOverScene());
 });
 
 engineConfig.gameName = 'couples-run';

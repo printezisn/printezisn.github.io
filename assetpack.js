@@ -11,7 +11,7 @@ import { texturePackerCompress } from '@assetpack/core/texture-packer';
 import fs from 'fs';
 
 // eslint-disable-next-line
-const game = process.env.GAMES_NAME?.trim();
+const game = process.env.GAME_NAME?.trim();
 if (!game) {
   console.error('Missing game name');
   // eslint-disable-next-line

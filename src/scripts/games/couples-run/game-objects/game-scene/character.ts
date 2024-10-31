@@ -1,7 +1,10 @@
 import SpriteComponent from '../../../../../lib/game-engine/components/sprite';
 import gameState from '../../game-state';
-import gameConfig from '../../../../../lib/game-engine/config';
+import engineConfig from '../../../../../lib/game-engine/config';
+import engineGameState from '../../../../../lib/game-engine/game-state';
 import type { Point } from '../../../../../lib/game-engine/components/types';
+import { fireSignal } from '../../../../../lib/game-engine/signals';
+import config from '../../config';
 
 type MoveState = 'idle' | 'run' | 'jump';
 type ResourceType = 'boy' | 'girl';
@@ -71,14 +74,14 @@ class Character extends SpriteComponent {
 
   release() {}
 
-  protected onTick() {
+  protected async onTick() {
     if (!gameState.started) return;
     if (this._moveState === 'idle') {
       this.changeState('run');
     }
 
     this._moveFrame++;
-    if (this._moveFrame % gameConfig.speed.moveFrameInterval === 0) {
+    if (this._moveFrame % engineConfig.speed.moveFrameInterval === 0) {
       this._moveFrame = 0;
       this._moveSprite++;
       this.texture = MOVE_SPRITES[this._moveState](
@@ -91,6 +94,9 @@ class Character extends SpriteComponent {
     this.y += this._velocity.y;
     this._velocity.x += this._acceleration.x;
     this._velocity.y += this._acceleration.y;
+    if (this.y > engineGameState.screen.height + 100) {
+      fireSignal(config.signals.loseLifePoints, config.lifePoints);
+    }
   }
 
   protected changeState(state: MoveState) {
