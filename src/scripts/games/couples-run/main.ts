@@ -14,6 +14,9 @@ import config from './config';
 import IntroScene from './scenes/intro-scene';
 import GameScene from './scenes/game-scene';
 import assetsManifest from './manifest.json';
+import gameState from './game-state';
+
+const urlParams = new URLSearchParams(window.location.search ?? '');
 
 const destroyLoadingSceneBinding = addSignalListener(
   engineConfig.signals.destroyLoadingScene,
@@ -23,7 +26,9 @@ const destroyLoadingSceneBinding = addSignalListener(
       destroyLoadingSceneBinding.binding,
     );
 
-    changeScene(new InitialScene());
+    changeScene(
+      urlParams.has('character') ? new GameScene() : new InitialScene(),
+    );
   },
 );
 
@@ -45,8 +50,6 @@ const goToGameBinding = addSignalListener(config.signals.goToGame, () => {
   changeScene(new GameScene());
 });
 
-const urlParams = new URLSearchParams(window.location.search ?? '');
-
 engineConfig.gameName = 'couples-run';
 engineConfig.maxFPS = Number(urlParams.get('maxFPS')) || 60;
 engineConfig.debug = Boolean(urlParams.get('debug'));
@@ -59,5 +62,8 @@ engineConfig.assets.extra = [
     data: { family: 'PressStart2P' },
   },
 ];
+
+gameState.selectedCharacter =
+  urlParams.get('character') === 'boy' ? 'boy' : 'girl';
 
 initGame();

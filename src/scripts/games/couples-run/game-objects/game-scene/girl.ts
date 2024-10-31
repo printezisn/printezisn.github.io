@@ -13,8 +13,8 @@ class Girl extends Character {
   jump() {
     if (this.moveState !== 'run') return;
 
-    this.velocity = { x: 0, y: -15 };
-    this.acceleration = { x: 0, y: 0.5 };
+    this.velocity = { x: 0, y: -gameState.speed * 2 };
+    this.acceleration = { x: 0, y: gameState.speed / 25 };
     this.changeState('jump');
   }
 
@@ -29,8 +29,8 @@ class Girl extends Character {
 
     gameState.speed = gameState.originalSpeed;
 
-    this.velocity = { x: 0, y: -40 };
-    this.acceleration = { x: 0, y: 1.5 };
+    this.velocity = { x: 0, y: -gameState.originalSpeed * 3 };
+    this.acceleration = { x: 0, y: gameState.originalSpeed / 25 };
     this.changeState('jump');
   }
 }

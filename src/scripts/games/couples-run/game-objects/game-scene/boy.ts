@@ -1,3 +1,4 @@
+import gameState from '../../game-state';
 import Character from './character';
 
 class Boy extends Character {
@@ -14,8 +15,8 @@ class Boy extends Character {
       this._doubleJump = true;
     }
 
-    this.velocity = { x: 0, y: -15 };
-    this.acceleration = { x: 0, y: 0.5 };
+    this.velocity = { x: 0, y: -gameState.speed * 2 };
+    this.acceleration = { x: 0, y: gameState.speed / 25 };
     this.changeState('jump');
   }
 
