@@ -16,6 +16,9 @@ class GameScene extends BaseScene {
   }
 
   async init() {
+    gameState.speed = gameState.originalSpeed;
+    gameState.score = 0;
+
     this.alpha = 0;
     this.interactive = true;
 
