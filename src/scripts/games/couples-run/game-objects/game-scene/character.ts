@@ -1,6 +1,5 @@
 import SpriteComponent from '../../../../../lib/game-engine/components/sprite';
 import gameState from '../../game-state';
-import engineConfig from '../../../../../lib/game-engine/config';
 import engineGameState from '../../../../../lib/game-engine/game-state';
 import {
   addPhysicalEntity,
@@ -25,6 +24,8 @@ const MOVE_SPRITES: {
   idle: (resourceType: ResourceType) =>
     `${resourceType}/${resourceType}-idle.png`,
 };
+
+const MOVE_FRAME_INTERVAL = 5;
 
 class Character extends SpriteComponent {
   private _resourceType: ResourceType;
@@ -88,7 +89,7 @@ class Character extends SpriteComponent {
     }
 
     this._moveFrame++;
-    if (this._moveFrame % engineConfig.speed.moveFrameInterval === 0) {
+    if (this._moveFrame % MOVE_FRAME_INTERVAL === 0) {
       this._moveFrame = 0;
       this._moveSprite++;
       this.texture = MOVE_SPRITES[this._moveState](

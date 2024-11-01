@@ -1,8 +1,8 @@
 import SpriteComponent from '../../../../../lib/game-engine/components/sprite';
-import config from '../../../../../lib/game-engine/config';
 import gameState from '../../../../../lib/game-engine/game-state';
 
 const TOTAL_RUN_SPRITES = 8;
+const MOVE_FRAME_INTERVAL = 5;
 
 class MovingGirl extends SpriteComponent {
   private _runSprite = 0;
@@ -26,7 +26,7 @@ class MovingGirl extends SpriteComponent {
 
   protected onTick() {
     this._moveFrame++;
-    if (this._moveFrame % config.speed.moveFrameInterval === 0) {
+    if (this._moveFrame % MOVE_FRAME_INTERVAL === 0) {
       this._moveFrame = 0;
       this._runSprite = (this._runSprite + 1) % TOTAL_RUN_SPRITES;
       this.texture = `girl/run/girl-run-${this._runSprite + 1}.png`;

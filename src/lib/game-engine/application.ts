@@ -74,11 +74,11 @@ const handleTick = () => {
     }
 
     totalDeltaTime += ticker.deltaMS;
-    while (totalDeltaTime >= config.speed.tickIntervalMillis) {
+    while (totalDeltaTime >= config.tickIntervalMillis) {
       fireSignal(config.signals.onTick);
-      Animation.updateEngine(config.speed.tickIntervalMillis);
-      updatePhysics(config.speed.tickIntervalMillis);
-      totalDeltaTime -= config.speed.tickIntervalMillis;
+      Animation.updateEngine(config.tickIntervalMillis);
+      updatePhysics(config.tickIntervalMillis);
+      totalDeltaTime -= config.tickIntervalMillis;
     }
   });
 };

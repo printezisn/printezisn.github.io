@@ -22,10 +22,7 @@ const config = {
     width: 1280,
     aspectRatio: 16 / 9,
   },
-  speed: {
-    tickIntervalMillis: 16,
-    moveFrameInterval: 5,
-  },
+  tickIntervalMillis: 16,
   loadingScene: {
     fontFamily: 'Arial, sans-serif',
     fontSize: 28,
