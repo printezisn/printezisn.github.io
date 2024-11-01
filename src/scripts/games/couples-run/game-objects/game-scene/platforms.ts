@@ -3,9 +3,16 @@ import gameState from '../../game-state';
 import Platform from './platform';
 import engineConfig from '../../../../../lib/game-engine/config';
 import { getRandomInt } from '../../../../../lib/game-engine/helpers/numbers';
+import Girl from './girl';
+import Boy from './boy';
+import type Character from './character';
 
 class Platforms extends ContainerComponent {
   private _limit = 0;
+
+  get character() {
+    return this.components[0] as Character;
+  }
 
   constructor() {
     super({
@@ -14,14 +21,17 @@ class Platforms extends ContainerComponent {
       height: 292,
     });
 
+    this.addComponent(
+      gameState.selectedCharacter === 'girl' ? new Girl() : new Boy(),
+    );
     this._limit = this.addComponent(new Platform(2, 1000, 0)).width;
     this._createPlatforms();
   }
 
-  protected onTick() {
+  move(delta: number) {
     if (!gameState.started) return;
 
-    this.x -= gameState.speed;
+    this.x -= delta;
     this._deleteExpiredPlatforms();
     this._createPlatforms();
   }
@@ -42,7 +52,7 @@ class Platforms extends ContainerComponent {
 
   private _deleteExpiredPlatforms() {
     while (true) {
-      const platform = this.components[0] as Platform;
+      const platform = this.components[1] as Platform;
       if (platform.x + platform.width + 100 < -this.x) {
         platform.destroy();
       } else {

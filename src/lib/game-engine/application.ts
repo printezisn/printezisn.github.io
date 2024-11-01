@@ -7,6 +7,7 @@ import LoadingScene from './scenes/loading';
 import { fireSignal } from './signals';
 import type BaseScene from './scenes/base';
 import { initSound } from './sound';
+import { initPhysicsEngine, updatePhysics } from './physics-engine';
 
 let app!: Application;
 
@@ -74,6 +75,7 @@ const handleTick = () => {
     totalDeltaTime += ticker.deltaMS;
     while (totalDeltaTime >= config.speed.tickIntervalMillis) {
       fireSignal(config.signals.onTick);
+      updatePhysics(config.speed.tickIntervalMillis);
       totalDeltaTime -= config.speed.tickIntervalMillis;
     }
   });
@@ -111,6 +113,7 @@ export const initGame = async () => {
 
   changeScene(new LoadingScene());
   handleContainerResize();
+  initPhysicsEngine();
   handleTick();
 
   await Promise.all([

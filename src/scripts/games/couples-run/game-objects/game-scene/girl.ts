@@ -1,3 +1,4 @@
+import { setVelocity } from '../../../../../lib/game-engine/physics-engine';
 import gameState from '../../game-state';
 import Character from './character';
 
@@ -11,27 +12,29 @@ class Girl extends Character {
   }
 
   jump() {
-    if (this.moveState !== 'run') return;
+    if (!this._canJump()) return;
 
-    this.velocity = { x: 0, y: -gameState.speed * 2 };
-    this.acceleration = { x: 0, y: gameState.speed / 25 };
+    setVelocity(this, { x: gameState.speed, y: -10 });
     this.changeState('jump');
   }
 
   press() {
-    if (this.moveState !== 'run') return;
+    if (!this._canJump()) return;
 
-    gameState.speed = gameState.originalSpeed / 2;
+    gameState.speed = Math.floor(gameState.speed / 2);
+    setVelocity(this, { x: gameState.speed, y: 0 });
   }
 
   release() {
-    if (this.moveState !== 'run') return;
+    if (!this._canJump()) return;
 
     gameState.speed = gameState.originalSpeed;
-
-    this.velocity = { x: 0, y: -gameState.originalSpeed * 3 };
-    this.acceleration = { x: 0, y: gameState.originalSpeed / 25 };
+    setVelocity(this, { x: gameState.speed, y: -15 });
     this.changeState('jump');
+  }
+
+  private _canJump() {
+    return this.moveState === 'run' && this.onGround;
   }
 }
 

@@ -23,7 +23,7 @@ const config = {
     aspectRatio: 16 / 9,
   },
   speed: {
-    tickIntervalMillis: 17,
+    tickIntervalMillis: 16,
     moveFrameInterval: 5,
   },
   loadingScene: {

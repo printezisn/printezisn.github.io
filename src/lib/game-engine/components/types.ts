@@ -6,6 +6,7 @@ export interface DisplayObject {
   get label(): string;
   set visible(visible: boolean);
   get visible(): boolean;
+  get position(): Point;
   destroy(): void;
 }
 

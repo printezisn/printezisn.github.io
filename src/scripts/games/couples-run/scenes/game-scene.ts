@@ -3,9 +3,6 @@ import { fadeInSound } from '../../../../lib/game-engine/sound';
 import { debounce } from '../../sudoku/lib/helpers/timing-helpers';
 import config from '../config';
 import Background from '../game-objects/game-scene/background';
-import Boy from '../game-objects/game-scene/boy';
-import type Character from '../game-objects/game-scene/character';
-import Girl from '../game-objects/game-scene/girl';
 import Info from '../game-objects/game-scene/info';
 import Platforms from '../game-objects/game-scene/platforms';
 import gameState from '../game-state';
@@ -14,8 +11,8 @@ class GameScene extends BaseScene {
   private _cancelClickDebounce: (() => void) | null = null;
   private _keepingClick = false;
 
-  private get _character() {
-    return this.components[3] as Character;
+  private get _platforms() {
+    return this.components[2] as Platforms;
   }
 
   async init() {
@@ -25,9 +22,6 @@ class GameScene extends BaseScene {
     this.addComponent(new Background());
     this.addComponent(new Info());
     this.addComponent(new Platforms());
-    this.addComponent(
-      gameState.selectedCharacter === 'girl' ? new Girl() : new Boy(),
-    );
 
     await Promise.all([
       this.animate({
@@ -48,8 +42,8 @@ class GameScene extends BaseScene {
 
   protected onClick() {
     if (!gameState.started) return;
-    if (!this._character.hasPressAndRelease) {
-      this._character.jump();
+    if (!this._platforms.character.hasPressAndRelease) {
+      this._platforms.character.jump();
       return;
     }
 
@@ -58,7 +52,7 @@ class GameScene extends BaseScene {
     const { start, cancel } = debounce(
       () => {
         this._keepingClick = true;
-        this._character.press();
+        this._platforms.character.press();
       },
       () => {},
       500,
@@ -70,15 +64,17 @@ class GameScene extends BaseScene {
   }
 
   protected onPointerUp() {
-    if (!gameState.started || !this._character.hasPressAndRelease) return;
+    if (!gameState.started || !this._platforms.character.hasPressAndRelease) {
+      return;
+    }
 
     this._cancelClickDebounce?.();
     this._cancelClickDebounce = null;
 
     if (this._keepingClick) {
-      this._character.release();
+      this._platforms.character.release();
     } else {
-      this._character.jump();
+      this._platforms.character.jump();
     }
   }
 }

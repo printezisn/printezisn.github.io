@@ -2,9 +2,13 @@ import SpriteComponent from '../../../../../lib/game-engine/components/sprite';
 import gameState from '../../game-state';
 import engineConfig from '../../../../../lib/game-engine/config';
 import engineGameState from '../../../../../lib/game-engine/game-state';
-import type { Point } from '../../../../../lib/game-engine/components/types';
+import {
+  addPhysicalEntity,
+  setVelocity,
+} from '../../../../../lib/game-engine/physics-engine';
 import { fireSignal } from '../../../../../lib/game-engine/signals';
 import config from '../../config';
+import type Platforms from './platforms';
 
 type MoveState = 'idle' | 'run' | 'jump';
 type ResourceType = 'boy' | 'girl';
@@ -27,45 +31,47 @@ class Character extends SpriteComponent {
   private _moveFrame = 0;
   private _moveSprite = 0;
   private _moveState: MoveState = 'idle';
-  private _velocity: Point = { x: 0, y: 0 };
-  private _acceleration: Point = { x: 0, y: 0 };
+  private _onGround = false;
 
   protected get moveState() {
     return this._moveState;
-  }
-
-  protected get velocity() {
-    return this._velocity;
-  }
-
-  protected get acceleration() {
-    return this._acceleration;
-  }
-
-  protected set acceleration(acceleration: Point) {
-    this._acceleration = acceleration;
-  }
-
-  protected set velocity(velocity: Point) {
-    this._velocity = velocity;
   }
 
   get hasPressAndRelease() {
     return false;
   }
 
+  protected get onGround() {
+    return this._onGround;
+  }
+
+  protected set onGround(onGround: boolean) {
+    this._onGround = onGround;
+  }
+
   constructor(resourceType: ResourceType) {
     super({
       label: 'character',
       resource: MOVE_SPRITES['idle'](resourceType, 0),
-      anchor: { x: 0, y: 1 },
       scale: { x: 2, y: 2 },
-      position: { x: 130, y: 0 },
-      margin: { x: 0, y: -55 },
-      verticalAlignment: 'bottom',
+      position: { x: 130, y: -100 },
     });
 
     this._resourceType = resourceType;
+
+    addPhysicalEntity({
+      target: this,
+      rectangle: {
+        x: this.x + 49,
+        y: this.y + 40,
+        width: 46,
+        height: 64,
+      },
+      linearMovement: {
+        velocity: { x: 0, y: 0 },
+      },
+      onUpdatePosition: this._updatePosition.bind(this),
+    });
   }
 
   jump() {}
@@ -78,6 +84,7 @@ class Character extends SpriteComponent {
     if (!gameState.started) return;
     if (this._moveState === 'idle') {
       this.changeState('run');
+      setVelocity(this, { x: gameState.speed, y: 0 });
     }
 
     this._moveFrame++;
@@ -89,14 +96,6 @@ class Character extends SpriteComponent {
         this._moveSprite,
       );
     }
-
-    this.x += this._velocity.x;
-    this.y += this._velocity.y;
-    this._velocity.x += this._acceleration.x;
-    this._velocity.y += this._acceleration.y;
-    if (this.y > engineGameState.screen.height + 100) {
-      fireSignal(config.signals.loseLifePoints, config.lifePoints);
-    }
   }
 
   protected changeState(state: MoveState) {
@@ -107,6 +106,24 @@ class Character extends SpriteComponent {
       this._resourceType,
       this._moveSprite + 1,
     );
+  }
+
+  private _updatePosition(x: number, y: number, onGround: boolean) {
+    const newX = x - 49;
+
+    (this.parent as Platforms).move(newX - this.x);
+
+    this.x = newX;
+    this.y = y - 40;
+    this.onGround = onGround;
+
+    if (this.y > engineGameState.screen.height + 100) {
+      fireSignal(config.signals.loseLifePoints, config.lifePoints);
+    }
+
+    if (onGround && this.moveState !== 'run' && gameState.started) {
+      this.changeState('run');
+    }
   }
 }
 

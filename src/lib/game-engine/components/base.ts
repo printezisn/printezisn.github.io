@@ -5,6 +5,7 @@ import { addSignalListener, removeSignalListener } from '../signals';
 import config from '../config';
 import { Animation, type AnimationOptions } from '../animation';
 import gameState from '../game-state';
+import { removePhysicalEntity } from '../physics-engine';
 
 abstract class BaseComponent<T extends Container> implements DisplayObject {
   private _props: BaseProps;
@@ -102,6 +103,10 @@ abstract class BaseComponent<T extends Container> implements DisplayObject {
 
   set position(position: Point) {
     this.object.position = position;
+  }
+
+  get globalPosition(): Point {
+    return this.object.toGlobal(this.position);
   }
 
   set scale(scale: Point) {
@@ -205,6 +210,8 @@ abstract class BaseComponent<T extends Container> implements DisplayObject {
       this.parent.removeComponent(this);
       return;
     }
+
+    removePhysicalEntity(this);
 
     this._bindings.forEach(({ name, binding }) =>
       removeSignalListener(name, binding),
