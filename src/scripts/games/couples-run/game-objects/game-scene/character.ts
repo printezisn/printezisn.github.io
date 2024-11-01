@@ -7,7 +7,6 @@ import {
 } from '../../../../../lib/game-engine/physics-engine';
 import { fireSignal } from '../../../../../lib/game-engine/signals';
 import config from '../../config';
-import type Platforms from './platforms';
 
 type MoveState = 'idle' | 'run' | 'jump';
 type ResourceType = 'boy' | 'girl';
@@ -111,8 +110,7 @@ class Character extends SpriteComponent {
 
   private _updatePosition(x: number, y: number, onGround: boolean) {
     const newX = x - 49;
-
-    (this.parent as Platforms).move(newX - this.x);
+    const delta = newX - this.x;
 
     this.x = newX;
     this.y = y - 40;
@@ -120,10 +118,14 @@ class Character extends SpriteComponent {
 
     if (this.y > engineGameState.screen.height + 100) {
       fireSignal(config.signals.loseLifePoints, config.lifePoints);
+      return;
     }
+
+    fireSignal(config.signals.moveScreen, delta);
 
     if (onGround && this.moveState !== 'run' && gameState.started) {
       this.changeState('run');
+      setVelocity(this, { x: gameState.speed, y: 0 });
     }
   }
 }

@@ -1,5 +1,5 @@
 import TilingBackgroundComponent from '../../../../../lib/game-engine/components/tiling-background';
-import gameState from '../../game-state';
+import config from '../../config';
 
 class Background extends TilingBackgroundComponent {
   constructor() {
@@ -7,12 +7,12 @@ class Background extends TilingBackgroundComponent {
       label: 'background',
       resource: 'city-bg.png',
     });
+
+    this.registerToSignal(config.signals.moveScreen, this._move);
   }
 
-  protected onTick() {
-    if (!gameState.started) return;
-
-    this.tilePosition.x -= gameState.speed;
+  private _move(delta: number) {
+    this.tilePosition.x -= delta;
   }
 }
 

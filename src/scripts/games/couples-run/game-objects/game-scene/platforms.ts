@@ -5,6 +5,7 @@ import engineConfig from '../../../../../lib/game-engine/config';
 import { getRandomInt } from '../../../../../lib/game-engine/helpers/numbers';
 import Girl from './girl';
 import Boy from './boy';
+import config from '../../config';
 import type Character from './character';
 
 class Platforms extends ContainerComponent {
@@ -26,11 +27,11 @@ class Platforms extends ContainerComponent {
     );
     this._limit = this.addComponent(new Platform(2, 1000, 0)).width;
     this._createPlatforms();
+
+    this.registerToSignal(config.signals.moveScreen, this._move);
   }
 
-  move(delta: number) {
-    if (!gameState.started) return;
-
+  private _move(delta: number) {
     this.x -= delta;
     this._deleteExpiredPlatforms();
     this._createPlatforms();

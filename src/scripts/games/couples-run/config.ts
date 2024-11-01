@@ -10,6 +10,7 @@ const config = {
     chooseCharacter: 'chooseCharacter',
     loseLifePoints: 'loseLifePoints',
     gameOver: 'gameOver',
+    moveScreen: 'moveScreen',
   },
   lifePoints: 3,
 };
