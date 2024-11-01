@@ -3,7 +3,7 @@ import gameState from '../../game-state';
 import engineGameState from '../../../../../lib/game-engine/game-state';
 import {
   addPhysicalEntity,
-  setVelocity,
+  setMovement,
 } from '../../../../../lib/game-engine/physics-engine';
 import { fireSignal } from '../../../../../lib/game-engine/signals';
 import config from '../../config';
@@ -67,8 +67,10 @@ class Character extends SpriteComponent {
         width: 46,
         height: 64,
       },
-      linearMovement: {
-        velocity: { x: 0, y: 0 },
+      movement: {
+        linearMovement: {
+          velocity: { x: 0, y: 0 },
+        },
       },
       onUpdatePosition: this._updatePosition.bind(this),
     });
@@ -84,7 +86,14 @@ class Character extends SpriteComponent {
     if (!gameState.started) return;
     if (this._moveState === 'idle') {
       this.changeState('run');
-      setVelocity(this, { x: gameState.speed, y: 0 });
+      setMovement(this, {
+        linearMovement: {
+          velocity: {
+            x: gameState.speed,
+            y: 0,
+          },
+        },
+      });
     }
 
     this._moveFrame++;
@@ -125,7 +134,14 @@ class Character extends SpriteComponent {
 
     if (onGround && this.moveState !== 'run' && gameState.started) {
       this.changeState('run');
-      setVelocity(this, { x: gameState.speed, y: 0 });
+      setMovement(this, {
+        linearMovement: {
+          velocity: {
+            x: gameState.speed,
+            y: 0,
+          },
+        },
+      });
     }
   }
 }

@@ -6,7 +6,7 @@ import {
   type IBodyDefinition,
   Events,
 } from 'matter-js';
-import type { PhysicalEntity, Target, Velocity } from './types';
+import type { Movement, PhysicalEntity, Target } from './types';
 
 let engine!: Engine;
 const entities = new Map<string, PhysicalEntity>();
@@ -94,9 +94,8 @@ export const addPhysicalEntity = (entity: PhysicalEntity) => {
   entities.set(entity.target.matterBody.label, entity);
   Composite.add(engine.world, entity.target.matterBody);
 
-  const velocity = entity.linearMovement?.velocity;
-  if (velocity) {
-    Body.setVelocity(entity.target.matterBody, velocity);
+  if (entity.movement) {
+    setMovement(entity.target, entity.movement);
   }
 };
 
@@ -108,10 +107,12 @@ export const removePhysicalEntity = (target: Target) => {
   touchingGround.delete(target.matterBody.label);
 };
 
-export const setVelocity = (target: Target, velocity: Velocity) => {
+export const setMovement = (target: Target, movement: Movement) => {
   if (!target.matterBody) return;
 
-  Body.setVelocity(target.matterBody, velocity);
+  if (movement.linearMovement) {
+    Body.setVelocity(target.matterBody, movement.linearMovement.velocity);
+  }
 };
 
 const createBodyDefinitionOptions = (
@@ -129,9 +130,8 @@ const createBodyDefinitionOptions = (
     };
   }
 
-  if (entity.linearMovement) {
+  if (entity.movement?.linearMovement) {
     return {
-      velocity: entity.linearMovement.velocity,
       friction: 0,
       frictionAir: 0,
       frictionStatic: 0,

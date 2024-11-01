@@ -22,6 +22,10 @@ export interface LinearMovement {
   velocity: Velocity;
 }
 
+export interface Movement {
+  linearMovement?: LinearMovement;
+}
+
 export type Target = DisplayObject & { matterBody?: Matter.Body };
 
 export interface PhysicalEntity {
@@ -29,6 +33,6 @@ export interface PhysicalEntity {
   rectangle?: Rectangle;
   circle?: Circle;
   surface?: boolean;
-  linearMovement?: LinearMovement;
+  movement?: Movement;
   onUpdatePosition?: (x: number, y: number, onGround: boolean) => any;
 }

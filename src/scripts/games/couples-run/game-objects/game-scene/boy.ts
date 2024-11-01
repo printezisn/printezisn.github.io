@@ -1,4 +1,4 @@
-import { setVelocity } from '../../../../../lib/game-engine/physics-engine';
+import { setMovement } from '../../../../../lib/game-engine/physics-engine';
 import gameState from '../../game-state';
 import Character from './character';
 
@@ -16,7 +16,14 @@ class Boy extends Character {
       this._doubleJump = true;
     }
 
-    setVelocity(this, { x: gameState.speed, y: -10 });
+    setMovement(this, {
+      linearMovement: {
+        velocity: {
+          x: gameState.speed,
+          y: -10,
+        },
+      },
+    });
     this.changeState('jump');
   }
 

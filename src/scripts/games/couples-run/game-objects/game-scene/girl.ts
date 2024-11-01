@@ -1,4 +1,4 @@
-import { setVelocity } from '../../../../../lib/game-engine/physics-engine';
+import { setMovement } from '../../../../../lib/game-engine/physics-engine';
 import gameState from '../../game-state';
 import Character from './character';
 
@@ -14,7 +14,14 @@ class Girl extends Character {
   jump() {
     if (!this._canJump()) return;
 
-    setVelocity(this, { x: gameState.speed, y: -10 });
+    setMovement(this, {
+      linearMovement: {
+        velocity: {
+          x: gameState.speed,
+          y: -10,
+        },
+      },
+    });
     this.changeState('jump');
   }
 
@@ -22,14 +29,28 @@ class Girl extends Character {
     if (!this._canJump()) return;
 
     gameState.speed = Math.floor(gameState.speed / 2);
-    setVelocity(this, { x: gameState.speed, y: 0 });
+    setMovement(this, {
+      linearMovement: {
+        velocity: {
+          x: gameState.speed,
+          y: 0,
+        },
+      },
+    });
   }
 
   release() {
     if (!this._canJump()) return;
 
     gameState.speed = gameState.originalSpeed;
-    setVelocity(this, { x: gameState.speed, y: -15 });
+    setMovement(this, {
+      linearMovement: {
+        velocity: {
+          x: gameState.speed,
+          y: -15,
+        },
+      },
+    });
     this.changeState('jump');
   }
 
