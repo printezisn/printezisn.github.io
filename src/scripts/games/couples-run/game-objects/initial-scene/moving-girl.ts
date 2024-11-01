@@ -1,5 +1,4 @@
 import SpriteComponent from '../../../../../lib/game-engine/components/sprite';
-import gameState from '../../../../../lib/game-engine/game-state';
 
 const TOTAL_RUN_SPRITES = 8;
 const MOVE_FRAME_INTERVAL = 5;
@@ -15,13 +14,9 @@ class MovingGirl extends SpriteComponent {
       anchor: { x: 0, y: 1 },
       position: { x: 200, y: 0 },
       scale: { x: 2, y: 2 },
+      verticalAlignment: 'bottom',
+      margin: { x: 0, y: -55 },
     });
-
-    this.onResize();
-  }
-
-  protected onResize() {
-    this.position.y = gameState.screen.height - 55;
   }
 
   protected onTick() {
