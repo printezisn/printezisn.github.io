@@ -3,6 +3,7 @@ const config = {
     mainLoop: 'main-loop',
     menuLoop: 'menu-loop',
     gameOver: 'game-over',
+    coin: 'coin',
   },
   signals: {
     goToIntro: 'goToIntro',
@@ -11,6 +12,7 @@ const config = {
     loseLifePoints: 'loseLifePoints',
     gameOver: 'gameOver',
     moveScreen: 'moveScreen',
+    updateScore: 'updateScore',
   },
   lifePoints: 3,
 };

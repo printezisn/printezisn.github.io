@@ -35,6 +35,9 @@ export const initPhysicsEngine = () => {
           nonSurface.target.matterBody!.label,
           Math.floor(getBounds(surface).y1),
         );
+      } else {
+        entityA.onCollision?.(entityB.target);
+        entityB.onCollision?.(entityA.target);
       }
     });
   });
@@ -149,7 +152,15 @@ const createBodyDefinitionOptions = (
     };
   }
 
-  return {};
+  return {
+    isStatic: true,
+    friction: 0,
+    frictionAir: 0,
+    frictionStatic: 0,
+    restitution: 0,
+    isSensor: true,
+    label: entityLabel.toString(),
+  };
 };
 
 const getBounds = (entity: PhysicalEntity) => {

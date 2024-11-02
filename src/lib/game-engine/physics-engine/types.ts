@@ -35,4 +35,5 @@ export interface PhysicalEntity {
   surface?: boolean;
   movement?: Movement;
   onUpdatePosition?: (x: number, y: number, onGround: boolean) => any;
+  onCollision?: (entity: DisplayObject) => any;
 }

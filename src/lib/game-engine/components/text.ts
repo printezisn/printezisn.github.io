@@ -48,6 +48,14 @@ class TextComponent extends BaseComponent<Text | BitmapText> {
   set wordWrapWidth(width: number) {
     this.object.style.wordWrapWidth = width;
   }
+
+  get text() {
+    return this.object.text;
+  }
+
+  set text(text: string) {
+    this.object.text = text;
+  }
 }
 
 export default TextComponent;

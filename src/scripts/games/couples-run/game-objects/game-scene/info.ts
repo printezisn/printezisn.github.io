@@ -9,6 +9,10 @@ import gameState from '../../game-state';
 class Info extends ContainerComponent {
   private _totalLifePoints: number;
 
+  private get _score() {
+    return this.components[this.components.length - 1] as TextComponent;
+  }
+
   constructor() {
     super({
       label: 'info',
@@ -80,6 +84,7 @@ class Info extends ContainerComponent {
       config.signals.loseLifePoints,
       this._removeLifePoints,
     );
+    this.registerToSignal(config.signals.updateScore, this._updateScore);
   }
 
   private async _removeLifePoints(total: number) {
@@ -99,6 +104,10 @@ class Info extends ContainerComponent {
         break;
       }
     }
+  }
+
+  private _updateScore() {
+    this._score.text = gameState.score.toString();
   }
 }
 
