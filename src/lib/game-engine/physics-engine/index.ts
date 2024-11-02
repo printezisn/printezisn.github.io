@@ -11,6 +11,7 @@ import type { Movement, PhysicalEntity, Target } from './types';
 let engine!: Engine;
 const entities = new Map<string, PhysicalEntity>();
 const touchingGround = new Map<string, number>();
+const entitiesToUpdate = new Map<string, PhysicalEntity>();
 let entityLabel = 0;
 
 export const initPhysicsEngine = () => {
@@ -55,20 +56,22 @@ export const initPhysicsEngine = () => {
       }
     });
   });
+
+  Events.on(engine, 'afterUpdate', () => {
+    entitiesToUpdate.forEach((entity) => {
+      if (!entity.target.matterBody) return;
+
+      const bounds = getBounds(entity);
+      const onGround =
+        (touchingGround.get(entity.target.matterBody.label) ?? -Infinity) >=
+        Math.floor(bounds.y2);
+      entity.onUpdatePosition?.(bounds.x1, bounds.y1, onGround);
+    });
+  });
 };
 
 export const updatePhysics = (interval: number) => {
   Engine.update(engine, interval);
-
-  entities.forEach((entity) => {
-    if (!entity.target.matterBody) return;
-
-    const bounds = getBounds(entity);
-    const onGround =
-      (touchingGround.get(entity.target.matterBody.label) ?? -Infinity) >=
-      Math.floor(bounds.y2);
-    entity.onUpdatePosition?.(bounds.x1, bounds.y1, onGround);
-  });
 };
 
 export const addPhysicalEntity = (entity: PhysicalEntity) => {
@@ -92,6 +95,9 @@ export const addPhysicalEntity = (entity: PhysicalEntity) => {
   }
 
   entities.set(entity.target.matterBody.label, entity);
+  if (entity.onUpdatePosition) {
+    entitiesToUpdate.set(entity.target.matterBody.label, entity);
+  }
   Composite.add(engine.world, entity.target.matterBody);
 
   if (entity.movement) {
@@ -105,6 +111,7 @@ export const removePhysicalEntity = (target: Target) => {
   Composite.remove(engine.world, target.matterBody);
   entities.delete(target.matterBody.label);
   touchingGround.delete(target.matterBody.label);
+  entitiesToUpdate.delete(target.matterBody.label);
 };
 
 export const setMovement = (target: Target, movement: Movement) => {
