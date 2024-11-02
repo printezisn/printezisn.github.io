@@ -5,14 +5,14 @@
       "assets": [
         {
           "alias": ["audio/sounds.json"],
-          "src": ["audio/sounds-hmWX8w.json"],
+          "src": ["audio/sounds-p_Qd.json"],
           "data": {
             "tags": {}
           }
         },
         {
           "alias": ["audio/sounds.mp3"],
-          "src": ["audio/sounds-qEXhAg.ogg", "audio/sounds--GhM-g.mp3"],
+          "src": ["audio/sounds-h9_jYg.ogg", "audio/sounds-0Lf6Wg.mp3"],
           "data": {
             "tags": {}
           }
@@ -20,12 +20,12 @@
         {
           "alias": ["default"],
           "src": [
-            "default-TzYMCA.png.json",
-            "default-iBCH9A@0.5x.png.json",
-            "default-fvxMUA.webp.json",
-            "default-52POuQ@0.5x.webp.json",
-            "default-4K5Cew.avif.json",
-            "default-1YPv@0.5x.avif.json"
+            "default-UmMtAg@0.5x.avif.json",
+            "default-u4Qe3Q.avif.json",
+            "default-R_CK.png.json",
+            "default-qmyWWg@0.5x.webp.json",
+            "default-lx5D9g@0.5x.png.json",
+            "default-FDYBcw.webp.json"
           ],
           "data": {
             "tags": {

@@ -1,6 +1,7 @@
 {
   "click": { "start": 0, "end": 0.038276643990929705, "loop": false },
-  "game-over": { "start": 2, "end": 8, "loop": false },
-  "main-loop": { "start": 9, "end": 153, "loop": false },
-  "menu-loop": { "start": 154, "end": 366.21052154195013, "loop": false }
+  "coin": { "start": 2, "end": 2.9044897959183675, "loop": false },
+  "game-over": { "start": 4, "end": 10, "loop": false },
+  "main-loop": { "start": 11, "end": 155, "loop": false },
+  "menu-loop": { "start": 156, "end": 368.21052154195013, "loop": false }
 }
