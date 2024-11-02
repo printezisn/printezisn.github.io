@@ -17,20 +17,17 @@ const INTRO =
   "ready to get married, but a tragedy happens. They're " +
   'out of drinks in the party. They go out to get more ' +
   'drinks for the guests and they engage into a zombie ' +
-  'apocalypse.';
-
-const RULES =
+  'apocalypse.\n\n' +
   'Collect as many drinks as you can to increase your ' +
   'score. You lose a life point each time an enemy ' +
   "touches you. It's game over if you lose 3 life " +
-  'points or you fall into a pit. Click to jump and ' +
-  'avoid enemies and pits.';
+  'points or you fall into a pit. Jump to avoid enemies and pits.';
 
 const CHARACTER_EXPLANATION =
-  'Anastasia reduces her speed ' +
-  'while you click and jumps higher when you release. ' +
-  'Nikos can perform a double jump if you click again ' +
-  'while jumping.';
+  'You can make both characters jump by clicking/tapping on the screen. ' +
+  'Anastasia can reduce her speed if you click/tap on the screen and hold it for a while. ' +
+  'She then jumps higher when you release it. ' +
+  'Nikos can perform a double jump if you click/tap on the screen again while jumping.';
 
 class IntroScene extends BaseScene {
   private get introComponent() {
@@ -38,15 +35,15 @@ class IntroScene extends BaseScene {
   }
 
   private get characterExplanationComponent() {
-    return this.components[2] as TextComponent;
+    return this.components[1] as TextComponent;
   }
 
   private get chooseCharacterComponent() {
-    return this.components[3] as TextComponent;
+    return this.components[2] as TextComponent;
   }
 
   private get selectionComponent() {
-    return this.components[4] as Selection;
+    return this.components[3] as Selection;
   }
 
   async init() {
@@ -68,17 +65,16 @@ class IntroScene extends BaseScene {
       }),
     ]);
 
-    await this._createText(INTRO);
+    if (!config.hasWatchedIntro) {
+      await this._createText(INTRO);
 
-    await this.delay(5);
-    await this._hideIntro();
+      await this.delay(15);
+      await this._hideIntro();
+    }
 
-    await this._createText(RULES);
-    await this._createText(
-      CHARACTER_EXPLANATION,
-      this.introComponent.y + this.introComponent.height + 10,
-      0xffcc00,
-    );
+    localStorage.setItem('couplesRun_watchedIntro', 'true');
+
+    await this._createText(CHARACTER_EXPLANATION);
 
     this.addComponent(
       new TextComponent({
@@ -126,10 +122,10 @@ class IntroScene extends BaseScene {
   }
 
   protected onResize() {
-    this.introComponent.wordWrapWidth = gameState.screen.width - 40;
+    if (this.introComponent) {
+      this.introComponent.wordWrapWidth = gameState.screen.width - 40;
+    }
     if (this.characterExplanationComponent) {
-      this.characterExplanationComponent.y =
-        this.introComponent.y + this.introComponent.height + 10;
       this.characterExplanationComponent.wordWrapWidth =
         gameState.screen.width - 40;
     }
@@ -142,16 +138,16 @@ class IntroScene extends BaseScene {
     }
   }
 
-  private async _createText(text: string, y = 20, textColor = 0xcccccc) {
+  private async _createText(text: string) {
     const component = this.addComponent(
       new TextComponent({
         label: 'introduction',
         text,
         fontFamily: 'PressStart2P',
         fontSize: 24,
-        textColor,
+        textColor: 0xcccccc,
         alpha: 0,
-        position: { x: 20, y },
+        position: { x: 20, y: 20 },
         wordWrap: true,
         wordWrapWidth: gameState.screen.width - 40,
         align: 'justify',

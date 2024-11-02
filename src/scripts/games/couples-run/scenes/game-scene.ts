@@ -58,7 +58,7 @@ class GameScene extends BaseScene {
         this._platforms.character.press();
       },
       () => {},
-      500,
+      300,
       0,
     );
 

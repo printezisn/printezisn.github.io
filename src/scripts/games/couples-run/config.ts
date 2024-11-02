@@ -15,6 +15,7 @@ const config = {
     updateScore: 'updateScore',
   },
   lifePoints: 3,
+  hasWatchedIntro: localStorage.getItem('couplesRun_watchedIntro') === 'true',
 };
 
 export default config;

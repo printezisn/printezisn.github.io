@@ -20,6 +20,7 @@ export interface BaseProps {
   position?: Point;
   anchor?: Point;
   scale?: Point;
+  rotation?: number;
   width?: number;
   height?: number;
   alpha?: number;
@@ -54,6 +55,7 @@ export const basePropsToConfig = (props: BaseProps) => ({
   position: props.position,
   anchor: props.anchor,
   scale: props.scale,
+  rotation: props.rotation,
   width: props.width,
   height: props.height,
   alpha: props.alpha,

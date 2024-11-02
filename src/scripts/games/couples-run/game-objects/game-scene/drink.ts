@@ -33,6 +33,14 @@ class Drink extends SpriteComponent {
         }
       },
     });
+
+    this.animate({
+      from: { y: this.y },
+      to: { y: this.y - 5 },
+      duration: 1,
+      repeat: -1,
+      revert: true,
+    });
   }
 }
 

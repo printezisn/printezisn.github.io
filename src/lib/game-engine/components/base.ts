@@ -185,6 +185,14 @@ abstract class BaseComponent<T extends Container> implements DisplayObject {
     this.object.interactive = interactive;
   }
 
+  get rotation() {
+    return this.object.rotation;
+  }
+
+  set rotation(rotation: number) {
+    this.object.rotation = rotation;
+  }
+
   animate(options: AnimationOptions) {
     return this._createAnimation(this, options);
   }
