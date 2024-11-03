@@ -7,6 +7,7 @@ import {
 } from '../../../../../lib/game-engine/physics-engine';
 import { fireSignal } from '../../../../../lib/game-engine/signals';
 import config from '../../config';
+import { playSound } from '../../../../../lib/game-engine/sound';
 
 type MoveState = 'idle' | 'run' | 'jump';
 type ResourceType = 'boy' | 'girl';
@@ -94,6 +95,7 @@ abstract class Character extends SpriteComponent {
     if (!this._canDamage) return;
 
     this._canDamage = false;
+    playSound(config.sounds.playerHit, { volume: 2 });
 
     fireSignal(config.signals.loseLifePoints, 1);
 

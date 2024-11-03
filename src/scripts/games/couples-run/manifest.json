@@ -5,14 +5,14 @@
       "assets": [
         {
           "alias": ["audio/sounds.json"],
-          "src": ["audio/sounds-p_Qd.json"],
+          "src": ["audio/sounds-EgVUtQ.json"],
           "data": {
             "tags": {}
           }
         },
         {
           "alias": ["audio/sounds.mp3"],
-          "src": ["audio/sounds-c9qkFA.ogg", "audio/sounds-0Lf6Wg.mp3"],
+          "src": ["audio/sounds-wkfo.mp3", "audio/sounds-kpQn7Q.ogg"],
           "data": {
             "tags": {}
           }

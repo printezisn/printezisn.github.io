@@ -4,6 +4,7 @@ const config = {
     menuLoop: 'menu-loop',
     gameOver: 'game-over',
     coin: 'coin',
+    playerHit: 'player-hit',
   },
   signals: {
     goToIntro: 'goToIntro',
