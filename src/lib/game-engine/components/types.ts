@@ -30,6 +30,7 @@ export interface BaseProps {
   interactive?: boolean;
   cursor?: string;
   visible?: boolean;
+  tint?: number;
 }
 
 export interface BaseSpriteProps extends BaseProps {
@@ -62,4 +63,5 @@ export const basePropsToConfig = (props: BaseProps) => ({
   interactive: props.interactive,
   cursor: props.cursor,
   visible: props.visible,
+  tint: props.tint,
 });

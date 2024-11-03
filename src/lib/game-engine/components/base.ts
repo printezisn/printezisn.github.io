@@ -193,6 +193,14 @@ abstract class BaseComponent<T extends Container> implements DisplayObject {
     this.object.rotation = rotation;
   }
 
+  get tint() {
+    return this.object.tint;
+  }
+
+  set tint(tint: number) {
+    this.object.tint = tint;
+  }
+
   animate(options: AnimationOptions) {
     return this._createAnimation(this, options);
   }

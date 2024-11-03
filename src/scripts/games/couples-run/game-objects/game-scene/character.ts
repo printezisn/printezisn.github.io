@@ -34,6 +34,7 @@ abstract class Character extends SpriteComponent {
   private _pressing = false;
   private _pressed = false;
   private _increaseSpeedMilestone = 10000;
+  private _canDamage = true;
 
   abstract get hasPressAndRelease(): boolean;
   abstract get totalAllowedJumps(): number;
@@ -87,6 +88,27 @@ abstract class Character extends SpriteComponent {
     this._pressing = false;
     this._pressed = true;
     this.jump();
+  }
+
+  async damage() {
+    if (!this._canDamage) return;
+
+    this._canDamage = false;
+
+    fireSignal(config.signals.loseLifePoints, 1);
+
+    const originalTint = this.tint;
+
+    await this.animate({
+      from: { tint: 0xffcc00 },
+      to: { tint: 0xff0000 },
+      duration: 0.2,
+      repeat: 10,
+      revert: true,
+    });
+
+    this.tint = originalTint;
+    this._canDamage = true;
   }
 
   protected onTick() {

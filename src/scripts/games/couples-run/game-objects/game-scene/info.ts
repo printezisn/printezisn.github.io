@@ -95,6 +95,7 @@ class Info extends ContainerComponent {
       i++;
 
       this._totalLifePoints--;
+      total--;
       if (this._totalLifePoints === 0) {
         gameState.started = false;
         fadeOutSound(config.sounds.mainLoop, { fadeDuration: 0.5 });

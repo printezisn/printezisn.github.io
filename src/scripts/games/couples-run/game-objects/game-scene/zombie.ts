@@ -2,13 +2,14 @@ import SpriteComponent from '../../../../../lib/game-engine/components/sprite';
 import gameState from '../../game-state';
 import {
   addPhysicalEntity,
+  movePhysicalEntity,
   setMovement,
 } from '../../../../../lib/game-engine/physics-engine';
 import type {
   DisplayObject,
   Point,
 } from '../../../../../lib/game-engine/components/types';
-import type Character from './character';
+import Character from './character';
 import engineGameState from '../../../../../lib/game-engine/game-state';
 import config from '../../config';
 
@@ -19,6 +20,7 @@ class Zombie extends SpriteComponent {
   private _distance = 0;
   private _moveFrame = 0;
   private _moveSprite = 0;
+  private _acceleration = 0;
 
   constructor(position: Point, distance: number) {
     super({
@@ -38,11 +40,6 @@ class Zombie extends SpriteComponent {
         width: this.width,
         height: this.height,
       },
-      movement: {
-        linearMovement: {
-          velocity: { x: 0, y: 0 },
-        },
-      },
       onUpdatePosition: this._updatePosition.bind(this),
       onCollision: this._onCollision.bind(this),
     });
@@ -52,6 +49,13 @@ class Zombie extends SpriteComponent {
 
   protected onTick() {
     if (!this._started) return;
+
+    if (this.x + this.width >= 0) {
+      movePhysicalEntity(this, -1, 0);
+    } else {
+      this._acceleration++;
+      movePhysicalEntity(this, 0, this._acceleration);
+    }
 
     this._moveFrame++;
     if (this._moveFrame % MOVE_FRAME_INTERVAL === 0) {
@@ -67,9 +71,8 @@ class Zombie extends SpriteComponent {
   }
 
   private _onCollision(entity: DisplayObject) {
-    if (entity as Character) {
-      console.log('koko');
-      //fireSignal(config.signals.loseLifePoints, 1);
+    if (entity instanceof Character) {
+      (entity as Character).damage();
     }
   }
 

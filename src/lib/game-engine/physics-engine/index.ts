@@ -125,6 +125,15 @@ export const setMovement = (target: Target, movement: Movement) => {
   }
 };
 
+export const movePhysicalEntity = (target: Target, x: number, y: number) => {
+  if (!target.matterBody) return;
+
+  Body.setPosition(target.matterBody, {
+    x: target.matterBody.position.x + x,
+    y: target.matterBody.position.y + y,
+  });
+};
+
 const createBodyDefinitionOptions = (
   entity: PhysicalEntity,
 ): IBodyDefinition => {
