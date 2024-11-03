@@ -82,13 +82,14 @@ abstract class Character extends SpriteComponent {
   }
 
   release() {
-    if (!this.hasPressAndRelease || !this._pressing || !this._canJump()) {
+    if (!this.hasPressAndRelease || !this._pressing || !gameState.started) {
       return;
     }
 
     this._pressing = false;
     this._pressed = true;
-    this.jump();
+    this._currentJump++;
+    this.changeState('jump');
   }
 
   async damage() {
