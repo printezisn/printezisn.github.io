@@ -81,12 +81,12 @@ class Platform extends ContainerComponent {
 
     const zombieWidth = 40;
     const zombieHeight = 61.6;
-    let x = getRandomInt(0, this.width - zombieWidth);
+    let x = getRandomInt(0, 1000);
     const y = this._topOffset - zombieHeight;
 
     while (x + zombieWidth <= this.width) {
       this.addComponent(new Zombie({ x, y }, distance));
-      x += 100 + getRandomInt(0, this.width - zombieWidth);
+      x += 300 + getRandomInt(0, this.width - zombieWidth);
     }
   }
 }
