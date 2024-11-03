@@ -8,7 +8,7 @@ interface RectangleProps extends BaseProps {
   strokeWidth?: number;
 }
 
-class Rectangle extends BaseComponent<Graphics> {
+class RectangleComponent extends BaseComponent<Graphics> {
   constructor(props: RectangleProps) {
     const config = basePropsToConfig(props);
     delete config.position;
@@ -32,4 +32,4 @@ class Rectangle extends BaseComponent<Graphics> {
   }
 }
 
-export default Rectangle;
+export default RectangleComponent;

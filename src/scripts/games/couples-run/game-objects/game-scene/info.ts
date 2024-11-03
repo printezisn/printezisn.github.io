@@ -1,5 +1,5 @@
 import ContainerComponent from '../../../../../lib/game-engine/components/container';
-import Rectangle from '../../../../../lib/game-engine/components/rectangle';
+import RectangleComponent from '../../../../../lib/game-engine/components/rectangle';
 import TextComponent from '../../../../../lib/game-engine/components/text';
 import { fireSignal } from '../../../../../lib/game-engine/signals';
 import { fadeOutSound, playSound } from '../../../../../lib/game-engine/sound';
@@ -34,7 +34,7 @@ class Info extends ContainerComponent {
     for (let i = 0; i < config.lifePoints; i++) {
       dist +=
         this.addComponent(
-          new Rectangle({
+          new RectangleComponent({
             label: `life-point-${i}`,
             fillColor: 0x2fff00,
             width: 10,
@@ -46,7 +46,7 @@ class Info extends ContainerComponent {
 
     dist +=
       this.addComponent(
-        new Rectangle({
+        new RectangleComponent({
           label: 'separator',
           fillColor: 0xcccccc,
           width: 3,
