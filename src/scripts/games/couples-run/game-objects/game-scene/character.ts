@@ -89,7 +89,7 @@ abstract class Character extends SpriteComponent {
     this.jump();
   }
 
-  protected async onTick() {
+  protected onTick() {
     if (!gameState.started) return;
     if (this._moveState === 'idle') {
       this.changeState('run');
@@ -118,10 +118,7 @@ abstract class Character extends SpriteComponent {
   }
 
   private _updatePosition(x: number, y: number, onGround: boolean) {
-    const newX = x - 49;
-    const delta = newX - this.x;
-
-    this.x = newX;
+    this.x = x - 49;
     this.y = y - 40;
     this._onGround = onGround;
 
@@ -130,7 +127,7 @@ abstract class Character extends SpriteComponent {
       return;
     }
 
-    fireSignal(config.signals.moveScreen, delta);
+    fireSignal(config.signals.moveScreen, this.x - 130);
 
     if (onGround && this._moveState !== 'run' && gameState.started) {
       this._pressed = false;

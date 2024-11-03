@@ -11,8 +11,8 @@ class Background extends TilingBackgroundComponent {
     this.registerToSignal(config.signals.moveScreen, this._move);
   }
 
-  private _move(delta: number) {
-    this.tilePosition.x -= delta;
+  private _move(x: number) {
+    this.tilePosition.x = -x;
   }
 }
 

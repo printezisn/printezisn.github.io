@@ -70,6 +70,13 @@
       "spriteSourceSize": { "x": 0, "y": 0, "w": 1152, "h": 648 },
       "sourceSize": { "w": 1152, "h": 648 }
     },
+    "zombie/zombie-idle.png": {
+      "frame": { "x": 652, "y": 2, "w": 100, "h": 154 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 154 },
+      "sourceSize": { "w": 100, "h": 154 }
+    },
     "girl/girl-selection.png": {
       "frame": { "x": 105, "y": 2, "w": 64, "h": 80 },
       "rotated": true,
@@ -111,6 +118,76 @@
       "trimmed": true,
       "spriteSourceSize": { "x": 11, "y": 9, "w": 14, "h": 19 },
       "sourceSize": { "w": 36, "h": 36 }
+    },
+    "zombie/walk/zombie-walk-9.png": {
+      "frame": { "x": 652, "y": 158, "w": 99, "h": 156 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 1, "y": 0, "w": 99, "h": 156 },
+      "sourceSize": { "w": 100, "h": 156 }
+    },
+    "zombie/walk/zombie-walk-8.png": {
+      "frame": { "x": 652, "y": 316, "w": 100, "h": 156 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 156 },
+      "sourceSize": { "w": 100, "h": 156 }
+    },
+    "zombie/walk/zombie-walk-7.png": {
+      "frame": { "x": 652, "y": 474, "w": 100, "h": 156 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 156 },
+      "sourceSize": { "w": 100, "h": 156 }
+    },
+    "zombie/walk/zombie-walk-6.png": {
+      "frame": { "x": 652, "y": 632, "w": 100, "h": 156 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 156 },
+      "sourceSize": { "w": 100, "h": 156 }
+    },
+    "zombie/walk/zombie-walk-5.png": {
+      "frame": { "x": 652, "y": 790, "w": 100, "h": 156 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 156 },
+      "sourceSize": { "w": 100, "h": 156 }
+    },
+    "zombie/walk/zombie-walk-4.png": {
+      "frame": { "x": 652, "y": 948, "w": 100, "h": 155 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 155 },
+      "sourceSize": { "w": 100, "h": 156 }
+    },
+    "zombie/walk/zombie-walk-3.png": {
+      "frame": { "x": 753, "y": 158, "w": 100, "h": 156 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 156 },
+      "sourceSize": { "w": 100, "h": 156 }
+    },
+    "zombie/walk/zombie-walk-2.png": {
+      "frame": { "x": 754, "y": 316, "w": 100, "h": 156 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 156 },
+      "sourceSize": { "w": 100, "h": 156 }
+    },
+    "zombie/walk/zombie-walk-10.png": {
+      "frame": { "x": 754, "y": 474, "w": 100, "h": 156 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 156 },
+      "sourceSize": { "w": 100, "h": 156 }
+    },
+    "zombie/walk/zombie-walk-1.png": {
+      "frame": { "x": 754, "y": 632, "w": 100, "h": 156 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 156 },
+      "sourceSize": { "w": 100, "h": 156 }
     },
     "girl/run/girl-run-8.png": {
       "frame": { "x": 187, "y": 61, "w": 13, "h": 17 },
@@ -228,9 +305,9 @@
   "meta": {
     "app": "http://github.com/pixijs/assetpack",
     "version": "1.0",
-    "image": "default-o43WlQ@0.5x.webp",
+    "image": "default-LYDo@0.5x.avif",
     "format": "RGBA8888",
-    "size": { "w": 652, "h": 1234 },
+    "size": { "w": 856, "h": 1234 },
     "scale": 0.5,
     "related_multi_packs": []
   }

@@ -31,8 +31,8 @@ class Platforms extends ContainerComponent {
     this.registerToSignal(config.signals.moveScreen, this._move);
   }
 
-  private _move(delta: number) {
-    this.x -= delta;
+  private _move(x: number) {
+    this.x = -x;
     this._deleteExpiredPlatforms();
     this._createPlatforms();
   }

@@ -3,6 +3,7 @@ import TilingSpriteComponent from '../../../../../lib/game-engine/components/til
 import { getRandomInt } from '../../../../../lib/game-engine/helpers/numbers';
 import { addPhysicalEntity } from '../../../../../lib/game-engine/physics-engine';
 import Drink from './drink';
+import Zombie from './zombie';
 
 class Platform extends ContainerComponent {
   private _topOffset = 0;
@@ -47,6 +48,7 @@ class Platform extends ContainerComponent {
     });
 
     this._createDrinks(distance);
+    this._createZombies(distance);
   }
 
   private _createDrinks(distance: number) {
@@ -57,7 +59,7 @@ class Platform extends ContainerComponent {
     const maxDrinksInSeries = 5;
 
     while (x + drinkWidth <= this.width) {
-      x = getRandomInt(x, x + this.width - drinkWidth);
+      x += getRandomInt(0, this.width - drinkWidth);
       const y =
         this._topOffset -
         drinkHeight -
@@ -71,6 +73,20 @@ class Platform extends ContainerComponent {
       }
 
       x += 20;
+    }
+  }
+
+  private _createZombies(distance: number) {
+    if (distance === 0) return;
+
+    const zombieWidth = 40;
+    const zombieHeight = 61.6;
+    let x = getRandomInt(0, this.width - zombieWidth);
+    const y = this._topOffset - zombieHeight;
+
+    while (x + zombieWidth <= this.width) {
+      this.addComponent(new Zombie({ x, y }, distance));
+      x += 50 + getRandomInt(0, this.width - zombieWidth);
     }
   }
 }
