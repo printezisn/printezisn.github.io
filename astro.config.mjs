@@ -7,9 +7,6 @@ export default defineConfig({
   integrations: [
     sitemap({
       lastmod: new Date(),
-      filter: (page) => {
-        return !page.includes('couples-run');
-      },
     }),
   ],
 });
