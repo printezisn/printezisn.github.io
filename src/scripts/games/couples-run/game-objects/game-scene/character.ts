@@ -92,7 +92,7 @@ abstract class Character extends SpriteComponent {
   }
 
   async damage() {
-    if (!this._canDamage) return;
+    if (!this._canDamage || !gameState.started) return;
 
     this._canDamage = false;
     playSound(config.sounds.playerHit, { volume: 2 });
@@ -142,6 +142,8 @@ abstract class Character extends SpriteComponent {
   }
 
   private _updatePosition(x: number, y: number, onGround: boolean) {
+    if (!gameState.started && this._moveState !== 'idle') return;
+
     this.x = x - 49;
     this.y = y - 40;
     this._onGround = onGround;

@@ -25,7 +25,7 @@ class Drink extends SpriteComponent {
         height: this.height,
       },
       onCollision: async (entity) => {
-        if (entity instanceof Character) {
+        if (gameState.started && entity instanceof Character) {
           gameState.score += 10;
           fireSignal(config.signals.updateScore);
           playSound(config.sounds.coin, { volume: 2 });

@@ -48,7 +48,7 @@ class Zombie extends SpriteComponent {
   }
 
   protected onTick() {
-    if (!this._started) return;
+    if (!this._started || !gameState.started) return;
 
     if (this.x + this.width >= 0) {
       movePhysicalEntity(this, -1, 0);
@@ -71,7 +71,7 @@ class Zombie extends SpriteComponent {
   }
 
   private _onCollision(entity: DisplayObject) {
-    if (entity instanceof Character) {
+    if (gameState.started && entity instanceof Character) {
       (entity as Character).damage();
     }
   }
