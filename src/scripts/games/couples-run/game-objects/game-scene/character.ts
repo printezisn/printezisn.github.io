@@ -34,11 +34,12 @@ abstract class Character extends SpriteComponent {
   private _currentJump = 0;
   private _pressing = false;
   private _pressed = false;
-  private _increaseSpeedMilestone = 10000;
+  private _nextIncreaseSpeedMilestone = 0;
   private _canDamage = true;
 
   abstract get hasPressAndRelease(): boolean;
-  abstract get totalAllowedJumps(): number;
+  protected abstract get totalAllowedJumps(): number;
+  protected abstract get increaseSpeedMilestone(): number;
 
   constructor(resourceType: ResourceType) {
     super({
@@ -163,13 +164,15 @@ abstract class Character extends SpriteComponent {
     }
 
     if (this._canIncreaseSpeed()) {
-      gameState.speed++;
-      this._increaseSpeedMilestone = this.x + 10000;
+      if (this._nextIncreaseSpeedMilestone > 0) {
+        gameState.speed++;
+      }
+      this._nextIncreaseSpeedMilestone = this.x + this.increaseSpeedMilestone;
     }
   }
 
   private _canIncreaseSpeed() {
-    return this.x >= this._increaseSpeedMilestone;
+    return this.x >= this._nextIncreaseSpeedMilestone;
   }
 
   private _canJump() {

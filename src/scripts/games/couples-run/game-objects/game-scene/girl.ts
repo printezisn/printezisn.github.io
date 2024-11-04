@@ -1,11 +1,15 @@
 import Character from './character';
 
 class Girl extends Character {
+  protected get increaseSpeedMilestone() {
+    return 20000;
+  }
+
   get hasPressAndRelease() {
     return true;
   }
 
-  get totalAllowedJumps() {
+  protected get totalAllowedJumps() {
     return 1;
   }
 
