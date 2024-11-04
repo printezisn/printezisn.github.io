@@ -20,6 +20,7 @@ This is my personal website containing my blog, portfolio and games.
 1. [PixiJS Assetpack](https://pixijs.io/assetpack/) for packing and optimizing assets.
 1. [PixiJS Sound](https://pixijs.io/sound/examples/index.html) for playing sounds.
 1. [Audiosprite](https://github.com/tonistiigi/audiosprite) to combine audio files.
+1. [MatterJS](https://brm.io/matter-js/) for game physics.
 
 ## Commands
 
