@@ -102,6 +102,11 @@ class IntroScene extends BaseScene {
       this.chooseCharacterComponent.height +
       40;
 
+    this.registerToSignal(
+      config.signals.chooseCharacter,
+      this._onCharacterSelection,
+    );
+
     await Promise.all([
       this.chooseCharacterComponent.animate({
         from: { alpha: 0 },
@@ -114,11 +119,6 @@ class IntroScene extends BaseScene {
         duration: 1,
       }),
     ]);
-
-    this.registerToSignal(
-      config.signals.chooseCharacter,
-      this._onCharacterSelection,
-    );
   }
 
   protected onResize() {

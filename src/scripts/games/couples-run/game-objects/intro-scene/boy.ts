@@ -21,6 +21,7 @@ class Boy extends SpriteComponent {
   }
 
   protected onClick() {
+    this.interactive = false;
     gameState.selectedCharacter = 'boy';
     fireSignal(config.signals.chooseCharacter);
   }

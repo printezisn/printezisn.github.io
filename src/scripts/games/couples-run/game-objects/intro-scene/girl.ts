@@ -21,6 +21,7 @@ class Girl extends SpriteComponent {
   }
 
   protected onClick() {
+    this.interactive = false;
     gameState.selectedCharacter = 'girl';
     fireSignal(config.signals.chooseCharacter);
   }
