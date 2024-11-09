@@ -26,8 +26,8 @@ importers:
         specifier: 5.0.14
         version: 5.0.14
       '@printezisn/game-engine':
-        specifier: git://github.com/printezisn/game-engine#v0.1.0
-        version: https://codeload.github.com/printezisn/game-engine/tar.gz/588985a81d1479123ab742a5220816f2012da426
+        specifier: git://github.com/printezisn/game-engine#v0.1.1
+        version: https://codeload.github.com/printezisn/game-engine/tar.gz/ff2b6b18f6f3019e349e739f01600ff57f4bdcb9
       astro:
         specifier: 4.15.1
         version: 4.15.1(rollup@4.21.2)(sass@1.77.8)(typescript@5.5.4)
@@ -1508,12 +1508,12 @@ packages:
       }
     engines: { node: ^12.20.0 || ^14.18.0 || >=16.0.0 }
 
-  '@printezisn/game-engine@https://codeload.github.com/printezisn/game-engine/tar.gz/588985a81d1479123ab742a5220816f2012da426':
+  '@printezisn/game-engine@https://codeload.github.com/printezisn/game-engine/tar.gz/ff2b6b18f6f3019e349e739f01600ff57f4bdcb9':
     resolution:
       {
-        tarball: https://codeload.github.com/printezisn/game-engine/tar.gz/588985a81d1479123ab742a5220816f2012da426,
+        tarball: https://codeload.github.com/printezisn/game-engine/tar.gz/ff2b6b18f6f3019e349e739f01600ff57f4bdcb9,
       }
-    version: 0.1.0
+    version: 0.1.1
     engines: { node: '>=20' }
 
   '@rollup/pluginutils@5.1.0':
@@ -3871,6 +3871,14 @@ packages:
     resolution:
       {
         integrity: sha512-rowAVRUBfI0b4+niA4SJMhfQwc107VLkBUgEYYAOQAbqDCnra1nYh83hF/MDmhYs9t9n1E3DuKOrs2LYNC+0Ag==,
+      }
+    engines: { node: '>=18' }
+    hasBin: true
+
+  husky@9.1.6:
+    resolution:
+      {
+        integrity: sha512-sqbjZKK7kf44hfdE94EoX8MZNk0n7HeW37O4YrVGCF4wzgQjp+akPAkfUK5LZ6KuR/6sqeAVuXHji+RzQgOn5A==,
       }
     engines: { node: '>=18' }
     hasBin: true
@@ -8196,8 +8204,9 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
-  '@printezisn/game-engine@https://codeload.github.com/printezisn/game-engine/tar.gz/588985a81d1479123ab742a5220816f2012da426':
-    {}
+  '@printezisn/game-engine@https://codeload.github.com/printezisn/game-engine/tar.gz/ff2b6b18f6f3019e349e739f01600ff57f4bdcb9':
+    dependencies:
+      husky: 9.1.6
 
   '@rollup/pluginutils@5.1.0(rollup@4.21.2)':
     dependencies:
@@ -9887,6 +9896,8 @@ snapshots:
   human-signals@5.0.0: {}
 
   husky@9.1.5: {}
+
+  husky@9.1.6: {}
 
   iconv-lite@0.6.3:
     dependencies:

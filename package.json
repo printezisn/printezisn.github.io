@@ -30,7 +30,7 @@
     "sass": "1.77.8",
     "sharp": "0.33.5",
     "typescript": "5.5.4",
-    "@printezisn/game-engine": "git://github.com/printezisn/game-engine#v0.1.0"
+    "@printezisn/game-engine": "git://github.com/printezisn/game-engine#v0.1.1"
   },
   "devDependencies": {
     "@assetpack/core": "1.1.1",
