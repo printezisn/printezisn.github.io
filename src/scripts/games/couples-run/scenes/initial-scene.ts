@@ -1,19 +1,19 @@
-import MovingBackgroundComponent from '../../../../lib/game-engine/components/moving-background';
-import BaseScene from '../../../../lib/game-engine/scenes/base';
 import {
+  BaseScene,
+  engineConfig,
   fadeInSound,
   fadeOutSound,
+  fireSignal,
+  MovingBackgroundComponent,
   playSound,
-} from '../../../../lib/game-engine/sound';
+} from '@printezisn/game-engine';
 import config from '../config';
-import engineConfig from '../../../../lib/game-engine/config';
 import CTA from '../game-objects/initial-scene/cta';
 import Logo from '../game-objects/initial-scene/logo';
 import MovingBoy from '../game-objects/initial-scene/moving-boy';
 import MovingGirl from '../game-objects/initial-scene/moving-girl';
 import MovingPlatform from '../game-objects/initial-scene/moving-platform';
 import Settings from '../game-objects/initial-scene/settings';
-import { fireSignal } from '../../../../lib/game-engine/signals';
 
 class InitialScene extends BaseScene {
   private _canContinue = false;

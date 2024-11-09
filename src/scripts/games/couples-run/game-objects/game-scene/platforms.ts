@@ -1,12 +1,14 @@
-import ContainerComponent from '../../../../../lib/game-engine/components/container';
 import gameState from '../../game-state';
 import Platform from './platform';
-import engineConfig from '../../../../../lib/game-engine/config';
-import { getRandomInt } from '../../../../../lib/game-engine/helpers/numbers';
 import Girl from './girl';
 import Boy from './boy';
 import config from '../../config';
 import type Character from './character';
+import {
+  ContainerComponent,
+  engineConfig,
+  getRandomInt,
+} from '@printezisn/game-engine';
 
 class Platforms extends ContainerComponent {
   private _limit = 0;

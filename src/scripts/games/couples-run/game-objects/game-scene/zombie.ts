@@ -1,17 +1,15 @@
-import SpriteComponent from '../../../../../lib/game-engine/components/sprite';
 import gameState from '../../game-state';
+import Character from './character';
+import config from '../../config';
 import {
   addPhysicalEntity,
+  engineGameState,
   movePhysicalEntity,
   setMovement,
-} from '../../../../../lib/game-engine/physics-engine';
-import type {
-  DisplayObject,
-  Point,
-} from '../../../../../lib/game-engine/components/types';
-import Character from './character';
-import engineGameState from '../../../../../lib/game-engine/game-state';
-import config from '../../config';
+  SpriteComponent,
+  type DisplayObject,
+  type Point,
+} from '@printezisn/game-engine';
 
 const MOVE_FRAME_INTERVAL = 5;
 

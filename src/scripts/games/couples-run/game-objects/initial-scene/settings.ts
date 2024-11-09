@@ -1,4 +1,4 @@
-import ContainerComponent from '../../../../../lib/game-engine/components/container';
+import { ContainerComponent } from '@printezisn/game-engine';
 import CreditsButton from './credits-button';
 import VolumeButton from './volume-button';
 

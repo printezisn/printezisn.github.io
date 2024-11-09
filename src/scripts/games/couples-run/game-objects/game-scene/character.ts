@@ -1,13 +1,13 @@
-import SpriteComponent from '../../../../../lib/game-engine/components/sprite';
 import gameState from '../../game-state';
-import engineGameState from '../../../../../lib/game-engine/game-state';
 import {
   addPhysicalEntity,
+  fireSignal,
+  playSound,
   setMovement,
-} from '../../../../../lib/game-engine/physics-engine';
-import { fireSignal } from '../../../../../lib/game-engine/signals';
+  SpriteComponent,
+  engineGameState,
+} from '@printezisn/game-engine';
 import config from '../../config';
-import { playSound } from '../../../../../lib/game-engine/sound';
 
 type MoveState = 'idle' | 'run' | 'jump';
 type ResourceType = 'boy' | 'girl';

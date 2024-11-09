@@ -1,4 +1,4 @@
-import TilingBackgroundComponent from '../../../../../lib/game-engine/components/tiling-background';
+import { TilingBackgroundComponent } from '@printezisn/game-engine';
 import config from '../../config';
 
 class Background extends TilingBackgroundComponent {

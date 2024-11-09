@@ -1,11 +1,5 @@
 import '../../base';
 import '../../../styles/games/couples-run/main.scss';
-import { changeScene, initGame } from '../../../lib/game-engine/application';
-import {
-  addSignalListener,
-  removeSignalListener,
-} from '../../../lib/game-engine/signals';
-import engineConfig from '../../../lib/game-engine/config';
 import InitialScene from './scenes/initial-scene';
 
 import Lobster from '@fontsource/lobster/files/lobster-latin-400-normal.woff2';
@@ -16,6 +10,13 @@ import GameScene from './scenes/game-scene';
 import assetsManifest from './manifest.json';
 import gameState from './game-state';
 import GameOverScene from './scenes/game-over';
+import {
+  addSignalListener,
+  changeScene,
+  engineConfig,
+  initGame,
+  removeSignalListener,
+} from '@printezisn/game-engine';
 
 const urlParams = new URLSearchParams(window.location.search ?? '');
 

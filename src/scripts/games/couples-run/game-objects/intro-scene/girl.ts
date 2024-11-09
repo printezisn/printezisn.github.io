@@ -1,5 +1,4 @@
-import SpriteComponent from '../../../../../lib/game-engine/components/sprite';
-import { fireSignal } from '../../../../../lib/game-engine/signals';
+import { fireSignal, SpriteComponent } from '@printezisn/game-engine';
 import config from '../../config';
 import gameState from '../../game-state';
 

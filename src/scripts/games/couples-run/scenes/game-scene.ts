@@ -1,5 +1,4 @@
-import BaseScene from '../../../../lib/game-engine/scenes/base';
-import { fadeInSound } from '../../../../lib/game-engine/sound';
+import { BaseScene, fadeInSound } from '@printezisn/game-engine';
 import { debounce } from '../../sudoku/lib/helpers/timing-helpers';
 import config from '../config';
 import Background from '../game-objects/game-scene/background';

@@ -1,6 +1,8 @@
-import ContainerComponent from '../../../../../lib/game-engine/components/container';
-import TilingSpriteComponent from '../../../../../lib/game-engine/components/tiling-sprite';
-import gameState from '../../../../../lib/game-engine/game-state';
+import {
+  ContainerComponent,
+  engineGameState,
+  TilingSpriteComponent,
+} from '@printezisn/game-engine';
 
 const TOTAL_MIDDLE_PLATFORMS = 2;
 
@@ -35,15 +37,15 @@ class MovingPlatform extends ContainerComponent {
   }
 
   protected onResize() {
-    this.platformMiddle.width = gameState.screen.width;
+    this.platformMiddle.width = engineGameState.screen.width;
     this.platformMiddle.height =
       this.platformMiddle.originalHeight * TOTAL_MIDDLE_PLATFORMS;
     this.platformMiddle.position.y =
-      gameState.screen.height - this.platformMiddle.height;
+      engineGameState.screen.height - this.platformMiddle.height;
 
-    this.platformTop.width = gameState.screen.width;
+    this.platformTop.width = engineGameState.screen.width;
     this.platformTop.position.y =
-      gameState.screen.height -
+      engineGameState.screen.height -
       this.platformMiddle.height -
       this.platformTop.height;
   }

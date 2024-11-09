@@ -1,4 +1,4 @@
-import VolumeButtonComponent from '../../../../../lib/game-engine/components/volume-button';
+import { VolumeButtonComponent } from '@printezisn/game-engine';
 
 class VolumeButton extends VolumeButtonComponent {
   constructor() {

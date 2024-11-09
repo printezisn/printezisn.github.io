@@ -1,7 +1,9 @@
-import ContainerComponent from '../../../../../lib/game-engine/components/container';
-import TilingSpriteComponent from '../../../../../lib/game-engine/components/tiling-sprite';
-import { getRandomInt } from '../../../../../lib/game-engine/helpers/numbers';
-import { addPhysicalEntity } from '../../../../../lib/game-engine/physics-engine';
+import {
+  addPhysicalEntity,
+  ContainerComponent,
+  getRandomInt,
+  TilingSpriteComponent,
+} from '@printezisn/game-engine';
 import Drink from './drink';
 import Zombie from './zombie';
 

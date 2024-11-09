@@ -1,4 +1,4 @@
-import CreditsButtonComponent from '../../../../../lib/game-engine/components/credits-button';
+import { CreditsButtonComponent } from '@printezisn/game-engine';
 
 class CreditsButton extends CreditsButtonComponent {
   constructor() {

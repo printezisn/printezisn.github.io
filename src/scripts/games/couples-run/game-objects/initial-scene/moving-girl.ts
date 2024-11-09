@@ -1,4 +1,4 @@
-import SpriteComponent from '../../../../../lib/game-engine/components/sprite';
+import { SpriteComponent } from '@printezisn/game-engine';
 
 const TOTAL_RUN_SPRITES = 8;
 const MOVE_FRAME_INTERVAL = 5;

@@ -1,8 +1,10 @@
-import SpriteComponent from '../../../../../lib/game-engine/components/sprite';
-import type { Point } from '../../../../../lib/game-engine/components/types';
-import { addPhysicalEntity } from '../../../../../lib/game-engine/physics-engine';
-import { fireSignal } from '../../../../../lib/game-engine/signals';
-import { playSound } from '../../../../../lib/game-engine/sound';
+import {
+  addPhysicalEntity,
+  fireSignal,
+  playSound,
+  SpriteComponent,
+  type Point,
+} from '@printezisn/game-engine';
 import config from '../../config';
 import gameState from '../../game-state';
 import Character from './character';

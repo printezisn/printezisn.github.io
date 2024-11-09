@@ -1,9 +1,11 @@
-import TextComponent from '../../../../lib/game-engine/components/text';
-import BaseScene from '../../../../lib/game-engine/scenes/base';
-import engineConfig from '../../../../lib/game-engine/config';
 import gameState from '../game-state';
-import { fireSignal } from '../../../../lib/game-engine/signals';
 import config from '../config';
+import {
+  BaseScene,
+  engineConfig,
+  fireSignal,
+  TextComponent,
+} from '@printezisn/game-engine';
 
 class GameOverScene extends BaseScene {
   async init() {

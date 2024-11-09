@@ -1,4 +1,4 @@
-import TextComponent from '../../../../../lib/game-engine/components/text';
+import { TextComponent } from '@printezisn/game-engine';
 
 class CTA extends TextComponent {
   constructor() {

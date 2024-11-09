@@ -1,16 +1,16 @@
-import TextComponent from '../../../../lib/game-engine/components/text';
-import gameState from '../../../../lib/game-engine/game-state';
-import BaseScene from '../../../../lib/game-engine/scenes/base';
 import {
+  BaseScene,
+  engineConfig,
+  engineGameState,
   fadeInSound,
   fadeOutSound,
+  fireSignal,
+  MovingBackgroundComponent,
   playSound,
-} from '../../../../lib/game-engine/sound';
+  TextComponent,
+} from '@printezisn/game-engine';
 import config from '../config';
-import engineConfig from '../../../../lib/game-engine/config';
 import Selection from '../game-objects/intro-scene/selection';
-import { fireSignal } from '../../../../lib/game-engine/signals';
-import MovingBackgroundComponent from '../../../../lib/game-engine/components/moving-background';
 
 const INTRO =
   'The night has fallen deep and the young(?) couple is ' +
@@ -123,11 +123,11 @@ class IntroScene extends BaseScene {
 
   protected onResize() {
     if (this.introComponent) {
-      this.introComponent.wordWrapWidth = gameState.screen.width - 40;
+      this.introComponent.wordWrapWidth = engineGameState.screen.width - 40;
     }
     if (this.characterExplanationComponent) {
       this.characterExplanationComponent.wordWrapWidth =
-        gameState.screen.width - 40;
+        engineGameState.screen.width - 40;
     }
     if (this.chooseCharacterComponent) {
       this.chooseCharacterComponent.y =
@@ -149,7 +149,7 @@ class IntroScene extends BaseScene {
         alpha: 0,
         position: { x: 20, y: 20 },
         wordWrap: true,
-        wordWrapWidth: gameState.screen.width - 40,
+        wordWrapWidth: engineGameState.screen.width - 40,
         align: 'justify',
         lineHeight: 40,
       }),

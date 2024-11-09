@@ -1,8 +1,11 @@
-import ContainerComponent from '../../../../../lib/game-engine/components/container';
-import RectangleComponent from '../../../../../lib/game-engine/components/rectangle';
-import TextComponent from '../../../../../lib/game-engine/components/text';
-import { fireSignal } from '../../../../../lib/game-engine/signals';
-import { fadeOutSound, playSound } from '../../../../../lib/game-engine/sound';
+import {
+  ContainerComponent,
+  fadeOutSound,
+  fireSignal,
+  playSound,
+  RectangleComponent,
+  TextComponent,
+} from '@printezisn/game-engine';
 import config from '../../config';
 import gameState from '../../game-state';
 

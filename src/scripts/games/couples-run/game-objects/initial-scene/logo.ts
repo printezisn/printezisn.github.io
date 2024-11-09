@@ -1,5 +1,4 @@
-import TextComponent from '../../../../../lib/game-engine/components/text';
-import gameState from '../../../../../lib/game-engine/game-state';
+import { engineGameState, TextComponent } from '@printezisn/game-engine';
 
 class Logo extends TextComponent {
   constructor() {
@@ -27,7 +26,7 @@ class Logo extends TextComponent {
   }
 
   private get desiredFontSize() {
-    return gameState.screen.orientation === 'landscape' ? 128 : 86;
+    return engineGameState.screen.orientation === 'landscape' ? 128 : 86;
   }
 
   protected onOrientationChange() {

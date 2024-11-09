@@ -24,18 +24,13 @@
     "@fontsource/lora": "5.0.18",
     "@fontsource/press-start-2p": "5.1.0",
     "@fontsource/roboto": "5.0.14",
-    "@pixi/sound": "6.0.1",
-    "@types/matter-js": "0.19.7",
     "astro": "4.15.1",
     "feather-icons": "4.29.2",
-    "gsap": "3.12.5",
     "husky": "9.1.5",
-    "matter-js": "0.20.0",
-    "mini-signals": "2.0.0",
-    "pixi.js": "8.4.0",
     "sass": "1.77.8",
     "sharp": "0.33.5",
-    "typescript": "5.5.4"
+    "typescript": "5.5.4",
+    "@printezisn/game-engine": "git://github.com/printezisn/game-engine#v0.1.0"
   },
   "devDependencies": {
     "@assetpack/core": "1.1.1",
