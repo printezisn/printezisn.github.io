@@ -10,7 +10,6 @@
     "start:dev": "astro dev --port 3000",
     "start:prod": "astro preview --port 4000",
     "build": "astro build && node ./sanitize-sitemap",
-    "build:assets": "npx build-game-audio && npx build-game-assets",
     "prepare": "husky",
     "prettier:format": "prettier --write .",
     "lint": "astro check --minimumSeverity warning && eslint ./src",
@@ -20,9 +19,7 @@
   "dependencies": {
     "@astrojs/check": "0.9.3",
     "@astrojs/sitemap": "3.1.6",
-    "@fontsource/lobster": "5.1.0",
     "@fontsource/lora": "5.0.18",
-    "@fontsource/press-start-2p": "5.1.0",
     "@fontsource/roboto": "5.0.14",
     "astro": "4.15.1",
     "feather-icons": "4.29.2",
@@ -30,11 +27,9 @@
     "sass": "1.77.8",
     "sharp": "0.33.5",
     "typescript": "5.5.4",
-    "@printezisn/game-engine": "git://github.com/printezisn/game-engine#v0.2.0"
+    "@printezisn/games-couples-run": "git://github.com/printezisn/games-couples-run#v1.1.1"
   },
   "devDependencies": {
-    "@assetpack/core": "1.2.1",
-    "audiosprite": "0.7.2",
     "@eslint/js": "9.9.1",
     "@typescript-eslint/parser": "8.3.0",
     "@vitest/web-worker": "2.0.5",
