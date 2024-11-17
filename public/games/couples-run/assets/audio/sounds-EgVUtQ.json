@@ -1,8 +1,0 @@
-{
-  "click": { "start": 0, "end": 0.038276643990929705, "loop": false },
-  "coin": { "start": 2, "end": 2.9044897959183675, "loop": false },
-  "game-over": { "start": 4, "end": 10, "loop": false },
-  "main-loop": { "start": 11, "end": 155, "loop": false },
-  "menu-loop": { "start": 156, "end": 368.21052154195013, "loop": false },
-  "player-hit": { "start": 370, "end": 370.0951247165533, "loop": false }
-}

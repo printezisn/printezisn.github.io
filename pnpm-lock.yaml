@@ -20,8 +20,8 @@ importers:
         specifier: 5.0.14
         version: 5.0.14
       '@printezisn/games-couples-run':
-        specifier: git://github.com/printezisn/games-couples-run#v1.1.1
-        version: https://codeload.github.com/printezisn/games-couples-run/tar.gz/6914d2e961b23f79aadc635b335a56ed2fb2d257
+        specifier: file:../couples-run
+        version: file:../couples-run
       astro:
         specifier: 4.15.1
         version: 4.15.1(rollup@4.21.2)(sass@1.77.8)(typescript@5.5.4)
@@ -40,6 +40,9 @@ importers:
       typescript:
         specifier: 5.5.4
         version: 5.5.4
+      vite-plugin-static-copy:
+        specifier: 2.1.0
+        version: 2.1.0(vite@5.4.2(sass@1.77.8))
     devDependencies:
       '@eslint/js':
         specifier: 9.9.1
@@ -862,14 +865,9 @@ packages:
       }
     engines: { node: ^12.20.0 || ^14.18.0 || >=16.0.0 }
 
-  '@printezisn/games-couples-run@https://codeload.github.com/printezisn/games-couples-run/tar.gz/6914d2e961b23f79aadc635b335a56ed2fb2d257':
-    resolution:
-      {
-        tarball: https://codeload.github.com/printezisn/games-couples-run/tar.gz/6914d2e961b23f79aadc635b335a56ed2fb2d257,
-      }
-    version: 1.1.1
+  '@printezisn/games-couples-run@file:../couples-run':
+    resolution: { directory: ../couples-run, type: directory }
     engines: { node: '>=20' }
-    hasBin: true
 
   '@rollup/pluginutils@5.1.0':
     resolution:
@@ -2422,6 +2420,13 @@ packages:
       }
     engines: { node: '>= 6' }
 
+  fs-extra@11.2.0:
+    resolution:
+      {
+        integrity: sha512-PmDi3uwK5nFuXh7XDTlVnS17xJS7vW36is2+w3xcv8SVxiB4NyATf4ctkVY5bkSjX0Y4nbvZCq1/EjtEyr9ktw==,
+      }
+    engines: { node: '>=14.14' }
+
   fsevents@2.3.3:
     resolution:
       {
@@ -3170,6 +3175,12 @@ packages:
     resolution:
       {
         integrity: sha512-HUgH65KyejrUFPvHFPbqOY0rsFip3Bo5wb4ngvdi1EpCYWUQDC5V+Y7mZws+DLkr4M//zQJoanu1SP+87Dv1oQ==,
+      }
+
+  jsonfile@6.1.0:
+    resolution:
+      {
+        integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==,
       }
 
   jsx-ast-utils@3.3.5:
@@ -4784,6 +4795,13 @@ packages:
       }
     engines: { node: '>= 4.0.0' }
 
+  universalify@2.0.1:
+    resolution:
+      {
+        integrity: sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==,
+      }
+    engines: { node: '>= 10.0.0' }
+
   update-browserslist-db@1.1.0:
     resolution:
       {
@@ -4836,6 +4854,15 @@ packages:
       }
     engines: { node: ^18.0.0 || >=20.0.0 }
     hasBin: true
+
+  vite-plugin-static-copy@2.1.0:
+    resolution:
+      {
+        integrity: sha512-n8lEOIVM00Y/zronm0RG8RdPyFd0SAAFR0sii3NWmgG3PSCyYMsvUNRQTlb3onp1XeMrKIDwCrPGxthKvqX9OQ==,
+      }
+    engines: { node: ^18.0.0 || >=20.0.0 }
+    peerDependencies:
+      vite: ^5.0.0
 
   vite@5.4.2:
     resolution:
@@ -5815,7 +5842,7 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
-  '@printezisn/games-couples-run@https://codeload.github.com/printezisn/games-couples-run/tar.gz/6914d2e961b23f79aadc635b335a56ed2fb2d257':
+  '@printezisn/games-couples-run@file:../couples-run':
     dependencies:
       husky: 9.1.6
 
@@ -6989,6 +7016,12 @@ snapshots:
       combined-stream: 1.0.8
       mime-types: 2.1.35
 
+  fs-extra@11.2.0:
+    dependencies:
+      graceful-fs: 4.2.11
+      jsonfile: 6.1.0
+      universalify: 2.0.1
+
   fsevents@2.3.3:
     optional: true
 
@@ -7425,6 +7458,12 @@ snapshots:
   jsonc-parser@2.3.1: {}
 
   jsonc-parser@3.3.1: {}
+
+  jsonfile@6.1.0:
+    dependencies:
+      universalify: 2.0.1
+    optionalDependencies:
+      graceful-fs: 4.2.11
 
   jsx-ast-utils@3.3.5:
     dependencies:
@@ -8585,6 +8624,8 @@ snapshots:
 
   universalify@0.2.0: {}
 
+  universalify@2.0.1: {}
+
   update-browserslist-db@1.1.0(browserslist@4.23.3):
     dependencies:
       browserslist: 4.23.3
@@ -8634,6 +8675,14 @@ snapshots:
       - sugarss
       - supports-color
       - terser
+
+  vite-plugin-static-copy@2.1.0(vite@5.4.2(sass@1.77.8)):
+    dependencies:
+      chokidar: 3.6.0
+      fast-glob: 3.3.2
+      fs-extra: 11.2.0
+      picocolors: 1.0.1
+      vite: 5.4.2(sass@1.77.8)
 
   vite@5.4.2(sass@1.77.8):
     dependencies:
