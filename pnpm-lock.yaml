@@ -20,8 +20,8 @@ importers:
         specifier: 5.0.14
         version: 5.0.14
       '@printezisn/games-couples-run':
-        specifier: git://github.com/printezisn/games-couples-run#v1.4.2
-        version: https://codeload.github.com/printezisn/games-couples-run/tar.gz/c07717fcd92255dd4e8e833d9f10a35ddfa3bb8c
+        specifier: git://github.com/printezisn/games-couples-run#v1.4.3
+        version: https://codeload.github.com/printezisn/games-couples-run/tar.gz/fbf136f73dca9f656e933f1967b605ab1a344429
       astro:
         specifier: 4.15.1
         version: 4.15.1(rollup@4.21.2)(sass@1.77.8)(typescript@5.5.4)
@@ -865,12 +865,12 @@ packages:
       }
     engines: { node: ^12.20.0 || ^14.18.0 || >=16.0.0 }
 
-  '@printezisn/games-couples-run@https://codeload.github.com/printezisn/games-couples-run/tar.gz/c07717fcd92255dd4e8e833d9f10a35ddfa3bb8c':
+  '@printezisn/games-couples-run@https://codeload.github.com/printezisn/games-couples-run/tar.gz/fbf136f73dca9f656e933f1967b605ab1a344429':
     resolution:
       {
-        tarball: https://codeload.github.com/printezisn/games-couples-run/tar.gz/c07717fcd92255dd4e8e833d9f10a35ddfa3bb8c,
+        tarball: https://codeload.github.com/printezisn/games-couples-run/tar.gz/fbf136f73dca9f656e933f1967b605ab1a344429,
       }
-    version: 1.4.2
+    version: 1.4.3
     engines: { node: '>=20' }
 
   '@rollup/pluginutils@5.1.0':
@@ -5846,7 +5846,7 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
-  '@printezisn/games-couples-run@https://codeload.github.com/printezisn/games-couples-run/tar.gz/c07717fcd92255dd4e8e833d9f10a35ddfa3bb8c':
+  '@printezisn/games-couples-run@https://codeload.github.com/printezisn/games-couples-run/tar.gz/fbf136f73dca9f656e933f1967b605ab1a344429':
     dependencies:
       husky: 9.1.6
 
