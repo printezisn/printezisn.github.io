@@ -10,6 +10,7 @@ This is my personal website containing my blog, portfolio and games.
 1. Install **pnpm** (e.g. with `npm i -g pnpm`).
 1. Download the node packages with `pnpm i`.
 1. Install **ffmpeg** to convert audio files.
+1. Copy the contents of `.env.template` into `.env` and set the environment variables.
 
 ## Stack
 
