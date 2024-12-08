@@ -45,8 +45,6 @@ jobs:
           PUBLIC_COUPLES_RUN_FIREBASE_APP_ID: ${{ vars.PUBLIC_COUPLES_RUN_FIREBASE_APP_ID }}
       - name: Run linter
         run: pnpm lint
-      - name: Run unit tests
-        run: pnpm test:unit
 
   deploy:
     if: github.event_name == 'push'

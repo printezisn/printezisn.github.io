@@ -13,8 +13,7 @@
     "prepare": "husky",
     "prettier:format": "prettier --write .",
     "lint": "astro check --minimumSeverity warning && eslint ./src",
-    "lint:fix": "astro check --minimumSeverity warning && eslint ./src --fix",
-    "test:unit": "vitest run ./src --config ./vitest.test.ts --passWithNoTests"
+    "lint:fix": "astro check --minimumSeverity warning && eslint ./src --fix"
   },
   "dependencies": {
     "@astrojs/check": "0.9.3",
@@ -22,6 +21,7 @@
     "@fontsource/lora": "5.0.18",
     "@fontsource/roboto": "5.0.14",
     "@printezisn/games-couples-run": "git://github.com/printezisn/games-couples-run#v1.5.2",
+    "@printezisn/games-sudoku": "git://github.com/printezisn/games-sudoku#v1.0.2",
     "astro": "4.15.1",
     "feather-icons": "4.29.2",
     "husky": "9.1.5",
@@ -33,7 +33,6 @@
   "devDependencies": {
     "@eslint/js": "9.9.1",
     "@typescript-eslint/parser": "8.3.0",
-    "@vitest/web-worker": "2.0.5",
     "eslint": "9.9.1",
     "eslint-plugin-astro": "1.2.3",
     "eslint-plugin-jsx-a11y": "6.9.0",
@@ -41,7 +40,6 @@
     "jsdom": "25.0.0",
     "prettier": "3.3.3",
     "prettier-plugin-astro": "0.14.1",
-    "typescript-eslint": "8.3.0",
-    "vitest": "2.0.5"
+    "typescript-eslint": "8.3.0"
   }
 }

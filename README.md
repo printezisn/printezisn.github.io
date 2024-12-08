@@ -31,7 +31,6 @@ This is my personal website containing my blog, portfolio and games.
 1. `pnpm lint`: uses eslint to find linting issues.
 1. `pnpm lint:fix`: uses eslint to find linting issues and fix them if possible.
 1. `pnpm prettier:format`: uses prettier to find formatting issues and fix them if possible.
-1. `pnpm test:unit`: runs the unit tests.
 
 ## Game Credits
 
