@@ -20,8 +20,8 @@ importers:
         specifier: 5.0.14
         version: 5.0.14
       '@printezisn/games-couples-run':
-        specifier: git://github.com/printezisn/games-couples-run#v1.5.2
-        version: https://codeload.github.com/printezisn/games-couples-run/tar.gz/a194f5c29796aa790a938f90715645cf016af3e5
+        specifier: git://github.com/printezisn/games-couples-run#v1.6.0
+        version: https://codeload.github.com/printezisn/games-couples-run/tar.gz/af76bc7a6c4561a4054d406e05b80e1af198feca
       '@printezisn/games-sudoku':
         specifier: git://github.com/printezisn/games-sudoku#v1.0.2
         version: https://codeload.github.com/printezisn/games-sudoku/tar.gz/69657ed9b5a2c34ccf16a9e8bdc210fdf635b323
@@ -862,12 +862,12 @@ packages:
       }
     engines: { node: ^12.20.0 || ^14.18.0 || >=16.0.0 }
 
-  '@printezisn/games-couples-run@https://codeload.github.com/printezisn/games-couples-run/tar.gz/a194f5c29796aa790a938f90715645cf016af3e5':
+  '@printezisn/games-couples-run@https://codeload.github.com/printezisn/games-couples-run/tar.gz/af76bc7a6c4561a4054d406e05b80e1af198feca':
     resolution:
       {
-        tarball: https://codeload.github.com/printezisn/games-couples-run/tar.gz/a194f5c29796aa790a938f90715645cf016af3e5,
+        tarball: https://codeload.github.com/printezisn/games-couples-run/tar.gz/af76bc7a6c4561a4054d406e05b80e1af198feca,
       }
-    version: 1.5.2
+    version: 1.6.0
     engines: { node: '>=20' }
 
   '@printezisn/games-sudoku@https://codeload.github.com/printezisn/games-sudoku/tar.gz/69657ed9b5a2c34ccf16a9e8bdc210fdf635b323':
@@ -5589,7 +5589,7 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
-  '@printezisn/games-couples-run@https://codeload.github.com/printezisn/games-couples-run/tar.gz/a194f5c29796aa790a938f90715645cf016af3e5':
+  '@printezisn/games-couples-run@https://codeload.github.com/printezisn/games-couples-run/tar.gz/af76bc7a6c4561a4054d406e05b80e1af198feca':
     dependencies:
       husky: 9.1.6
 
