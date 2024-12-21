@@ -20,7 +20,7 @@
     "@astrojs/sitemap": "3.2.1",
     "@fontsource/lora": "5.1.0",
     "@fontsource/roboto": "5.1.0",
-    "@printezisn/games-couples-run": "git://github.com/printezisn/games-couples-run#v1.6.0",
+    "@printezisn/games-couples-run": "git://github.com/printezisn/games-couples-run#v1.7.1",
     "@printezisn/games-sudoku": "git://github.com/printezisn/games-sudoku#v1.0.2",
     "astro": "4.16.18",
     "feather-icons": "4.29.2",
