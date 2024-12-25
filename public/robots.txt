@@ -1,3 +1,4 @@
 User-agent: *
+Disallow:
 
 Sitemap: https://printezisn.github.io/sitemap.xml
