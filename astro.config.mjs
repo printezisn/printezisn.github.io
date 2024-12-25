@@ -56,6 +56,11 @@ gamePackages.forEach((game) => {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://printezisn.github.io/',
+  output: 'static',
+  outDir: './docs',
+  build: {
+    assets: 'astro',
+  },
   integrations: [
     sitemap({
       lastmod: new Date(),
