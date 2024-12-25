@@ -1,5 +1,4 @@
 dist/
-docs/
 .astro/
 node_modules/
 npm-debug.log*

@@ -1,4 +1,4 @@
 import fs from 'fs';
 
-fs.unlinkSync('./docs/sitemap-index.xml');
-fs.renameSync('./docs/sitemap-0.xml', './docs/sitemap.xml');
+fs.unlinkSync('./dist/sitemap-index.xml');
+fs.renameSync('./dist/sitemap-0.xml', './dist/sitemap.xml');
