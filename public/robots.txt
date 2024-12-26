@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://printezisn.github.io/sitemap-new.xml
+Sitemap: https://printezisn.github.io/sitemap_new.xml
