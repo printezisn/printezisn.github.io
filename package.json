@@ -9,7 +9,7 @@
   "scripts": {
     "start:dev": "astro dev --port 3000",
     "start:prod": "astro preview --port 4000",
-    "build": "astro build && node ./sanitize-sitemap",
+    "build": "astro build",
     "prepare": "husky",
     "prettier:format": "prettier --write .",
     "lint": "astro check --minimumSeverity warning && eslint ./src",
