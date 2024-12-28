@@ -1,3 +1,4 @@
+import { glob } from 'astro/loaders';
 import { z, defineCollection } from 'astro:content';
 
 const postSchema = z.object({
@@ -9,12 +10,12 @@ const postSchema = z.object({
 });
 
 const postsCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/data/posts' }),
   schema: postSchema,
 });
 
 const gamesCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/data/games' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -25,7 +26,7 @@ const gamesCollection = defineCollection({
 });
 
 const otherWorkCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/data/other-work' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -34,7 +35,7 @@ const otherWorkCollection = defineCollection({
 });
 
 const categoriesCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/data/categories' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -49,6 +50,6 @@ export const collections = {
 };
 
 export type Post = {
-  slug: string;
+  id: string;
   data: z.infer<typeof postSchema>;
 };

@@ -22,7 +22,7 @@ const otherWork = await getCollection('other-work');
       {
         posts.map((post) => (
           <article>
-            <a href={`/blog/post/${post.slug}/`}>
+            <a href={`/blog/post/${post.id}/`}>
               <h3>{post.data.title}</h3>
               <time datetime={post.data.date.toISOString().slice(0, 10)}>
                 {post.data.date.toISOString().slice(0, 10)}

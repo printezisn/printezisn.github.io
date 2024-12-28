@@ -1,6 +1,6 @@
 ---
 import type { Page } from 'astro';
-import type { Post } from '../content/config';
+import type { Post } from '../content.config';
 import ArrowRightIcon from 'feather-icons/dist/icons/arrow-right.svg?raw';
 import ArrowLeftIcon from 'feather-icons/dist/icons/arrow-left.svg?raw';
 
@@ -18,12 +18,12 @@ const { posts, titleTag = 'h2' } = Astro.props;
       <header>
         {titleTag === 'h2' && (
           <h2 class="title">
-            <a href={`/blog/post/${post.slug}/`}>{post.data.title}</a>
+            <a href={`/blog/post/${post.id}/`}>{post.data.title}</a>
           </h2>
         )}
         {titleTag === 'h3' && (
           <h3 class="title">
-            <a href={`/blog/post/${post.slug}/`}>{post.data.title}</a>
+            <a href={`/blog/post/${post.id}/`}>{post.data.title}</a>
           </h3>
         )}
         <time datetime={post.data.date.toISOString().slice(0, 10)}>
@@ -35,7 +35,7 @@ const { posts, titleTag = 'h2' } = Astro.props;
       </div>
       <footer>
         <nav>
-          <a href={`/blog/post/${post.slug}/`}>Read more</a>
+          <a href={`/blog/post/${post.id}/`}>Read more</a>
         </nav>
       </footer>
     </article>

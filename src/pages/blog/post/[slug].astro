@@ -3,25 +3,27 @@ import { getCollection } from 'astro:content';
 import BlogLayout from '../../../layouts/blog-layout.astro';
 import type { GetStaticPaths } from 'astro';
 import CategoriesList from '../../../components/categories-list.astro';
+import { render } from 'astro:content';
+import { getEntry } from 'astro:content';
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection('posts');
   return posts.map((post) => ({
     params: {
-      slug: post.slug,
+      slug: post.id,
     },
   }));
 }) satisfies GetStaticPaths;
 
 const { slug } = Astro.params;
-const post = (await getCollection('posts')).find((post) => post.slug === slug);
-const { Content } = post ? await post.render() : { Content: '' };
+const post = await getEntry('posts', slug);
+const { Content } = post ? await render(post) : { Content: '' };
 ---
 
 <BlogLayout
   title={`${post?.data.title} | Nikos Printezis`}
   description={post?.data.description ?? ''}
-  path={`/blog/post/${post?.slug}/`}
+  path={`/blog/post/${post?.id}/`}
 >
   <div class="page-content">
     <article class="post">

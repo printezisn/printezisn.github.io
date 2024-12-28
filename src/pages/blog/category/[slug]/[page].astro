@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BlogLayout from '../../../../layouts/blog-layout.astro';
 import type { GetStaticPaths } from 'astro';
 import PostList from '../../../../components/post-list.astro';
+import { getEntry } from 'astro:content';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const categories = await getCollection('categories');
@@ -12,13 +13,13 @@ export const getStaticPaths = (async ({ paginate }) => {
 
   return categories.flatMap((category) => {
     const categoryPosts = posts.filter((post) =>
-      post.data.categories.includes(category.slug),
+      post.data.categories.includes(category.id),
     );
 
     return paginate(categoryPosts, {
       pageSize: 10,
       params: {
-        slug: category.slug,
+        slug: category.id,
       },
     });
   });
@@ -26,9 +27,7 @@ export const getStaticPaths = (async ({ paginate }) => {
 
 const { page } = Astro.props;
 const { slug } = Astro.params;
-const category = (await getCollection('categories')).find(
-  (category) => category.slug === slug,
-);
+const category = await getEntry('categories', slug);
 ---
 
 <BlogLayout

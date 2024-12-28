@@ -12,7 +12,7 @@ let categories = (await getCollection('categories')).sort((a, b) =>
 );
 if (categorySlugs) {
   categories = categories.filter((category) =>
-    categorySlugs.includes(category.slug),
+    categorySlugs.includes(category.id),
   );
 }
 ---
@@ -22,7 +22,7 @@ if (categorySlugs) {
     {
       categories.map((cat) => (
         <li>
-          <a href={`/blog/category/${cat.slug}/`} class="button">
+          <a href={`/blog/category/${cat.id}/`} class="button">
             {cat.data.title}
           </a>
         </li>
