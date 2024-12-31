@@ -17,7 +17,6 @@ html,
 body {
   font-family: var(--font-family-base);
   font-weight: var(--font-weight-normal);
-  font-size: var(--font-size-base);
   line-height: var(--line-height-base);
   background-color: var(--color-primary);
   color: var(--color-primary-white);
@@ -64,8 +63,8 @@ a:where(:active) {
 }
 
 svg {
-  width: 1em;
-  height: 1em;
+  inline-size: 1em;
+  block-size: 1em;
 }
 
 p:not(.astro-code) code,

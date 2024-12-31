@@ -1,5 +1,5 @@
 .page {
-  min-block-size: 100vh;
+  min-block-size: 100vb;
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: auto 1fr auto;
@@ -23,18 +23,17 @@
   line-height: 0;
 }
 
+main {
+  container-type: inline-size;
+}
+
 .content-with-sidebar {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 25rem;
+}
 
-  & > :first-child {
-    flex-basis: 500px;
-    flex-grow: 1;
-    max-inline-size: 100vi;
-  }
-
-  & > :nth-child(2) {
-    max-inline-size: 400px;
-    inline-size: 100%;
+@container (max-inline-size: 50rem) {
+  .content-with-sidebar {
+    display: block;
   }
 }

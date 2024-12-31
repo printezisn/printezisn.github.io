@@ -3,7 +3,7 @@
 
   .portfolio-content {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(auto, 400px));
+    grid-template-columns: repeat(auto-fill, minmax(auto, 25rem));
     gap: var(--spacing-4);
     padding: var(--spacing-4);
 
@@ -24,7 +24,7 @@
 
       img {
         inline-size: 100%;
-        block-size: 400px;
+        block-size: 25rem;
       }
 
       h3 {
