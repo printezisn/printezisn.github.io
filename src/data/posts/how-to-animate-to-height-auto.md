@@ -28,7 +28,7 @@ Ideally, the following CSS snippet should be enough to achieve the transition wi
 }
 ```
 
-But it's not. If you follow this approach, you'll notice that the hidden content is revealed immediately and the transition is not happening (<a href="https://codepen.io/Nikos-Printezis/pen/JjgYKWE" target="_blank" rel="noreferrer">codepen</a>).
+But it's not. If you follow this approach, you'll notice that the hidden content is revealed immediately and the transition is not happening (<a href="https://codepen.io/Nikos-Printezis/pen/JjgYKWE" target="_blank" rel="nofollow noreferrer">codepen</a>).
 
 The `interpolate-size` CSS property enables transitions of CSS intrinsic sizing keywords like `auto`.
 
@@ -48,7 +48,7 @@ The `interpolate-size` CSS property enables transitions of CSS intrinsic sizing 
 }
 ```
 
-If you check this <a href="https://codepen.io/Nikos-Printezis/pen/PoMPzJd" target="_blank" rel="noreferrer">codepen</a> you'll notice that the transition works like a charm. Everything looks fantastic except one thing. At the time of writing, `interpolate-size` is only supported by Chrome (<a href="https://caniuse.com/?search=interpolate-size" target="_blank" rel="noreferrer">caniuse</a>).
+If you check this <a href="https://codepen.io/Nikos-Printezis/pen/PoMPzJd" target="_blank" rel="nofollow noreferrer">codepen</a> you'll notice that the transition works like a charm. Everything looks fantastic except one thing. At the time of writing, `interpolate-size` is only supported by Chrome (<a href="https://caniuse.com/?search=interpolate-size" target="_blank" rel="nofollow noreferrer">caniuse</a>).
 
 ### 2. Using the calc-size CSS function
 
@@ -66,7 +66,7 @@ The `calc-size` CSS function enables mathematical calculations on intrinsic size
 }
 ```
 
-Here's another <a href="https://codepen.io/Nikos-Printezis/pen/rNXOLJe" target="_blank" rel="noreferrer">codepen</a> to try the function. Same as above, it works like a charm but is currently supported only by Chrome (<a href="https://caniuse.com/?search=calc-size" target="_blank" rel="noreferrer">caniuse</a>).
+Here's another <a href="https://codepen.io/Nikos-Printezis/pen/rNXOLJe" target="_blank" rel="nofollow noreferrer">codepen</a> to try the function. Same as above, it works like a charm but is currently supported only by Chrome (<a href="https://caniuse.com/?search=calc-size" target="_blank" rel="nofollow noreferrer">caniuse</a>).
 
 ### 3. Using max-height for the transition
 
@@ -84,11 +84,11 @@ If the resulting height wasn't `auto`, but a high value (e.g. 1000px), the CSS t
 }
 ```
 
-There is a problem though. We have to set a high value for `max-height` but we don't know how much is good enough. Should it be 100px, 1000px, 9999px ? We can set a really high value, but this affects the transition, because it's different to go from 0 to 1000px in 500ms and different to go from 0 to 99999px in 500ms (<a href="https://codepen.io/Nikos-Printezis/pen/bGXVexy" target="_blank" rel="noreferrer">codepen</a>).
+There is a problem though. We have to set a high value for `max-height` but we don't know how much is good enough. Should it be 100px, 1000px, 9999px ? We can set a really high value, but this affects the transition, because it's different to go from 0 to 1000px in 500ms and different to go from 0 to 99999px in 500ms (<a href="https://codepen.io/Nikos-Printezis/pen/bGXVexy" target="_blank" rel="nofollow noreferrer">codepen</a>).
 
 ### 4. Letting JS give us a helping hand
 
-This approach combines the power of CSS and JS to achieve a precise transition (<a href="https://codepen.io/Nikos-Printezis/pen/ZEgbOZp" target="_blank" rel="noreferrer">codepen</a>).
+This approach combines the power of CSS and JS to achieve a precise transition (<a href="https://codepen.io/Nikos-Printezis/pen/ZEgbOZp" target="_blank" rel="nofollow noreferrer">codepen</a>).
 
 **HTML:**
 

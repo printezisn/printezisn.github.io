@@ -309,7 +309,7 @@ Here are some common logical properties:
 - `inset-block-end` instead of `bottom`
 - ...and many more
 
-You can find the full list of logical properties on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values" target="_blank" rel="noreferrer">MDN</a>.
+You can find the full list of logical properties on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values" target="_blank" rel="nofollow noreferrer">MDN</a>.
 
 Here’s how we can refactor our widget to use logical properties:
 
@@ -428,7 +428,7 @@ This setup works seamlessly in different text directions:
 
 ### Browser Support
 
-CSS logical properties boast good cross-browser support, so you can confidently implement them in your projects. For detailed compatibility, check <a href="https://caniuse.com/css-logical-props" target="_blank" rel="noreferrer">caniuse</a>.
+CSS logical properties boast good cross-browser support, so you can confidently implement them in your projects. For detailed compatibility, check <a href="https://caniuse.com/css-logical-props" target="_blank" rel="nofollow noreferrer">caniuse</a>.
 
 ### Flexbox and Grid with Logical Properties
 

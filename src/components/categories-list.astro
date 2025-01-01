@@ -22,7 +22,11 @@ if (categorySlugs) {
     {
       categories.map((cat) => (
         <li>
-          <a href={`/blog/category/${cat.id}/`} class="button">
+          <a
+            href={`/blog/category/${cat.id}/`}
+            class="button"
+            title={`View all posts in category "${cat.data.title}"`}
+          >
             {cat.data.title}
           </a>
         </li>

@@ -75,7 +75,7 @@ As you can see, the dates are serialized as strings.
 
 **3. Use lodash/cloneDeep**
 
-If you're already using the <a href="https://lodash.com/" target="_blank" rel="noreferrer">lodash</a> library, you can use its `cloneDeep` function. For example:
+If you're already using the <a href="https://lodash.com/" target="_blank" rel="nofollow noreferrer">lodash</a> library, you can use its `cloneDeep` function. For example:
 
 ```js
 import cloneDeep from 'lodash/cloneDeep.js';
@@ -112,7 +112,7 @@ console.log(clone);
 
 **4. Use structuredClone**
 
-As mentioned in <a href="https://developer.mozilla.org/en-US/docs/Web/API/structuredClone" target="_blank" rel="noreferrer">MDN</a>, the global `structuredClone` method creates a deep clone of a given value using the structured clone algorithm. It's supported in all major browsers (<a href="https://caniuse.com/?search=structuredClone" target="_blank" rel="noreferrer">caniuse</a>) and NodeJS >= 17. Here's an example:
+As mentioned in <a href="https://developer.mozilla.org/en-US/docs/Web/API/structuredClone" target="_blank" rel="nofollow noreferrer">MDN</a>, the global `structuredClone` method creates a deep clone of a given value using the structured clone algorithm. It's supported in all major browsers (<a href="https://caniuse.com/?search=structuredClone" target="_blank" rel="nofollow noreferrer">caniuse</a>) and NodeJS >= 17. Here's an example:
 
 ```js
 const obj = {

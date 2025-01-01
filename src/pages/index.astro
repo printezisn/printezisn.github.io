@@ -22,7 +22,10 @@ const otherWork = await getCollection('other-work');
       {
         posts.map((post) => (
           <article>
-            <a href={`/blog/post/${post.id}/`}>
+            <a
+              href={`/blog/post/${post.id}/`}
+              title={`Read the post "${post.data.title}"`}
+            >
               <h3>{post.data.title}</h3>
               <time datetime={post.data.date.toISOString().slice(0, 10)}>
                 {post.data.date.toISOString().slice(0, 10)}
@@ -33,7 +36,7 @@ const otherWork = await getCollection('other-work');
           </article>
         ))
       }
-      <a href="/blog/" class="view-all">
+      <a href="/blog/" class="view-all" title="View all blog posts">
         <span>View all</span>
         <Fragment set:html={ArrowRightIcon} />
       </a>
@@ -45,7 +48,10 @@ const otherWork = await getCollection('other-work');
       {
         games.map((game) => (
           <article>
-            <a href={game.data.path}>
+            <a
+              href={game.data.path}
+              title={`Play the game "${game.data.title}"`}
+            >
               <div class="portfolio-image">
                 <img
                   src={game.data.image}
@@ -71,7 +77,12 @@ const otherWork = await getCollection('other-work');
       {
         otherWork.map((w) => (
           <article>
-            <a href={w.data.url} target="_blank" rel="noreferrer">
+            <a
+              href={w.data.url}
+              target="_blank"
+              rel="noreferrer"
+              title={`Learn more about "${w.data.title}"`}
+            >
               <h3>{w.data.title}</h3>
               <p>{w.data.description}</p>
               <div class="more">Learn more</div>

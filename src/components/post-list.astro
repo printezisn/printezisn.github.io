@@ -18,12 +18,22 @@ const { posts, titleTag = 'h2' } = Astro.props;
       <header>
         {titleTag === 'h2' && (
           <h2 class="title">
-            <a href={`/blog/post/${post.id}/`}>{post.data.title}</a>
+            <a
+              href={`/blog/post/${post.id}/`}
+              title={`Read the post "${post.data.title}"`}
+            >
+              {post.data.title}
+            </a>
           </h2>
         )}
         {titleTag === 'h3' && (
           <h3 class="title">
-            <a href={`/blog/post/${post.id}/`}>{post.data.title}</a>
+            <a
+              href={`/blog/post/${post.id}/`}
+              title={`Read the post "${post.data.title}"`}
+            >
+              {post.data.title}
+            </a>
           </h3>
         )}
         <time datetime={post.data.date.toISOString().slice(0, 10)}>
@@ -35,7 +45,12 @@ const { posts, titleTag = 'h2' } = Astro.props;
       </div>
       <footer>
         <nav>
-          <a href={`/blog/post/${post.id}/`}>Read more</a>
+          <a
+            href={`/blog/post/${post.id}/`}
+            title={`Read the post "${post.data.title}"`}
+          >
+            Read more
+          </a>
         </nav>
       </footer>
     </article>
@@ -45,16 +60,24 @@ const { posts, titleTag = 'h2' } = Astro.props;
   (posts.currentPage > 1 || posts.currentPage < posts.lastPage) && (
     <nav class="button-group page-navigation-buttons">
       {posts.currentPage > 1 ? (
-        <a class="button" href={`/blog/posts/${posts.currentPage - 1}/`}>
+        <a
+          class="button"
+          href={`/blog/posts/${posts.currentPage - 1}/`}
+          title={`View the posts in the previous page`}
+        >
           <Fragment set:html={ArrowLeftIcon} />
-          <span>Next</span>
+          <span>Previous</span>
         </a>
       ) : (
         <div />
       )}
       {posts.currentPage < posts.lastPage ? (
-        <a class="button" href={`/blog/posts/${posts.currentPage + 1}/`}>
-          <span>Previous</span>
+        <a
+          class="button"
+          href={`/blog/posts/${posts.currentPage + 1}/`}
+          title={`View the posts in the next page`}
+        >
+          <span>Next</span>
           <Fragment set:html={ArrowRightIcon} />
         </a>
       ) : (

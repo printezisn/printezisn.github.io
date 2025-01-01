@@ -13,7 +13,7 @@ This site is made up of several distinct parts:
 
 - **The Blog**
 - **The Game Engine** that powers 2D games.
-- **Individual Games** like [Decisive Sudoku](/sudoku) and [Couples Run](/games/couples-run).
+- **Individual Games** like <a href="/sudoku/" target="_blank">Decisive Sudoku</a> and <a href="/games/couples-run/" target="_blank">Couples Run</a>.
 
 Each part resides in its own GitHub repository, and they are seamlessly integrated to form the site you’re experiencing right now. Let’s take a closer look at each of these components.
 
@@ -21,18 +21,18 @@ Each part resides in its own GitHub repository, and they are seamlessly integrat
 
 This is the core **Game Engine** that drives the 2D games provided on the site. It offers essential components and game lifecycle functionality, enabling everything from graphics rendering to sound management. The engine uses the following key libraries and tools:
 
-- <a href="https://pixijs.com/" target="_blank" rel="noreferrer">PixiJS</a> for 2D graphics rendering.
-- <a href="https://brm.io/matter-js/" target="_blank" rel="noreferrer">MatterJS</a> for physics functionality.
-- <a href="https://gsap.com/" target="_blank" rel="noreferrer">GSAP</a> for handling animations.
-- <a href="https://pixijs.io/sound/examples/" target="_blank" rel="noreferrer">PixiJS Sound</a> for playing sounds.
-- <a href="https://pixijs.io/assetpack/" target="_blank" rel="noreferrer">PixiJS Assetpack</a> for optimizing assets like images, audio, etc.
-- <a href="https://github.com/tonistiigi/audiosprite" target="_blank" rel="noreferrer">Audiosprite</a> for combining audio files into sprites.
+- <a href="https://pixijs.com/" target="_blank" rel="nofollow noreferrer">PixiJS</a> for 2D graphics rendering.
+- <a href="https://brm.io/matter-js/" target="_blank" rel="nofollow noreferrer">MatterJS</a> for physics functionality.
+- <a href="https://gsap.com/" target="_blank" rel="nofollow noreferrer">GSAP</a> for handling animations.
+- <a href="https://pixijs.io/sound/examples/" target="_blank" rel="nofollow noreferrer">PixiJS Sound</a> for playing sounds.
+- <a href="https://pixijs.io/assetpack/" target="_blank" rel="nofollow noreferrer">PixiJS Assetpack</a> for optimizing assets like images, audio, etc.
+- <a href="https://github.com/tonistiigi/audiosprite" target="_blank" rel="nofollow noreferrer">Audiosprite</a> for combining audio files into sprites.
 
 Here’s how it’s set up and integrated into the game projects:
 
 1\. **Project setup with Vite:**
 \
-The engine is built using <a href="https://vite.dev/" target="_blank" rel="noreferrer">Vite</a> in _lib_ mode, with the following configuration:
+The engine is built using <a href="https://vite.dev/" target="_blank" rel="nofollow noreferrer">Vite</a> in _lib_ mode, with the following configuration:
 
 `vite.config.ts`
 
@@ -51,7 +51,7 @@ export default defineConfig({
 });
 ```
 
-This setup builds the engine into a library format, which is then available for use in other projects. It additionally uses <a href="https://github.com/qmhc/vite-plugin-dts" target="_blank" rel="noreferrer">vite-plugin-dts</a> to provide the underlying entity types.
+This setup builds the engine into a library format, which is then available for use in other projects. It additionally uses <a href="https://github.com/qmhc/vite-plugin-dts" target="_blank" rel="nofollow noreferrer">vite-plugin-dts</a> to provide the underlying entity types.
 
 2\. **Artifact exports in package.json:**
 \
@@ -76,7 +76,7 @@ The built artifacts are exposed as exports like so:
 
 3\. **Automated builds and versioning:**
 \
-Before pushing any changes to the repository, the project is automatically built using hooks with <a href="https://typicode.github.io/husky/" target="_blank" rel="noreferrer">Husky</a> to ensure the latest `dist` folder is checked into the repository. When a new version is ready, a new tag (e.g., `v0.7.0`) is created to mark the release.
+Before pushing any changes to the repository, the project is automatically built using hooks with <a href="https://typicode.github.io/husky/" target="_blank" rel="nofollow noreferrer">Husky</a> to ensure the latest `dist` folder is checked into the repository. When a new version is ready, a new tag (e.g., `v0.7.0`) is created to mark the release.
 
 4\. **Game projects as dependencies:**
 \
@@ -150,7 +150,7 @@ export default defineConfig({
 });
 ```
 
-This configuration uses <a href="https://github.com/qmhc/vite-plugin-dts" target="_blank" rel="noreferrer">vite-plugin-dts</a> to provide the underlying entity types and <a href="https://github.com/vbenjs/vite-plugin-html" target="_blank" rel="noreferrer">vite-plugin-html</a> to inject variables into the page templates.
+This configuration uses <a href="https://github.com/qmhc/vite-plugin-dts" target="_blank" rel="nofollow noreferrer">vite-plugin-dts</a> to provide the underlying entity types and <a href="https://github.com/vbenjs/vite-plugin-html" target="_blank" rel="nofollow noreferrer">vite-plugin-html</a> to inject variables into the page templates.
 
 2\. **Module for rendering the game**
 \
@@ -263,7 +263,7 @@ Other projects that depend on the game import it as a dependency, specifying the
 
 ### The blog
 
-This is the main application. It includes the [portfolio](/) and all the [posts](/blog) you read. It's a blog built with <a href="https://astro.build/" target="_blank" rel="noreferrer">Astro</a> and Typescript.
+This is the main application. It includes the [portfolio](/) and all the [posts](/blog) you read. It's a blog built with <a href="https://astro.build/" target="_blank" rel="nofollow noreferrer">Astro</a> and Typescript.
 
 It has the following setup in order to host the games.
 
@@ -430,7 +430,7 @@ export default defineConfig({
 });
 ```
 
-This setup uses the <a href="https://github.com/sapphi-red/vite-plugin-static-copy" target="_blank" rel="noreferrer">vite-plugin-static-copy</a> plugin to copy the game assets from the node modules into the site application, ensuring all necessary resources are available for the games to function properly.
+This setup uses the <a href="https://github.com/sapphi-red/vite-plugin-static-copy" target="_blank" rel="nofollow noreferrer">vite-plugin-static-copy</a> plugin to copy the game assets from the node modules into the site application, ensuring all necessary resources are available for the games to function properly.
 
 <a href="https://github.com/printezisn/printezisn.github.io/" target="_blank" rel="noreferrer">GitHub Repository</a>
 
