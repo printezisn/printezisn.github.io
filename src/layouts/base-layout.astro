@@ -76,6 +76,9 @@ const imageUrl = new URL(image, Astro.site);
     <meta name="theme-color" content={themeColor} />
     <link rel="manifest" href="/manifest/manifest.webmanifest" />
 
+    <!-- Structured Data -->
+    <slot name="structured-data" />
+
     <!-- Scripts -->
     <slot name="scripts" />
   </head>

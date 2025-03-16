@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BlogLayout from '../layouts/blog-layout.astro';
 import ArrowRightIcon from 'feather-icons/dist/icons/arrow-right.svg?raw';
 import { Picture } from 'astro:assets';
+import avatar from '../assets/avatar.webp';
 
 const pageSize = 10;
 const posts = (await getCollection('posts'))
@@ -10,6 +11,28 @@ const posts = (await getCollection('posts'))
   .slice(0, pageSize);
 const games = (await getCollection('games')).filter((g) => !g.data.hidden);
 const otherWork = await getCollection('other-work');
+
+const profilePageStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  dateCreated: '2024-09-03T00:00Z',
+  dateModified: '2024-09-03T00:00Z',
+  mainEntity: {
+    '@id': '#main-author',
+    '@type': 'Person',
+    name: 'Nikos Printezis',
+    description:
+      "I'm Nikos and I'm a full stack engineer. I like coding all sorts of stuff, although I focus more on front end development with native JS/CSS features, React and 2D games with PixiJS.",
+    image: new URL(avatar.src, Astro.site),
+  },
+  hasPart: posts.map((post) => ({
+    '@type': 'Article',
+    headline: post.data.title,
+    url: new URL(`/blog/post/${post.id}`, Astro.site),
+    datePublished: post.data.date.toISOString(),
+    author: { '@id': '#main-author' },
+  })),
+};
 ---
 
 <BlogLayout
@@ -17,6 +40,11 @@ const otherWork = await getCollection('other-work');
   description="Hi! I'm Nikos and I'm a full stack engineer focusing on front end development and 2D game development. Here you may find my portfolio, blog and games."
   path=""
 >
+  <Fragment
+    slot="structured-data"
+    set:html={`<script type="application/ld+json">${JSON.stringify(profilePageStructuredData)}</script>`}
+  />
+
   <section class="portfolio-section">
     <h2 class="section-title">Blog</h2>
     <div class="portfolio-content">
