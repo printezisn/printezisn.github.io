@@ -1,0 +1,31 @@
+@use 'functions' as f;
+
+.breadcrumb {
+  padding: var(--spacing-4);
+  padding-block-end: 0;
+  max-inline-size: #{f.relativeSize(700)};
+  margin: auto;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-1);
+    list-style: none;
+    font-size: var(--font-size-1);
+    line-height: var(--line-height-1);
+  }
+
+  li {
+    &::before {
+      display: inline-block;
+      content: '/';
+      padding-inline-end: var(--spacing-1);
+    }
+  }
+
+  li:first-child {
+    &::before {
+      content: unset;
+    }
+  }
+}

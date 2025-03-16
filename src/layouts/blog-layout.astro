@@ -12,6 +12,7 @@ import RobotoBolItalic from '@fontsource/roboto/files/roboto-latin-700-italic.wo
 import LoraNormal from '@fontsource/lora/files/lora-latin-400-normal.woff2';
 import LoraBold from '@fontsource/lora/files/lora-latin-700-normal.woff2';
 import CategoriesWidget from '../components/categories-widget.astro';
+import Breadcrumb from '../components/breadcrumb.astro';
 
 const fonts = [
   RobotoNormal,
@@ -135,11 +136,17 @@ const {
       {
         sidebar ? (
           <div class="content-with-sidebar">
-            <slot />
+            <div>
+              <Breadcrumb pages={breadcrumbList} />
+              <slot />
+            </div>
             <CategoriesWidget />
           </div>
         ) : (
-          <slot />
+          <>
+            <Breadcrumb pages={breadcrumbList} />
+            <slot />
+          </>
         )
       }
     </main>

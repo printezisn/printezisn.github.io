@@ -1,0 +1,27 @@
+---
+interface Page {
+  name: string;
+  url: string;
+}
+
+interface Props {
+  pages: Page[];
+}
+
+const { pages } = Astro.props;
+---
+
+{
+  pages.length > 1 && (
+    <nav class="breadcrumb">
+      <ul>
+        {pages.map((page, i) => (
+          <li>
+            {i < pages.length - 1 && <a href={page.url}>{page.name}</a>}
+            {i === pages.length - 1 && page.name}
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
