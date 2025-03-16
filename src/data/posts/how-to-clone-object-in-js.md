@@ -5,6 +5,9 @@ excerpt: Regardless if it's for testing or actual implementation, there are many
 categories:
   - js
 date: 2024-09-03
+image:
+  href: '../../assets/posts/how-to-clone-object-in-js/cloned-object.png'
+  alt: Two objects looking identical
 ---
 
 Regardless if it's for testing or actual implementation, there are many cases where we want to deep clone a JS object. There are 4 very neat ways to do so.

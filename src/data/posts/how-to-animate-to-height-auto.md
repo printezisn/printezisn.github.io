@@ -6,6 +6,9 @@ categories:
   - js
   - css
 date: 2024-09-29
+image:
+  href: ../../assets/posts/how-to-animate-to-height-auto/dropdown-menu.png
+  alt: A computer screen showing dropdown menus
 ---
 
 Vertical expansion is one of the classic animations every front-end engineer encounters. When a user clicks, hidden content is revealed line by line. While it's straightforward to achieve this with JS, the addition of CSS transitions has made many developers eager to implement it using just CSS. But is it possible? Well… yes and no.

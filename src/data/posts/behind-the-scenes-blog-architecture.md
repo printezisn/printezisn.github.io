@@ -5,6 +5,9 @@ excerpt: Take a behind-the-scenes look at the architecture of this site. In this
 categories:
   - architecture
 date: 2024-12-21
+image:
+  href: ../../assets/posts/behind-the-scenes-blog-architecture/desk-setup.png
+  alt: A desk setup with a computer on the background
 ---
 
 Welcome to a behind-the-scenes tour of the architecture that powers this site! In this post, we’ll dive deep into the design, structure, and technical framework that bring everything to life, from the content you read to the interactive games you enjoy.

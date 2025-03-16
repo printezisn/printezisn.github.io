@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BlogLayout from '../layouts/blog-layout.astro';
 import ArrowRightIcon from 'feather-icons/dist/icons/arrow-right.svg?raw';
+import { Picture } from 'astro:assets';
 
 const pageSize = 10;
 const posts = (await getCollection('posts'))
@@ -26,6 +27,19 @@ const otherWork = await getCollection('other-work');
               href={`/blog/post/${post.id}/`}
               title={`Read the post "${post.data.title}"`}
             >
+              {post.data.image && (
+                <div class="portfolio-image">
+                  <Picture
+                    src={post.data.image.href}
+                    alt={post.data.image!.alt}
+                    formats={['avif']}
+                    width={512}
+                    height={512}
+                    loading="eager"
+                    decoding="auto"
+                  />
+                </div>
+              )}
               <h3>{post.data.title}</h3>
               <time datetime={post.data.date.toISOString().slice(0, 10)}>
                 {post.data.date.toISOString().slice(0, 10)}

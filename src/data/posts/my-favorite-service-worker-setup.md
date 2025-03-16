@@ -5,6 +5,9 @@ excerpt: My favorite service worker setup that I use in order to cache static co
 categories:
   - js
 date: 2024-09-10
+image:
+  href: ../../assets/posts/my-favorite-service-worker-setup/js-developer.png
+  alt: A js developer working on a project in front of the screen
 ---
 
 Here is a description of service workers, as depicted in <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank" rel="nofollow noreferrer">MDN</a>:

@@ -1,11 +1,13 @@
 ---
 import type { Page } from 'astro';
-import type { Post } from '../content.config';
 import ArrowRightIcon from 'feather-icons/dist/icons/arrow-right.svg?raw';
 import ArrowLeftIcon from 'feather-icons/dist/icons/arrow-left.svg?raw';
+import type { CollectionEntry } from 'astro:content';
+import { Picture } from 'astro:assets';
+import { IMAGE_WIDTHS } from '../helpers/image-helper';
 
 interface Props {
-  posts: Page<Post>;
+  posts: Page<CollectionEntry<'posts'>>;
   titleTag?: 'h2' | 'h3';
 }
 
@@ -41,6 +43,16 @@ const { posts, titleTag = 'h2' } = Astro.props;
         </time>
       </header>
       <div class="content">
+        {post.data.image && (
+          <Picture
+            src={post.data.image.href}
+            alt={post.data.image.alt}
+            formats={['avif']}
+            widths={IMAGE_WIDTHS}
+            loading="eager"
+            decoding="auto"
+          />
+        )}
         <p>{post.data.excerpt}</p>
       </div>
       <footer>
