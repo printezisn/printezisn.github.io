@@ -61,6 +61,7 @@ export default defineConfig({
       lastmod: new Date(),
     }),
   ],
+  cacheDir: '.cached-assets',
   vite: {
     plugins: [
       viteStaticCopy({
