@@ -11,6 +11,20 @@ const description = 'Credits for the Couples Run game';
   description={description}
   path="/games/couples-run/credits/"
   pageTitle="Credits for Couples Run"
+  breadcrumbList={[
+    {
+      name: 'Portfolio',
+      url: '/',
+    },
+    {
+      name: 'Couples Run',
+      url: '/games/couples-run/',
+    },
+    {
+      name: 'Credits',
+      url: '/games/couples-run/credits/',
+    },
+  ]}
 >
   <Fragment set:html={CreditsHtml} />
 </BlogLayout>

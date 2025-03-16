@@ -21,6 +21,16 @@ const { page } = Astro.props;
   path={`/blog/posts/${page.currentPage}/`}
   pageTitle="Blog"
   sidebar
+  breadcrumbList={[
+    {
+      name: 'Portfolio',
+      url: '/',
+    },
+    {
+      name: 'Blog',
+      url: `/blog/posts/${page.currentPage}/`,
+    },
+  ]}
 >
   <div class="page-content">
     <PostList posts={page} />

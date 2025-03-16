@@ -22,6 +22,7 @@ const post = await getEntry('posts', slug);
 const { Content } = post ? await render(post) : { Content: '' };
 
 const articleStructureData = {
+  '@context': 'https://schema.org',
   '@type': 'BlogPosting',
   headline: post?.data.title,
   url: new URL(`/blog/post/${post?.id}`, Astro.site),
@@ -43,6 +44,20 @@ const articleStructureData = {
   path={`/blog/post/${post?.id}/`}
   image={post?.data.image ? post.data.image.href.src : undefined}
   sidebar
+  breadcrumbList={[
+    {
+      name: 'Portfolio',
+      url: '/',
+    },
+    {
+      name: 'Blog',
+      url: '/blog/posts/1/',
+    },
+    {
+      name: post?.data.title ?? '',
+      url: `/blog/post/${post?.id}/`,
+    },
+  ]}
 >
   <Fragment
     slot="structured-data"

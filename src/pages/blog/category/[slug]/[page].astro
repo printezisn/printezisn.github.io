@@ -36,6 +36,20 @@ const category = await getEntry('categories', slug);
   path={`/blog/category/${slug}/${page.currentPage}/`}
   pageTitle={category?.data.title}
   sidebar
+  breadcrumbList={[
+    {
+      name: 'Portfolio',
+      url: '/',
+    },
+    {
+      name: 'Blog',
+      url: '/blog/posts/1/',
+    },
+    {
+      name: category?.data.title ?? '',
+      url: `/blog/category/${slug}/${page.currentPage}/`,
+    },
+  ]}
 >
   <div class="page-content">
     <PostList posts={page} titleTag="h3" />

@@ -14,6 +14,16 @@ const description =
   path="/sudoku/"
   favicon="/games/sudoku/favicon.png"
   themeColor="#1a1a1a"
+  breadcrumbList={[
+    {
+      name: 'Portfolio',
+      url: '/',
+    },
+    {
+      name: 'Decisive Sudoku',
+      url: '/sudoku/',
+    },
+  ]}
 >
   <Fragment slot="scripts">
     <Fragment set:html={HeadHtml} />

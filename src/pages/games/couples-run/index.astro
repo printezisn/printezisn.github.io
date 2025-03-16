@@ -14,6 +14,16 @@ const description =
   path="/games/couples-run/"
   favicon="/games/couples-run/favicon.png"
   themeColor="#000000"
+  breadcrumbList={[
+    {
+      name: 'Portfolio',
+      url: '/',
+    },
+    {
+      name: 'Couples Run',
+      url: '/games/couples-run/',
+    },
+  ]}
 >
   <Fragment slot="scripts">
     <script src="../../../scripts/games/couples-run/main.ts"></script>

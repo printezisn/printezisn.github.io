@@ -1,4 +1,9 @@
 ---
+export interface BreadcrumbPage {
+  name: string;
+  url: string;
+}
+
 interface Props {
   title: string;
   description: string;
@@ -8,6 +13,7 @@ interface Props {
   themeColor?: string;
   lang?: string;
   bodyClass?: string;
+  breadcrumbList: BreadcrumbPage[];
 }
 
 const defaultImage = '/logo.jpg';
@@ -23,10 +29,23 @@ const {
   themeColor = defaultThemeColor,
   lang = 'en',
   bodyClass = '',
+  breadcrumbList,
 } = Astro.props;
 
 const canonicalUrl = new URL(path, Astro.site);
 const imageUrl = new URL(image, Astro.site);
+
+const breadcrumbStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbList.map((item, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: item.name,
+    item: new URL(item.url, Astro.site),
+  })),
+};
+const breadcrumbStructuredDataString = `<script type="application/ld+json">${JSON.stringify(breadcrumbStructuredData)}</script>`;
 ---
 
 <!doctype html>
@@ -77,6 +96,7 @@ const imageUrl = new URL(image, Astro.site);
     <link rel="manifest" href="/manifest/manifest.webmanifest" />
 
     <!-- Structured Data -->
+    <Fragment set:html={breadcrumbStructuredDataString} />
     <slot name="structured-data" />
 
     <!-- Scripts -->

@@ -3,7 +3,7 @@ import { Picture } from 'astro:assets';
 import banner from '../assets/banner.webp';
 import avatar from '../assets/avatar.webp';
 import { IMAGE_SIZES, IMAGE_WIDTHS } from '../helpers/image-helper';
-import BaseLayout from './base-layout.astro';
+import BaseLayout, { type BreadcrumbPage } from './base-layout.astro';
 
 import RobotoNormal from '@fontsource/roboto/files/roboto-latin-400-normal.woff2';
 import RobotoNormalItalic from '@fontsource/roboto/files/roboto-latin-400-italic.woff2';
@@ -34,6 +34,7 @@ interface Props {
   lang?: string;
   pageTitle?: string;
   sidebar?: boolean;
+  breadcrumbList: BreadcrumbPage[];
 }
 
 const {
@@ -44,6 +45,7 @@ const {
   lang,
   pageTitle,
   sidebar = false,
+  breadcrumbList,
 } = Astro.props;
 ---
 
@@ -53,6 +55,7 @@ const {
   path={path}
   image={image}
   lang={lang}
+  breadcrumbList={breadcrumbList}
 >
   <Fragment slot="preloads">
     {
