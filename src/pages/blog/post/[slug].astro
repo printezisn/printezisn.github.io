@@ -20,6 +20,21 @@ export const getStaticPaths = (async () => {
 const { slug } = Astro.params;
 const post = await getEntry('posts', slug);
 const { Content } = post ? await render(post) : { Content: '' };
+
+const articleStructureData = {
+  '@type': 'BlogPosting',
+  headline: post?.data.title,
+  url: new URL(`/blog/post/${post?.id}`, Astro.site),
+  image: post?.data.image
+    ? new URL(post.data.image.href.src, Astro.site)
+    : undefined,
+  datePublished: post?.data.date.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Nikos Printezis',
+    url: new URL('/', Astro.site),
+  },
+};
 ---
 
 <BlogLayout
@@ -29,6 +44,11 @@ const { Content } = post ? await render(post) : { Content: '' };
   image={post?.data.image ? post.data.image.href.src : undefined}
   sidebar
 >
+  <Fragment
+    slot="structured-data"
+    set:html={`<script type="application/ld+json">${JSON.stringify(articleStructureData)}</script>`}
+  />
+
   <div class="page-content">
     <article class="post">
       <header>
