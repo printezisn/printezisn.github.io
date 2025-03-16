@@ -24,11 +24,15 @@ const profilePageStructuredData = {
     description:
       "I'm Nikos and I'm a full stack engineer. I like coding all sorts of stuff, although I focus more on front end development with native JS/CSS features, React and 2D games with PixiJS.",
     image: new URL(avatar.src, Astro.site),
+    url: new URL('/', Astro.site),
   },
   hasPart: posts.map((post) => ({
-    '@type': 'Article',
+    '@type': 'BlogPosting',
     headline: post.data.title,
     url: new URL(`/blog/post/${post.id}`, Astro.site),
+    image: post.data.image
+      ? new URL(post.data.image.href.src, Astro.site)
+      : undefined,
     datePublished: post.data.date.toISOString(),
     author: { '@id': '#main-author' },
   })),
