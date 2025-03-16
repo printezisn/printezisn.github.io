@@ -1,3 +1,5 @@
+@use 'functions' as f;
+
 .page-header {
   display: grid;
   container-type: inline-size;
@@ -7,7 +9,7 @@
   grid-row: 1;
   grid-column: 1;
   position: relative;
-  block-size: 31.25rem;
+  block-size: #{f.relativeSize(500)};
 
   img {
     display: block;
@@ -36,7 +38,7 @@
   align-items: center;
   padding: var(--spacing-4);
   text-align: center;
-  max-inline-size: 62.5rem;
+  max-inline-size: #{f.relativeSize(700)};
   margin: auto;
 
   img {
@@ -102,7 +104,7 @@
   }
 }
 
-@container (max-inline-size: 18rem) {
+@container (max-inline-size: #{f.relativeSize(288)}) {
   .page-header-banner {
     block-size: auto;
   }

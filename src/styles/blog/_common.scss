@@ -17,10 +17,13 @@ html,
 body {
   font-family: var(--font-family-base);
   font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-base);
   background-color: var(--color-primary);
   color: var(--color-primary-white);
   -webkit-font-smoothing: antialiased;
+}
+
+body {
+  line-height: var(--line-height-base);
 }
 
 .sr-only {

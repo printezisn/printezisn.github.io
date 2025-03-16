@@ -1,0 +1,6 @@
+@use 'variables';
+@use 'sass:math';
+
+@function relativeSize($px) {
+  @return '#{math.div($px, variables.$base-font-size)}rem';
+}

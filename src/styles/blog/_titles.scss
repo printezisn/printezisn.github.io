@@ -1,3 +1,5 @@
+@use 'functions' as f;
+
 .title {
   font-size: var(--font-size-3);
   line-height: var(--line-height-3);
@@ -27,4 +29,18 @@
   padding-inline: var(--spacing-4);
   background-color: var(--color-secondary);
   color: var(--color-secondary-white);
+  inline-size: #{f.relativeSize(1000)};
+  margin: auto;
+}
+
+@container (max-inline-size: #{f.relativeSize(1000)}) {
+  .section-title {
+    inline-size: #{f.relativeSize(700)};
+  }
+}
+
+@container (max-inline-size: #{f.relativeSize(700)}) {
+  .section-title {
+    inline-size: 100%;
+  }
 }

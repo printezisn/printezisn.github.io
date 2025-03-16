@@ -1,3 +1,5 @@
+@use 'functions' as f;
+
 .page {
   min-block-size: 100vb;
   display: grid;
@@ -11,6 +13,8 @@
 
 .page-content {
   padding: var(--spacing-4);
+  max-inline-size: #{f.relativeSize(700)};
+  margin: auto;
 }
 
 .page-icon {
@@ -29,10 +33,17 @@ main {
 
 .content-with-sidebar {
   display: grid;
-  grid-template-columns: 1fr 25rem;
+  grid-template-columns: #{f.relativeSize(700)} #{f.relativeSize(300)};
+  justify-content: center;
 }
 
-@container (max-inline-size: 50rem) {
+@container (max-inline-size: #{f.relativeSize(1000)}) {
+  .content-with-sidebar {
+    grid-template-columns: #{f.relativeSize(700)};
+  }
+}
+
+@container (max-inline-size: #{f.relativeSize(700)}) {
   .content-with-sidebar {
     display: block;
   }

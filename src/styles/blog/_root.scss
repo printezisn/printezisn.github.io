@@ -26,7 +26,6 @@
   --font-weight-normal: 400;
   --font-weight-bold: 700;
 
-  --font-size-base: 16px;
   --line-height-base: 1.5rem;
 
   @for $i from 1 through variables.$total-font-sizes {

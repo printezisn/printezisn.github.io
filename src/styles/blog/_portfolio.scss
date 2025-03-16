@@ -1,9 +1,18 @@
+@use 'functions' as f;
+
 .portfolio-section {
   margin-block-start: var(--spacing-4);
 
+  .section-title {
+    inline-size: 100%;
+  }
+
   .portfolio-content {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(auto, 25rem));
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(auto, #{f.relativeSize(400)})
+    );
     gap: var(--spacing-4);
     padding: var(--spacing-4);
 
@@ -24,7 +33,7 @@
 
       img {
         inline-size: 100%;
-        block-size: 25rem;
+        block-size: #{f.relativeSize(400)};
       }
 
       h3 {

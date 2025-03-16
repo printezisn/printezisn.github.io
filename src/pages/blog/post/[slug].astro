@@ -21,9 +21,10 @@ const { Content } = post ? await render(post) : { Content: '' };
 ---
 
 <BlogLayout
-  title={`${post?.data.title} | Nikos Printezis`}
+  title={post?.data.title ?? ''}
   description={post?.data.description ?? ''}
   path={`/blog/post/${post?.id}/`}
+  sidebar
 >
   <div class="page-content">
     <article class="post">

@@ -31,7 +31,7 @@ const category = await getEntry('categories', slug);
 ---
 
 <BlogLayout
-  title={`${category?.data.title} | Category | Nikos Printezis`}
+  title={`${category?.data.title} | Category`}
   description={category?.data.description ?? ''}
   path={`/blog/category/${slug}/${page.currentPage}/`}
   pageTitle={category?.data.title}
