@@ -2,7 +2,7 @@
 import { Picture } from 'astro:assets';
 import banner from '../assets/banner.webp';
 import avatar from '../assets/avatar.webp';
-import { IMAGE_SIZES, IMAGE_WIDTHS } from '../helpers/image-helper';
+import { IMAGE_WIDTHS } from '../helpers/image-helper';
 import BaseLayout, { type BreadcrumbPage } from './base-layout.astro';
 
 import RobotoNormal from '@fontsource/roboto/files/roboto-latin-400-normal.woff2';
@@ -88,7 +88,6 @@ const {
           formats={['avif']}
           fallbackFormat="webp"
           widths={IMAGE_WIDTHS}
-          sizes={IMAGE_SIZES}
           loading="eager"
           decoding="auto"
         />
