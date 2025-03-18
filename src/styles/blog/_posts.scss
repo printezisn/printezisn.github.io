@@ -3,7 +3,8 @@
 
   .content {
     p,
-    ul {
+    ul,
+    ol {
       margin-block: var(--spacing-4);
     }
 
@@ -11,7 +12,8 @@
       margin-block-start: var(--spacing-4);
     }
 
-    ul {
+    ul,
+    ol {
       padding-inline-start: var(--spacing-8);
     }
 

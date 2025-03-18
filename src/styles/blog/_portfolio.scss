@@ -88,6 +88,10 @@
       &:has(img, time) {
         grid-template-rows: auto auto 1fr auto;
       }
+
+      &:has(img):has(time) {
+        grid-template-rows: auto auto auto 1fr auto;
+      }
     }
   }
 }
