@@ -5,6 +5,9 @@ import avatar from '../assets/avatar.webp';
 import { IMAGE_WIDTHS } from '../helpers/image-helper';
 import BaseLayout, { type BreadcrumbPage } from './base-layout.astro';
 
+import LinkedInIcon from 'feather-icons/dist/icons/linkedin.svg?raw';
+import GitHubIcon from 'feather-icons/dist/icons/github.svg?raw';
+
 import RobotoNormal from '@fontsource/roboto/files/roboto-latin-400-normal.woff2';
 import RobotoNormalItalic from '@fontsource/roboto/files/roboto-latin-400-italic.woff2';
 import RobotoBold from '@fontsource/roboto/files/roboto-latin-700-normal.woff2';
@@ -151,6 +154,30 @@ const {
     </main>
     <footer>
       &copy; {new Date().getFullYear()} Nikos Printezis. All Rights Reserved.
+      <nav>
+        <ul>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/nikos-printezis-80730614/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Fragment set:html={LinkedInIcon} />
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/printezisn"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Fragment set:html={GitHubIcon} />
+              GitHub
+            </a>
+          </li>
+        </ul>
+      </nav>
     </footer>
   </div>
 </BaseLayout>

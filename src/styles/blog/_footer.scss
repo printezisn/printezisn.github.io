@@ -2,4 +2,23 @@
   padding: var(--spacing-4);
   text-align: center;
   background-color: var(--color-primary-light);
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-4);
+    padding-block-start: var(--spacing-4);
+    list-style: none;
+
+    a {
+      color: var(--color-primary-white);
+      text-decoration: none;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--spacing-2);
+    }
+  }
 }
