@@ -36,6 +36,7 @@ const otherWorkCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     url: z.string(),
+    order: z.number(),
   }),
 });
 
