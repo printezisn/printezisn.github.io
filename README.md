@@ -34,4 +34,4 @@ This is my personal website containing my blog, portfolio and games.
 
 ## Game Credits
 
-- [Couples Run](https://printezisn.github.io/games/couples-run/credits/)
+- [Couples Run](https://www.printezisn.com/games/couples-run/credits/)

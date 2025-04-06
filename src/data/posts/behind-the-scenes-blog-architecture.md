@@ -417,7 +417,7 @@ gamePackages.forEach((game) => {
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://printezisn.github.io/',
+  site: 'https://www.printezisn.com/',
   integrations: [
     sitemap({
       lastmod: new Date(),
