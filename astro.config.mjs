@@ -59,6 +59,8 @@ export default defineConfig({
   integrations: [
     sitemap({
       lastmod: new Date(),
+      filter: (page) =>
+        !page.match(/\/posts\/1\/$/) && !page.match(/\/category\/(.+)\/1\/$/),
     }),
   ],
   cacheDir: '.cached-assets',

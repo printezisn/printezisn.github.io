@@ -13,12 +13,16 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
+const title =
+  page.currentPage === 1 ? 'Blog' : `Blog - Page ${page.currentPage}`;
+const path =
+  page.currentPage === 1 ? '/blog/' : `/blog/posts/${page.currentPage}/`;
 ---
 
 <BlogLayout
-  title="Blog | Engineering Stories"
+  title={`${title} | Nikos Printezis`}
   description="A collection of blog posts around engineering. They are focused in full stack engineering, with a preference towards front end though."
-  path={`/blog/posts/${page.currentPage}/`}
+  path={path}
   pageTitle="Blog"
   sidebar
   breadcrumbList={[
@@ -27,8 +31,8 @@ const { page } = Astro.props;
       url: '/',
     },
     {
-      name: 'Blog',
-      url: `/blog/posts/${page.currentPage}/`,
+      name: title,
+      url: path,
     },
   ]}
 >

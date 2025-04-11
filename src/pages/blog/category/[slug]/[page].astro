@@ -27,14 +27,22 @@ export const getStaticPaths = (async ({ paginate }) => {
 
 const { page } = Astro.props;
 const { slug } = Astro.params;
-const category = await getEntry('categories', slug);
+const category = await getEntry('categories', slug)!;
+const title =
+  page.currentPage === 1
+    ? category.data.title
+    : `${category.data.title} - Page ${page.currentPage}`;
+const path =
+  page.currentPage === 1
+    ? `/blog/category/${slug}/`
+    : `/blog/category/${slug}/${page.currentPage}/`;
 ---
 
 <BlogLayout
-  title={`${category?.data.title} | Category`}
-  description={category?.data.description ?? ''}
-  path={`/blog/category/${slug}/${page.currentPage}/`}
-  pageTitle={category?.data.title}
+  title={`${title} | Blog Category`}
+  description={category.data.description}
+  path={path}
+  pageTitle={category.data.title}
   sidebar
   breadcrumbList={[
     {
@@ -43,11 +51,11 @@ const category = await getEntry('categories', slug);
     },
     {
       name: 'Blog',
-      url: '/blog/posts/1/',
+      url: '/blog/',
     },
     {
-      name: category?.data.title ?? '',
-      url: `/blog/category/${slug}/${page.currentPage}/`,
+      name: title,
+      url: path,
     },
   ]}
 >
