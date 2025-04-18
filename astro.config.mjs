@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
+import customSitemap from './lib/custom-sitemap.mjs';
 import fs from 'fs';
 import path from 'path';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
@@ -57,11 +57,11 @@ gamePackages.forEach((game) => {
 export default defineConfig({
   site: 'https://www.printezisn.com/',
   integrations: [
-    sitemap({
-      lastmod: new Date(),
-      filter: (page) =>
-        !page.match(/\/posts\/1\/$/) && !page.match(/\/category\/(.+)\/1\/$/),
-    }),
+    customSitemap(
+      'https://www.printezisn.com/',
+      'dist',
+      new Date('2025-04-17'),
+    ),
   ],
   cacheDir: '.cached-assets',
   vite: {
