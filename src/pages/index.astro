@@ -8,10 +8,18 @@ const pageSize = 10;
 const posts = (await getCollection('posts'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, pageSize);
-const games = (await getCollection('games')).filter((g) => !g.data.hidden);
-const otherWork = (await getCollection('other-work')).sort(
-  (a, b) => a.data.order - b.data.order,
+const games = (await getCollection('games')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
+const otherWork = (await getCollection('other-work')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+
+const lastUpdateTime = [
+  posts[0].data.date,
+  games[0].data.date,
+  otherWork[0].data.date,
+].sort((a, b) => b.getTime() - a.getTime())[0];
 
 const profilePageStructuredData = {
   '@context': 'https://schema.org',
@@ -51,6 +59,7 @@ const profilePageStructuredData = {
     },
   ]}
   pageLayout="full"
+  lastUpdateTime={lastUpdateTime}
 >
   <Fragment
     slot="structured-data"

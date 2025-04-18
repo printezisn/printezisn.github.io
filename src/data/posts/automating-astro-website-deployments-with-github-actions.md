@@ -5,6 +5,7 @@ excerpt: This post walks through a simple and efficient GitHub Actions workflow 
 categories:
   - devops
 date: 2025-03-17
+lastUpdate: 2025-03-17
 image:
   href: ../../assets/posts/automating-astro-website-deployments-with-github-actions/pipelines.png
   alt: A set of pipelines running calculations

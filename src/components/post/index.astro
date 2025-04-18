@@ -19,6 +19,18 @@ const { Content } = post ? await render(post) : { Content: '' };
     <time datetime={post.data.date.toISOString().slice(0, 10)}>
       {post.data.date.toLocaleDateString('en-US', { dateStyle: 'long' })}
     </time>
+    {
+      post.data.lastUpdate.getTime() !== post.data.date.getTime() && (
+        <p>
+          Last updated on
+          <time datetime={post.data.lastUpdate.toISOString().slice(0, 10)}>
+            {post.data.lastUpdate.toLocaleDateString('en-US', {
+              dateStyle: 'long',
+            })}
+          </time>
+        </p>
+      )
+    }
     <CategoriesList categorySlugs={post.data.categories} />
   </header>
   <div class={styles.content}>

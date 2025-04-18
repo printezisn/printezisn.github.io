@@ -5,6 +5,7 @@ excerpt: In this post, we explore the importance of CSS logical properties for c
 categories:
   - css
 date: 2024-10-25
+lastUpdate: 2024-10-25
 image:
   href: ../../assets/posts/introduction-to-css-logical-properties/color-cubes.png
   alt: Multiple cubes in different colors and sizes

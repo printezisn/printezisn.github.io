@@ -10,6 +10,7 @@ const postsCollection = defineCollection({
       excerpt: z.string(),
       categories: z.array(z.string()),
       date: z.date(),
+      lastUpdate: z.date(),
       image: z
         .object({
           href: image(),
@@ -26,7 +27,7 @@ const gamesCollection = defineCollection({
     description: z.string(),
     image: z.string(),
     path: z.string(),
-    hidden: z.boolean().optional(),
+    date: z.date(),
   }),
 });
 
@@ -36,7 +37,7 @@ const otherWorkCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     url: z.string(),
-    order: z.number(),
+    date: z.date(),
   }),
 });
 

@@ -5,6 +5,7 @@ excerpt: My favorite service worker setup that I use in order to cache static co
 categories:
   - js
 date: 2024-09-10
+lastUpdate: 2024-09-10
 image:
   href: ../../assets/posts/my-favorite-service-worker-setup/js-developer.png
   alt: A js developer working on a project in front of the screen

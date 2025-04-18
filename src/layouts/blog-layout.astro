@@ -36,6 +36,7 @@ interface Props {
   pageLayout?: 'normal' | 'full' | 'sidebar';
   breadcrumbList: BreadcrumbPage[];
   index?: boolean;
+  lastUpdateTime: Date;
 }
 
 const {
@@ -48,6 +49,7 @@ const {
   pageLayout = 'normal',
   breadcrumbList,
   index = true,
+  lastUpdateTime,
 } = Astro.props;
 ---
 
@@ -59,6 +61,7 @@ const {
   lang={lang}
   breadcrumbList={breadcrumbList}
   index={index}
+  lastUpdateTime={lastUpdateTime}
 >
   <Fragment slot="preloads">
     {

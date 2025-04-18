@@ -6,6 +6,7 @@ categories:
   - js
   - css
 date: 2024-09-29
+lastUpdate: 2024-09-29
 image:
   href: ../../assets/posts/how-to-animate-to-height-auto/dropdown-menu.png
   alt: A computer screen showing dropdown menus

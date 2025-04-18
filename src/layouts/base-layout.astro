@@ -12,6 +12,7 @@ interface Props {
   bodyClass?: string;
   breadcrumbList: BreadcrumbPage[];
   index?: boolean;
+  lastUpdateTime: Date;
 }
 
 const defaultImage = '/logo.jpg';
@@ -29,6 +30,7 @@ const {
   bodyClass = '',
   breadcrumbList,
   index = true,
+  lastUpdateTime,
 } = Astro.props;
 
 const canonicalUrl = new URL(path, Astro.site);
@@ -102,7 +104,10 @@ const breadcrumbStructuredDataString = `<script type="application/ld+json">${JSO
     <!-- Scripts -->
     <slot name="scripts" />
   </head>
-  <body class={bodyClass}>
+  <body
+    class={bodyClass}
+    data-last-update-time={lastUpdateTime.toISOString().slice(0, 10)}
+  >
     <slot />
   </body>
 </html>
