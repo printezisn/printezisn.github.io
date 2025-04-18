@@ -1,0 +1,27 @@
+.content {
+  p {
+    margin-block-end: var(--spacing-4);
+  }
+
+  ul,
+  ol {
+    padding-inline-start: var(--spacing-8);
+    margin-block-end: var(--spacing-4);
+  }
+
+  h2 {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-5);
+    line-height: var(--line-height-5);
+    font-weight: var(--font-weight-bold);
+    margin-block-end: var(--spacing-4);
+  }
+
+  h3 {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-4);
+    line-height: var(--line-height-4);
+    font-weight: var(--font-weight-bold);
+    margin-block: var(--spacing-4);
+  }
+}

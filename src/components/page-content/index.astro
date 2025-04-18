@@ -1,0 +1,42 @@
+---
+import type { BreadcrumbPage } from '@global-types/breadcrumb';
+import Breadcrumb from '@components/breadcrumb/index.astro';
+import CategoriesWidget from '@components/categories-widget/index.astro';
+import Title from '@components/title/index.astro';
+import styles from './styles.module.scss';
+
+interface Props {
+  title?: string;
+  layout?: 'normal' | 'full' | 'sidebar';
+  breadcrumbList: BreadcrumbPage[];
+}
+
+const { breadcrumbList, title, layout = 'normal' } = Astro.props;
+---
+
+<main id="main-content" class={styles.main}>
+  <div class:list={[styles.container, styles[layout]]}>
+    {title && <Title variant="section">{title}</Title>}
+    <Breadcrumb pages={breadcrumbList} />
+    {layout === 'full' && <slot />}
+    {
+      layout === 'normal' && (
+        <div class={styles.content}>
+          <slot />
+        </div>
+      )
+    }
+    {
+      layout === 'sidebar' && (
+        <div class={styles.grid}>
+          <div class={styles.content}>
+            <slot />
+          </div>
+          <div class={styles.content}>
+            <CategoriesWidget />
+          </div>
+        </div>
+      )
+    }
+  </div>
+</main>

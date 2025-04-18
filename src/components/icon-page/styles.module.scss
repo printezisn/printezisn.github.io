@@ -1,0 +1,18 @@
+.icon {
+  background-color: var(--color-secondary);
+  color: var(--color-secondary-white);
+  display: inline-block;
+  border-radius: 50%;
+  padding: var(--spacing-4);
+  font-size: var(--font-size-8);
+  line-height: 0;
+}
+
+.page {
+  text-align: center;
+  padding-block: var(--spacing-8);
+
+  h2 {
+    margin-block-end: var(--spacing-4);
+  }
+}

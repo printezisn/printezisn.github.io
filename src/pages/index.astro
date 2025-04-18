@@ -1,9 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import BlogLayout from '../layouts/blog-layout.astro';
-import ArrowRightIcon from 'feather-icons/dist/icons/arrow-right.svg?raw';
-import { Picture } from 'astro:assets';
-import avatar from '../assets/avatar.webp';
+import BlogLayout from '@layouts/blog-layout.astro';
+import avatar from '@assets/avatar.webp';
+import Portfolio from '@components/portfolio/index.astro';
 
 const pageSize = 10;
 const posts = (await getCollection('posts'))
@@ -51,100 +50,12 @@ const profilePageStructuredData = {
       url: '/',
     },
   ]}
+  pageLayout="full"
 >
   <Fragment
     slot="structured-data"
     set:html={`<script type="application/ld+json">${JSON.stringify(profilePageStructuredData)}</script>`}
   />
 
-  <section class="portfolio-section">
-    <h2 class="section-title">Blog</h2>
-    <div class="portfolio-content">
-      {
-        posts.map((post) => (
-          <article>
-            <a
-              href={`/blog/post/${post.id}/`}
-              title={`Read the post "${post.data.title}"`}
-            >
-              {post.data.image && (
-                <div class="portfolio-image">
-                  <Picture
-                    src={post.data.image.href}
-                    alt={post.data.image!.alt}
-                    formats={['avif']}
-                    fallbackFormat="webp"
-                    width={512}
-                    height={512}
-                    loading="eager"
-                    decoding="auto"
-                  />
-                </div>
-              )}
-              <h3>{post.data.title}</h3>
-              <time datetime={post.data.date.toISOString().slice(0, 10)}>
-                {post.data.date.toISOString().slice(0, 10)}
-              </time>
-              <p>{post.data.excerpt}</p>
-              <div class="more">Read more</div>
-            </a>
-          </article>
-        ))
-      }
-      <a href="/blog/" class="view-all" title="View all blog posts">
-        <span>View all</span>
-        <Fragment set:html={ArrowRightIcon} />
-      </a>
-    </div>
-  </section>
-  <section class="portfolio-section">
-    <h2 class="section-title">Games</h2>
-    <div class="portfolio-content">
-      {
-        games.map((game) => (
-          <article>
-            <a
-              href={game.data.path}
-              title={`Play the game "${game.data.title}"`}
-            >
-              <div class="portfolio-image">
-                <img
-                  src={game.data.image}
-                  alt={game.data.title}
-                  width="512"
-                  height="512"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <h3>{game.data.title}</h3>
-              <p>{game.data.description}</p>
-              <div class="more">Play</div>
-            </a>
-          </article>
-        ))
-      }
-    </div>
-  </section>
-  <section class="portfolio-section">
-    <h2 class="section-title">Other work</h2>
-    <div class="portfolio-content">
-      {
-        otherWork.map((w) => (
-          <article>
-            <a
-              href={w.data.url}
-              target="_blank"
-              rel="noreferrer"
-              title={`Learn more about "${w.data.title}"`}
-            >
-              <h3>{w.data.title}</h3>
-              <p>{w.data.description}</p>
-              <div class="more">Learn more</div>
-            </a>
-          </article>
-        ))
-      }
-    </div>
-  </section>
+  <Portfolio posts={posts} games={games} otherWork={otherWork} />
 </BlogLayout>

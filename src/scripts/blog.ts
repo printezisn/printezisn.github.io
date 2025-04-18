@@ -1,2 +1,2 @@
-import '../styles/blog/main.scss';
+import '@styles/main.scss';
 import './base';

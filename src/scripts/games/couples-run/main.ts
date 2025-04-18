@@ -1,5 +1,5 @@
 import '@printezisn/games-couples-run/style.css';
-import '../../base';
+import '@scripts/base';
 import renderGame from '@printezisn/games-couples-run';
 
 renderGame({

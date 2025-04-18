@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../../../layouts/base-layout.astro';
+import BaseLayout from '@layouts/base-layout.astro';
 import { MainBodyHtml } from '@printezisn/games-couples-run/templates';
 
 const title = 'Couples Run | Team up for high scores!';
@@ -26,7 +26,7 @@ const description =
   ]}
 >
   <Fragment slot="scripts">
-    <script src="../../../scripts/games/couples-run/main.ts"></script>
+    <script src="@scripts/games/couples-run/main.ts"></script>
   </Fragment>
   <Fragment set:html={MainBodyHtml} />
 </BaseLayout>

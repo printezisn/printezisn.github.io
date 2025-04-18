@@ -1,5 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
+import Button from '@components/button/index.astro';
+import styles from './styles.module.scss';
 
 interface Props {
   categorySlugs?: string[];
@@ -17,18 +19,19 @@ if (categorySlugs) {
 }
 ---
 
-<nav class="categories-list">
+<nav class={styles.categoriesList}>
   <ul>
     {
       categories.map((cat) => (
         <li>
-          <a
+          <Button
+            type="link"
+            variant="small"
             href={`/blog/category/${cat.id}/`}
-            class="button"
             title={`View all posts in category "${cat.data.title}"`}
           >
             {cat.data.title}
-          </a>
+          </Button>
         </li>
       ))
     }

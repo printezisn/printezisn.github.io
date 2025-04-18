@@ -1,12 +1,6 @@
 ---
-import { Picture } from 'astro:assets';
-import banner from '../assets/banner.webp';
-import avatar from '../assets/avatar.webp';
-import { IMAGE_WIDTHS } from '../helpers/image-helper';
-import BaseLayout, { type BreadcrumbPage } from './base-layout.astro';
-
-import LinkedInIcon from 'feather-icons/dist/icons/linkedin.svg?raw';
-import GitHubIcon from 'feather-icons/dist/icons/github.svg?raw';
+import BaseLayout from './base-layout.astro';
+import type { BreadcrumbPage } from '@global-types/breadcrumb';
 
 import RobotoNormal from '@fontsource/roboto/files/roboto-latin-400-normal.woff2';
 import RobotoNormalItalic from '@fontsource/roboto/files/roboto-latin-400-italic.woff2';
@@ -14,8 +8,10 @@ import RobotoBold from '@fontsource/roboto/files/roboto-latin-700-normal.woff2';
 import RobotoBolItalic from '@fontsource/roboto/files/roboto-latin-700-italic.woff2';
 import LoraNormal from '@fontsource/lora/files/lora-latin-400-normal.woff2';
 import LoraBold from '@fontsource/lora/files/lora-latin-700-normal.woff2';
-import CategoriesWidget from '../components/categories-widget.astro';
-import Breadcrumb from '../components/breadcrumb.astro';
+import PageContent from '@components/page-content/index.astro';
+import Page from '@components/page/index.astro';
+import PageHeader from '@components/page-header/index.astro';
+import PageFooter from '@components/page-footer/index.astro';
 
 const fonts = [
   RobotoNormal,
@@ -37,7 +33,7 @@ interface Props {
   image?: string;
   lang?: string;
   pageTitle?: string;
-  sidebar?: boolean;
+  pageLayout?: 'normal' | 'full' | 'sidebar';
   breadcrumbList: BreadcrumbPage[];
 }
 
@@ -48,7 +44,7 @@ const {
   image,
   lang,
   pageTitle,
-  sidebar = false,
+  pageLayout = 'normal',
   breadcrumbList,
 } = Astro.props;
 ---
@@ -75,109 +71,23 @@ const {
     }
   </Fragment>
   <Fragment slot="scripts">
-    <script src="../scripts/blog.ts"></script>
+    <script src="@scripts/blog.ts"></script>
   </Fragment>
   <Fragment slot="structured-data">
     <slot name="structured-data" />
   </Fragment>
-  <a href="#main-content" class="sr-only" rel="nofollow">Skip to main content</a
-  >
-  <div class="page">
-    <header class="page-header">
-      <div class="page-header-banner">
-        <Picture
-          src={banner}
-          alt=""
-          formats={['avif']}
-          fallbackFormat="webp"
-          widths={IMAGE_WIDTHS}
-          loading="eager"
-          decoding="auto"
-        />
-      </div>
-      <div class="page-header-content">
-        <Picture
-          src={avatar}
-          formats={['avif']}
-          fallbackFormat="webp"
-          width="128"
-          height="128"
-          alt="Nikos Printezis"
-          loading="eager"
-          decoding="auto"
-        />
-        <h1>Nikos Printezis</h1>
-        <p>
-          Hi! I'm Nikos and I'm a full stack engineer. I like coding all sorts
-          of stuff, although I focus more on front end development with native
-          JS/CSS features, React and 2D games with PixiJS. I'm really looking
-          forward to provide more and more content in this website and I hope
-          you enjoy my blog and games.
-        </p>
-        <nav>
-          <ul>
-            <li>
-              <a href="/">Portfolio</a>
-            </li>
-            <li>
-              <a href="/blog/">Blog</a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/printezisn"
-                target="_blank"
-                rel="noreferrer">GitHub</a
-              >
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <main id="main-content">
-      {pageTitle && <h2 class="section-title">{pageTitle}</h2>}
-      {
-        sidebar ? (
-          <div class="content-with-sidebar">
-            <div>
-              <Breadcrumb pages={breadcrumbList} />
-              <slot />
-            </div>
-            <CategoriesWidget />
-          </div>
-        ) : (
-          <>
-            <Breadcrumb pages={breadcrumbList} />
-            <slot />
-          </>
-        )
-      }
-    </main>
-    <footer>
-      &copy; {new Date().getFullYear()} Nikos Printezis. All Rights Reserved.
-      <nav>
-        <ul>
-          <li>
-            <a
-              href="https://www.linkedin.com/in/nikos-printezis-80730614/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Fragment set:html={LinkedInIcon} />
-              LinkedIn
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://github.com/printezisn"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Fragment set:html={GitHubIcon} />
-              GitHub
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </footer>
-  </div>
+  <a href="#main-content" class="sr-only" rel="nofollow">
+    Skip to main content
+  </a>
+  <Page>
+    <PageHeader />
+    <PageContent
+      title={pageTitle}
+      breadcrumbList={breadcrumbList}
+      layout={pageLayout}
+    >
+      <slot />
+    </PageContent>
+    <PageFooter />
+  </Page>
 </BaseLayout>

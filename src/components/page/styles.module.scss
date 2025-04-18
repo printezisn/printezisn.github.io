@@ -1,0 +1,6 @@
+.page {
+  min-block-size: 100vb;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 1fr auto;
+}

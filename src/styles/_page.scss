@@ -1,0 +1,11 @@
+@use 'functions' as f;
+
+.page-icon {
+  background-color: var(--color-secondary);
+  color: var(--color-secondary-white);
+  display: inline-block;
+  border-radius: 50%;
+  padding: var(--spacing-4);
+  font-size: var(--font-size-8);
+  line-height: 0;
+}

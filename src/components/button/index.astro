@@ -1,0 +1,39 @@
+---
+import styles from './styles.module.scss';
+
+interface Props {
+  type: 'button' | 'submit' | 'link';
+  variant?: 'normal' | 'small';
+  href?: string;
+  target?: string;
+  rel?: string;
+  title?: string;
+}
+
+const { type, variant = 'normal', href, rel, target, title } = Astro.props;
+---
+
+{
+  type === 'link' && (
+    <a
+      href={href}
+      class:list={[styles.button, styles[variant]]}
+      target={target}
+      rel={rel}
+      title={title}
+    >
+      <slot />
+    </a>
+  )
+}
+{
+  type !== 'link' && (
+    <button
+      type={type}
+      class:list={[styles.button, styles[variant]]}
+      title={title}
+    >
+      <slot />
+    </button>
+  )
+}

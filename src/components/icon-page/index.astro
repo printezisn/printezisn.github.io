@@ -1,0 +1,19 @@
+---
+import styles from './styles.module.scss';
+import Title from '@components/title/index.astro';
+
+interface Props {
+  Icon: any;
+  title: string;
+}
+
+const { Icon, title } = Astro.props;
+---
+
+<article class={styles.page}>
+  <p class={styles.icon}>
+    <Icon />
+  </p>
+  <Title variant="big">{title}</Title>
+  <slot />
+</article>

@@ -1,6 +1,7 @@
 ---
-import BlogLayout from '../../../layouts/blog-layout.astro';
+import BlogLayout from '@layouts/blog-layout.astro';
 import { PrivacyPolicyHtml } from '@printezisn/games-couples-run/templates';
+import styles from '@styles/pages/games/couples-run/privacy-policy/styles.module.scss';
 
 const title = 'Privacy Policy | Couples Run';
 const description = 'Privacy policy for the Couples Run game';
@@ -25,5 +26,7 @@ const description = 'Privacy policy for the Couples Run game';
     },
   ]}
 >
-  <Fragment set:html={PrivacyPolicyHtml} />
+  <div class={styles.content}>
+    <Fragment set:html={PrivacyPolicyHtml} />
+  </div>
 </BlogLayout>

@@ -1,4 +1,4 @@
-.categories-list {
+.categoriesList {
   ul {
     list-style-type: none;
     display: flex;
@@ -6,11 +6,5 @@
     gap: var(--spacing-2);
     white-space: nowrap;
     margin-block-start: var(--spacing-2);
-
-    .button {
-      padding-block: var(--spacing-4);
-      padding-inline: var(--spacing-3);
-      font-size: var(--font-size-1);
-    }
   }
 }

@@ -1,11 +1,13 @@
-@use 'functions' as f;
+@use '@styles/variables' as v;
+@use '@styles/functions' as f;
 
-.page-header {
+.header {
   display: grid;
   container-type: inline-size;
+  position: relative;
 }
 
-.page-header-banner {
+.banner {
   grid-row: 1;
   grid-column: 1;
   position: relative;
@@ -28,7 +30,7 @@
   }
 }
 
-.page-header-content {
+.content {
   grid-row: 1;
   grid-column: 1;
   z-index: 1;
@@ -38,7 +40,7 @@
   align-items: center;
   padding: var(--spacing-4);
   text-align: center;
-  max-inline-size: #{f.relativeSize(700)};
+  max-inline-size: #{f.relativeSize(v.$text-container-inline-size)};
   margin: auto;
 
   img {
@@ -105,11 +107,11 @@
 }
 
 @container (max-inline-size: #{f.relativeSize(288)}) {
-  .page-header-banner {
+  .banner {
     block-size: auto;
   }
 
-  .page-header-content {
+  .content {
     ul {
       flex-direction: column;
 

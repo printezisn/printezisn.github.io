@@ -1,0 +1,25 @@
+.post {
+  margin-block-start: var(--spacing-10);
+
+  .content {
+    p {
+      margin-block: var(--spacing-4);
+    }
+
+    img {
+      margin-block-start: var(--spacing-4);
+    }
+  }
+
+  time {
+    color: var(--color-primary-grey-light);
+  }
+
+  &:first-child {
+    margin-block-start: 0;
+  }
+}
+
+.pageButtons {
+  margin-block-start: var(--spacing-10);
+}

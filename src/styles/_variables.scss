@@ -1,0 +1,49 @@
+$colors: (
+  'primary': hsl(212, 32%, 8%),
+  'primary-black': hsl(212, 32%, 5%),
+  'primary-grey-light': hsl(212, 0%, 70%),
+  'primary-white': hsl(212, 32%, 98%),
+  'primary-light': hsl(212, 32%, 12%),
+  'primary-overlay': hsla(212, 32%, 5%, 0.7),
+  'secondary': hsl(285, 72%, 50%),
+  'secondary-light': hsl(285, 72%, 65%),
+  'secondary-white': hsl(285, 72%, 98%),
+  'code': #24292e,
+);
+
+$border-radius: (
+  'normal': 4px,
+  'large': 8px,
+  'larger': 16px,
+);
+
+$transition-times: (
+  'quick': 0.3s,
+  'normal': 0.5s,
+  'slow': 1s,
+);
+
+$font-families: (
+  'base': "'Roboto', sans-serif",
+  'serif': "'Lora', serif",
+  'code': 'monospace',
+);
+
+$font-weights: (
+  'normal': 400,
+  'bold': 700,
+);
+
+$sets: (
+  'color': $colors,
+  'border-radius': $border-radius,
+  'transition-time': $transition-times,
+  'font-family': $font-families,
+  'font-weight': $font-weights,
+);
+
+$total-font-sizes: 10;
+$total-spacings: 10;
+
+$base-font-size: 16;
+$text-container-inline-size: 700;

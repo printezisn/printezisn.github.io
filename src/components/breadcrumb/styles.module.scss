@@ -1,10 +1,7 @@
-@use 'functions' as f;
+@use '@styles/functions' as f;
 
 .breadcrumb {
   padding: var(--spacing-4);
-  padding-block-end: 0;
-  max-inline-size: #{f.relativeSize(700)};
-  margin: auto;
 
   ul {
     display: flex;

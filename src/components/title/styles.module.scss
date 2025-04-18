@@ -1,8 +1,7 @@
-@use 'functions' as f;
+@use '@styles/functions' as f;
 
-.title {
-  font-size: var(--font-size-3);
-  line-height: var(--line-height-3);
+.normal,
+.big {
   font-weight: var(--font-weight-bold);
   font-family: var(--font-family-serif);
 
@@ -17,30 +16,19 @@
   }
 }
 
-.big-title {
-  font-family: var(--font-family-serif);
-  font-size: var(--font-size-5);
-  line-height: var(--line-height-5);
-  font-weight: var(--font-weight-bold);
+.normal {
+  font-size: var(--font-size-3);
+  line-height: var(--line-height-3);
 }
 
-.section-title {
+.big {
+  font-size: var(--font-size-5);
+  line-height: var(--line-height-5);
+}
+
+.section {
   padding-block: var(--spacing-2);
   padding-inline: var(--spacing-4);
   background-color: var(--color-secondary);
   color: var(--color-secondary-white);
-  inline-size: #{f.relativeSize(1000)};
-  margin: auto;
-}
-
-@container (max-inline-size: #{f.relativeSize(1000)}) {
-  .section-title {
-    inline-size: #{f.relativeSize(700)};
-  }
-}
-
-@container (max-inline-size: #{f.relativeSize(700)}) {
-  .section-title {
-    inline-size: 100%;
-  }
 }

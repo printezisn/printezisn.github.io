@@ -1,0 +1,20 @@
+@use 'variables' as v;
+@use 'functions' as f;
+
+:root {
+  @each $type, $set in v.$sets {
+    @each $key, $value in $set {
+      --#{$type}-#{$key}: #{$value};
+    }
+  }
+
+  @for $i from 1 through v.$total-font-sizes {
+    $size: 8 + $i * 4;
+    --font-size-#{$i}: #{f.relativeSize($size)};
+    --line-height-#{$i}: #{f.relativeSize($size * 1.5)};
+  }
+
+  @for $i from 1 through v.$total-spacings {
+    --spacing-#{$i}: #{f.relativeSize($i * 4)};
+  }
+}

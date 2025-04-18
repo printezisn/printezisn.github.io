@@ -1,0 +1,15 @@
+---
+import styles from './styles.module.scss';
+
+interface Props {
+  level?: 2 | 3;
+  variant?: 'normal' | 'big' | 'section';
+}
+
+const { level = 2, variant = 'normal' } = Astro.props;
+const Tag = level === 2 ? 'h2' : 'h3';
+---
+
+<Tag class={styles[variant]}>
+  <slot />
+</Tag>

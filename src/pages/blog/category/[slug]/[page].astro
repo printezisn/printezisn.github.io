@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import BlogLayout from '../../../../layouts/blog-layout.astro';
+import BlogLayout from '@layouts/blog-layout.astro';
 import type { GetStaticPaths } from 'astro';
-import PostList from '../../../../components/post-list.astro';
+import PostList from '@components/post-list/index.astro';
 import { getEntry } from 'astro:content';
 
 export const getStaticPaths = (async ({ paginate }) => {
@@ -43,7 +43,7 @@ const path =
   description={category.data.description}
   path={path}
   pageTitle={category.data.title}
-  sidebar
+  pageLayout="sidebar"
   breadcrumbList={[
     {
       name: 'Portfolio',
@@ -59,7 +59,5 @@ const path =
     },
   ]}
 >
-  <div class="page-content">
-    <PostList posts={page} titleTag="h3" />
-  </div>
+  <PostList posts={page} titleLevel={3} />
 </BlogLayout>

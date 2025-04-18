@@ -1,12 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-import BlogLayout from '../../../layouts/blog-layout.astro';
+import BlogLayout from '@layouts/blog-layout.astro';
 import type { GetStaticPaths } from 'astro';
-import CategoriesList from '../../../components/categories-list.astro';
-import { render } from 'astro:content';
 import { getEntry } from 'astro:content';
-import { Picture } from 'astro:assets';
-import { IMAGE_WIDTHS } from '../../../helpers/image-helper';
+import Post from '@components/post/index.astro';
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection('posts');
@@ -18,18 +15,17 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { slug } = Astro.params;
-const post = await getEntry('posts', slug);
-const { Content } = post ? await render(post) : { Content: '' };
+const post = await getEntry('posts', slug)!;
 
 const articleStructureData = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
-  headline: post?.data.title,
-  url: new URL(`/blog/post/${post?.id}`, Astro.site),
-  image: post?.data.image
+  headline: post.data.title,
+  url: new URL(`/blog/post/${post.id}`, Astro.site),
+  image: post.data.image
     ? new URL(post.data.image.href.src, Astro.site)
     : undefined,
-  datePublished: post?.data.date.toISOString(),
+  datePublished: post.data.date.toISOString(),
   author: {
     '@type': 'Person',
     name: 'Nikos Printezis',
@@ -39,11 +35,11 @@ const articleStructureData = {
 ---
 
 <BlogLayout
-  title={post?.data.title ?? ''}
-  description={post?.data.description ?? ''}
-  path={`/blog/post/${post?.id}/`}
-  image={post?.data.image ? post.data.image.href.src : undefined}
-  sidebar
+  title={post.data.title}
+  description={post.data.description}
+  path={`/blog/post/${post.id}/`}
+  image={post.data.image ? post.data.image.href.src : undefined}
+  pageLayout="sidebar"
   breadcrumbList={[
     {
       name: 'Portfolio',
@@ -54,8 +50,8 @@ const articleStructureData = {
       url: '/blog/',
     },
     {
-      name: post?.data.title ?? '',
-      url: `/blog/post/${post?.id}/`,
+      name: post.data.title,
+      url: `/blog/post/${post.id}/`,
     },
   ]}
 >
@@ -64,39 +60,5 @@ const articleStructureData = {
     set:html={`<script type="application/ld+json">${JSON.stringify(articleStructureData)}</script>`}
   />
 
-  <div class="page-content">
-    <article class="post">
-      <header>
-        <h2 class="big-title">{post?.data.title}</h2>
-        <time datetime={post?.data.date.toISOString().slice(0, 10)}>
-          {post?.data.date.toISOString().slice(0, 10)}
-        </time>
-        <CategoriesList categorySlugs={post?.data.categories} />
-      </header>
-      <div class="content">
-        {
-          post?.data.image && (
-            <Picture
-              src={post.data.image.href}
-              alt={post.data.image.alt}
-              formats={['avif']}
-              fallbackFormat="webp"
-              widths={IMAGE_WIDTHS}
-              loading="eager"
-              decoding="auto"
-            />
-          )
-        }
-        <Content />
-      </div>
-      <aside>
-        <p>
-          <i>
-            I hope you found this post useful! If you're looking for more
-            content, check out my <a href="/blog/">blog</a>.
-          </i>
-        </p>
-      </aside>
-    </article>
-  </div>
+  <Post post={post} />
 </BlogLayout>

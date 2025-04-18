@@ -1,0 +1,33 @@
+---
+import LinkedInIcon from 'feather-icons/dist/icons/linkedin.svg';
+import GitHubIcon from 'feather-icons/dist/icons/github.svg';
+import styles from './styles.module.scss';
+---
+
+<footer class={styles.footer}>
+  &copy; {new Date().getFullYear()} Nikos Printezis. All Rights Reserved.
+  <nav>
+    <ul>
+      <li>
+        <a
+          href="https://www.linkedin.com/in/nikos-printezis-80730614/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <LinkedInIcon />
+          LinkedIn
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://github.com/printezisn"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <GitHubIcon />
+          GitHub
+        </a>
+      </li>
+    </ul>
+  </nav>
+</footer>

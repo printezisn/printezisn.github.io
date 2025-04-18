@@ -1,4 +1,6 @@
 ---
+import styles from './styles.module.scss';
+
 interface Page {
   name: string;
   url: string;
@@ -13,7 +15,7 @@ const { pages } = Astro.props;
 
 {
   pages.length > 1 && (
-    <nav class="breadcrumb">
+    <nav class={styles.breadcrumb}>
       <ul>
         {pages.map((page, i) => (
           <li>

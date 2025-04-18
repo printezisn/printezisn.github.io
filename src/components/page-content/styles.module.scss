@@ -1,0 +1,66 @@
+@use '@styles/variables' as v;
+@use '@styles/functions' as f;
+
+$sidebar-size: 300;
+$grid-size: v.$text-container-inline-size + $sidebar-size;
+
+.main {
+  container-type: inline-size;
+}
+
+.container {
+  margin: auto;
+
+  &.normal {
+    inline-size: #{f.relativeSize(v.$text-container-inline-size)};
+  }
+
+  &.full {
+    inline-size: 100%;
+  }
+
+  &.sidebar {
+    inline-size: #{f.relativeSize($grid-size)};
+  }
+}
+
+.content {
+  padding-inline: var(--spacing-4);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: #{f.relativeSize(
+      v.$text-container-inline-size
+    )} #{f.relativeSize($sidebar-size)};
+  justify-content: center;
+}
+
+@container (max-inline-size: #{f.relativeSize($grid-size - 1)}) {
+  .container {
+    &.sidebar {
+      inline-size: #{f.relativeSize(v.$text-container-inline-size)};
+    }
+  }
+
+  .grid {
+    grid-template-columns: #{f.relativeSize(v.$text-container-inline-size)};
+
+    & > :first-child {
+      margin-block-end: var(--spacing-4);
+    }
+  }
+}
+
+@container (max-inline-size: #{f.relativeSize(v.$text-container-inline-size)}) {
+  .container {
+    &.normal,
+    &.sidebar {
+      inline-size: 100%;
+    }
+  }
+
+  .grid {
+    display: block;
+  }
+}

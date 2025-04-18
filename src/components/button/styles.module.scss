@@ -5,8 +5,6 @@
   background: var(--color-primary-light);
   color: var(--color-primary-white);
   white-space: nowrap;
-  padding-block: var(--spacing-6);
-  padding-inline: var(--spacing-5);
   line-height: 0;
   text-decoration: none;
   transition: background-color var(--transition-time-quick);
@@ -28,15 +26,16 @@
     align-items: center;
     gap: var(--spacing-1);
   }
-}
 
-.button-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-4);
-}
+  &.normal {
+    padding-block: var(--spacing-6);
+    padding-inline: var(--spacing-5);
+    font-size: var(--font-size-2);
+  }
 
-.page-navigation-buttons {
-  justify-content: space-between;
-  margin-block-start: var(--spacing-10);
+  &.small {
+    padding-block: var(--spacing-4);
+    padding-inline: var(--spacing-3);
+    font-size: var(--font-size-1);
+  }
 }

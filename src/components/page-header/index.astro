@@ -1,0 +1,58 @@
+---
+import { Picture } from 'astro:assets';
+import styles from './styles.module.scss';
+import { IMAGE_WIDTHS } from '@helpers/image-helper';
+import banner from '@assets/banner.webp';
+import avatar from '@assets/avatar.webp';
+---
+
+<header class={styles.header}>
+  <div class={styles.banner}>
+    <Picture
+      src={banner}
+      alt=""
+      formats={['avif']}
+      fallbackFormat="webp"
+      widths={IMAGE_WIDTHS}
+      loading="eager"
+      decoding="auto"
+    />
+  </div>
+  <div class={styles.content}>
+    <Picture
+      src={avatar}
+      formats={['avif']}
+      fallbackFormat="webp"
+      width={128}
+      height={128}
+      alt="Nikos Printezis"
+      loading="eager"
+      decoding="auto"
+    />
+    <h1>Nikos Printezis</h1>
+    <p>
+      Hi! I'm Nikos and I'm a full stack engineer. I like coding all sorts of
+      stuff, although I focus more on front end development with native JS/CSS
+      features, React and 2D games with PixiJS. I'm really looking forward to
+      provide more and more content in this website and I hope you enjoy my blog
+      and games.
+    </p>
+    <nav>
+      <ul>
+        <li>
+          <a href="/">Portfolio</a>
+        </li>
+        <li>
+          <a href="/blog/">Blog</a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/printezisn"
+            target="_blank"
+            rel="noreferrer">GitHub</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

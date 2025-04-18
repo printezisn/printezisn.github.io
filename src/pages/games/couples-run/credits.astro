@@ -1,6 +1,8 @@
 ---
-import BlogLayout from '../../../layouts/blog-layout.astro';
+import BlogLayout from '@layouts/blog-layout.astro';
+import Title from '@components/title/index.astro';
 import { CreditsHtml } from '@printezisn/games-couples-run/templates';
+import styles from '@styles/pages/games/couples-run/credits/styles.module.scss';
 
 const title = 'Credits | Couples Run';
 const description = 'Credits for the Couples Run game';
@@ -25,6 +27,8 @@ const description = 'Credits for the Couples Run game';
     },
   ]}
 >
-  <h2 class="big-title page-content">Credits for Couples Run</h2>
-  <Fragment set:html={CreditsHtml.replace(/text-center/g, '')} />
+  <Title variant="big">Credits for Couples Run</Title>
+  <div class={styles.content}>
+    <Fragment set:html={CreditsHtml.replace(/text-center/g, '')} />
+  </div>
 </BlogLayout>
