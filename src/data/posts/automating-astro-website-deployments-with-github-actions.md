@@ -4,8 +4,9 @@ description: Automate Astro website deployments with GitHub Actions. Learn how t
 excerpt: This post walks through a simple and efficient GitHub Actions workflow for deploying Astro websites. It covers build automation, testing, and deployment to GitHub Pages or Azure Static Web Apps, with caching optimizations to speed up the process.
 categories:
   - devops
+  - astro
 date: 2025-03-17
-lastUpdate: 2025-03-17
+lastUpdate: 2025-04-18
 image:
   href: ../../assets/posts/automating-astro-website-deployments-with-github-actions/pipelines.png
   alt: A set of pipelines running calculations

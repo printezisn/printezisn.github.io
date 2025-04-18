@@ -36,6 +36,10 @@ const path =
   page.currentPage === 1
     ? `/blog/category/${slug}/`
     : `/blog/category/${slug}/${page.currentPage}/`;
+
+const lastUpdateTime = page.data
+  .map((p) => p.data.lastUpdate)
+  .sort((a, b) => b.getTime() - a.getTime())[0];
 ---
 
 <BlogLayout
@@ -58,7 +62,7 @@ const path =
       url: path,
     },
   ]}
-  lastUpdateTime={page.data[0].data.date}
+  lastUpdateTime={lastUpdateTime}
 >
   <PostList posts={page} titleLevel={3} />
 </BlogLayout>

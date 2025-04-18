@@ -16,9 +16,9 @@ const otherWork = (await getCollection('other-work')).sort(
 );
 
 const lastUpdateTime = [
-  posts[0].data.date,
-  games[0].data.date,
-  otherWork[0].data.date,
+  ...posts.map((p) => p.data.lastUpdate),
+  ...games.map((p) => p.data.date),
+  ...otherWork.map((p) => p.data.date),
 ].sort((a, b) => b.getTime() - a.getTime())[0];
 
 const profilePageStructuredData = {
