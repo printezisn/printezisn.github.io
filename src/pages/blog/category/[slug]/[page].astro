@@ -37,6 +37,17 @@ const path =
     ? `/blog/category/${slug}/`
     : `/blog/category/${slug}/${page.currentPage}/`;
 
+const prevPage =
+  page.currentPage === 2
+    ? `/blog/category/${slug}/`
+    : page.currentPage > 1
+      ? `/blog/category/${slug}/${page.currentPage - 1}/`
+      : undefined;
+const nextPage =
+  page.currentPage < page.lastPage
+    ? `/blog/category/${slug}/${page.currentPage + 1}/`
+    : undefined;
+
 const lastUpdateTime = page.data
   .map((p) => p.data.lastUpdate)
   .sort((a, b) => b.getTime() - a.getTime())[0];
@@ -63,6 +74,13 @@ const lastUpdateTime = page.data
     },
   ]}
   lastUpdateTime={lastUpdateTime}
+  prevPage={prevPage}
+  nextPage={nextPage}
 >
-  <PostList posts={page} titleLevel={3} />
+  <PostList
+    posts={page}
+    titleLevel={3}
+    nextPage={nextPage}
+    prevPage={prevPage}
+  />
 </BlogLayout>

@@ -37,6 +37,8 @@ interface Props {
   breadcrumbList: BreadcrumbPage[];
   index?: boolean;
   lastUpdateTime: Date;
+  prevPage?: string;
+  nextPage?: string;
 }
 
 const {
@@ -50,6 +52,8 @@ const {
   breadcrumbList,
   index = true,
   lastUpdateTime,
+  prevPage,
+  nextPage,
 } = Astro.props;
 ---
 
@@ -62,6 +66,8 @@ const {
   breadcrumbList={breadcrumbList}
   index={index}
   lastUpdateTime={lastUpdateTime}
+  prevPage={prevPage}
+  nextPage={nextPage}
 >
   <Fragment slot="preloads">
     {

@@ -12,9 +12,11 @@ import Title from '@components/title/index.astro';
 interface Props {
   posts: Page<CollectionEntry<'posts'>>;
   titleLevel?: 2 | 3;
+  nextPage?: string;
+  prevPage?: string;
 }
 
-const { posts, titleLevel = 2 } = Astro.props;
+const { posts, titleLevel = 2, prevPage, nextPage } = Astro.props;
 ---
 
 {
@@ -68,13 +70,13 @@ const { posts, titleLevel = 2 } = Astro.props;
   ))
 }
 {
-  (posts.currentPage > 1 || posts.currentPage < posts.lastPage) && (
+  (prevPage || nextPage) && (
     <div class={styles.pageButtons}>
       <ButtonGroup spaceBetween>
-        {posts.currentPage > 1 ? (
+        {prevPage ? (
           <Button
             type="link"
-            href={`/blog/posts/${posts.currentPage - 1}/`}
+            href={prevPage}
             title={`View the posts in the previous page`}
           >
             <ArrowLeftIcon />
@@ -83,10 +85,10 @@ const { posts, titleLevel = 2 } = Astro.props;
         ) : (
           <div />
         )}
-        {posts.currentPage < posts.lastPage ? (
+        {nextPage ? (
           <Button
             type="link"
-            href={`/blog/posts/${posts.currentPage + 1}/`}
+            href={nextPage}
             title={`View the posts in the next page`}
           >
             <span>Next</span>

@@ -18,6 +18,17 @@ const title =
 const path =
   page.currentPage === 1 ? '/blog/' : `/blog/posts/${page.currentPage}/`;
 
+const prevPage =
+  page.currentPage === 2
+    ? '/blog/'
+    : page.currentPage > 1
+      ? `/blog/posts/${page.currentPage - 1}/`
+      : undefined;
+const nextPage =
+  page.currentPage < page.lastPage
+    ? `/blog/posts/${page.currentPage + 1}/`
+    : undefined;
+
 const lastUpdateTime = page.data
   .map((p) => p.data.lastUpdate)
   .sort((a, b) => b.getTime() - a.getTime())[0];
@@ -40,6 +51,8 @@ const lastUpdateTime = page.data
     },
   ]}
   lastUpdateTime={lastUpdateTime}
+  prevPage={prevPage}
+  nextPage={nextPage}
 >
-  <PostList posts={page} />
+  <PostList posts={page} nextPage={nextPage} prevPage={prevPage} />
 </BlogLayout>

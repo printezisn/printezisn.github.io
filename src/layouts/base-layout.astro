@@ -13,6 +13,8 @@ interface Props {
   breadcrumbList: BreadcrumbPage[];
   index?: boolean;
   lastUpdateTime: Date;
+  nextPage?: string;
+  prevPage?: string;
 }
 
 const defaultImage = '/logo.jpg';
@@ -31,6 +33,8 @@ const {
   breadcrumbList,
   index = true,
   lastUpdateTime,
+  nextPage,
+  prevPage,
 } = Astro.props;
 
 const canonicalUrl = new URL(path, Astro.site);
@@ -66,6 +70,8 @@ const breadcrumbStructuredDataString = `<script type="application/ld+json">${JSO
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalUrl} />
+    {prevPage && <link rel="prev" href={new URL(prevPage, Astro.site)} />}
+    {nextPage && <link rel="next" href={new URL(nextPage, Astro.site)} />}
 
     <!-- Sitemap -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
