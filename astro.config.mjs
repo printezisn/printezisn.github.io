@@ -64,7 +64,9 @@ export default defineConfig({
       'dist',
       new Date('2025-04-17'),
     ),
-    expressiveCode(),
+    expressiveCode({
+      themes: ['github-dark'],
+    }),
   ],
   cacheDir: '.cached-assets',
   vite: {
