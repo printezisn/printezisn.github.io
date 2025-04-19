@@ -24,6 +24,7 @@
     "@printezisn/games-couples-run": "git://github.com/printezisn/games-couples-run#v1.7.1",
     "@printezisn/games-sudoku": "git://github.com/printezisn/games-sudoku#v1.0.2",
     "astro": "5.7.3",
+    "astro-expressive-code": "0.41.1",
     "feather-icons": "4.29.2",
     "husky": "9.1.7",
     "sass": "1.83.0",

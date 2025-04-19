@@ -4,6 +4,8 @@ import fs from 'fs';
 import path from 'path';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
+import expressiveCode from 'astro-expressive-code';
+
 const gamePackages = Object.keys(
   JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'package.json')))
     .dependencies,
@@ -62,6 +64,7 @@ export default defineConfig({
       'dist',
       new Date('2025-04-17'),
     ),
+    expressiveCode(),
   ],
   cacheDir: '.cached-assets',
   vite: {

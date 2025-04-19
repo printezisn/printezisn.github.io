@@ -100,6 +100,10 @@ ul:not(.astro-code) code {
   }
 }
 
+.expressive-code {
+  margin-block-end: var(--spacing-4);
+}
+
 .code-result {
   margin-block-end: var(--spacing-4);
   padding: var(--spacing-4);

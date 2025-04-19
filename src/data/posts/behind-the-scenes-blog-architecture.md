@@ -38,9 +38,7 @@ Here’s how it’s set up and integrated into the game projects:
 \
 The engine is built using <a href="https://vite.dev/" target="_blank" rel="nofollow noreferrer">Vite</a> in _lib_ mode, with the following configuration:
 
-`vite.config.ts`
-
-```ts
+```ts title="vite.config.ts"
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
@@ -61,9 +59,7 @@ This setup builds the engine into a library format, which is then available for 
 \
 The built artifacts are exposed as exports like so:
 
-`package.json`
-
-```json
+```json title="package.json"
 {
   "module": "./dist/index.js",
   "main": "./dist/index.cjs",
@@ -86,9 +82,7 @@ Before pushing any changes to the repository, the project is automatically built
 \
 Game projects that use the engine import it as a dependency, specifying the appropriate version tag (e.g. `v0.7.0`):
 
-`package.json`
-
-```json
+```json title="package.json"
 {
   "devDependencies": {
     "@printezisn/game-engine": "git://github.com/printezisn/game-engine#v0.7.0"
@@ -108,9 +102,7 @@ The individual games, like the game engine itself, are structured to be easily i
 \
 Just like the engine, the game is also built with **Vite** into library format, using the following configuration:
 
-`vite.config.ts`
-
-```ts
+```ts title="vite.config.ts"
 import { defineConfig } from 'vite';
 import fs from 'fs';
 import path from 'path';
@@ -160,9 +152,7 @@ This configuration uses <a href="https://github.com/qmhc/vite-plugin-dts" target
 \
 The core game rendering functionality and page styles are encapsulated in a dedicated module:
 
-`src/index.ts`
-
-```ts
+```ts title="src/index.ts"
 import './styles.css';
 
 const renderGame = (options: RenderOptions) => {
@@ -174,9 +164,7 @@ const renderGame = (options: RenderOptions) => {
 \
 A basic HTML page is included for testing the game locally:
 
-`index.html`
-
-```html
+```html title="index.html"
 <!doctype html>
 <html lang="en">
   <head>
@@ -202,9 +190,7 @@ A basic HTML page is included for testing the game locally:
 \
 The game content, such as credits and privacy policy, is stored in HTML templates. These templates are exposed to consuming projects via a module:
 
-`src/templates.ts`
-
-```ts
+```ts title="src/templates.ts"
 import MainBodyHtml from '../templates/main-body.html?raw';
 import CreditsHtml from '../templates/credits.html?raw';
 import PrivacyPolicyHtml from '../templates/privacy-policy.html?raw';
@@ -220,9 +206,7 @@ Images and audio used in the game are stored in an assets folder.
 \
 The built artifacts are exposed as exports to facilitate easy consumption in other projects:
 
-`package.json`
-
-```json
+```json title="package.json"
 {
   "module": "./dist/index.js",
   "main": "./dist/index.umd.cjs",
@@ -253,9 +237,7 @@ Similar to the engine, the game is automatically built before changes are pushed
 \
 Other projects that depend on the game import it as a dependency, specifying the appropriate version tag (e.g. `v1.7.1`):
 
-`package.json`
-
-```json
+```json title="package.json"
 {
   "devDependencies": {
     "@printezisn/games-couples-run": "git://github.com/printezisn/games-couples-run#v1.7.1"
@@ -275,9 +257,7 @@ It has the following setup in order to host the games.
 \
 The game projects are added as dependencies:
 
-`package.json`
-
-```json
+```json title="package.json"
 {
   "dependencies": {
     "@printezisn/games-couples-run": "git://github.com/printezisn/games-couples-run#v1.7.1",
@@ -290,9 +270,7 @@ The game projects are added as dependencies:
 \
 Scripts are included to render the games and apply their respective styles. For example:
 
-`src/scripts/games/couples-run/main.ts`
-
-```ts
+```ts title="src/scripts/games/couples-run/main.ts"
 import '@printezisn/games-couples-run/style.css';
 import renderGame from '@printezisn/games-couples-run';
 
@@ -303,9 +281,7 @@ renderGame({
 
 The game is then integrated into an Astro page:
 
-`src/pages/games/couples-run/index.astro`
-
-```astro
+```astro title="src/pages/games/couples-run/index.astro"
 ---
 import BaseLayout from '../../../layouts/base-layout.astro';
 import { MainBodyHtml } from '@printezisn/games-couples-run/templates';
@@ -333,9 +309,7 @@ const description = 'Game description';
 \
 The application includes dedicated Astro pages for each game, rendering their HTML templates. For example:
 
-`src/pages/games/couples-run/credits.astro`
-
-```astro
+```astro title="src/pages/games/couples-run/credits.astro"
 ---
 import BlogLayout from '../../../layouts/blog-layout.astro';
 import { CreditsHtml } from '@printezisn/games-couples-run/templates';
@@ -358,9 +332,7 @@ const description = 'Credits for the Couples Run game';
 \
 To ensure that game assets are accessible, the site uses a specific Astro configuration. This configuration copies game assets, such as images and other resources, into the site’s structure.
 
-`astro.config.mjs`
-
-```js
+```js title="astro.config.mjs"
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import fs from 'fs';
