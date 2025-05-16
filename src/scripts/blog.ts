@@ -13,7 +13,7 @@ if (document.getElementsByClassName('create-fireplace').length > 0) {
 
       const fireplace = document.createElement('fire-place');
       fireplace.style.position = 'fixed';
-      fireplace.style.insetBlockEnd = '0';
+      fireplace.style.insetBlockEnd = '-40px';
       fireplace.style.insetInlineStart = '0';
       fireplace.style.minInlineSize = '1920px';
       fireplace.style.aspectRatio = '16 / 9';

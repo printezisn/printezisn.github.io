@@ -37,7 +37,7 @@ export default Fireplace;
 
 ### 2. Add a spritesheet with flame frames
 
-Let's analyse what a flame animation is in a 2D world. It's a set of images which showcase a flame in different stances, which keep switching and give the impression of an animation. Pretty much like a gif image.
+Let's analyze what a flame animation is in a 2D world. It's a set of images which showcase a flame in different states, which keep switching and give the impression of an animation. Pretty much like a gif image.
 
 A spritesheet is an image containing other inner images and is helpful because we can load all of them with a single request rather than multiple. In this case, the spritesheet contains images that represent different states of the flame.
 
@@ -57,9 +57,9 @@ const FRAMES = Object.freeze(
 );
 ```
 
-### 4. Render a bunch of images with the first flame frame
+### 4. Render a bunch of flames
 
-At first, let's decide the width and height of the canvas. Please note that this doesn't have to do with the dimensions it has on the page. It has to do with resolution. For example, if the canvas is 1920x1080 and the dimensions it has on the page is 640x360, then the canvas's content will be scaled down by half.
+At first, let's decide the width and height of the canvas. Please note that this doesn't have to do with the dimensions it has on the page. It has to do with resolution. For example, if the canvas is 1920x1080 and the dimensions it has on the page are 640x360, then the canvas's content will be scaled down by half.
 
 Let's set the canvas to be 1920x1080 (that's 16:9 resolution).
 
@@ -161,9 +161,9 @@ const flames = Array(TOTAL_FLAMES)
   }));
 ```
 
-### 5. Update canvas on every frame
+### 5. Create flame animation
 
-Now we have drawn a bunch of flames but it's nothing more than a static graphic. Let's switch images on every frame. This is done easily with the following addition.
+Now we have drawn a bunch of flames but it's nothing more than a static graphic. Let's continuously switch images to create an animation. This is done easily with the following code.
 
 ```ts
 const FRAMES = Object.freeze(
@@ -251,7 +251,7 @@ class Fireplace extends HTMLElement {
 export default Fireplace;
 ```
 
-You'll notice that I set a maximum number of frames per second. This is a limit to ensure that we won't overload the browser. Now the flames are animating but you'll notice that they are animating too fast. Let's add a limit to update the canvas only every 3 frames.
+You'll notice that I set a maximum number of frames per second. This is a limit to ensure that we won't overload the browser. Now the flames are animating but you'll notice that they are animating too fast. Let's add a limit to update the canvas only every 2 frames.
 
 ```ts
 const FRAMES = Object.freeze(
@@ -267,7 +267,7 @@ const TOTAL_FLAMES = Math.ceil(CANVAS_WIDTH / DIST_PER_FLAME);
 
 const MAX_FPS = 60;
 const MILLIS_PER_FRAME = 1000 / MAX_FPS;
-const FRAME_TO_UPDATE = 3;
+const FRAME_TO_UPDATE = 2;
 
 const getRandomInt = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min)) + min;
@@ -490,8 +490,8 @@ class Fireplace extends HTMLElement {
 export default Fireplace;
 ```
 
-### Summary
+### Conclusion
 
-In this post, we built an entire fireplace animation using only a single flame image spritesheet and Canvas API. The final verdict is that 2D graphics and animations in JS are not so hard.
+In this post, we built an entire fireplace animation using only a single flame spritesheet and Canvas API. The final verdict is that 2D graphics and animations in JS are not so hard.
 
 If you want to see a live demonstration of the end result, you can do it by clicking <a href="#" class="create-fireplace">here</a>.
