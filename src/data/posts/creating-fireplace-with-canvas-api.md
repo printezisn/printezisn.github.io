@@ -1,12 +1,12 @@
 ---
 title: Creating a fireplace with Canvas API
-description: This post contains a step-by-step guide which explains how you to create a simple fireplace animation using Canvas API. It has animating flames and sparks.
-excerpt: This post contains a step-by-step guide which explains how you to create a simple fireplace animation using Canvas API. It has animating flames and sparks.
+description: This post contains a step-by-step guide which explains how to create a simple fireplace animation using Canvas API. It has animating flames and sparks.
+excerpt: This post contains a step-by-step guide which explains how to create a simple fireplace animation using Canvas API. It has animating flames and sparks.
 categories:
   - js
   - animations
 date: 2025-05-15
-lastUpdate: 2025-05-15
+lastUpdate: 2025-05-31
 image:
   href: ../../assets/posts/creating-fireplace-with-canvas-api/fireplace.png
   alt: A fireplace in cartoonish style
