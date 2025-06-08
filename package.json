@@ -14,7 +14,8 @@
     "prepare": "husky",
     "prettier:format": "prettier --write .",
     "lint": "astro check --minimumSeverity warning && eslint ./src",
-    "lint:fix": "astro check --minimumSeverity warning && eslint ./src --fix"
+    "lint:fix": "astro check --minimumSeverity warning && eslint ./src --fix",
+    "sanitize-post": "node ./sanitize-post"
   },
   "dependencies": {
     "@astrojs/check": "0.9.4",
