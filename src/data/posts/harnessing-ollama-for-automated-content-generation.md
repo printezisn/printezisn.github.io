@@ -11,7 +11,7 @@ image:
   alt: A software engineer along with his robot assistant
 ---
 
-I'm one of the people who never jumped on the AI trend train. Don't get me wrong, I'm using AI tools in my daily life. I'm using Midjourney for image generation, Canva for image editing software, and ChatGPT for any questions that come to my mind (once I asked about the power levels of every DBZ hero on Namek). However, I never thought of starting an AI startup 😂
+I'm one of the people who never jumped on the AI trend train. Don't get me wrong, I'm using AI tools in my daily life. I'm using Midjourney for image generation, Canva for image editing, and ChatGPT for any questions that come to my mind (once I asked about the power levels of every DBZ hero on Namek). However, I never thought of starting an AI startup 😂
 
 One thing I never liked was having to use an external API and paying for tokens. Also, it's something that I wouldn't be able to use if I needed to provide private data. That changed recently when I discovered Ollama, and I decided to give it a try.
 
@@ -21,11 +21,11 @@ One thing I never liked was having to use an external API and paying for tokens.
 
 ### Project Idea
 
-I found the best way to try out Ollama was by working on a fun project. Typically, after I finish writing a blog post, I need to review it for syntax errors. Additionally, I need to write a title, create a description for the blog portal, and craft a suitable meta description for search engine optimization (SEO). Initially, this task may seem easy, but it can be quite tedious. This is something I wanted to automate 💡
+I found the best way to try out Ollama was by working on a fun project. Typically, after I finish writing a blog post, I need to review it for syntax errors. Additionally, I need to write a title, create a description for the blog portal, and craft a suitable meta description for search engine optimization (SEO). This task may seem easy, but it can be quite tedious. It is something I wanted to automate 💡
 
 ### Installing Ollama and Choosing a Model
 
-My first move was to install Ollama by following the instructions in its <a href="https://github.com/ollama/ollama" target="_blank" rel="noreferrer nofollow">GitHub page</a> and installing Meta's Llama3.2 model for use.
+My first move was to install Ollama, by following the instructions in its <a href="https://github.com/ollama/ollama" target="_blank" rel="noreferrer nofollow">GitHub page</a>, and Meta's **Llama3.2** model.
 
 ```shell
 ollama run llama3.2
@@ -205,4 +205,6 @@ With everything set up, I'm now ready to review my blog posts 😂
 
 ### Conclusion
 
-Working with Ollama was a delightful experience! and this experience has opened the door to exploring other exciting ideas, such as automating test generation. Now to answer the million dollar question, no, AI is not yet capable of replacing engineers, including junior engineers, however, AI can still serve as an excellent tool for handling mundane and time-consuming tasks.
+Working with Ollama was a delightful experience! and this experience has opened the door to exploring other exciting ideas, such as automated test generation. The result of my work is still far from perfect, but it was a very good start and I'll keep improving the script to make my blogging life easier.
+
+Now to answer the million dollar question, no, AI is not yet capable of replacing engineers, including junior engineers. However, AI can still serve as an excellent tool for handling mundane and time-consuming tasks.
