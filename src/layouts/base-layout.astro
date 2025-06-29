@@ -115,5 +115,10 @@ const breadcrumbStructuredDataString = `<script type="application/ld+json">${JSO
     data-last-update-time={lastUpdateTime.toISOString().slice(0, 10)}
   >
     <slot />
+    {
+      import.meta.env.PROD && (
+        <script async src="https://scripts.simpleanalyticscdn.com/latest.js" />
+      )
+    }
   </body>
 </html>
