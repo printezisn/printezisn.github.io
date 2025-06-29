@@ -1,5 +1,7 @@
 const cacheName = 'printezisn-v1';
 
+const excludedRequests = ['simpleanalytics'];
+
 const deleteOldCaches = async () => {
   const keys = await caches.keys();
   await Promise.allSettled(
@@ -48,6 +50,9 @@ const networkFirst = async (event) => {
 
 self.addEventListener('fetch', async (event) => {
   if (!event.request.url.startsWith('http')) return;
+  if (excludedRequests.some((r) => event.request.url.includes(r))) {
+    return;
+  }
 
   const cacheFirstDestinations = [
     'script',
