@@ -1,4 +1,4 @@
-const cacheName = 'printezisn-v1';
+const cacheName = 'printezisn-v2';
 
 const excludedRequests = ['simpleanalytics'];
 
