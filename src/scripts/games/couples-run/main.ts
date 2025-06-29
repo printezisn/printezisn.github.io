@@ -5,7 +5,7 @@ import renderGame from '@printezisn/games-couples-run';
 renderGame({
   assetsBasePath: '/games/couples-run/assets',
   creditsUrl: '/games/couples-run/credits',
-  privacyPolicyUrl: '/games/couples-run/privacy-policy',
+  privacyPolicyUrl: '/privacy-policy',
   fireBaseApiKey: import.meta.env.PUBLIC_COUPLES_RUN_FIREBASE_API_KEY ?? '',
   fireBaseAuthDomain:
     import.meta.env.PUBLIC_COUPLES_RUN_FIREBASE_AUTH_DOMAIN ?? '',

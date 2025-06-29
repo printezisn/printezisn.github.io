@@ -1,0 +1,134 @@
+---
+import BlogLayout from '@layouts/blog-layout.astro';
+import styles from '@styles/pages/privacy-policy/styles.module.scss';
+
+const title = 'Privacy Policy';
+const description = 'Privacy policy for the website';
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  path="/privacy-policy/"
+  breadcrumbList={[
+    {
+      name: 'Portfolio',
+      url: '/',
+    },
+    {
+      name: 'Privacy Policy',
+      url: '/privacy-policy/',
+    },
+  ]}
+  lastUpdateTime={new Date('2025-06-29')}
+>
+  <div class={styles.content}>
+    <h2>Privacy Policy</h2>
+    <p><strong>Effective Date</strong>: 2025-06-29</p>
+
+    <p>
+      Thank you for visiting www.printezisn.com (“we”, “us”, “our”). Your
+      privacy is important to us. This Privacy Policy explains what information
+      we collect and how we use it when you visit www.printezisn.com.
+    </p>
+
+    <h3>1. Information We Collect</h3>
+    <p>
+      We do <strong>not</strong> collect any personally identifiable information
+      about you when you visit our website.
+    </p>
+    <p>
+      We use <a
+        href="https://www.simpleanalytics.com/"
+        target="_blank"
+        rel="noreferrer nofollow">Simple Analytics</a
+      >, a privacy-friendly analytics tool that helps us understand general
+      trends in website usage without collecting personal data or using cookies.
+    </p>
+    <p>Simple Analytics:</p>
+    <ul>
+      <li><strong>Does not collect or store IP addresses.</strong></li>
+      <li>
+        Uses the <strong
+          >timezone of your browser to estimate your country</strong
+        >.
+      </li>
+      <li>
+        Collects non-personal, aggregated data such as:
+        <ul>
+          <li>Referring website</li>
+          <li>Pages visited</li>
+          <li>Device type, browser type</li>
+          <li>Estimated country based on timezone</li>
+          <li>Duration of visit</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2>2. How We Use This Information</h2>
+    <p>We use the anonymous, aggregated analytics data to:</p>
+    <ul>
+      <li>Analyze traffic and usage trends on our website</li>
+      <li>Improve our content and user experience</li>
+    </ul>
+    <p>
+      We do not sell, trade, or share this data with third parties for marketing
+      purposes.
+    </p>
+
+    <h2>3. Cookies and Tracking</h2>
+    <p>We do not use cookies or tracking scripts on our website.</p>
+    <p>
+      Simple Analytics operates without cookies and does not use tracking or
+      fingerprinting technologies, ensuring your privacy while allowing us to
+      see general usage patterns.
+    </p>
+
+    <h2>4. Privacy for Couples Run</h2>
+    <p>
+      Our website includes access to Couples Run, which may collect and store
+      personal data (such as nickname and high score) using Firebase services to
+      provide game functionality.
+    </p>
+    <p>
+      For details on how we collect, use, and protect your data within the game,
+      please refer to our <a href="/games/couples-run/privacy-policy"
+        >Privacy Policy for Couples Run</a
+      >.
+    </p>
+
+    <h2>5. Data Security</h2>
+    <p>
+      While we do not collect personal data on our main website, we take
+      reasonable technical and organizational measures to protect any data we
+      process to ensure its confidentiality and integrity.
+    </p>
+
+    <h2>6. Your Privacy Rights</h2>
+    <p>
+      Since we do not collect or store personally identifiable information on
+      our main website, there is no personal data to access, rectify, or delete
+      in this context. If you have any questions about your privacy, please
+      contact us using the details below.
+    </p>
+    <p>
+      For requests related to Couples Run, please refer to the <a
+        href="/games/couples-run/privacy-policy"
+        >Privacy Policy for Couples Run</a
+      > for details on managing your data.
+    </p>
+
+    <h2>7. Changes to This Privacy Policy</h2>
+    <p>
+      We may update this Privacy Policy periodically. We will post the updated
+      version on this page with the revised “Effective Date”.
+    </p>
+
+    <h2>8. Contact Us</h2>
+    <p>If you have any questions about this Privacy Policy, please contact:</p>
+    <p>
+      Nikos Printezis <br />
+      printezisn@gmail.com <br />
+    </p>
+  </div>
+</BlogLayout>
