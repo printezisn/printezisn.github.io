@@ -50,7 +50,6 @@ const customSitemap = (site, distFolder, minDate) => {
         .filter(Boolean);
       const filePath = path.join(
         import.meta.dirname,
-        '..',
         distFolder,
         ...filePathSequence,
         'index.html',
