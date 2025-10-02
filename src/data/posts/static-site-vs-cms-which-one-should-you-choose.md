@@ -125,9 +125,9 @@ A custom CMS is a fully bespoke solution built for your business. Instead of ada
 
 **❌ Cons**:
 
-**High upfront cost**: Requires significant investment.
-**Longer development time**: Can take months.
-**Ongoing maintenance**: Your dev team is responsible for updates.
+- **High upfront cost**: Requires significant investment.
+- **Longer development time**: Can take months.
+- **Ongoing maintenance**: Your dev team is responsible for updates.
 
 **🎯 Best for**:
 
@@ -141,16 +141,16 @@ Enterprises, SaaS companies, or businesses with unique workflows and large-scale
 
 I started my career working at agencies. An experience that came with strict deadlines, a constant flow of clients, and, of course, countless WordPress websites. While it was challenging, it also gave me the opportunity to learn valuable lessons and spot patterns that appeared again and again across projects:
 
-- **Clients will eventually want admin panel changes**.
+- **Clients will eventually want admin panel changes**.<br />
   At some point, every client asks for something custom, whether it’s a new content type, an extra filter in the posts page, or even a complete rework of the admin dashboard. And while existing CMS platforms are extensible, these changes aren’t always straightforward. Clients often don’t understand why adding a “simple” filter could take two weeks. It just doesn’t make sense to them.
 
-- **Always prepare for multilingual support**.
+- **Always prepare for multilingual support**.<br />
   Even if the client insists they only need one language, assume that a request for a second one will eventually come. If your content model and site architecture aren’t prepared for it from the start, retrofitting multilingual support later can be a time-consuming headache.
 
-- **Clients will want to edit content themselves (eventually)**.
+- **Clients will want to edit content themselves (eventually)**.<br />
   Many clients begin by saying they don’t care about managing their own content. But sooner or later, they realize it’s faster to make small updates without waiting for you. It’s best to design the site as dynamic from the beginning. Then, when the request comes, you can simply create an additional admin user instead of rebuilding workflows.
 
-- **Your expertise is part of the value**.
+- **Your expertise is part of the value**.<br />
   Even if you can now fulfill requests quickly thanks to good planning, don’t forget to charge for that expertise. The ability to anticipate client needs and design scalable solutions is what sets professionals apart.
 
 During the pandemic, I suddenly found myself with more free time. That’s when I decided to make a bold investment: I built my own CMS. I called it <a href="https://github.com/printezisn/pandemiccms" rel="noreferrer" target="_blank">Pandemic CMS</a> (fittingly enough). It was the culmination of everything I’d learned working with existing platforms, designed to reduce repetitive work, anticipate common client requests, and provide greater long-term value.
