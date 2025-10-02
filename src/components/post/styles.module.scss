@@ -4,7 +4,8 @@
   .content {
     p,
     ul,
-    ol {
+    ol,
+    blockquote {
       margin-block: var(--spacing-4);
     }
 
@@ -22,6 +23,13 @@
       font-size: var(--font-size-4);
       line-height: var(--line-height-4);
       font-weight: var(--font-weight-bold);
+    }
+
+    blockquote {
+      padding-inline: var(--spacing-4);
+      background-color: var(--color-primary-light);
+      border-inline-start: solid 2px var(--color-secondary-light);
+      display: inline-block;
     }
   }
 
