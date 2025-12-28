@@ -20,8 +20,7 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "@printezisn/games-sudoku",
-      "@printezisn/games-couples-run",
-      "@printezisn/game-engine"
+      "@printezisn/games-couples-run"
     ]
   },
   "dependencies": {
@@ -30,7 +29,7 @@
     "@astrojs/sitemap": "3.4.1",
     "@fontsource/lora": "5.1.0",
     "@fontsource/roboto": "5.1.0",
-    "@printezisn/games-couples-run": "git://github.com/printezisn/games-couples-run#v1.7.2",
+    "@printezisn/games-couples-run": "git://github.com/printezisn/games-couples-run#v1.7.3",
     "@printezisn/games-sudoku": "git://github.com/printezisn/games-sudoku#v1.1.0",
     "astro": "5.10.1",
     "astro-expressive-code": "0.41.1",
