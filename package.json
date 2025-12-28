@@ -20,7 +20,8 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "@printezisn/games-sudoku",
-      "@printezisn/games-couples-run"
+      "@printezisn/games-couples-run",
+      "@printezisn/game-engine"
     ]
   },
   "dependencies": {
