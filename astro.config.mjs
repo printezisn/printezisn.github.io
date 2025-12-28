@@ -3,8 +3,8 @@ import customSitemap from './lib/custom-sitemap.mjs';
 import fs from 'fs';
 import path from 'path';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
-
 import expressiveCode from 'astro-expressive-code';
+import mdx from '@astrojs/mdx';
 
 const gamePackages = Object.keys(
   JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'package.json')))
@@ -67,6 +67,7 @@ export default defineConfig({
     expressiveCode({
       themes: ['github-dark'],
     }),
+    mdx(),
   ],
   cacheDir: '.cached-assets',
   vite: {

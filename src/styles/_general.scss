@@ -133,6 +133,12 @@ hr {
   margin-block: var(--spacing-4);
 }
 
+figcaption {
+  color: var(--color-primary-grey-light);
+  font-size: var(--font-size-1);
+  line-height: var(--line-height-1);
+}
+
 .text-center {
   text-align: center;
 }

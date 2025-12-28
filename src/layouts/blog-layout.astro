@@ -102,4 +102,19 @@ const {
     </PageContent>
     <PageFooter />
   </Page>
+  {
+    path === '/blog/post/how-to-create-snowfall-animation/' ? (
+      <snow-fall
+        particles-per-sec-landscape="40"
+        particles-per-sec-portrait="20"
+      />
+    ) : (
+      <snow-fall
+        min-date="12-01"
+        max-date="01-06"
+        particles-per-sec-landscape="40"
+        particles-per-sec-portrait="20"
+      />
+    )
+  }
 </BaseLayout>

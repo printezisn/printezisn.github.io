@@ -1,5 +1,6 @@
 import '@styles/main.scss';
 import './base';
+import '@scripts/components/snowfall';
 
 if (document.getElementsByClassName('create-fireplace').length > 0) {
   const Fireplace = (await import('@scripts/components/fireplace')).default;

@@ -2,7 +2,7 @@ import { glob } from 'astro/loaders';
 import { z, defineCollection } from 'astro:content';
 
 const postsCollection = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/data/posts' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/data/posts' }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -21,7 +21,7 @@ const postsCollection = defineCollection({
 });
 
 const gamesCollection = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/data/games' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/data/games' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -32,7 +32,7 @@ const gamesCollection = defineCollection({
 });
 
 const otherWorkCollection = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/data/other-work' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/data/other-work' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -42,7 +42,7 @@ const otherWorkCollection = defineCollection({
 });
 
 const categoriesCollection = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/data/categories' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/data/categories' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
