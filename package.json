@@ -17,6 +17,12 @@
     "lint:fix": "astro check --minimumSeverity warning && eslint ./src --fix",
     "sanitize-post": "node ./sanitize-post"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@printezisn/games-sudoku",
+      "@printezisn/games-couples-run"
+    ]
+  },
   "dependencies": {
     "@astrojs/check": "0.9.4",
     "@astrojs/mdx": "4.3.13",
