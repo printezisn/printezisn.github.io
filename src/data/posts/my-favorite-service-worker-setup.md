@@ -5,7 +5,7 @@ excerpt: My favorite service worker setup that I use in order to cache static co
 categories:
   - js
 date: 2024-09-10
-lastUpdate: 2024-09-10
+lastUpdate: 2025-12-31
 image:
   href: ../../assets/posts/my-favorite-service-worker-setup/js-developer.png
   alt: A js developer working on a project in front of the screen
@@ -59,7 +59,7 @@ const cacheFirst = async (event) => {
   if (cachedResponse) return cachedResponse;
 
   const fetchResponse = await fetch(event.request);
-  if (fetchResponse.status < 300) {
+  if (fetchResponse.status >= 200 && fetchResponse.status < 300) {
     cache.put(event.request, fetchResponse.clone());
   }
 
@@ -71,7 +71,7 @@ const networkFirst = async (event) => {
 
   try {
     const fetchResponse = await fetch(event.request);
-    if (fetchResponse.status < 300) {
+    if (fetchResponse.status >= 200 && fetchResponse.status < 300) {
       cache.put(event.request, fetchResponse.clone());
     }
 
@@ -86,6 +86,9 @@ const networkFirst = async (event) => {
 
 self.addEventListener('fetch', async (event) => {
   if (!event.request.url.startsWith('http')) return;
+  if (new URL(event.request.url).origin !== self.location.origin) {
+    return;
+  }
 
   const cacheFirstDestinations = [
     'script',
