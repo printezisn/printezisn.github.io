@@ -7,22 +7,6 @@ stylesheet.replaceSync(styles);
 
 const BACKGROUND_PROCESSING_SUPPORTED = Boolean(window.OffscreenCanvas);
 
-const debounce = (time: number, fn: () => void) => {
-  let timerId: NodeJS.Timeout | undefined;
-
-  return () => {
-    if (timerId != null) {
-      clearTimeout(timerId);
-    }
-
-    timerId = setTimeout(() => {
-      timerId = undefined;
-
-      fn();
-    }, time);
-  };
-};
-
 class Snowfall extends HTMLElement {
   static observedAttributes = [
     'min-date',
@@ -49,15 +33,22 @@ class Snowfall extends HTMLElement {
       .map((n) => Number(n.trim())) ?? [12, 31];
 
     const now = new Date();
+    const year = now.getFullYear();
 
-    const minYear = now.getFullYear();
-    const maxYear =
-      maxMonth < minMonth ? now.getFullYear() + 1 : now.getFullYear();
-
-    const minDate = new Date(minYear, minMonth - 1, minDay);
-    const maxDate = new Date(maxYear, maxMonth - 1, maxDay);
-
-    return minDate <= now && now <= maxDate;
+    return [
+      [
+        new Date(year - 1, minMonth - 1, minDay),
+        new Date(year, maxMonth - 1, maxDay),
+      ],
+      [
+        new Date(year, minMonth - 1, minDay),
+        new Date(year, maxMonth - 1, maxDay),
+      ],
+      [
+        new Date(year, minMonth - 1, minDay),
+        new Date(year + 1, maxMonth - 1, maxDay),
+      ],
+    ].some(([start, end]) => now >= start && now <= end);
   }
 
   private updateRendererConfig() {
@@ -97,7 +88,7 @@ class Snowfall extends HTMLElement {
 
         window.addEventListener(
           'resize',
-          debounce(100, () => {
+          () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
 
@@ -106,7 +97,7 @@ class Snowfall extends HTMLElement {
                 ? 'landscape'
                 : 'portrait';
             this.updateRendererConfig();
-          }),
+          },
           {
             signal: this.eventsAbortController.signal,
           },

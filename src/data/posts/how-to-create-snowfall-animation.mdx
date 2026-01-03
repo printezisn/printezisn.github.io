@@ -82,6 +82,16 @@ if (!customElements.get('snow-fall')) {
 }
 ```
 
+```scss title="styles.scss"
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  user-select: none;
+  pointer-events: none;
+}
+```
+
 Every time the window is resized, the size of the canvas is also updated to make sure that it's full screen.
 
 ### 3. Make the rendering seasonal
@@ -108,15 +118,22 @@ class Snowfall extends HTMLElement {
       .map((n) => Number(n.trim())) ?? [12, 31];
 
     const now = new Date();
+    const year = now.getFullYear();
 
-    const minYear = now.getFullYear();
-    const maxYear =
-      maxMonth < minMonth ? now.getFullYear() + 1 : now.getFullYear();
-
-    const minDate = new Date(minYear, minMonth - 1, minDay);
-    const maxDate = new Date(maxYear, maxMonth - 1, maxDay);
-
-    return minDate <= now && now <= maxDate;
+    return [
+      [
+        new Date(year - 1, minMonth - 1, minDay),
+        new Date(year, maxMonth - 1, maxDay),
+      ],
+      [
+        new Date(year, minMonth - 1, minDay),
+        new Date(year, maxMonth - 1, maxDay),
+      ],
+      [
+        new Date(year, minMonth - 1, minDay),
+        new Date(year + 1, maxMonth - 1, maxDay),
+      ],
+    ].some(([start, end]) => now >= start && now <= end);
   }
 
   connectedCallback() {
@@ -167,7 +184,7 @@ interface Particle {
 
 interface State {
   canvas: HTMLCanvasElement;
-  sprite: HTMLImageElement;
+  sprite: ImageBitmap;
   particles: Particle[];
   timeElapsedSinceLastFrame: number;
   timeElapsedSinceLastCreation: number;
@@ -178,14 +195,10 @@ export const startRendering = async (
   abortSignal: AbortSignal,
   particlesPerSec: number,
 ) => {
-  const sprite = new Image();
-  sprite.src = '/snowball.png';
+  const spriteRequest = await fetch('/snowball.png');
+  const spriteResponse = await spriteRequest.blob();
 
-  await new Promise<void>((resolve) => {
-    sprite.addEventListener('load', () => {
-      resolve();
-    });
-  });
+  const sprite = await createImageBitmap(spriteResponse);
 
   let lastTimestamp = 0;
   const state: State = {
@@ -241,15 +254,22 @@ class Snowfall extends HTMLElement {
       .map((n) => Number(n.trim())) ?? [12, 31];
 
     const now = new Date();
+    const year = now.getFullYear();
 
-    const minYear = now.getFullYear();
-    const maxYear =
-      maxMonth < minMonth ? now.getFullYear() + 1 : now.getFullYear();
-
-    const minDate = new Date(minYear, minMonth - 1, minDay);
-    const maxDate = new Date(maxYear, maxMonth - 1, maxDay);
-
-    return minDate <= now && now <= maxDate;
+    return [
+      [
+        new Date(year - 1, minMonth - 1, minDay),
+        new Date(year, maxMonth - 1, maxDay),
+      ],
+      [
+        new Date(year, minMonth - 1, minDay),
+        new Date(year, maxMonth - 1, maxDay),
+      ],
+      [
+        new Date(year, minMonth - 1, minDay),
+        new Date(year + 1, maxMonth - 1, maxDay),
+      ],
+    ].some(([start, end]) => now >= start && now <= end);
   }
 
   connectedCallback() {
@@ -308,7 +328,7 @@ interface Particle {
 
 interface State {
   canvas: HTMLCanvasElement;
-  sprite: HTMLImageElement;
+  sprite: ImageBitmap;
   particles: Particle[];
   timeElapsedSinceLastFrame: number;
   timeElapsedSinceLastCreation: number;
@@ -346,14 +366,10 @@ export const startRendering = async (
   abortSignal: AbortSignal,
   particlesPerSec: number,
 ) => {
-  const sprite = new Image();
-  sprite.src = '/snowball.png';
+  const spriteRequest = await fetch('/snowball.png');
+  const spriteResponse = await spriteRequest.blob();
 
-  await new Promise<void>((resolve) => {
-    sprite.addEventListener('load', () => {
-      resolve();
-    });
-  });
+  const sprite = await createImageBitmap(spriteResponse);
 
   let lastTimestamp = 0;
   const state: State = {
@@ -424,7 +440,7 @@ interface Particle {
 
 interface State {
   canvas: HTMLCanvasElement;
-  sprite: HTMLImageElement;
+  sprite: ImageBitmap;
   particles: Particle[];
   timeElapsedSinceLastFrame: number;
   timeElapsedSinceLastCreation: number;
@@ -496,14 +512,10 @@ export const startRendering = async (
   abortSignal: AbortSignal,
   particlesPerSec: number,
 ) => {
-  const sprite = new Image();
-  sprite.src = '/snowball.png';
+  const spriteRequest = await fetch('/snowball.png');
+  const spriteResponse = await spriteRequest.blob();
 
-  await new Promise<void>((resolve) => {
-    sprite.addEventListener('load', () => {
-      resolve();
-    });
-  });
+  const sprite = await createImageBitmap(spriteResponse);
 
   let lastTimestamp = 0;
   const state: State = {
@@ -578,15 +590,22 @@ class Snowfall extends HTMLElement {
       .map((n) => Number(n.trim())) ?? [12, 31];
 
     const now = new Date();
+    const year = now.getFullYear();
 
-    const minYear = now.getFullYear();
-    const maxYear =
-      maxMonth < minMonth ? now.getFullYear() + 1 : now.getFullYear();
-
-    const minDate = new Date(minYear, minMonth - 1, minDay);
-    const maxDate = new Date(maxYear, maxMonth - 1, maxDay);
-
-    return minDate <= now && now <= maxDate;
+    return [
+      [
+        new Date(year - 1, minMonth - 1, minDay),
+        new Date(year, maxMonth - 1, maxDay),
+      ],
+      [
+        new Date(year, minMonth - 1, minDay),
+        new Date(year, maxMonth - 1, maxDay),
+      ],
+      [
+        new Date(year, minMonth - 1, minDay),
+        new Date(year + 1, maxMonth - 1, maxDay),
+      ],
+    ].some(([start, end]) => now >= start && now <= end);
   }
 
   private updateRendererConfig() {
@@ -666,166 +685,6 @@ class Snowfall extends HTMLElement {
 if (!customElements.get('snow-fall')) {
   customElements.define('snow-fall', Snowfall);
 }
-```
-
-```ts title="renderer.ts"
-interface Particle {
-  scale: number;
-  x: number;
-  y: number;
-  velocity: number;
-  directionInRadians: number;
-}
-
-interface State {
-  sprite: HTMLImageElement;
-  particles: Particle[];
-  timeElapsedSinceLastFrame: number;
-  timeElapsedSinceLastCreation: number;
-}
-
-export interface RendererConfig {
-  canvas: HTMLCanvasElement;
-  canvasWidth: number;
-  canvasHeight: number;
-  signal?: AbortSignal;
-  particlesPerSec: number;
-}
-
-const MAX_ELAPSED_TIME = 1000;
-
-const random = (min: number, max: number) => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
-const createParticles = (config: RendererConfig, state: State) => {
-  const particlesPerMilli = config.particlesPerSec / 1000;
-
-  state.timeElapsedSinceLastCreation += state.timeElapsedSinceLastFrame;
-  const totalParticlesToProduce = Math.floor(
-    particlesPerMilli * state.timeElapsedSinceLastCreation,
-  );
-
-  state.timeElapsedSinceLastCreation -= Math.floor(
-    totalParticlesToProduce / particlesPerMilli,
-  );
-
-  for (let i = 0; i < totalParticlesToProduce; i++) {
-    state.particles.push({
-      scale: random(10, 15) / 100,
-      x: random(0, 100),
-      y: 0,
-      velocity: random(10, 20),
-      directionInRadians: (random(50, 130) * Math.PI) / 180,
-    });
-  }
-};
-
-const update = (state: State) => {
-  for (let i = 0; i < state.particles.length; i++) {
-    const particle = state.particles[i];
-    if (particle.y > 100) {
-      state.particles.splice(i, 1);
-      continue;
-    }
-
-    const velocity =
-      (particle.velocity * state.timeElapsedSinceLastFrame) / 1000;
-
-    particle.y += velocity * Math.sin(particle.directionInRadians);
-    particle.x += velocity * Math.cos(particle.directionInRadians);
-  }
-};
-
-const draw = (config: RendererConfig, state: State) => {
-  const ctx = config.canvas.getContext('2d')!;
-
-  ctx.clearRect(0, 0, config.canvasWidth, config.canvasHeight);
-
-  state.particles.forEach((particle) => {
-    ctx.drawImage(
-      state.sprite,
-      (particle.x * config.canvasWidth) / 100,
-      (particle.y * config.canvasHeight) / 100,
-      state.sprite.width * particle.scale,
-      state.sprite.height * particle.scale,
-    );
-  });
-};
-
-export const startRendering = async (config: RendererConfig) => {
-  const sprite = new Image();
-  sprite.src = '/snowball.png';
-
-  await new Promise<void>((resolve) => {
-    sprite.addEventListener('load', () => {
-      resolve();
-    });
-  });
-
-  let lastTimestamp = 0;
-  const state: State = {
-    sprite,
-    particles: [],
-    timeElapsedSinceLastCreation: 0,
-    timeElapsedSinceLastFrame: 0,
-  };
-
-  const onFrame = (time: number) => {
-    if (config.signal?.aborted) return;
-
-    if (lastTimestamp === 0) {
-      lastTimestamp = time;
-    }
-
-    const elapsedTime = Math.min(time - lastTimestamp, MAX_ELAPSED_TIME);
-    state.timeElapsedSinceLastFrame = elapsedTime;
-
-    lastTimestamp = time;
-
-    update(state);
-    createParticles(config, state);
-    draw(config, state);
-
-    requestAnimationFrame(onFrame);
-  };
-
-  requestAnimationFrame(onFrame);
-};
-```
-
-### 8. Offloading to a web worker
-
-To further enhance performance, especially on devices with limited resources, we can offload the rendering logic to a
-Web Worker. This way, the main thread remains responsive while the snowfall animation runs smoothly in the background.
-A canvas element may transfer control to an offscreen canvas, which can then be used within a web worker. However, offscreen
-canvases are not supported in all browsers, so be sure to check compatibility before utilizing this feature.
-
-```ts title="worker.ts"
-import { startRendering, type RendererConfig } from './renderer';
-
-const config: any = {};
-let started = false;
-
-self.onmessage = (event) => {
-  const data = event.data ?? {};
-
-  for (const key in data) {
-    if (data[key] !== undefined) {
-      config[key] = data[key];
-    }
-  }
-
-  if (config.canvas) {
-    config.canvas.width = config.canvasWidth;
-    config.canvas.height = config.canvasHeight;
-  }
-
-  if (!started) {
-    started = true;
-    startRendering(config as RendererConfig);
-  }
-};
 ```
 
 ```ts title="renderer.ts"
@@ -950,6 +809,40 @@ export const startRendering = async (config: RendererConfig) => {
 };
 ```
 
+### 8. Offloading to a web worker
+
+To further enhance performance, especially on devices with limited resources, we can offload the rendering logic to a
+Web Worker. This way, the main thread remains responsive while the snowfall animation runs smoothly in the background.
+A canvas element may transfer control to an offscreen canvas, which can then be used within a web worker. However, offscreen
+canvases are not supported in all browsers, so be sure to check compatibility before utilizing this feature.
+
+```ts title="worker.ts"
+import { startRendering, type RendererConfig } from './renderer';
+
+const config: any = {};
+let started = false;
+
+self.onmessage = (event) => {
+  const data = event.data ?? {};
+
+  for (const key in data) {
+    if (data[key] !== undefined) {
+      config[key] = data[key];
+    }
+  }
+
+  if (config.canvas) {
+    config.canvas.width = config.canvasWidth;
+    config.canvas.height = config.canvasHeight;
+  }
+
+  if (!started) {
+    started = true;
+    startRendering(config as RendererConfig);
+  }
+};
+```
+
 ```ts title="index.ts"
 import { startRendering, type RendererConfig } from './renderer';
 import Worker from './worker?worker';
@@ -959,22 +852,6 @@ const stylesheet = new CSSStyleSheet();
 stylesheet.replaceSync(styles);
 
 const BACKGROUND_PROCESSING_SUPPORTED = Boolean(window.OffscreenCanvas);
-
-const debounce = (time: number, fn: () => void) => {
-  let timerId: NodeJS.Timeout | undefined;
-
-  return () => {
-    if (timerId != null) {
-      clearTimeout(timerId);
-    }
-
-    timerId = setTimeout(() => {
-      timerId = undefined;
-
-      fn();
-    }, time);
-  };
-};
 
 class Snowfall extends HTMLElement {
   static observedAttributes = [
@@ -1002,15 +879,22 @@ class Snowfall extends HTMLElement {
       .map((n) => Number(n.trim())) ?? [12, 31];
 
     const now = new Date();
+    const year = now.getFullYear();
 
-    const minYear = now.getFullYear();
-    const maxYear =
-      maxMonth < minMonth ? now.getFullYear() + 1 : now.getFullYear();
-
-    const minDate = new Date(minYear, minMonth - 1, minDay);
-    const maxDate = new Date(maxYear, maxMonth - 1, maxDay);
-
-    return minDate <= now && now <= maxDate;
+    return [
+      [
+        new Date(year - 1, minMonth - 1, minDay),
+        new Date(year, maxMonth - 1, maxDay),
+      ],
+      [
+        new Date(year, minMonth - 1, minDay),
+        new Date(year, maxMonth - 1, maxDay),
+      ],
+      [
+        new Date(year, minMonth - 1, minDay),
+        new Date(year + 1, maxMonth - 1, maxDay),
+      ],
+    ].some(([start, end]) => now >= start && now <= end);
   }
 
   private updateRendererConfig() {
@@ -1050,7 +934,7 @@ class Snowfall extends HTMLElement {
 
         window.addEventListener(
           'resize',
-          debounce(100, () => {
+          () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
 
@@ -1059,7 +943,7 @@ class Snowfall extends HTMLElement {
                 ? 'landscape'
                 : 'portrait';
             this.updateRendererConfig();
-          }),
+          },
           {
             signal: this.eventsAbortController.signal,
           },
