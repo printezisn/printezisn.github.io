@@ -42,18 +42,18 @@ const createParticles = (config: RendererConfig, state: State) => {
   for (let i = 0; i < totalParticlesToProduce; i++) {
     state.particles.push({
       scale: random(10, 15) / 100,
-      x: random(0, 100),
+      x: random(0, config.canvasWidth),
       y: 0,
-      velocity: random(10, 20),
+      velocity: random(100, 150),
       directionInRadians: (random(50, 130) * Math.PI) / 180,
     });
   }
 };
 
-const update = (state: State) => {
+const update = (config: RendererConfig, state: State) => {
   for (let i = 0; i < state.particles.length; i++) {
     const particle = state.particles[i];
-    if (particle.y > 100) {
+    if (particle.y > config.canvasHeight) {
       state.particles.splice(i, 1);
       continue;
     }
@@ -74,8 +74,8 @@ const draw = (config: RendererConfig, state: State) => {
   state.particles.forEach((particle) => {
     ctx.drawImage(
       state.sprite,
-      (particle.x * config.canvasWidth) / 100,
-      (particle.y * config.canvasHeight) / 100,
+      particle.x,
+      particle.y,
       state.sprite.width * particle.scale,
       state.sprite.height * particle.scale,
     );
@@ -108,7 +108,7 @@ export const startRendering = async (config: RendererConfig) => {
 
     lastTimestamp = time;
 
-    update(state);
+    update(config, state);
     createParticles(config, state);
     draw(config, state);
 
