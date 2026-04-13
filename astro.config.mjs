@@ -58,6 +58,13 @@ gamePackages.forEach((game) => {
   }
 });
 
+// Solidboy Emulator
+directoriesToCopy.push({
+  src: 'node_modules/@printezisn/solidboy/dist/images',
+  dest: 'solidboy',
+  rename: { stripBase: 5 },
+});
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.printezisn.com/',

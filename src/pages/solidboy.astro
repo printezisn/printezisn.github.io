@@ -1,0 +1,32 @@
+---
+import BaseLayout from '@layouts/base-layout.astro';
+import { MainBodyHtml } from '@printezisn/solidboy/templates';
+
+const title = 'Solidboy Emulator';
+const description =
+  'Play classic Game Boy/Game Boy color games right in your browser. A faithful emulator built with Rust and WebAssembly for a fast, authentic experience.';
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image="/solidboy/logo.png"
+  path="/solidboy/"
+  favicon="/solidboy/favicon.png"
+  breadcrumbList={[
+    {
+      name: 'Portfolio',
+      url: '/',
+    },
+    {
+      name: 'Solidboy Emulator',
+      url: '/solidboy/',
+    },
+  ]}
+  lastUpdateTime={new Date('2026-04-13')}
+>
+  <Fragment slot="scripts">
+    <script src="@scripts/solidboy/main.ts"></script>
+  </Fragment>
+  <Fragment set:html={MainBodyHtml} />
+</BaseLayout>

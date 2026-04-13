@@ -28,6 +28,9 @@ importers:
       '@printezisn/games-sudoku':
         specifier: git://github.com/printezisn/games-sudoku#v1.1.0
         version: https://codeload.github.com/printezisn/games-sudoku/tar.gz/079a4612d2a14521ab29176c2fcb2bce1350025e
+      '@printezisn/solidboy':
+        specifier: git://github.com/printezisn/solidboy#0.1.1
+        version: https://codeload.github.com/printezisn/solidboy/tar.gz/1a6916f6929d365829fa8084a35d0195f456754d
       astro:
         specifier: 6.1.5
         version: 6.1.5(@types/node@24.12.2)(rollup@4.60.1)(sass@1.98.0)(typescript@6.0.2)(yaml@2.8.3)
@@ -1144,6 +1147,14 @@ packages:
       }
     version: 1.1.0
     engines: { node: '>=20' }
+
+  '@printezisn/solidboy@https://codeload.github.com/printezisn/solidboy/tar.gz/1a6916f6929d365829fa8084a35d0195f456754d':
+    resolution:
+      {
+        tarball: https://codeload.github.com/printezisn/solidboy/tar.gz/1a6916f6929d365829fa8084a35d0195f456754d,
+      }
+    version: 0.1.1
+    engines: { node: '>=24' }
 
   '@rollup/pluginutils@5.3.0':
     resolution:
@@ -6096,6 +6107,11 @@ snapshots:
   '@printezisn/games-sudoku@https://codeload.github.com/printezisn/games-sudoku/tar.gz/079a4612d2a14521ab29176c2fcb2bce1350025e':
     dependencies:
       husky: 9.1.6
+
+  '@printezisn/solidboy@https://codeload.github.com/printezisn/solidboy/tar.gz/1a6916f6929d365829fa8084a35d0195f456754d':
+    dependencies:
+      husky: 9.1.7
+      solidboy-emulator: link:emulator/pkg
 
   '@rollup/pluginutils@5.3.0(rollup@4.60.1)':
     dependencies:
