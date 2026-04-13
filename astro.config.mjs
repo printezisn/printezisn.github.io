@@ -21,8 +21,9 @@ gamePackages.forEach((game) => {
     )
   ) {
     directoriesToCopy.push({
-      src: `node_modules/${game}/dist/images/*`,
+      src: `node_modules/${game}/dist/images`,
       dest: `games/${name}`,
+      rename: { stripBase: 5 },
     });
   }
 
@@ -33,7 +34,8 @@ gamePackages.forEach((game) => {
   ) {
     directoriesToCopy.push({
       src: `node_modules/${game}/dist/assets`,
-      dest: `games/${name}`,
+      dest: `games/${name}/assets`,
+      rename: { stripBase: 5 },
     });
   }
 
@@ -49,8 +51,9 @@ gamePackages.forEach((game) => {
     )
   ) {
     directoriesToCopy.push({
-      src: `node_modules/${game}/dist/module-assets/*`,
+      src: `node_modules/${game}/dist/module-assets`,
       dest: 'module-assets',
+      rename: { stripBase: 5 },
     });
   }
 });
