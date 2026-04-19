@@ -64,6 +64,11 @@ directoriesToCopy.push({
   dest: 'solidboy',
   rename: { stripBase: 5 },
 });
+directoriesToCopy.push({
+  src: `node_modules/@printezisn/solidboy/dist/assets`,
+  dest: `assets`,
+  rename: { stripBase: 5 },
+});
 
 // https://astro.build/config
 export default defineConfig({
