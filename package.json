@@ -32,7 +32,7 @@
     "@fontsource/roboto": "5.1.0",
     "@printezisn/games-couples-run": "git://github.com/printezisn/games-couples-run#v1.7.3",
     "@printezisn/games-sudoku": "git://github.com/printezisn/games-sudoku#v1.1.0",
-    "@printezisn/solidboy": "git://github.com/printezisn/solidboy#0.2.2",
+    "@printezisn/solidboy": "git://github.com/printezisn/solidboy#0.2.3",
     "astro": "6.1.5",
     "astro-expressive-code": "0.41.7",
     "feather-icons": "4.29.2",
