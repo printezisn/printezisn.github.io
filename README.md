@@ -4,7 +4,7 @@ This is my personal website containing my blog, portfolio and games.
 
 ## Prerequisites
 
-1. Install **NodeJS** >= 20.0.0. If you already have **nvm**, you can just do the following steps:
+1. Install **NodeJS** >= 22.13.1. If you already have **nvm**, you can just do the following steps:
    1. `nvm install`
    1. `nvm use`
 1. Install **pnpm** (e.g. with `npm i -g pnpm`).
