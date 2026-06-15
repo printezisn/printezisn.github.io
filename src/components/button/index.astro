@@ -8,9 +8,20 @@ interface Props {
   target?: string;
   rel?: string;
   title?: string;
+  command?: string;
+  commandfor?: string;
 }
 
-const { type, variant = 'normal', href, rel, target, title } = Astro.props;
+const {
+  type,
+  variant = 'normal',
+  href,
+  rel,
+  target,
+  title,
+  command,
+  commandfor,
+} = Astro.props;
 ---
 
 {
@@ -32,6 +43,8 @@ const { type, variant = 'normal', href, rel, target, title } = Astro.props;
       type={type}
       class:list={[styles.button, styles[variant]]}
       title={title}
+      command={command}
+      commandfor={commandfor}
     >
       <slot />
     </button>

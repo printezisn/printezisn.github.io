@@ -37,6 +37,7 @@
     "astro-expressive-code": "0.41.7",
     "feather-icons": "4.29.2",
     "husky": "9.1.7",
+    "invokers-polyfill": "^1.0.3",
     "sass": "1.98.0",
     "sharp": "0.34.5",
     "typescript": "6.0.2",

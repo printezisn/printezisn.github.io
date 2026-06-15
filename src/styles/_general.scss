@@ -139,6 +139,45 @@ figcaption {
   line-height: var(--line-height-1);
 }
 
+table {
+  text-align: start;
+  inline-size: 100%;
+  border-collapse: collapse;
+
+  thead tr {
+    th {
+      font-weight: var(--font-weight-bold);
+      padding: var(--spacing-2);
+      border: solid 1px var(--color-primary-grey-light);
+      border-inline-start: 0;
+    }
+
+    th:first-child {
+      border-inline-start: solid 1px var(--color-primary-grey-light);
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        padding: var(--spacing-2);
+        border: solid 1px var(--color-primary-grey-light);
+        border-inline-start: 0;
+      }
+
+      td:first-child {
+        border-inline-start: solid 1px var(--color-primary-grey-light);
+      }
+    }
+
+    tr:first-child {
+      td {
+        border-block-start: 0;
+      }
+    }
+  }
+}
+
 .text-center {
   text-align: center;
 }

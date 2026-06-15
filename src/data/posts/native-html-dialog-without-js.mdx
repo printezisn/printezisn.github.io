@@ -1,0 +1,390 @@
+---
+title: Native HTML Dialog Animations Without JS
+description: Learn how to build beautiful dialog animations using only CSS, powered by transition-behavior allow-discrete and the Invoker Commands API, without JS
+excerpt: The native HTML dialog element has been around for a while, but what if I told you you can now animate it with zero JS? Thanks to transition-behavior allow-discrete and the Invoker Commands API, we're entering a new era of CSS-only interactive components. In this post, we'll explore how to build fully animated dialogs that work purely with HTML and CSS.
+categories:
+  - css
+  - animations
+date: 2026-06-15
+lastUpdate: 2026-06-15
+image:
+  href: ../../assets/posts/native-html-dialog-without-JS/dialog-hero.svg
+  alt: A stylized illustration of a dialog element with CSS transition-behavior code snippet
+---
+
+import Button from '@components/button/index.astro';
+
+<Fragment set:html={`
+  <style>
+    .post-dialog {
+      --dialog-background-color: hsl(212, 32%, 12%);
+      --dialog-text-color: hsl(212, 32%, 98%);
+      --dialog-secondary-background-color: hsl(285, 72%, 65%);
+      --dialog-secondary-text-color: hsl(285, 72%, 98%);
+      --dialog-backdrop: hsla(212, 32%, 5%, 0.7);
+
+      background: var(--dialog-background-color);
+      color: var(--dialog-text-color);
+      border: 0;
+      position: fixed !important;
+      inset: 50%;
+      transform: translate(-50%, -50%);
+      inline-size: 100%;
+      max-inline-size: 700px;
+      position: relative;
+      overflow: visible;
+      border-radius: 16px;
+    }
+
+    .post-dialog::backdrop {
+      background: var(--dialog-backdrop);
+    }
+
+    .post-dialog h2 {
+      background-color: var(--dialog-secondary-background-color);
+      color: var(--dialog-secondary-text-color);
+      padding-inline: 16px;
+      padding-block: 8px;
+      border-start-start-radius: 16px;
+      border-start-end-radius: 16px;
+    }
+
+    .post-dialog p {
+      padding: 16px;
+    }
+
+    .post-dialog button {
+      position: absolute;
+      inset-inline-end: 0;
+      inset-block-start: 0;
+      transform: translateY(-50px);
+      background: none;
+      border: 0;
+      inline-size: 36px;
+      aspect-ratio: 1;
+      cursor: pointer;
+    }
+
+    .post-dialog button::before,
+    .post-dialog button::after {
+      content: '';
+      display: inline-block;
+      inline-size: 3px;
+      background-color: var(--dialog-text-color);
+      position: absolute;
+      inset-inline-start: 50%;
+      inset-block-start: 0;
+      inset-block-end: 0;
+    }
+
+    .post-dialog button::before {
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .post-dialog button::after {
+      transform: translateX(-50%) rotate(-45deg);
+    }
+
+    .post-dialog-with-animation {
+      transition:
+        display 0.3s allow-discrete,
+        opacity 0.3s linear,
+        transform 0.3s;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    .post-dialog-with-animation::backdrop {
+      transition:
+        display 0.3s allow-discrete,
+        opacity 0.3s linear;
+      opacity: 1;
+    }
+
+    .post-dialog-with-animation[open] {
+      transition:
+        display 0.8s allow-discrete,
+        opacity 0.3s linear,
+        transform 0.8s linear(0, 0.419 7.3%, 0.741 15.1%, 0.967 23.4%, 1.047 27.9%, 1.106 32.6%, 1.137 36.3%, 1.156 40.3%, 1.165 44.5%, 1.163 49.1%, 1.138 57.4%, 1.025 82.4%, 1.005 90.8%, 1);
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    @starting-style {
+      .post-dialog-with-animation::backdrop {
+        opacity: 0;
+      }
+
+      .post-dialog-with-animation[open] {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+      }
+    }
+
+  </style>
+`} />
+
+For years, we've relied on JS libraries to handle modal dialogs. Whether it was Bootstrap's modal, a custom overlay solution, or a framework-specific component, the pattern was always the same: HTML for structure, CSS for styling, and JS for the open/close logic and animations.
+
+But the web platform has evolved. The `<dialog>` element is now widely supported across all modern browsers. Combined with the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API" target="_blank" rel="noreferrer nofollow">Invoker Commands API</a> and the newly available `transition-behavior: allow-discrete`, we can now build fully animated dialogs with **zero JS**.
+
+Let's dive in.
+
+### The \<dialog\> element
+
+The `<dialog>` element is a native HTML element that represents a dialog box or other interactive component.
+It comes with built-in semantics, accessibility features, focus trapping, escape-to-close functionality, and a simple JS API (`showModal()`, `close()`).
+But here's the thing, we don't even need the JS API anymore.
+
+```html title="index.html"
+<dialog id="my-dialog" class="post-dialog">
+  <h2>Hello there</h2>
+  <p>This is a native dialog.</p>
+  <button aria-label="Close"></button>
+</dialog>
+```
+
+```scss title="style.scss"
+.post-dialog {
+  --dialog-background-color: hsl(212, 32%, 12%);
+  --dialog-text-color: hsl(212, 32%, 98%);
+  --dialog-secondary-background-color: hsl(285, 72%, 65%);
+  --dialog-secondary-text-color: hsl(285, 72%, 98%);
+  --dialog-backdrop: hsla(212, 32%, 5%, 0.7);
+
+  background: var(--dialog-background-color);
+  color: var(--dialog-text-color);
+  border: 0;
+  position: fixed !important;
+  inset: 50%;
+  transform: translate(-50%, -50%);
+  inline-size: 100%;
+  max-inline-size: 700px;
+  position: relative;
+  overflow: visible;
+  border-radius: 16px;
+}
+
+.post-dialog::backdrop {
+  background: var(--dialog-backdrop);
+}
+
+.post-dialog h2 {
+  background-color: var(--dialog-secondary-background-color);
+  color: var(--dialog-secondary-text-color);
+  padding-inline: 16px;
+  padding-block: 8px;
+  border-start-start-radius: 16px;
+  border-start-end-radius: 16px;
+}
+
+.post-dialog p {
+  padding: 16px;
+}
+
+.post-dialog button {
+  position: absolute;
+  inset-inline-end: 0;
+  inset-block-start: 0;
+  transform: translateY(-50px);
+  background: none;
+  border: 0;
+  inline-size: 36px;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+
+.post-dialog button::before,
+.post-dialog button::after {
+  content: '';
+  display: inline-block;
+  inline-size: 3px;
+  background-color: var(--dialog-text-color);
+  position: absolute;
+  inset-inline-start: 50%;
+  inset-block-start: 0;
+  inset-block-end: 0;
+}
+
+.post-dialog button::before {
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.post-dialog button::after {
+  transform: translateX(-50%) rotate(-45deg);
+}
+```
+
+That's it! A semantic, accessible dialog element. But by itself, it's just sitting there, invisible and inert. Let's make it interactive.
+
+### Opening dialogs without JS: the `Invoker Commands API`
+
+The [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) introduces the `command` attribute, which lets any element control the behaviour of a dialog.
+When combined with the `commandfor` attribute on buttons, links, or any other element, we get click-to-show and click-to-dismiss behavior entirely in HTML.
+
+```html title="index.html"
+<button command="show-modal" commandfor="my-dialog">Open dialog</button>
+
+<dialog id="my-dialog" class="post-dialog" closedby="any">
+  <h2>Hello there</h2>
+  <p>This is a native dialog.</p>
+  <button aria-label="Close" command="close" commandfor="my-dialog"></button>
+</dialog>
+```
+
+The command attributes handle everything. No event listeners, no state management and no JS. You can click the following button
+to get a glimpse of the dialog in action:
+
+<p>
+  <Button type="button" command="show-modal" commandfor="my-dialog">
+    <Fragment set:html="Open dialog" />
+  </Button>
+</p>
+
+<dialog id="my-dialog" class="post-dialog" closedby="any">
+  <h2>Hello there</h2>
+  <p>This is a native dialog.</p>
+  <button aria-label="Close" command="close" commandfor="my-dialog"></button>
+</dialog>
+
+But what about animations? By default, dialogs appear and disappear instantly. That's where `transition-behavior: allow-discrete` comes in.
+
+### Animated entry and exit with transition-behavior: allow-discrete
+
+Previously, CSS transitions could only animate between continuous values. Things like `width`, `opacity`, or `transform`.
+Discrete state changes like `display: none` to `display: block` were impossible to transition because the element simply
+didn't exist in the layout one moment and existed the next.
+
+The `transition-behavior: allow-discrete` property changes all of that. It allows transitions to continue after a discrete
+property (like `display`) has changed. This means we can transition from `display: none` to `display: flex` and still
+animate the visual properties in between.
+
+Here's how it works with a dialog:
+
+```css title="style.css"
+/* ... */
+
+.post-dialog-with-animation {
+  transition:
+    display 0.3s allow-discrete,
+    opacity 0.3s linear,
+    transform 0.3s;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
+}
+
+.post-dialog-with-animation::backdrop {
+  transition:
+    display 0.3s allow-discrete,
+    opacity 0.3s linear;
+  opacity: 1;
+}
+
+.post-dialog-with-animation[open] {
+  transition:
+    display 0.8s allow-discrete,
+    opacity 0.3s linear,
+    transform 0.8s
+      linear(
+        0,
+        0.419 7.3%,
+        0.741 15.1%,
+        0.967 23.4%,
+        1.047 27.9%,
+        1.106 32.6%,
+        1.137 36.3%,
+        1.156 40.3%,
+        1.165 44.5%,
+        1.163 49.1%,
+        1.138 57.4%,
+        1.025 82.4%,
+        1.005 90.8%,
+        1
+      );
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+@starting-style {
+  .post-dialog-with-animation::backdrop {
+    opacity: 0;
+  }
+
+  .post-dialog-with-animation[open] {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+}
+```
+
+```html title="index.html"
+<button command="show-modal" commandfor="my-dialog2">Open dialog</button>
+
+<dialog
+  id="my-dialog2"
+  class="post-dialog post-dialog-with-animation"
+  closedby="any"
+>
+  <h2>Hello there</h2>
+  <p>This is a native dialog.</p>
+  <button aria-label="Close" command="close" commandfor="my-dialog2"></button>
+</dialog>
+```
+
+The key insight is that `transition-behavior: allow-discrete` tells the browser:
+_"When the element's `display` property changes from `none` to something else (or vice versa), don't just snap.
+Continue animating the other transitioned properties."_
+
+Click the button below to see the dialog animate in and out, all without a single line of JS:
+
+<p>
+  <Button type="button" command="show-modal" commandfor="my-dialog2">
+    <Fragment set:html="Open dialog" />
+  </Button>
+</p>
+
+<dialog
+  id="my-dialog2"
+  class="post-dialog post-dialog-with-animation"
+  closedby="any"
+>
+  <h2>Hello there</h2>
+  <p>This is a native dialog.</p>
+  <button aria-label="Close" command="close" commandfor="my-dialog2"></button>
+</dialog>
+
+> 💡 As you may notice, when the dialog closes, the backdrop fades out immediately. The reason is because it gets removed
+> from the DOM. In order to perform an exit animation on the backdrop, the only way is to use JS to delay the removal until the animation
+> is complete. This is one of the few cases where a tiny bit of JS can enhance the experience, but it's not strictly
+> necessary for a functional dialog.
+
+### Browser support and fallbacks
+
+As of June 2026, browser support looks like this:
+
+| Feature                             | Global Usage |
+| ----------------------------------- | ------------ |
+| \<dialog\>                          | 95.9%        |
+| @starting-style                     | 87.35%       |
+| Invoker Commands API                | 78.41%       |
+| transition-behavior: allow-discrete | 87.43%       |
+
+The `transition-behavior: allow-discrete` property and `@starting-style` are newer additions and require relatively recent browser versions.
+For older browsers, the dialog will still function, it just won't animate. It's a progressive enhancement, so you can safely use it without
+worrying about breaking functionality.
+
+The `Invoker Commands API` has currently the lowest support. It became part of the baseline in December 2025, so older browsers will not support it.
+Thankfull, there are polyfills available that can add support for the Invoker Commands API in browsers that don't support it natively. One such
+polyfill is <a href="https://github.com/keithamus/invokers-polyfill" target="_blank" rel="noreferrer nofollow">invokers-polyfill</a>.
+
+### Conclusion
+
+What we're seeing with the `<dialog>` element, the Invoker Commands API, and `transition-behavior: allow-discrete` is part of a larger movement on the
+web platform: **reclaiming interactivity from JS**.
+
+For the past decade, we've built more and more of the web's interactive layer in JS.
+Frameworks gave us incredible power, but also incredible complexity. The platform is now catching up with declarative,
+accessible, performant primitives that work without any scripts.
+
+And the best part? These primitives are **accessible by default**. They handle focus management, keyboard navigation,
+ARIA attributes, and screen reader announcements out of the box.

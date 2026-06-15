@@ -1,5 +1,6 @@
 import '@styles/main.scss';
 import './base';
+import 'invokers-polyfill';
 import '@scripts/components/snowfall';
 
 if (document.getElementsByClassName('create-fireplace').length > 0) {
