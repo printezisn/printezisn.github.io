@@ -29,7 +29,7 @@ import Button from '@components/button/index.astro';
       position: fixed !important;
       inset: 50%;
       transform: translate(-50%, -50%);
-      inline-size: 100%;
+      inline-size: calc(100% - 32px);
       max-inline-size: 700px;
       position: relative;
       overflow: visible;
@@ -158,7 +158,7 @@ But here's the thing, we don't even need the JS API anymore.
   position: fixed !important;
   inset: 50%;
   transform: translate(-50%, -50%);
-  inline-size: 100%;
+  inline-size: calc(100% - 32px);
   max-inline-size: 700px;
   position: relative;
   overflow: visible;
@@ -374,7 +374,7 @@ For older browsers, the dialog will still function, it just won't animate. It's 
 worrying about breaking functionality.
 
 The `Invoker Commands API` has currently the lowest support. It became part of the baseline in December 2025, so older browsers will not support it.
-Thankfull, there are polyfills available that can add support for the Invoker Commands API in browsers that don't support it natively. One such
+Thankfully, there are polyfills available that can add support for the Invoker Commands API in browsers that don't support it natively. One such
 polyfill is <a href="https://github.com/keithamus/invokers-polyfill" target="_blank" rel="noreferrer nofollow">invokers-polyfill</a>.
 
 ### Conclusion
