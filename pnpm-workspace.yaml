@@ -1,4 +1,0 @@
-onlyBuiltDependencies:
-  - '@printezisn/games-sudoku'
-  - '@printezisn/games-couples-run'
-  - '@printezisn/solidboy'
