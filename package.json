@@ -19,9 +19,9 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "@printezisn/games-sudoku",
-      "@printezisn/games-couples-run",
-      "@printezisn/solidboy"
+      "@printezisn/games-sudoku@1.1.0",
+      "@printezisn/games-couples-run@1.7.3",
+      "@printezisn/solidboy@0.2.4"
     ]
   },
   "dependencies": {
