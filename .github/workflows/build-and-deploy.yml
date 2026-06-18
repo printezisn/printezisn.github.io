@@ -21,7 +21,7 @@ jobs:
     name: Build
 
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v6
         with:
           submodules: true
       - name: Cache Assets
@@ -63,7 +63,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v6
         with:
           submodules: true
       - name: Cache Assets
