@@ -1,0 +1,241 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '@layouts/base-layout.astro';
+import RobotoNormal from '@fontsource/roboto/files/roboto-latin-400-normal.woff2';
+import RobotoBold from '@fontsource/roboto/files/roboto-latin-700-normal.woff2';
+import LoraBold from '@fontsource/lora/files/lora-latin-700-normal.woff2';
+import MailIcon from 'feather-icons/dist/icons/mail.svg';
+import MapPinIcon from 'feather-icons/dist/icons/map-pin.svg';
+import GlobeIcon from 'feather-icons/dist/icons/globe.svg';
+import GitHubIcon from 'feather-icons/dist/icons/github.svg';
+import LinkedInIcon from 'feather-icons/dist/icons/linkedin.svg';
+import DownloadIcon from 'feather-icons/dist/icons/download.svg';
+import ArrowLeftIcon from 'feather-icons/dist/icons/arrow-left.svg';
+import styles from '@styles/pages/cv/styles.module.scss';
+
+const profileEntry = (await getCollection('cv-profile'))[0];
+const profile = profileEntry.data;
+const { Content: Summary } = await render(profileEntry);
+
+const experience = await Promise.all(
+  (await getCollection('cv-experience'))
+    .sort((a, b) => b.data.startDate.getTime() - a.data.startDate.getTime())
+    .map(async (job) => ({ ...job, Content: (await render(job)).Content })),
+);
+
+const projects = await Promise.all(
+  (await getCollection('cv-projects'))
+    .sort((a, b) => a.data.order - b.data.order)
+    .map(async (project) => ({
+      ...project,
+      Content: (await render(project)).Content,
+    })),
+);
+
+const months = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+const formatMonth = (date: Date) =>
+  `${months[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
+const formatPeriod = (start: Date, end?: Date) =>
+  `${formatMonth(start)} – ${end ? formatMonth(end) : 'Present'}`;
+const displayUrl = (url: string) =>
+  url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+
+const title = `${profile.name} – CV`;
+const description = `CV of ${profile.name}, ${profile.headline}.`;
+const fonts = [RobotoNormal, RobotoBold, LoraBold];
+const lastUpdatedText = profile.lastUpdate.toLocaleDateString('en-GB', {
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path="/cv/"
+  index={false}
+  breadcrumbList={[
+    { name: 'Portfolio', url: '/' },
+    { name: 'CV', url: '/cv/' },
+  ]}
+  lastUpdateTime={profile.lastUpdate}
+>
+  <Fragment slot="preloads">
+    {
+      fonts.map((font) => (
+        <link
+          rel="preload"
+          as="font"
+          type="font/woff2"
+          href={font}
+          crossorigin="anonymous"
+        />
+      ))
+    }
+  </Fragment>
+  <Fragment slot="scripts">
+    <script src="@scripts/cv.ts"></script>
+  </Fragment>
+
+  <div class={styles.cv}>
+    <nav class={styles.toolbar} aria-label="CV actions">
+      <a href="/" class={styles.back}><ArrowLeftIcon /> printezisn.com</a>
+      <button type="button" class={styles.download} data-print-cv>
+        <DownloadIcon /> Download PDF
+      </button>
+    </nav>
+
+    <header class={styles.header}>
+      <h1>{profile.name}</h1>
+      <p class={styles.headline}>{profile.headline}</p>
+      <ul class={styles.contact}>
+        <li><MapPinIcon /> {profile.location}</li>
+        <li>
+          <MailIcon />
+          <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        </li>
+        <li>
+          <GlobeIcon />
+          <a href={profile.website}>{displayUrl(profile.website)}</a>
+        </li>
+        <li>
+          <GitHubIcon />
+          <a href={profile.github} target="_blank" rel="noreferrer"
+            >{displayUrl(profile.github)}</a
+          >
+        </li>
+        <li>
+          <LinkedInIcon />
+          <a href={profile.linkedin} target="_blank" rel="noreferrer"
+            >{displayUrl(profile.linkedin)}</a
+          >
+        </li>
+      </ul>
+    </header>
+
+    <main id="main-content">
+      <section class={styles.section} aria-labelledby="cv-summary">
+        <h2 id="cv-summary">Summary</h2>
+        <div class={styles.summary}><Summary /></div>
+      </section>
+
+      <section class={styles.section} aria-labelledby="cv-experience">
+        <h2 id="cv-experience">Experience</h2>
+        {
+          experience.map(({ data: job, Content }) => (
+            <article class={styles.entry}>
+              <div class={styles.entryHead}>
+                <h3>
+                  {job.title}
+                  {job.company && (
+                    <span class={styles.company}>
+                      {job.company}
+                      {job.location && ` (${job.location})`}
+                    </span>
+                  )}
+                </h3>
+                <p class={styles.period}>
+                  {job.period ?? formatPeriod(job.startDate, job.endDate)}
+                </p>
+              </div>
+              <div class={styles.jobBody}>
+                <Content />
+              </div>
+              {job.stack && (
+                <p class={styles.stack}>
+                  <span class="sr-only">Technologies: </span>
+                  {job.stack.join(' · ')}
+                </p>
+              )}
+            </article>
+          ))
+        }
+      </section>
+
+      <section class={styles.section} aria-labelledby="cv-projects">
+        <h2 id="cv-projects">Projects</h2>
+        <ul class={styles.projects}>
+          {
+            projects.map(({ data: project, Content }) => (
+              <li>
+                <strong>{project.name}</strong>:{' '}
+                <span class={styles.projectDesc}>
+                  <Content />
+                </span>{' '}
+                <span class={styles.meta}>({project.stack.join(' · ')}) ·</span>{' '}
+                <a
+                  class={styles.url}
+                  href={project.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {displayUrl(project.url)}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class={styles.section} aria-labelledby="cv-skills">
+        <h2 id="cv-skills">Skills</h2>
+        <dl class={styles.skills}>
+          {
+            profile.skills.map((group) => (
+              <div>
+                <dt>{group.label}</dt>
+                <dd>{group.items.join(', ')}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </section>
+
+      <section class={styles.section} aria-labelledby="cv-education">
+        <h2 id="cv-education">Education</h2>
+        <ul class={styles.plainList}>
+          {
+            profile.education.map((item) => (
+              <li>
+                <strong>{item.degree}</strong> · {item.school} · {item.year}
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class={styles.section} aria-labelledby="cv-languages">
+        <h2 id="cv-languages">Languages</h2>
+        <p>
+          {
+            profile.languages.map((language, i) => (
+              <>
+                {i > 0 && ' · '}
+                <strong>{language.name}</strong> ({language.level})
+              </>
+            ))
+          }
+        </p>
+      </section>
+    </main>
+
+    <footer class={styles.footer}>
+      Last updated {lastUpdatedText} · Up-to-date version at
+      <a href={new URL('/cv/', Astro.site).toString()}>printezisn.com/cv</a>
+    </footer>
+  </div>
+</BaseLayout>

@@ -1,0 +1,453 @@
+@use '../../variables' as v;
+@use '../../functions' as f;
+
+$cv-inline-size: 840;
+$muted: hsl(212, 12%, 72%);
+$body-text: hsl(212, 20%, 88%);
+$rule: hsla(212, 32%, 98%, 0.1);
+$small-size: f.relativeSize(14);
+$small-line: f.relativeSize(20);
+
+.cv {
+  container-type: inline-size;
+  max-inline-size: #{f.relativeSize($cv-inline-size)};
+  margin-inline: auto;
+  padding-block: var(--spacing-6) var(--spacing-10);
+  padding-inline: var(--spacing-4);
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-block-end: var(--spacing-8);
+  font-size: #{$small-size};
+  line-height: #{$small-line};
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.download {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  border: 0;
+  border-radius: var(--border-radius-large);
+  padding-block: var(--spacing-3);
+  padding-inline: var(--spacing-4);
+  background-color: var(--color-secondary);
+  color: var(--color-secondary-white);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  transition: background-color var(--transition-time-quick);
+
+  &:hover {
+    background-color: var(--color-secondary-light);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-secondary-light);
+    outline-offset: 2px;
+  }
+}
+
+.header {
+  padding-block-end: var(--spacing-6);
+  border-block-end: 3px solid var(--color-secondary);
+
+  h1 {
+    font-family: var(--font-family-serif);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-8);
+    line-height: var(--line-height-7);
+  }
+}
+
+.headline {
+  margin-block-start: var(--spacing-1);
+  color: var(--color-secondary-light);
+  font-family: var(--font-family-serif);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-4);
+  line-height: var(--line-height-4);
+}
+
+.contact {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2) var(--spacing-5);
+  margin-block-start: var(--spacing-4);
+  color: $muted;
+  font-size: #{$small-size};
+  line-height: #{$small-line};
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+  }
+
+  svg {
+    color: var(--color-secondary-light);
+    flex-shrink: 0;
+  }
+}
+
+.section {
+  margin-block-start: var(--spacing-8);
+
+  h2 {
+    display: inline-block;
+    margin-block-end: var(--spacing-3);
+    padding-block: var(--spacing-1);
+    padding-inline: var(--spacing-3);
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-white);
+    font-family: var(--font-family-serif);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-3);
+    line-height: var(--line-height-3);
+  }
+
+  p {
+    color: $body-text;
+  }
+
+  strong {
+    color: var(--color-primary-white);
+  }
+}
+
+.summary {
+  font-size: var(--font-size-2);
+}
+
+.entry {
+  padding-block: var(--spacing-5);
+  border-block-end: 1px solid $rule;
+
+  &:last-child {
+    border-block-end: 0;
+  }
+}
+
+.entryHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--spacing-1) var(--spacing-4);
+
+  h3 {
+    font-family: var(--font-family-serif);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-3);
+    line-height: var(--line-height-3);
+  }
+}
+
+.company {
+  display: block;
+  color: var(--color-secondary-light);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-2);
+}
+
+.period {
+  flex-shrink: 0;
+  color: $muted;
+  font-size: #{$small-size};
+  line-height: #{$small-line};
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+
+  .section & {
+    color: $muted;
+  }
+}
+
+.jobBody {
+  color: $body-text;
+
+  // The first paragraph of a job is its intro.
+  > p:first-child {
+    margin-block-start: var(--spacing-2);
+    font-style: italic;
+  }
+
+  ul {
+    margin-block-start: var(--spacing-2);
+    padding-inline-start: var(--spacing-5);
+  }
+
+  li {
+    margin-block-start: var(--spacing-1);
+  }
+
+  li::marker {
+    color: var(--color-secondary-light);
+  }
+
+  // Inline notes such as tech lists, e.g. _(Astro · Sanity)_.
+  li em {
+    color: $muted;
+    font-size: #{$small-size};
+  }
+
+  li a {
+    font-size: #{$small-size};
+    white-space: nowrap;
+  }
+
+  // Role changes within one company: #### Title, then the period.
+  h4 {
+    margin-block-start: var(--spacing-4);
+    font-weight: var(--font-weight-bold);
+  }
+
+  h4 + p {
+    color: $muted;
+    font-size: #{$small-size};
+    line-height: #{$small-line};
+  }
+}
+
+.stack {
+  display: block;
+  margin-block-start: var(--spacing-3);
+  font-size: #{$small-size};
+  line-height: #{$small-line};
+
+  .section & {
+    color: $muted;
+  }
+}
+
+.projects {
+  padding-inline-start: var(--spacing-5);
+  color: $body-text;
+
+  li {
+    margin-block-start: var(--spacing-3);
+  }
+
+  li::marker {
+    color: var(--color-secondary-light);
+  }
+}
+
+.projectDesc,
+.projectDesc p {
+  display: inline;
+}
+
+.meta {
+  color: $muted;
+  font-size: #{$small-size};
+  font-style: italic;
+}
+
+.url {
+  font-size: #{$small-size};
+  white-space: nowrap;
+}
+
+.skills {
+  display: grid;
+  gap: var(--spacing-2);
+
+  div {
+    display: grid;
+    grid-template-columns: #{f.relativeSize(150)} 1fr;
+    gap: var(--spacing-4);
+  }
+
+  dt {
+    font-weight: var(--font-weight-bold);
+  }
+
+  dd {
+    color: $body-text;
+  }
+}
+
+.plainList {
+  list-style: none;
+  color: $body-text;
+
+  li + li {
+    margin-block-start: var(--spacing-1);
+  }
+}
+
+.footer {
+  margin-block-start: var(--spacing-10);
+  padding-block-start: var(--spacing-4);
+  border-block-start: 1px solid $rule;
+  color: $muted;
+  font-size: #{$small-size};
+  line-height: #{$small-line};
+}
+
+@container (max-inline-size: #{f.relativeSize(560)}) {
+  .entryHead,
+  .jobBody h4 {
+    flex-direction: column;
+  }
+
+  .skills div {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+// Print / "Save as PDF": light, ink-friendly version of the same design.
+@page {
+  size: A4;
+  margin: 10mm 12mm;
+}
+
+@media print {
+  $ink: hsl(212, 32%, 8%);
+  $ink-muted: hsl(212, 10%, 35%);
+  $accent: hsl(285, 72%, 40%);
+
+  // !important: the global stylesheet sets html's font-size too and may load
+  // after this module (it does in dev), so the print size must win regardless.
+  :global(html) {
+    font-size: 12.5px !important; // body text ≈ 9.5pt
+  }
+
+  .cv p,
+  .cv li,
+  .cv dd,
+  .cv dt {
+    line-height: 1.32;
+  }
+
+  :global(html),
+  :global(body) {
+    background: #fff !important;
+    color: $ink !important;
+  }
+
+  .cv {
+    max-inline-size: none;
+    padding: 0;
+  }
+
+  .toolbar {
+    display: none;
+  }
+
+  .cv a {
+    color: $accent;
+  }
+
+  .header {
+    padding-block-end: var(--spacing-4);
+    border-block-end-color: $accent;
+  }
+
+  .headline,
+  .company,
+  .contact svg {
+    color: $accent;
+  }
+
+  .contact,
+  .period,
+  .section .period,
+  .section .stack,
+  .footer {
+    color: $ink-muted;
+  }
+
+  .section {
+    margin-block-start: var(--spacing-4);
+
+    h2 {
+      display: block;
+      padding: 0 0 var(--spacing-1);
+      background: none;
+      color: $accent;
+      margin-block-end: var(--spacing-2);
+      border-block-end: 1px solid hsl(285, 30%, 85%);
+      break-after: avoid;
+    }
+
+    p,
+    .jobBody,
+    .projects,
+    .plainList,
+    dd {
+      color: $ink;
+    }
+
+    strong {
+      color: $ink;
+    }
+  }
+
+  .jobBody li::marker,
+  .projects li::marker {
+    color: $accent;
+  }
+
+  .entry {
+    padding-block: var(--spacing-2);
+    border-block-end-color: hsl(212, 15%, 88%);
+  }
+
+  .entryHead,
+  .jobBody h4 {
+    break-after: avoid;
+  }
+
+  .jobBody li,
+  .projects li,
+  .skills div {
+    break-inside: avoid;
+  }
+
+  .skills {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-1) var(--spacing-6);
+
+    div {
+      grid-template-columns: #{f.relativeSize(110)} 1fr;
+      gap: var(--spacing-2);
+    }
+  }
+
+  .meta,
+  .section .jobBody li em,
+  .section .jobBody h4 + p {
+    color: $ink-muted;
+  }
+
+  .cv a {
+    text-decoration: underline;
+    text-decoration-thickness: 0.5px;
+    text-underline-offset: 2px;
+  }
+
+  .jobBody li {
+    margin-block-start: 0.15em;
+  }
+
+  .header h1 {
+    font-size: var(--font-size-7);
+  }
+
+  .footer {
+    margin-block-start: var(--spacing-4);
+    border-block-start-color: hsl(212, 15%, 88%);
+  }
+}
