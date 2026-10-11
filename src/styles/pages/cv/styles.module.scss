@@ -1,12 +1,24 @@
-@use '../../variables' as v;
 @use '../../functions' as f;
 
+// The CV uses a light, document-like theme on screen and in print, with the
+// site's fonts, its navy as the text colour and its purple as the accent.
 $cv-inline-size: 840;
-$muted: hsl(212, 12%, 72%);
-$body-text: hsl(212, 20%, 88%);
-$rule: hsla(212, 32%, 98%, 0.1);
+$ink: hsl(212, 32%, 8%);
+$ink-muted: hsl(212, 10%, 35%);
+$accent: hsl(285, 72%, 40%);
+$accent-hover: hsl(285, 72%, 30%);
+$accent-rule: hsl(285, 30%, 85%);
+$rule: hsl(212, 15%, 88%);
 $small-size: f.relativeSize(14);
 $small-line: f.relativeSize(20);
+
+// !important: the global stylesheet styles html/body too and may load after
+// this module (it does in dev), so the CV's values must win regardless.
+:global(html),
+:global(body) {
+  background: #fff !important;
+  color: $ink !important;
+}
 
 .cv {
   container-type: inline-size;
@@ -14,6 +26,22 @@ $small-line: f.relativeSize(20);
   margin-inline: auto;
   padding-block: var(--spacing-6) var(--spacing-10);
   padding-inline: var(--spacing-4);
+
+  a {
+    color: $accent;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+
+  a:hover {
+    color: $accent-hover;
+    text-decoration: none;
+  }
+
+  strong {
+    color: $ink;
+  }
 }
 
 .toolbar {
@@ -40,25 +68,25 @@ $small-line: f.relativeSize(20);
   border-radius: var(--border-radius-large);
   padding-block: var(--spacing-3);
   padding-inline: var(--spacing-4);
-  background-color: var(--color-secondary);
-  color: var(--color-secondary-white);
+  background-color: $accent;
+  color: #fff;
   font-weight: var(--font-weight-bold);
   cursor: pointer;
   transition: background-color var(--transition-time-quick);
 
   &:hover {
-    background-color: var(--color-secondary-light);
+    background-color: $accent-hover;
   }
 
   &:focus-visible {
-    outline: 2px solid var(--color-secondary-light);
+    outline: 2px solid $accent;
     outline-offset: 2px;
   }
 }
 
 .header {
   padding-block-end: var(--spacing-6);
-  border-block-end: 3px solid var(--color-secondary);
+  border-block-end: 3px solid $accent;
 
   h1 {
     font-family: var(--font-family-serif);
@@ -70,7 +98,7 @@ $small-line: f.relativeSize(20);
 
 .headline {
   margin-block-start: var(--spacing-1);
-  color: var(--color-secondary-light);
+  color: $accent;
   font-family: var(--font-family-serif);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-4);
@@ -83,7 +111,7 @@ $small-line: f.relativeSize(20);
   flex-wrap: wrap;
   gap: var(--spacing-2) var(--spacing-5);
   margin-block-start: var(--spacing-4);
-  color: $muted;
+  color: $ink-muted;
   font-size: #{$small-size};
   line-height: #{$small-line};
 
@@ -94,7 +122,7 @@ $small-line: f.relativeSize(20);
   }
 
   svg {
-    color: var(--color-secondary-light);
+    color: $accent;
     flex-shrink: 0;
   }
 }
@@ -103,29 +131,15 @@ $small-line: f.relativeSize(20);
   margin-block-start: var(--spacing-8);
 
   h2 {
-    display: inline-block;
     margin-block-end: var(--spacing-3);
-    padding-block: var(--spacing-1);
-    padding-inline: var(--spacing-3);
-    background-color: var(--color-secondary);
-    color: var(--color-secondary-white);
+    padding-block-end: var(--spacing-1);
+    border-block-end: 1px solid $accent-rule;
+    color: $accent;
     font-family: var(--font-family-serif);
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-3);
     line-height: var(--line-height-3);
   }
-
-  p {
-    color: $body-text;
-  }
-
-  strong {
-    color: var(--color-primary-white);
-  }
-}
-
-.summary {
-  font-size: var(--font-size-2);
 }
 
 .entry {
@@ -153,7 +167,7 @@ $small-line: f.relativeSize(20);
 
 .company {
   display: block;
-  color: var(--color-secondary-light);
+  color: $accent;
   font-family: var(--font-family-base);
   font-size: var(--font-size-2);
   line-height: var(--line-height-2);
@@ -161,20 +175,14 @@ $small-line: f.relativeSize(20);
 
 .period {
   flex-shrink: 0;
-  color: $muted;
+  color: $ink-muted;
   font-size: #{$small-size};
   line-height: #{$small-line};
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
-
-  .section & {
-    color: $muted;
-  }
 }
 
 .jobBody {
-  color: $body-text;
-
   // The first paragraph of a job is its intro.
   > p:first-child {
     margin-block-start: var(--spacing-2);
@@ -191,12 +199,12 @@ $small-line: f.relativeSize(20);
   }
 
   li::marker {
-    color: var(--color-secondary-light);
+    color: $accent;
   }
 
   // Inline notes such as tech lists, e.g. _(Astro · Sanity)_.
   li em {
-    color: $muted;
+    color: $ink-muted;
     font-size: #{$small-size};
   }
 
@@ -212,7 +220,7 @@ $small-line: f.relativeSize(20);
   }
 
   h4 + p {
-    color: $muted;
+    color: $ink-muted;
     font-size: #{$small-size};
     line-height: #{$small-line};
   }
@@ -221,24 +229,20 @@ $small-line: f.relativeSize(20);
 .stack {
   display: block;
   margin-block-start: var(--spacing-3);
+  color: $ink-muted;
   font-size: #{$small-size};
   line-height: #{$small-line};
-
-  .section & {
-    color: $muted;
-  }
 }
 
 .projects {
   padding-inline-start: var(--spacing-5);
-  color: $body-text;
 
   li {
     margin-block-start: var(--spacing-3);
   }
 
   li::marker {
-    color: var(--color-secondary-light);
+    color: $accent;
   }
 }
 
@@ -248,7 +252,7 @@ $small-line: f.relativeSize(20);
 }
 
 .meta {
-  color: $muted;
+  color: $ink-muted;
   font-size: #{$small-size};
   font-style: italic;
 }
@@ -271,15 +275,10 @@ $small-line: f.relativeSize(20);
   dt {
     font-weight: var(--font-weight-bold);
   }
-
-  dd {
-    color: $body-text;
-  }
 }
 
 .plainList {
   list-style: none;
-  color: $body-text;
 
   li + li {
     margin-block-start: var(--spacing-1);
@@ -290,14 +289,13 @@ $small-line: f.relativeSize(20);
   margin-block-start: var(--spacing-10);
   padding-block-start: var(--spacing-4);
   border-block-start: 1px solid $rule;
-  color: $muted;
+  color: $ink-muted;
   font-size: #{$small-size};
   line-height: #{$small-line};
 }
 
 @container (max-inline-size: #{f.relativeSize(560)}) {
-  .entryHead,
-  .jobBody h4 {
+  .entryHead {
     flex-direction: column;
   }
 
@@ -307,107 +305,65 @@ $small-line: f.relativeSize(20);
   }
 }
 
-// Print / "Save as PDF": light, ink-friendly version of the same design.
+// Print / "Save as PDF": same look, compact sizing for A4.
 @page {
   size: A4;
   margin: 10mm 12mm;
 }
 
 @media print {
-  $ink: hsl(212, 32%, 8%);
-  $ink-muted: hsl(212, 10%, 35%);
-  $accent: hsl(285, 72%, 40%);
-
-  // !important: the global stylesheet sets html's font-size too and may load
-  // after this module (it does in dev), so the print size must win regardless.
   :global(html) {
     font-size: 12.5px !important; // body text ≈ 9.5pt
-  }
-
-  .cv p,
-  .cv li,
-  .cv dd,
-  .cv dt {
-    line-height: 1.32;
-  }
-
-  :global(html),
-  :global(body) {
-    background: #fff !important;
-    color: $ink !important;
   }
 
   .cv {
     max-inline-size: none;
     padding: 0;
+
+    p,
+    li,
+    dd,
+    dt {
+      line-height: 1.32;
+    }
+
+    a {
+      text-decoration-thickness: 0.5px;
+    }
   }
 
   .toolbar {
     display: none;
   }
 
-  .cv a {
-    color: $accent;
-  }
-
   .header {
     padding-block-end: var(--spacing-4);
-    border-block-end-color: $accent;
-  }
 
-  .headline,
-  .company,
-  .contact svg {
-    color: $accent;
-  }
-
-  .contact,
-  .period,
-  .section .period,
-  .section .stack,
-  .footer {
-    color: $ink-muted;
+    h1 {
+      font-size: var(--font-size-7);
+    }
   }
 
   .section {
     margin-block-start: var(--spacing-4);
 
     h2 {
-      display: block;
-      padding: 0 0 var(--spacing-1);
-      background: none;
-      color: $accent;
       margin-block-end: var(--spacing-2);
-      border-block-end: 1px solid hsl(285, 30%, 85%);
       break-after: avoid;
     }
-
-    p,
-    .jobBody,
-    .projects,
-    .plainList,
-    dd {
-      color: $ink;
-    }
-
-    strong {
-      color: $ink;
-    }
-  }
-
-  .jobBody li::marker,
-  .projects li::marker {
-    color: $accent;
   }
 
   .entry {
     padding-block: var(--spacing-2);
-    border-block-end-color: hsl(212, 15%, 88%);
   }
 
   .entryHead,
   .jobBody h4 {
     break-after: avoid;
+  }
+
+  .jobBody li {
+    margin-block-start: 0.15em;
   }
 
   .jobBody li,
@@ -426,28 +382,7 @@ $small-line: f.relativeSize(20);
     }
   }
 
-  .meta,
-  .section .jobBody li em,
-  .section .jobBody h4 + p {
-    color: $ink-muted;
-  }
-
-  .cv a {
-    text-decoration: underline;
-    text-decoration-thickness: 0.5px;
-    text-underline-offset: 2px;
-  }
-
-  .jobBody li {
-    margin-block-start: 0.15em;
-  }
-
-  .header h1 {
-    font-size: var(--font-size-7);
-  }
-
   .footer {
     margin-block-start: var(--spacing-4);
-    border-block-start-color: hsl(212, 15%, 88%);
   }
 }
